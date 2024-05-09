@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     int currentHealth = 1;
     int maxHealth = 1;
 
-    //SHIELD CHARGE
+    //SHIELD
     float currentShield = 1;
+    int maxShield = 1;
 
     //SHIELD RECHARGE
     float shieldCooldownTimer = 0;
+    int maxShieldCooldownTimer = 1;
     float shieldRechargeRate = 1;
     
     //SPEED
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     Boolean IsAlive { get { return currentHealth > 0; } }
     Boolean IsShielded { get { return currentShield > 0; } }
     Boolean IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
-    Boolean IsRecharging { get { return currentShield < data.MaxShield; } }
+    Boolean IsRecharging { get { return currentShield < maxHealth; } }
 
 
 
@@ -84,8 +86,10 @@ public class PlayerController : MonoBehaviour
         maxHealth = data.MaxHealth;
 
         currentShield = data.MaxShield;
+        maxShield = data.MaxShield;
 
         shieldCooldownTimer = 0;
+        maxShieldCooldownTimer = data.ShieldCooldownTimer;
         shieldRechargeRate = data.ShieldRechargeRate;
 
         movementSpeed = data.MovementSpeed;
@@ -140,13 +144,13 @@ public class PlayerController : MonoBehaviour
         //SHIELD RECHARGE STUFF
         shieldCooldownTimer = data.ShieldCooldownTimer;
     }
-    private void DamageHealth(int damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, data.MaxHealth);
+    private void DamageHealth(int damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
 
 
-    private void DamageShield(int damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, data.MaxShield);
+    private void DamageShield(int damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
     private float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
-    private void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, data.MaxShield);
-    private void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, data.ShieldCooldownTimer);
+    private void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, maxShield);
+    private void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
 
 
     private void HandleShieldAndHealthLogic()
