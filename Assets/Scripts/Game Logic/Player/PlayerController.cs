@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     GameInputAction inputPlayer = new GameInputAction();
 
     //DATA
+
+    //TODO: HEALTH AND SHIELD ARCHITECTURE COULD BE IMPLEMENTED VIA A HELPER
     //HEALTH
     int currentHealth = 1;
     int maxHealth = 1;
