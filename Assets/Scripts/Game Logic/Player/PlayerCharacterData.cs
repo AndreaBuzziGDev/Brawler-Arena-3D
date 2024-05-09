@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class PlayerCharacterData : ScriptableObject
 {
-    //HEALTH
-    [SerializeField] float maxHealth = 5;
+    //TODO: EMBELLISH
+    //1) DEFINE RANGES MIN AND MAX
+    //2) DEFINE STEP
 
+    //HEALTH
+    [SerializeField] int maxHealth = 5;
+    public int MaxHealth => maxHealth;
 
     //SHIELD
-    [SerializeField] float maxShield = 5;
+    [SerializeField] int maxShield = 5;
     [SerializeField] float shieldRechargeRate = 1;
-    [SerializeField] float shieldCooldownTimer = 7;
+    [SerializeField] int shieldCooldownTimer = 7;
+
+    public int MaxShield => maxShield;
+    public float ShieldRechargeRate => shieldRechargeRate;
+    public int ShieldCooldownTimer => shieldCooldownTimer;
 
 
     //MOVEMENT
     [SerializeField] float movementSpeed = 5;
+    public float MovementSpeed => movementSpeed;
+
+
+    //...
 
 }
