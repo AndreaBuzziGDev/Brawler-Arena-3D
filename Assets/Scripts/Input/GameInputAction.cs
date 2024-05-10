@@ -49,7 +49,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""name"": ""Directional Rotation"",
                     ""type"": ""Value"",
                     ""id"": ""c82ec101-d477-4450-885b-c71e6fbda3ac"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Stick"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -125,7 +125,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Mouse Movement"",
                     ""id"": ""67669c61-a287-438f-a3f1-e18014f34b2f"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

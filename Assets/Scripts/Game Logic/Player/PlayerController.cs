@@ -133,7 +133,8 @@ public class PlayerController : MonoBehaviour
         //TODO: DEVELOP
         Debug.Log("UseRotation - value: " + value.ReadValue<Vector2>());
         Debug.Log("UseRotation - Last Mouse Position: " + Mouse.current.position.value.normalized);
-        lastValue = Mouse.current.position.value.normalized;
+        lastValueInput = value.ReadValue<Vector2>().normalized;
+        lastValueMousePosition = Mouse.current.position.value.normalized;
     }
 
     void UseAttackMelee(InputAction.CallbackContext value)
@@ -198,12 +199,15 @@ public class PlayerController : MonoBehaviour
 
 
     //GIZMOS
-    Vector2 lastValue;
+    Vector2 lastValueInput;
+    Vector2 lastValueMousePosition;
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValue.x, 0, lastValue.y) * 5);
+        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueInput.x, 0, lastValueInput.y) * 5);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMousePosition.x, 0, lastValueMousePosition.y) * 15);
     }
 
 }
