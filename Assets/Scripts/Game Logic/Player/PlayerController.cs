@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    // Start is called before the first frame update
     void Start()
     {
         //LISTEN TO INPUTS
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(IsAlive)
@@ -72,17 +73,14 @@ public class PlayerController : MonoBehaviour
         //TODO: HANDLE MOVEMENT
     }
 
-    
-    //FUNCTIONALITIES
-    void InputInitialization()
+
+    void OnDestroy()
     {
-        inputPlayer = new GameInputAction();
-        inputPlayer.Enable();
-
-        //TODO: HANDLE THE VARIOUS INPUTS
-
+        InputTermination();
     }
 
+    
+    //FUNCTIONALITIES
     void DataInitialization()
     {
         currentHealth = data.MaxHealth;
@@ -102,32 +100,55 @@ public class PlayerController : MonoBehaviour
 
 
 
+    //INPUT FUNCTIONS
+    void InputInitialization()
+    {
+        inputPlayer = new GameInputAction();
+        inputPlayer.Enable();
+
+        //TODO: HANDLE THE VARIOUS INPUTS
+        inputPlayer.BaseActionMap.DirectionalMovement.performed += UseMovement;
+        inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
+
+    }
+
+    void InputTermination()
+    {
+        inputPlayer.Disable();
+
+        //TODO: HANDLE THE VARIOUS INPUTS
+        inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
+        inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
+    }
+
     //INPUT HANDLING
-    void UseMovement()
+    void UseMovement(InputAction.CallbackContext value)
+    {
+        //TODO: DEVELOP
+        Debug.Log("UseMovement - value: " + value.ReadValue<Vector2>());
+    }
+
+    void UseRotation(InputAction.CallbackContext value)
+    {
+        //TODO: DEVELOP
+        Debug.Log("UseRotation - value: " + value.ReadValue<Vector2>());
+        Debug.Log("UseRotation - Last Mouse Position: " + Mouse.current.position.value.normalized);
+        lastValue = Mouse.current.position.value.normalized;
+    }
+
+    void UseAttackMelee(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
 
     }
 
-    void UseRotation()
+    void UseAttackRanged(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
 
     }
 
-    void UseAttackMelee()
-    {
-        //TODO: DEVELOP
-
-    }
-
-    void UseAttackRanged()
-    {
-        //TODO: DEVELOP
-
-    }
-
-    void UseAbility()
+    void UseAbility(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
 
@@ -173,6 +194,16 @@ public class PlayerController : MonoBehaviour
     {
         //TODO: DEVELOP
         //TODO: USE ReceiveDamage(int damageAmount)
+    }
+
+
+    //GIZMOS
+    Vector2 lastValue;
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValue.x, 0, lastValue.y) * 5);
     }
 
 }

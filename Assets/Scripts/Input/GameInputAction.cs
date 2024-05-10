@@ -134,7 +134,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""Up"",
                     ""id"": ""3d3aa537-bd21-4923-9c3a-86d73ae99585"",
                     ""path"": ""<Mouse>/delta/up"",
                     ""interactions"": """",
@@ -145,7 +145,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""Down"",
                     ""id"": ""c6790505-e698-4b3a-9066-817e07f66c6e"",
                     ""path"": ""<Mouse>/delta/down"",
                     ""interactions"": """",
@@ -156,7 +156,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""Left"",
                     ""id"": ""956586b1-5d3e-4561-ad61-7ed844b90184"",
                     ""path"": ""<Mouse>/delta/left"",
                     ""interactions"": """",
@@ -167,8 +167,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""561acf3b-6c7d-4a6b-b5f5-a3c2e22ccd90"",
+                    ""name"": ""Right"",
+                    ""id"": ""de674777-9f01-43b2-af9c-d1aa6fc1969c"",
                     ""path"": ""<Mouse>/delta/right"",
                     ""interactions"": """",
                     ""processors"": """",
