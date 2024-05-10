@@ -35,6 +35,24 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Directional Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""7edcd013-8a27-47ec-85b5-63e5cda9eaa7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Directional Rotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""c82ec101-d477-4450-885b-c71e6fbda3ac"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -48,6 +66,116 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""1316429b-ca7d-4504-bc7a-bf41079d040d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bf6fb694-813a-4499-9fc9-b9410c9b9687"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9a482a3d-bbe5-4922-bf6a-c0a0f6b84ef4"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ed1d5185-bc4e-4095-b4da-2794e425e02b"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""de9b734c-eb77-4ce9-8388-bd23c8a67148"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Mouse Movement"",
+                    ""id"": ""67669c61-a287-438f-a3f1-e18014f34b2f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Rotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3d3aa537-bd21-4923-9c3a-86d73ae99585"",
+                    ""path"": ""<Mouse>/delta/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c6790505-e698-4b3a-9066-817e07f66c6e"",
+                    ""path"": ""<Mouse>/delta/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""956586b1-5d3e-4561-ad61-7ed844b90184"",
+                    ""path"": ""<Mouse>/delta/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""561acf3b-6c7d-4a6b-b5f5-a3c2e22ccd90"",
+                    ""path"": ""<Mouse>/delta/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Directional Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -57,6 +185,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         // Base Action Map
         m_BaseActionMap = asset.FindActionMap("Base Action Map", throwIfNotFound: true);
         m_BaseActionMap_Escape = m_BaseActionMap.FindAction("Escape", throwIfNotFound: true);
+        m_BaseActionMap_DirectionalMovement = m_BaseActionMap.FindAction("Directional Movement", throwIfNotFound: true);
+        m_BaseActionMap_DirectionalRotation = m_BaseActionMap.FindAction("Directional Rotation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +249,15 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BaseActionMap;
     private List<IBaseActionMapActions> m_BaseActionMapActionsCallbackInterfaces = new List<IBaseActionMapActions>();
     private readonly InputAction m_BaseActionMap_Escape;
+    private readonly InputAction m_BaseActionMap_DirectionalMovement;
+    private readonly InputAction m_BaseActionMap_DirectionalRotation;
     public struct BaseActionMapActions
     {
         private @GameInputAction m_Wrapper;
         public BaseActionMapActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_BaseActionMap_Escape;
+        public InputAction @DirectionalMovement => m_Wrapper.m_BaseActionMap_DirectionalMovement;
+        public InputAction @DirectionalRotation => m_Wrapper.m_BaseActionMap_DirectionalRotation;
         public InputActionMap Get() { return m_Wrapper.m_BaseActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +270,12 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @DirectionalMovement.started += instance.OnDirectionalMovement;
+            @DirectionalMovement.performed += instance.OnDirectionalMovement;
+            @DirectionalMovement.canceled += instance.OnDirectionalMovement;
+            @DirectionalRotation.started += instance.OnDirectionalRotation;
+            @DirectionalRotation.performed += instance.OnDirectionalRotation;
+            @DirectionalRotation.canceled += instance.OnDirectionalRotation;
         }
 
         private void UnregisterCallbacks(IBaseActionMapActions instance)
@@ -143,6 +283,12 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @DirectionalMovement.started -= instance.OnDirectionalMovement;
+            @DirectionalMovement.performed -= instance.OnDirectionalMovement;
+            @DirectionalMovement.canceled -= instance.OnDirectionalMovement;
+            @DirectionalRotation.started -= instance.OnDirectionalRotation;
+            @DirectionalRotation.performed -= instance.OnDirectionalRotation;
+            @DirectionalRotation.canceled -= instance.OnDirectionalRotation;
         }
 
         public void RemoveCallbacks(IBaseActionMapActions instance)
@@ -163,5 +309,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     public interface IBaseActionMapActions
     {
         void OnEscape(InputAction.CallbackContext context);
+        void OnDirectionalMovement(InputAction.CallbackContext context);
+        void OnDirectionalRotation(InputAction.CallbackContext context);
     }
 }
