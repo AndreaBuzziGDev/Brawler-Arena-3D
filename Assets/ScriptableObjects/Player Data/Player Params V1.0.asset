@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb6f4d0ea7b3ce48998c03ef495b5e9, type: 3}
-  m_Name: Player Data V1.0
+  m_Name: Player Params V1.0
   m_EditorClassIdentifier: 
   maxHealth: 5
   maxShield: 5

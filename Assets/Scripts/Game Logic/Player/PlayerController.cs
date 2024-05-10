@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
 
     //INPUT
-    GameInputAction inputPlayer = new GameInputAction();
+    GameInputAction inputPlayer;
 
     //DATA
 
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     //FUNCTIONALITIES
     void InputInitialization()
     {
+        inputPlayer = new GameInputAction();
         inputPlayer.Enable();
 
         //TODO: HANDLE THE VARIOUS INPUTS
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
     void DataInitialization()
     {
         currentHealth = data.MaxHealth;
-        maxHealth = data.MaxHealth;
+        maxHealth = data.MaxHealth;//TODO: MIGHT ADDRESS DIRECTLY THE PROPERTY FROM THE SCRIPTABLE OBJECTS IN THESE CASES
 
         currentShield = data.MaxShield;
         maxShield = data.MaxShield;
