@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580093614992472084}
+  - component: {fileID: 7500852056923462879}
   m_Layer: 0
   m_Name: Child Manager
   m_TagString: Untagged
@@ -116,6 +117,20 @@ Transform:
   - {fileID: 8547186902438245402}
   m_Father: {fileID: 1203125406518960635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7500852056923462879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5309625204321965804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d569ba9c8800af2448026cdba96ea62f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 8112895616197215247}
+  lastDirection2D: {x: 0, y: 1}
 --- !u!1 &6907586155588128813
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e9b939a699d2b2e4a927fa3b012d8b8a, type: 2}
+  dir: {fileID: 7500852056923462879}
 --- !u!33 &2266190500621584568
 MeshFilter:
   m_ObjectHideFlags: 0

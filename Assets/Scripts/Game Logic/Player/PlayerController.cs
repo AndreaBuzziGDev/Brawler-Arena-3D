@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
     [SerializeField] PlayerCharacterData data;
 
+    //INSPECTOR REFERENCES
+    //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
+    [SerializeField] PlayerDirection dir;
+
+
 
     //INPUT
     GameInputAction inputPlayer;
@@ -135,6 +140,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log("UseRotation - Last Mouse Position: " + Mouse.current.position.value.normalized);
         lastValueInput = value.ReadValue<Vector2>().normalized;
         lastValueMousePosition = Mouse.current.position.value.normalized;
+
+        //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
+        dir.lastDirection2D = lastValueMousePosition;
     }
 
     void UseAttackMelee(InputAction.CallbackContext value)
@@ -206,6 +214,7 @@ public class PlayerController : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueInput.x, 0, lastValueInput.y) * 5);
+        //TODO: THIS SHOULD BE THE DIRECTION ACTUALLY USED TO HANDLE WHERE THE PLAYER IS FACING
         Gizmos.color = Color.red;
         Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMousePosition.x, 0, lastValueMousePosition.y) * 15);
     }
