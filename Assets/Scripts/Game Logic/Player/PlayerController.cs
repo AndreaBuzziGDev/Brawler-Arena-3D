@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
     [SerializeField] PlayerDirection dir;
 
+    //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
+    Rigidbody rb;
 
 
     //INPUT
     GameInputAction inputPlayer;
+
 
     //DATA
 
@@ -52,6 +55,9 @@ public class PlayerController : MonoBehaviour
     //LIFECYCLE FUNCTIONS
     void Start()
     {
+        //ASSIGN REFERENCES
+        rb = gameObject.GetComponent<Rigidbody>();
+
         //LISTEN TO INPUTS
         InputInitialization();
         
@@ -111,9 +117,10 @@ public class PlayerController : MonoBehaviour
         inputPlayer = new GameInputAction();
         inputPlayer.Enable();
 
-        //TODO: HANDLE THE VARIOUS INPUTS
+        //MOVEMENT AND ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed += UseMovement;
         inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
+        //TODO: HANDLE THE VARIOUS INPUTS
 
     }
 
@@ -121,23 +128,22 @@ public class PlayerController : MonoBehaviour
     {
         inputPlayer.Disable();
 
-        //TODO: HANDLE THE VARIOUS INPUTS
+        //MOVEMENT AND ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
         inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
+        //TODO: HANDLE THE VARIOUS INPUTS
+
     }
 
     //INPUT HANDLING
     void UseMovement(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
-        Debug.Log("UseMovement - value: " + value.ReadValue<Vector2>());
     }
 
     void UseRotation(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
-        Debug.Log("UseRotation - value: " + value.ReadValue<Vector2>());
-        Debug.Log("UseRotation - Last Mouse Position: " + Mouse.current.position.value.normalized);
         lastValueInput = value.ReadValue<Vector2>().normalized;
         lastValueMousePosition = Mouse.current.position.value.normalized;
 
