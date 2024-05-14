@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3356424759344778609}
   - component: {fileID: 7126471237182449218}
   - component: {fileID: 3387129820079073780}
+  - component: {fileID: 6038795160770038682}
   m_Layer: 0
   m_Name: Weapon Projectile Base Prefab
   m_TagString: Untagged
@@ -107,3 +108,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6038795160770038682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378188153106027192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0989862d9be94d64d8ac68948f83586d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: eca230e0adafa1b4b9587d722113f973, type: 2}
+  projectileDirection: {x: 0, y: 1, z: 0}
