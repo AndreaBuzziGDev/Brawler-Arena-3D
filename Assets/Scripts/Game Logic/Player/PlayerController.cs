@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     //INSPECTOR REFERENCES
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
     [SerializeField] PlayerDirection dir;
+    [SerializeField] WeaponController weaponOne;
 
     //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
     Rigidbody rb;
@@ -180,6 +181,7 @@ public class PlayerController : MonoBehaviour
     void UseAttackRanged(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
+        weaponOne.Operate();
 
     }
 
