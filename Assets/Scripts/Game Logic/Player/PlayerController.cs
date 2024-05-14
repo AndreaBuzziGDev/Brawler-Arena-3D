@@ -136,7 +136,9 @@ public class PlayerController : MonoBehaviour
         //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
         //TODO: HANDLE THE VARIOUS INPUTS
-
+        inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
+        inputPlayer.BaseActionMap.WeaponRanged.performed += UseAttackRanged;
+        inputPlayer.BaseActionMap.WeaponUtility.performed += UseAbility;
     }
 
     void InputTermination()
@@ -150,7 +152,9 @@ public class PlayerController : MonoBehaviour
         //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
         //TODO: HANDLE THE VARIOUS INPUTS
-
+        inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
+        inputPlayer.BaseActionMap.WeaponRanged.performed -= UseAttackRanged;
+        inputPlayer.BaseActionMap.WeaponUtility.performed -= UseAbility;
     }
 
     //INPUT HANDLING
@@ -189,7 +193,7 @@ public class PlayerController : MonoBehaviour
     void UseAbility(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
-
+        Debug.Log("No Ability");
     }
 
 
