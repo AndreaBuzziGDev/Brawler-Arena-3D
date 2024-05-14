@@ -20,8 +20,8 @@ public class WeaponData : ScriptableObject
     public float ProjectileSpeed => projectileSpeed;
 
 
-    [SerializeField] float maxTravelDistance = 50;
-    public float MaxTravelDistance => maxTravelDistance;
+    [SerializeField] float maxLifetime = 10;
+    public float MaxLifetime => maxLifetime;
 
 }
 

@@ -14,16 +14,26 @@ public class WeaponProjectile : MonoBehaviour
     public Vector3 projectileDirection = Vector3.up;
     private float lifetime = 0.0f;
 
+    //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
+    Rigidbody rb;
+
 
     //LIFECYCLE FUNCTIONS
+    void Start()
+    {
+        //ASSIGN REFERENCES
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
+
     void FixedUpdate()
     {
         //TODO: MAKE IT MOVE IN THE INTENDED DIRECTION
         lifetime += Time.fixedDeltaTime;
         if(lifetime>data.MaxLifetime)
-        {
             Destroy(this.gameObject);
-        }
+        else
+            rb.AddForce(projectileDirection, ForceMode.VelocityChange);
+
     }
 
     void OnDestroy()
