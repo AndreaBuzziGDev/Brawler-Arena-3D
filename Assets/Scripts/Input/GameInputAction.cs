@@ -53,6 +53,33 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Weapon Ranged"",
+                    ""type"": ""Button"",
+                    ""id"": ""93652234-4313-49ba-a0c8-99ef133586c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Weapon Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""1aadf059-5a88-4339-8c6c-5c833b394325"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Weapon Utility"",
+                    ""type"": ""Button"",
+                    ""id"": ""c11565f9-89b2-42e7-ae3e-d3d879fd9001"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +203,39 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Directional Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1eaeca17-6452-47e9-b08a-343053ca67ad"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon Ranged"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0275367-e854-4f71-a9cd-1270f8afaa86"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7059940-7669-467b-8157-4137b89d5a93"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon Utility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +247,9 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         m_BaseActionMap_Escape = m_BaseActionMap.FindAction("Escape", throwIfNotFound: true);
         m_BaseActionMap_DirectionalMovement = m_BaseActionMap.FindAction("Directional Movement", throwIfNotFound: true);
         m_BaseActionMap_DirectionalRotation = m_BaseActionMap.FindAction("Directional Rotation", throwIfNotFound: true);
+        m_BaseActionMap_WeaponRanged = m_BaseActionMap.FindAction("Weapon Ranged", throwIfNotFound: true);
+        m_BaseActionMap_WeaponMelee = m_BaseActionMap.FindAction("Weapon Melee", throwIfNotFound: true);
+        m_BaseActionMap_WeaponUtility = m_BaseActionMap.FindAction("Weapon Utility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +314,9 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_BaseActionMap_Escape;
     private readonly InputAction m_BaseActionMap_DirectionalMovement;
     private readonly InputAction m_BaseActionMap_DirectionalRotation;
+    private readonly InputAction m_BaseActionMap_WeaponRanged;
+    private readonly InputAction m_BaseActionMap_WeaponMelee;
+    private readonly InputAction m_BaseActionMap_WeaponUtility;
     public struct BaseActionMapActions
     {
         private @GameInputAction m_Wrapper;
@@ -258,6 +324,9 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         public InputAction @Escape => m_Wrapper.m_BaseActionMap_Escape;
         public InputAction @DirectionalMovement => m_Wrapper.m_BaseActionMap_DirectionalMovement;
         public InputAction @DirectionalRotation => m_Wrapper.m_BaseActionMap_DirectionalRotation;
+        public InputAction @WeaponRanged => m_Wrapper.m_BaseActionMap_WeaponRanged;
+        public InputAction @WeaponMelee => m_Wrapper.m_BaseActionMap_WeaponMelee;
+        public InputAction @WeaponUtility => m_Wrapper.m_BaseActionMap_WeaponUtility;
         public InputActionMap Get() { return m_Wrapper.m_BaseActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -276,6 +345,15 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @DirectionalRotation.started += instance.OnDirectionalRotation;
             @DirectionalRotation.performed += instance.OnDirectionalRotation;
             @DirectionalRotation.canceled += instance.OnDirectionalRotation;
+            @WeaponRanged.started += instance.OnWeaponRanged;
+            @WeaponRanged.performed += instance.OnWeaponRanged;
+            @WeaponRanged.canceled += instance.OnWeaponRanged;
+            @WeaponMelee.started += instance.OnWeaponMelee;
+            @WeaponMelee.performed += instance.OnWeaponMelee;
+            @WeaponMelee.canceled += instance.OnWeaponMelee;
+            @WeaponUtility.started += instance.OnWeaponUtility;
+            @WeaponUtility.performed += instance.OnWeaponUtility;
+            @WeaponUtility.canceled += instance.OnWeaponUtility;
         }
 
         private void UnregisterCallbacks(IBaseActionMapActions instance)
@@ -289,6 +367,15 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @DirectionalRotation.started -= instance.OnDirectionalRotation;
             @DirectionalRotation.performed -= instance.OnDirectionalRotation;
             @DirectionalRotation.canceled -= instance.OnDirectionalRotation;
+            @WeaponRanged.started -= instance.OnWeaponRanged;
+            @WeaponRanged.performed -= instance.OnWeaponRanged;
+            @WeaponRanged.canceled -= instance.OnWeaponRanged;
+            @WeaponMelee.started -= instance.OnWeaponMelee;
+            @WeaponMelee.performed -= instance.OnWeaponMelee;
+            @WeaponMelee.canceled -= instance.OnWeaponMelee;
+            @WeaponUtility.started -= instance.OnWeaponUtility;
+            @WeaponUtility.performed -= instance.OnWeaponUtility;
+            @WeaponUtility.canceled -= instance.OnWeaponUtility;
         }
 
         public void RemoveCallbacks(IBaseActionMapActions instance)
@@ -311,5 +398,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         void OnEscape(InputAction.CallbackContext context);
         void OnDirectionalMovement(InputAction.CallbackContext context);
         void OnDirectionalRotation(InputAction.CallbackContext context);
+        void OnWeaponRanged(InputAction.CallbackContext context);
+        void OnWeaponMelee(InputAction.CallbackContext context);
+        void OnWeaponUtility(InputAction.CallbackContext context);
     }
 }
