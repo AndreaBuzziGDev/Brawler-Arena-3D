@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Weapon", menuName = "Player Data/Player Weapon")]
-public class PlayerCharacterWeapon : ScriptableObject
+[CreateAssetMenu(fileName = "New Weapon Data", menuName = "Gameplay Data/Weapon Data")]
+public class WeaponData : ScriptableObject
 {
     //TODO: EMBELLISH
     
@@ -13,3 +13,4 @@ public class PlayerCharacterWeapon : ScriptableObject
     [SerializeField] float damageAmount = 5;
     public float DamageAmount => damageAmount;
 }
+
