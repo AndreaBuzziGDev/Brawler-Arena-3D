@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     Vector2 movementDirection;
     void FixedUpdate()
     {
-        Debug.Log("movementDirection: " + movementDirection);
+        //Debug.Log("movementDirection: " + movementDirection);
         //TODO: SHOULD THIS USE FORCES OR SOMETHING ELSE?
         //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
         rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
