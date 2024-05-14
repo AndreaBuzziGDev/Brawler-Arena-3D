@@ -84,6 +84,17 @@ public class PlayerController : MonoBehaviour
         //TODO: HANDLE MOVEMENT
     }
 
+    //TODO: BETTER MOVE THIS LOGIC INTO ANOTHER SCRIPT. IT'S GETTING CROWDED HERE
+    Vector2 movementDirection;
+    void FixedUpdate()
+    {
+        Debug.Log("movementDirection: " + movementDirection);
+        //TODO: SHOULD THIS USE FORCES OR SOMETHING ELSE?
+        //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
+        rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
+        //rb.MovePosition(transform.position +  new Vector3(movementDirection.x, 0, movementDirection.y));
+    }
+
 
     void OnDestroy()
     {
@@ -117,8 +128,11 @@ public class PlayerController : MonoBehaviour
         inputPlayer = new GameInputAction();
         inputPlayer.Enable();
 
-        //MOVEMENT AND ROTATION INPUT
+        //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed += UseMovement;
+        inputPlayer.BaseActionMap.DirectionalMovement.canceled += ReleaseMovement;
+        
+        //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
         //TODO: HANDLE THE VARIOUS INPUTS
 
@@ -128,8 +142,11 @@ public class PlayerController : MonoBehaviour
     {
         inputPlayer.Disable();
 
-        //MOVEMENT AND ROTATION INPUT
+        //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
+        inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
+
+        //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
         //TODO: HANDLE THE VARIOUS INPUTS
 
@@ -138,12 +155,15 @@ public class PlayerController : MonoBehaviour
     //INPUT HANDLING
     void UseMovement(InputAction.CallbackContext value)
     {
-        //TODO: DEVELOP
+        movementDirection = value.ReadValue<Vector2>().normalized;
+    }
+    void ReleaseMovement(InputAction.CallbackContext value)
+    {
+        movementDirection = Vector2.zero;
     }
 
     void UseRotation(InputAction.CallbackContext value)
     {
-        //TODO: DEVELOP
         lastValueInput = value.ReadValue<Vector2>().normalized;
         lastValueMousePosition = Mouse.current.position.value.normalized;
 
