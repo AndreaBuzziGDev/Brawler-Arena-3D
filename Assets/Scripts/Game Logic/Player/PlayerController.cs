@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
     void UseAttackMelee(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
+        Debug.Log("No Melee Weapon");
 
     }
 
