@@ -18,7 +18,9 @@ public class WeaponController : MonoBehaviour
 
     //DATA
     //TODO: THIS IMPLEMENTATION IS EARLY AND SUPPORTS ONLY WEAPONS THAT FIRE BULLETS
-    [SerializeField] Vector3 projectileShootingPosition = Vector3.zero;
+    //TODO: ONCE ARCHITECTURE HAS BEEN IMPROVED, CHANGE VISIBILITY AND ORGANIZATION OF THESE DATA
+    public Vector2 lastDirection2D = Vector2.up;
+
 
 
     
@@ -48,10 +50,9 @@ public class WeaponController : MonoBehaviour
         if(projectile)
         {
             //SPAWN PREFAB
-            WeaponProjectile pInstance = Instantiate(projectile, projectileShootingPosition, Quaternion.identity);
+            WeaponProjectile pInstance = Instantiate(projectile, transform.position, Quaternion.identity);
             
             //
-            Debug.Log("Shooting Direction: " + ShootingDirection());
             pInstance.projectileDirection = ShootingDirection();
         }
 
@@ -59,6 +60,6 @@ public class WeaponController : MonoBehaviour
 
 
     //UTILITIES
-    public Vector3 ShootingDirection() => (projectileShootingPosition - transform.position).normalized;
+    public Vector3 ShootingDirection() => new Vector3(lastDirection2D.x, 0, lastDirection2D.y).normalized;
 
 }

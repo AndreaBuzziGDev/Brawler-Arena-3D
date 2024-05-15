@@ -25,14 +25,15 @@ public class WeaponProjectile : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
+    //TODO: WHEN THE GAME IS PAUSED THIS ALSO IS PAUSED
     void FixedUpdate()
     {
         //TODO: MAKE IT MOVE IN THE INTENDED DIRECTION
         lifetime += Time.fixedDeltaTime;
-        if(lifetime>data.MaxLifetime)
+        if(lifetime > data.MaxLifetime)
             Destroy(this.gameObject);
         else
-            rb.AddForce(projectileDirection, ForceMode.VelocityChange);
+            rb.MovePosition(this.transform.position + (Time.fixedDeltaTime * data.ProjectileSpeed * projectileDirection));
 
     }
 

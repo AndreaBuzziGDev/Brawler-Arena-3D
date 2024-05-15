@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
     //INSPECTOR REFERENCES
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
     [SerializeField] PlayerDirection dir;
-    [SerializeField] WeaponController weaponOne;
+    [SerializeField] WeaponController weaponRanged;
 
     //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
     Rigidbody rb;
@@ -135,7 +136,8 @@ public class PlayerController : MonoBehaviour
         
         //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
-        //TODO: HANDLE THE VARIOUS INPUTS
+
+        //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed += UseAttackRanged;
         inputPlayer.BaseActionMap.WeaponUtility.performed += UseAbility;
@@ -145,13 +147,16 @@ public class PlayerController : MonoBehaviour
     {
         inputPlayer.Disable();
 
+        //TODO: INPUT MUST ALSO BE MANAGED IN THE CASE THE GAME IS PAUSED
+
         //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
         inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
 
         //ROTATION INPUT
         inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
-        //TODO: HANDLE THE VARIOUS INPUTS
+        
+        //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed -= UseAttackRanged;
         inputPlayer.BaseActionMap.WeaponUtility.performed -= UseAbility;
@@ -170,11 +175,16 @@ public class PlayerController : MonoBehaviour
     void UseRotation(InputAction.CallbackContext value)
     {
         lastValueInput = value.ReadValue<Vector2>().normalized;
-        lastValueMousePosition = Mouse.current.position.value.normalized;
+        Debug.Log("UseRotation - value: " + lastValueInput);
 
         //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
-        dir.lastDirection2D = lastValueMousePosition;
+        dir.lastDirection2D = lastValueInput;
+        weaponRanged.lastDirection2D = lastValueInput;
+
+        //TODO: MOUSE DIRECTION NEEDS TO BE IMPLEMENTED IN ANOTHER WAY
+
     }
+
 
     void UseAttackMelee(InputAction.CallbackContext value)
     {
@@ -186,7 +196,7 @@ public class PlayerController : MonoBehaviour
     void UseAttackRanged(InputAction.CallbackContext value)
     {
         //TODO: DEVELOP
-        weaponOne.Operate();
+        weaponRanged.Operate();
 
     }
 
@@ -241,15 +251,14 @@ public class PlayerController : MonoBehaviour
 
     //GIZMOS
     Vector2 lastValueInput;
-    Vector2 lastValueMousePosition;
+    float lastValueMouse;
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueInput.x, 0, lastValueInput.y) * 5);
-        //TODO: THIS SHOULD BE THE DIRECTION ACTUALLY USED TO HANDLE WHERE THE PLAYER IS FACING
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMousePosition.x, 0, lastValueMousePosition.y) * 15);
+        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMouse, 0, 0) * 5);
     }
 
 }
