@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Player Base Projectile Data
   m_EditorClassIdentifier: 
   damageAmount: 5
+  projectileSpeed: 50
+  maxLifetime: 10
