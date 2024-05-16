@@ -48,6 +48,10 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //COLLISION DETECTION
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision");
+    }
 
 
     //UTILITIES
