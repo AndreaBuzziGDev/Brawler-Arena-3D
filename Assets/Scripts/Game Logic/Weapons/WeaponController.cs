@@ -50,10 +50,16 @@ public class WeaponController : MonoBehaviour
         if(projectile)
         {
             //SPAWN PREFAB
-            WeaponProjectile pInstance = Instantiate(projectile, transform.position, Quaternion.identity);
-            
-            //
-            pInstance.projectileDirection = ShootingDirection();
+            Vector3 pDirection = ShootingDirection();
+            Debug.Log("Value 1: " + Quaternion.Euler(ShootingDirection()));
+            Debug.Log("Value 2: " + projectile.transform.rotation);
+
+            WeaponProjectile pInstance = Instantiate(
+                projectile, 
+                transform.position,
+                /*projectile.transform.rotation * Quaternion.Euler(ShootingDirection()) */ projectile.transform.rotation
+            );
+            pInstance.projectileDirection = pDirection;
         }
 
     }

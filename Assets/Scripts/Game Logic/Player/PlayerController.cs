@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
     void UseRotation(InputAction.CallbackContext value)
     {
         lastValueInput = value.ReadValue<Vector2>().normalized;
-        Debug.Log("UseRotation - value: " + lastValueInput);
+        //Debug.Log("UseRotation - value: " + lastValueInput);
 
         //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = lastValueInput;
