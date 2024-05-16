@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3387129820079073780}
   - component: {fileID: 6910496182445734622}
   - component: {fileID: 6038795160770038682}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Weapon Projectile Base Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
