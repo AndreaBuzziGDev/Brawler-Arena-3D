@@ -51,6 +51,9 @@ public class WeaponProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision");
+        //other.GetComponent<>();
+
+        Destroy(this);
     }
 
 
