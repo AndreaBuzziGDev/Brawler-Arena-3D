@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7860960969893733084, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 995540219590673333, guid: 60a246e4391982f41b69330843e0ae83, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
