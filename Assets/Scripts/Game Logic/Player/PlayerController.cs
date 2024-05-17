@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHittable
 {
     //SCRIPTABLE OBJECTS
     //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
@@ -29,16 +29,16 @@ public class PlayerController : MonoBehaviour
 
     //TODO: HEALTH AND SHIELD ARCHITECTURE COULD BE IMPLEMENTED VIA A HELPER
     //HEALTH
-    int currentHealth = 1;
-    int maxHealth = 1;
+    float currentHealth = 1;
+    float maxHealth = 1;
 
     //SHIELD
     float currentShield = 1;
-    int maxShield = 1;
+    float maxShield = 1;
 
     //SHIELD RECHARGE
     float shieldCooldownTimer = 0;
-    int maxShieldCooldownTimer = 1;
+    float maxShieldCooldownTimer = 1;
     float shieldRechargeRate = 1;
     
     //SPEED
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
 
     //HEALTH AND SHIELD METHODOLOGY
     //TODO: DEVELOP AND INTEGRATE AN INTERFACE FOR EVERYTHING THAT CAN BE HIT
-    public void ReceiveDamage(int damageAmount)
+    public void ReceiveDamage(float damageAmount)
     {
         if(IsShielded)
             DamageShield(damageAmount);
@@ -220,10 +220,10 @@ public class PlayerController : MonoBehaviour
         //SHIELD RECHARGE STUFF
         shieldCooldownTimer = data.ShieldCooldownTimer;
     }
-    private void DamageHealth(int damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
+    private void DamageHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
 
 
-    private void DamageShield(int damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
+    private void DamageShield(float damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
     private float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
     private void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, maxShield);
     private void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
@@ -242,10 +242,10 @@ public class PlayerController : MonoBehaviour
     //UTILITIES
     //TODO: DEVELOP AND INTEGRATE AN INTERFACE FOR EVERYTHING THAT CAN BE HIT
     //TODO: CHANGE METHOD SIGNATURE (EMPLOY AN ENTITY THAT CAN TRANSFER ALL DAMAGE-RELATED DATA)
-    public void GetHit()
+    public void HandleHit(DamageInstance dInstance)
     {
-        //TODO: DEVELOP
-        //TODO: USE ReceiveDamage(int damageAmount)
+        Debug.Log("Player Has been Hit");
+        ReceiveDamage(dInstance.DamageAmount);
     }
 
 
