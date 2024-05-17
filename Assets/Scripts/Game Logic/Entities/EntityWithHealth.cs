@@ -7,7 +7,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 {
     //SCRIPTABLE OBJECTS
     //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
-    [SerializeField] PlayerCharacterData data;
+    [SerializeField] EntityData data;
 
 
     //DATA

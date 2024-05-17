@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Parameters", menuName = "Player Data/Player Params")]
-public class PlayerCharacterData : ScriptableObject
+[CreateAssetMenu(fileName = "New Entity Parameters", menuName = "Entity Data/Entity Params")]
+public class EntityData : ScriptableObject
 {
     //TODO: EMBELLISH
     //1) DEFINE RANGES MIN AND MAX
