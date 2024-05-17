@@ -16,8 +16,8 @@ public class DamageInstance
 
 
     //CONSTRUCTOR
-    public DamageInstance(float damageAmount)
+    public DamageInstance(WeaponData weaponData)
     {
-        this.damageAmount = damageAmount;
+        this.damageAmount = weaponData.DamageAmount;
     }
 }

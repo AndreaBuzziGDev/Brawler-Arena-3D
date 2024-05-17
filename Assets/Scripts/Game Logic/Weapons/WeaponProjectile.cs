@@ -51,7 +51,11 @@ public class WeaponProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision");
-        //other.GetComponent<>();
+        IHittable hittable = other.gameObject?.GetComponent<IHittable>();
+        if(hittable != null)
+        {
+            hittable.HandleHit(new DamageInstance(data));
+        }
 
         Destroy(this);
     }
