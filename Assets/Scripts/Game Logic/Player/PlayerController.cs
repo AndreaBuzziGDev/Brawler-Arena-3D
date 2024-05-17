@@ -23,7 +23,7 @@ public class PlayerController : EntityWithHealth
 
     //DATA
     Vector2 movementDirection;
-    float movementSpeed = 1;//TODO: USE THIS. - ALSO NEEDS TO BE INITIALIZED IF TAKEN FROM OTHER SOURCE
+    //float movementSpeed = 1;//TODO: USE THIS. - ALSO NEEDS TO BE INITIALIZED IF TAKEN FROM OTHER SOURCE
 
     //LIFECYCLE FUNCTIONS
     protected override void Start()

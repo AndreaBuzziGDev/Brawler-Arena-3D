@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1580093614992472084}
   - component: {fileID: 7500852056923462879}
   m_Layer: 6
-  m_Name: Child Manager
+  m_Name: Direction Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

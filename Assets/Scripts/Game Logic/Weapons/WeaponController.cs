@@ -57,7 +57,7 @@ public class WeaponController : MonoBehaviour
             WeaponProjectile pInstance = Instantiate(
                 projectile, 
                 transform.position,
-                /*projectile.transform.rotation * Quaternion.Euler(ShootingDirection()) */ projectile.transform.rotation
+                projectile.transform.rotation
             );
             pInstance.projectileDirection = pDirection;
         }
