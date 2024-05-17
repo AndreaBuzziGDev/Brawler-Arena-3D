@@ -6,12 +6,9 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IHittable
+//TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
+public class PlayerController : EntityWithHealth
 {
-    //SCRIPTABLE OBJECTS
-    //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
-    [SerializeField] PlayerCharacterData data;
-
     //INSPECTOR REFERENCES
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
     [SerializeField] PlayerDirection dir;
@@ -24,77 +21,29 @@ public class PlayerController : MonoBehaviour, IHittable
     //INPUT
     GameInputAction inputPlayer;
 
-
     //DATA
-
-    //TODO: HEALTH AND SHIELD ARCHITECTURE COULD BE IMPLEMENTED VIA A HELPER
-    //HEALTH
-    float currentHealth = 1;
-    float maxHealth = 1;
-
-    //SHIELD
-    float currentShield = 1;
-    float maxShield = 1;
-
-    //SHIELD RECHARGE
-    float shieldCooldownTimer = 0;
-    float maxShieldCooldownTimer = 1;
-    float shieldRechargeRate = 1;
-    
-    //SPEED
-    float movementSpeed = 1;
-
-
-    //DATA-RELATED FUNCTIONS
-    Boolean IsAlive { get { return currentHealth > 0; } }
-    Boolean IsShielded { get { return currentShield > 0; } }
-    Boolean IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
-    Boolean IsRecharging { get { return currentShield < maxHealth; } }
-
-
-
+    Vector2 movementDirection;
+    float movementSpeed = 1;//TODO: USE THIS. - ALSO NEEDS TO BE INITIALIZED IF TAKEN FROM OTHER SOURCE
 
     //LIFECYCLE FUNCTIONS
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         //ASSIGN REFERENCES
         rb = gameObject.GetComponent<Rigidbody>();
 
         //LISTEN TO INPUTS
         InputInitialization();
         
-        //INITIALIZE PARAMS BASED ON DATA
-        DataInitialization();
-        
         //
 
     }
 
-
-    void Update()
-    {
-        if(IsAlive)
-        {
-            HandleShieldAndHealthLogic();
-        }
-        else
-        {
-            //TODO: FIRE GAME OVER EVENT
-            
-        }
-
-        //TODO: HANDLE MOVEMENT
-    }
-
-    //TODO: BETTER MOVE THIS LOGIC INTO ANOTHER SCRIPT. IT'S GETTING CROWDED HERE
-    Vector2 movementDirection;
     void FixedUpdate()
     {
-        //Debug.Log("movementDirection: " + movementDirection);
-        //TODO: SHOULD THIS USE FORCES OR SOMETHING ELSE?
+        //TODO: IS THIS SUPPOSED TO USE FORCES, OR SHOULD IT USE SOMETHING ELSE?
         //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
         rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
-        //rb.MovePosition(transform.position +  new Vector3(movementDirection.x, 0, movementDirection.y));
     }
 
 
@@ -105,25 +54,7 @@ public class PlayerController : MonoBehaviour, IHittable
 
     
     //FUNCTIONALITIES
-    void DataInitialization()
-    {
-        currentHealth = data.MaxHealth;
-        maxHealth = data.MaxHealth;//TODO: MIGHT ADDRESS DIRECTLY THE PROPERTY FROM THE SCRIPTABLE OBJECTS IN THESE CASES
-
-        currentShield = data.MaxShield;
-        maxShield = data.MaxShield;
-
-        shieldCooldownTimer = 0;
-        maxShieldCooldownTimer = data.ShieldCooldownTimer;
-        shieldRechargeRate = data.ShieldRechargeRate;
-
-        movementSpeed = data.MovementSpeed;
-        currentHealth = data.MaxHealth;
-    }
     
-
-
-
     //INPUT FUNCTIONS
     void InputInitialization()
     {
@@ -207,48 +138,6 @@ public class PlayerController : MonoBehaviour, IHittable
     }
 
 
-
-    //HEALTH AND SHIELD METHODOLOGY
-    //TODO: DEVELOP AND INTEGRATE AN INTERFACE FOR EVERYTHING THAT CAN BE HIT
-    public void ReceiveDamage(float damageAmount)
-    {
-        if(IsShielded)
-            DamageShield(damageAmount);
-        else
-            DamageHealth(damageAmount);
-        
-        //SHIELD RECHARGE STUFF
-        shieldCooldownTimer = data.ShieldCooldownTimer;
-    }
-    private void DamageHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
-
-
-    private void DamageShield(float damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
-    private float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
-    private void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, maxShield);
-    private void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
-
-
-    private void HandleShieldAndHealthLogic()
-    {
-        //
-        if(IsWaitingRecharge)
-            DepleteShieldTimer();
-        else if(IsRecharging)
-            RechargeShield(GetShieldRecharge());
-    }
-
-
-    //UTILITIES
-    //TODO: DEVELOP AND INTEGRATE AN INTERFACE FOR EVERYTHING THAT CAN BE HIT
-    //TODO: CHANGE METHOD SIGNATURE (EMPLOY AN ENTITY THAT CAN TRANSFER ALL DAMAGE-RELATED DATA)
-    public void HandleHit(DamageInstance dInstance)
-    {
-        Debug.Log("Player Has been Hit");
-        ReceiveDamage(dInstance.DamageAmount);
-    }
-
-
     //GIZMOS
     Vector2 lastValueInput;
     float lastValueMouse;
@@ -259,6 +148,13 @@ public class PlayerController : MonoBehaviour, IHittable
         Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueInput.x, 0, lastValueInput.y) * 5);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMouse, 0, 0) * 5);
+    }
+
+    
+    public override void HandleDeath()
+    {
+        //TODO: DEVELOP
+        Debug.Log("PlayerController - Handle Death - TODO DEVELOP");
     }
 
 }

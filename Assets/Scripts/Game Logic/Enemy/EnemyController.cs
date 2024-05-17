@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityWithHealth
 {
-    // Start is called before the first frame update
-    void Start()
+    //TODO: DEFINE EXTENSIONS OF EntityWithHealth
+    public override void HandleDeath()
     {
-        
+        //TODO: DEVELOP
+        Debug.Log("EnemyController - Handle Death - TODO DEVELOP");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
