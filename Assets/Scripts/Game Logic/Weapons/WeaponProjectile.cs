@@ -41,6 +41,8 @@ public class WeaponProjectile : MonoBehaviour
     {
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
 
+        //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER INSTEAD
+
     }
 
 
@@ -57,7 +59,7 @@ public class WeaponProjectile : MonoBehaviour
             hittable.HandleHit(new DamageInstance(data));
         }
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 
