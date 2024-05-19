@@ -169,12 +169,13 @@ public class PlayerController : EntityWithHealth
 
     void UseEscape(InputAction.CallbackContext value)
     {
+        Debug.Log("Is Game Over: " + GameController.Instance.IsGameOver);
         if(!GameController.Instance.IsGameOver)
         {
             if(GameController.Instance.IsPaused)
-                GameController.Instance.SetState(GameController.EGameState.Paused);
-            else
                 GameController.Instance.SetState(GameController.EGameState.Playing);
+            else
+                GameController.Instance.SetState(GameController.EGameState.Paused);
         }
     }
 
