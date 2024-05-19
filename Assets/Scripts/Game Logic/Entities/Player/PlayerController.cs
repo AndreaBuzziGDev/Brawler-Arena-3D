@@ -75,6 +75,9 @@ public class PlayerController : EntityWithHealth
         inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed += UseAttackRanged;
         inputPlayer.BaseActionMap.WeaponUtility.performed += UseAbility;
+
+        //ESCAPE
+        inputPlayer.BaseActionMap.Escape.performed += UseEscape;
     }
 
     void InputTermination()
@@ -94,6 +97,9 @@ public class PlayerController : EntityWithHealth
         inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed -= UseAttackRanged;
         inputPlayer.BaseActionMap.WeaponUtility.performed -= UseAbility;
+
+        //ESCAPE
+        inputPlayer.BaseActionMap.Escape.performed -= UseEscape;
     }
 
     //INPUT HANDLING
@@ -159,6 +165,17 @@ public class PlayerController : EntityWithHealth
 
         //TODO: DEVELOP
         Debug.Log("No Ability");
+    }
+
+    void UseEscape(InputAction.CallbackContext value)
+    {
+        if(!GameController.Instance.IsGameOver)
+        {
+            if(GameController.Instance.IsPaused)
+                GameController.Instance.SetState(GameController.EGameState.Paused);
+            else
+                GameController.Instance.SetState(GameController.EGameState.Playing);
+        }
     }
 
 
