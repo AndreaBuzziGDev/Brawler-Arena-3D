@@ -46,6 +46,7 @@ public class PlayerController : EntityWithHealth
         if(!GameController.Instance.IsPlaying)
             return;
         
+        //TODO: ISSUE WITH GAME PAUSE. THE RIGIDBODY'S POSITION KEEPS UPDATING EVEN WHEN PAUSED BECAUSE IT'S DRIVEN BY PHYSICS
         rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
     }
 
