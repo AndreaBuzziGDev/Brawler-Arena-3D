@@ -16,4 +16,4 @@ MonoBehaviour:
   maxShield: 5
   shieldRechargeRate: 1
   shieldCooldownTimer: 7
-  movementSpeed: 5
+  movementSpeed: 20

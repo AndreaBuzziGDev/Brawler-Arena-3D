@@ -26,7 +26,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     float shieldRechargeRate = 1;
     
     //SPEED
-    float movementSpeed = 1;
+    protected float movementSpeed = 1;
 
 
     //DATA-RELATED FUNCTIONS

@@ -44,10 +44,9 @@ public class PlayerController : EntityWithHealth
         //TODO: IS THIS SUPPOSED TO USE FORCES, OR SHOULD IT USE SOMETHING ELSE?
         //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
         if(!GameController.Instance.IsPlaying)
-            return;
-        
-        //TODO: ISSUE WITH GAME PAUSE. THE RIGIDBODY'S POSITION KEEPS UPDATING EVEN WHEN PAUSED BECAUSE IT'S DRIVEN BY PHYSICS
-        rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
+            rb.velocity = new Vector3(0, 0, 0);
+        else
+            rb.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
     }
 
 
