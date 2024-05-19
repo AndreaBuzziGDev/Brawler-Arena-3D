@@ -28,12 +28,15 @@ public class WeaponProjectile : MonoBehaviour
     //TODO: WHEN THE GAME IS PAUSED THIS ALSO IS PAUSED
     void FixedUpdate()
     {
-        //TODO: MAKE IT MOVE IN THE INTENDED DIRECTION
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
         lifetime += Time.fixedDeltaTime;
         if(lifetime > data.MaxLifetime)
             Destroy(this.gameObject);
-        else if(GameController.Instance.IsPlaying)
-            rb.MovePosition(this.transform.position + (Time.fixedDeltaTime * data.ProjectileSpeed * projectileDirection));
+        else
+            rb.velocity = data.ProjectileSpeed * projectileDirection;
 
     }
 
