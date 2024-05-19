@@ -43,8 +43,10 @@ public class PlayerController : EntityWithHealth
     {
         //TODO: IS THIS SUPPOSED TO USE FORCES, OR SHOULD IT USE SOMETHING ELSE?
         //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
-        if(GameController.Instance.IsPlaying)
-            rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
+        rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
     }
 
 
@@ -97,43 +99,64 @@ public class PlayerController : EntityWithHealth
     //INPUT HANDLING
     void UseMovement(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
         movementDirection = value.ReadValue<Vector2>().normalized;
     }
     void ReleaseMovement(InputAction.CallbackContext value)
     {
+        
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
         movementDirection = Vector2.zero;
     }
 
     void UseRotation(InputAction.CallbackContext value)
     {
+        
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
         lastValueInput = value.ReadValue<Vector2>().normalized;
         //Debug.Log("UseRotation - value: " + lastValueInput);
 
         //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = lastValueInput;
         weaponRanged.lastDirection2D = lastValueInput;
-
+        
         //TODO: MOUSE DIRECTION NEEDS TO BE IMPLEMENTED IN ANOTHER WAY
-
     }
 
 
     void UseAttackMelee(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
         //TODO: DEVELOP
         Debug.Log("No Melee Weapon");
-
     }
 
     void UseAttackRanged(InputAction.CallbackContext value)
     {
-        //TODO: DEVELOP
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
         weaponRanged.Operate();
-
     }
 
     void UseAbility(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
         //TODO: DEVELOP
         Debug.Log("No Ability");
     }
@@ -156,6 +179,7 @@ public class PlayerController : EntityWithHealth
     {
         //TODO: DEVELOP
         Debug.Log("PlayerController - Handle Death - TODO DEVELOP");
+        EventManager<GameMenuEventArgs>.Instance.Notify(this, new GameMenuEventArgs(GameMenuEventArgs.EType.GAME_OVER));
     }
 
 }
