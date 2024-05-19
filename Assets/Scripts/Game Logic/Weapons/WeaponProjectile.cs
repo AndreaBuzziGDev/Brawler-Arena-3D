@@ -32,7 +32,7 @@ public class WeaponProjectile : MonoBehaviour
         lifetime += Time.fixedDeltaTime;
         if(lifetime > data.MaxLifetime)
             Destroy(this.gameObject);
-        else
+        else if(GameController.Instance.IsPlaying)
             rb.MovePosition(this.transform.position + (Time.fixedDeltaTime * data.ProjectileSpeed * projectileDirection));
 
     }

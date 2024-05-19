@@ -43,7 +43,8 @@ public class PlayerController : EntityWithHealth
     {
         //TODO: IS THIS SUPPOSED TO USE FORCES, OR SHOULD IT USE SOMETHING ELSE?
         //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
-        rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
+        if(GameController.Instance.IsPlaying)
+            rb.AddForce(movementDirection.x, 0, movementDirection.y, ForceMode.Impulse);
     }
 
 
