@@ -47,6 +47,10 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     // Update is called once per frame
     protected virtual void Update()
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
         if(IsAlive)
         {
             HandleShieldAndHealthLogic();
