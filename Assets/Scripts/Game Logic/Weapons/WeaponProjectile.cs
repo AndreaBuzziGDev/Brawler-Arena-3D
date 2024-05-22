@@ -25,7 +25,6 @@ public class WeaponProjectile : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    //TODO: WHEN THE GAME IS PAUSED THIS ALSO IS PAUSED
     void FixedUpdate()
     {
         //CONDITION
@@ -45,6 +44,7 @@ public class WeaponProjectile : MonoBehaviour
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
 
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER INSTEAD
+        Debug.Log("Projectile " + gameObject.name + " Destroyed");
 
     }
 
