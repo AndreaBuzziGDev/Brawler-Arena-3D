@@ -26,20 +26,22 @@ public class GameController : MonoSingleton<GameController>
 
 
     //GAMEOBJECT REFERENCES
+    private PlayerController player;
+    public PlayerController GetPlayerAnywhere { get { return player; } }
 
 
 
 
-    // Start is called before the first frame update
+    //LIFECYCLE FUNCTIONS
     void Start()
     {
         //ENFORCES START SEQUENCE
         SetState(EGameState.Start);
+        //
+        player = FindObjectOfType<PlayerController>();
     }
 
 
-
-    
     //FUNCTIONALITIES
     public void SetState(EGameState targetState)
     {
