@@ -13,6 +13,7 @@ public class PlayerController : EntityWithHealth
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
     [SerializeField] PlayerDirection dir;
     [SerializeField] WeaponController weaponRanged;
+    [SerializeField] float gravityScale = 0.65f;
 
     //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
     Rigidbody rb;
@@ -46,7 +47,10 @@ public class PlayerController : EntityWithHealth
         if(!GameController.Instance.IsPlaying)
             rb.velocity = new Vector3(0, 0, 0);
         else
+        {
             rb.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
+            rb.velocity += gravityScale * Physics.gravity;
+        }
     }
 
 
