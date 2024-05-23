@@ -13,6 +13,7 @@ public class ArenaSpinner : MonoBehaviour
     void FixedUpdate()
     {
         //SPINS AT A GIVEN SPEED
-        transform.Rotate(new Vector3(0,spinningSpeed * Time.fixedDeltaTime,0));
+        if(GameController.Instance.IsPlaying)
+            transform.Rotate(new Vector3(0,spinningSpeed * Time.fixedDeltaTime,0));
     }
 }
