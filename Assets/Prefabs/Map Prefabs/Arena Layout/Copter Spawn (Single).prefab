@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5510086834629932992}
   - component: {fileID: 5735907568607011535}
   - component: {fileID: 8327891309264187806}
+  - component: {fileID: 2071117546142507352}
   m_Layer: 0
   m_Name: Copter Spawn (Single)
   m_TagString: Untagged
@@ -32,8 +33,7 @@ Transform:
   m_LocalPosition: {x: 20, y: 6, z: 20}
   m_LocalScale: {x: 5, y: 16, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 863330354717640539}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7983079636571299343
@@ -138,51 +138,19 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 38f8164f96f8f044aad0db13b8cfa339, type: 2}
   m_BuildHeightMesh: 0
---- !u!1 &3218644234668921328
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 863330354717640539}
-  - component: {fileID: 6291489959915537536}
-  m_Layer: 0
-  m_Name: NavMesh Modifier Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863330354717640539
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3218644234668921328}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4375, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.0625, z: 0.2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9129213119529718081}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6291489959915537536
+--- !u!114 &2071117546142507352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3218644234668921328}
+  m_GameObject: {fileID: 17044383505700380}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 6, y: 7.421486, z: 6}
-  m_Center: {x: 0, y: 1.6169224, z: 0}
+  m_Size: {x: 0.5, y: 0.25, z: 0.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
   m_Area: 4
   m_AffectedAgents: ffffffff
