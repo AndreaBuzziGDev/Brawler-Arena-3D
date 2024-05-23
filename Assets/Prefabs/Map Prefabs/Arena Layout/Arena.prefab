@@ -336,6 +336,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Room
       objectReference: {fileID: 0}
+    - target: {fileID: 7625637907796088194, guid: 3e27dbc6148622d489704c56b2e71d3b, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 6a3b99ccd4a9fcb42b0c707870d0d5c2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
