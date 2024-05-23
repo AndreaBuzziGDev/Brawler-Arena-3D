@@ -24,7 +24,7 @@ public class EnemyController : EntityWithHealth
         //TODO: ALT SOLUTION FOR THIS?
         if(GameController.Instance.IsPaused)
             myNavAgent.destination = transform.position;
-        else
+        else if(target != null)
             myNavAgent.destination = target.position;
     }
 

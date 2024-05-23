@@ -33,11 +33,15 @@ public class GameController : MonoSingleton<GameController>
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
+    protected override void Awake()
     {
+        //BASE
+        base.Awake();
+
         //ENFORCES START SEQUENCE
         SetState(EGameState.Start);
-        //
+
+        //INITIALIZATION
         player = FindObjectOfType<PlayerController>();
     }
 
