@@ -24,7 +24,6 @@ public class PlayerController : EntityWithHealth
 
     //DATA
     Vector2 movementDirection;
-    //float movementSpeed = 1;//TODO: USE THIS. - ALSO NEEDS TO BE INITIALIZED IF TAKEN FROM OTHER SOURCE
 
     //LIFECYCLE FUNCTIONS
     protected override void Start()
@@ -87,9 +86,7 @@ public class PlayerController : EntityWithHealth
     void InputTermination()
     {
         inputPlayer.Disable();
-
-        //TODO: INPUT MUST ALSO BE MANAGED IN THE CASE THE GAME IS PAUSED
-
+        
         //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
         inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
@@ -117,7 +114,6 @@ public class PlayerController : EntityWithHealth
     }
     void ReleaseMovement(InputAction.CallbackContext value)
     {
-        
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
@@ -127,7 +123,7 @@ public class PlayerController : EntityWithHealth
 
     void UseRotation(InputAction.CallbackContext value)
     {
-        
+        //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
