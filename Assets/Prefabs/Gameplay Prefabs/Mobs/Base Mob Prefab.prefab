@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4653765177041597452}
   - component: {fileID: 6072213199708396422}
   - component: {fileID: -7945899802884322071}
-  - component: {fileID: 5505315709429901134}
+  - component: {fileID: 3635100725466191994}
   m_Layer: 7
   m_Name: Base Mob Prefab
   m_TagString: Untagged
@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4c3241a2c18b02b428cb8f1041d855b6, type: 2}
-  enemyWeapon: {fileID: 5505315709429901134}
---- !u!114 &5505315709429901134
+  enemyWeapon: {fileID: 3635100725466191994}
+--- !u!114 &3635100725466191994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,10 +194,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6907586155588128813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9d6aff7fd937144d912ce43132f1fc8, type: 3}
+  m_Script: {fileID: 11500000, guid: fbaa313061ee5b046837fbca8618f60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wType: 2
-  projectile: {fileID: 0}
-  testWeaponData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
+  weaponData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
   lastDirection2D: {x: 0, y: 1}
