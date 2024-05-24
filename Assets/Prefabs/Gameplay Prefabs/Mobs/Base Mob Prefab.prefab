@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4221335757039910122}
   - component: {fileID: 4391159529738853700}
   - component: {fileID: -4653765177041597452}
+  - component: {fileID: 6072213199708396422}
   - component: {fileID: -7945899802884322071}
   m_Layer: 7
   m_Name: Base Mob Prefab
@@ -157,6 +158,18 @@ NavMeshAgent:
   m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6072213199708396422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907586155588128813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b10801085fb2a840b4d06ff7affbd8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-7945899802884322071
 MonoBehaviour:
   m_ObjectHideFlags: 0
