@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class WeaponProjectile : MonoBehaviour
 {
-    //INSPECTOR REFERENCES
-    [SerializeField] WeaponData data;
-
-
     //DATA
-    //TODO: IMPROVE SOLUTION, WEAPON CONTROLLER SHOULD HAVE A BETTER SYSTEM TO PROPAGATE THIS INFORMATION
-    //      SHOULD BE ENOUGH TO MAKE A PROPERTY SETTER
-    public Vector3 projectileDirection = Vector3.up;
-    private float lifetime = 0.0f;
+    public WeaponProjectileData ProjectileData { get; set; }
 
-    //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
+
+    //TECHNICAL DATA
     Rigidbody rb;
 
 
@@ -31,11 +25,11 @@ public class WeaponProjectile : MonoBehaviour
         if(!GameController.Instance.IsPlaying)
             return;
         
-        lifetime += Time.fixedDeltaTime;
-        if(lifetime > data.MaxLifetime)
+        ProjectileData.HandleLifetime(Time.fixedDeltaTime);
+        if(ProjectileData.HasExpired)
             Destroy(this.gameObject);
         else
-            rb.velocity = data.ProjectileSpeed * projectileDirection;
+            rb.velocity = ProjectileData.Speed * ProjectileData.Direction;
 
     }
 
@@ -45,7 +39,6 @@ public class WeaponProjectile : MonoBehaviour
 
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER INSTEAD
         Debug.Log("Projectile " + gameObject.name + " Destroyed");
-
     }
 
 
@@ -59,13 +52,9 @@ public class WeaponProjectile : MonoBehaviour
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable != null)
         {
-            hittable.HandleHit(new DamageInstance(data));
+            hittable.HandleHit(ProjectileData.DamageInstance);
         }
 
         Destroy(gameObject);
     }
-
-
-    //UTILITIES
-
 }

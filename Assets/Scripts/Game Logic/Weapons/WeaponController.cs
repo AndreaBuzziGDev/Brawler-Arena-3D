@@ -94,7 +94,7 @@ public class WeaponController : MonoBehaviour
             transform.position,
             projectile.transform.rotation
         );
-        pInstance.projectileDirection = pDirection;
+        pInstance.ProjectileData = new WeaponProjectileData(testWeaponData, pDirection);
     }
 
     protected void SwingMelee(){
