@@ -119,7 +119,6 @@ public class WeaponController : MonoBehaviour
     }
 
 
-
     //UTILITIES
     public Vector3 ShootingDirection() => new Vector3(lastDirection2D.x, 0, lastDirection2D.y).normalized;
 

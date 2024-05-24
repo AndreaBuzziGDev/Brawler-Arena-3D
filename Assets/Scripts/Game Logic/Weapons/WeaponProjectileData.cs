@@ -15,7 +15,7 @@ public class WeaponProjectileData
 
 
     //DATA GETTERS
-    public DamageInstance DamageInstance;
+    public DamageInstance DamageInstance => dInstance;
 
     public float MaxLifetime => maxLifetime;
     public bool HasExpired => lifetime >= maxLifetime;
