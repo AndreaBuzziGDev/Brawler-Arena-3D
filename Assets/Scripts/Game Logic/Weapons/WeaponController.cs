@@ -2,31 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public abstract class WeaponController : MonoBehaviour
 {
     //ENUMS
+    //TODO: THIS IS FUNDAMENTALLY USELESS UNTIL IMPLEMENTED TO HAVE SOME CONSEQUENCES ON GAMEPLAY
+    /*
     //TODO: RENAME ENUM
     public enum WeaponType
     {
-        Projectile,
+        Projectile,//TODO: RENAME RANGED
         Melee,
         SuicideBomb
     }
 
     //INSPECTOR REFERENCES
     [SerializeField] WeaponType wType = WeaponType.Projectile;
-    //TODO: THIS IS SUPPOSED TO BE A PREFAB - CHECK/IMPROVE INSPECTOR AND EDITOR SETUP
-    //TODO: PROJECTILE SHOULD INSTEAD HAVE A DAMAGE INSTANCE AS DATA
-    [SerializeField] WeaponProjectile projectile;
-    [SerializeField] WeaponData testWeaponData;//TODO: RENAME AS NORMAL DATA OF THIS WEAPON
+    */
+    
+    //INSPECTOR REFERENCES
+    [SerializeField] protected WeaponData weaponData;
 
 
 
     //DATA
-    //TODO: THIS IMPLEMENTATION IS EARLY AND SUPPORTS ONLY WEAPONS THAT FIRE BULLETS
-    //TODO: ONCE ARCHITECTURE HAS BEEN IMPROVED, CHANGE VISIBILITY AND ORGANIZATION OF THESE DATA
-    public Vector2 lastDirection2D = Vector2.up;
-    private EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
+    public Vector2 lastDirection2D = Vector2.up;//TODO: SOLVE THE ISSUE WITH DIRECTION PROPAGATION
+    EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
 
 
 
@@ -50,53 +50,10 @@ public class WeaponController : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    public void Operate()
-    {
-        //TODO: THIS IMPLEMENTATION IS EARLY AND SUPPORTS ONLY WEAPONS THAT FIRE BULLETS
-        
-        
-        //TODO: SWITCH ON WEAPON TYPE
-        switch(wType)
-        {
-            case WeaponType.Projectile:
-                ShootProjectile();
-                break;
-            case WeaponType.Melee:
-                SwingMelee();
-                break;
-            case WeaponType.SuicideBomb:
-                SelfDestruct();
-                break;
-            default:
-                Debug.Log("Default Weapon Type - No Action");
-                break;
-        }
-    }
+    public abstract void Operate();
 
 
     //WEAPON TYPE OPERATION
-    protected void ShootProjectile(){
-
-        if(!projectile)
-        {
-            Debug.LogError("No Projectile on weapon: " + gameObject.name);
-            return;
-        }
-        
-        //SPAWN PREFAB
-        //TODO: IMPROVE/FIX PROJECTILE SHOOTING BY FOLLOWING GUIDE
-        Vector3 pDirection = ShootingDirection();
-        Debug.Log("Value 1: " + Quaternion.Euler(ShootingDirection()));
-        Debug.Log("Value 2: " + projectile.transform.rotation);
-
-        WeaponProjectile pInstance = Instantiate(
-            projectile, 
-            transform.position,
-            projectile.transform.rotation
-        );
-        pInstance.ProjectileData = new WeaponProjectileData(testWeaponData, pDirection);
-    }
-
     protected void SwingMelee(){
         //TODO: 
     }
@@ -109,17 +66,13 @@ public class WeaponController : MonoBehaviour
 
         //TODO: CHANGE AND RENDER DIFFERENTLY THE IMPLEMENTATION
         //      FOR NOW IT SIMPLY INFLICS DAMAGE TO THE PLAYER
-        if(testWeaponData)
+        if(weaponData)
         {
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
-            player.HandleHit(new DamageInstance(testWeaponData));
+            player.HandleHit(new DamageInstance(weaponData));
             if(owner) 
                 owner.HandleDeath();
         }
     }
-
-
-    //UTILITIES
-    public Vector3 ShootingDirection() => new Vector3(lastDirection2D.x, 0, lastDirection2D.y).normalized;
 
 }
