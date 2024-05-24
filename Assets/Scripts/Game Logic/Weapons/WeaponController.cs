@@ -23,11 +23,9 @@ public abstract class WeaponController : MonoBehaviour
     [SerializeField] protected WeaponData weaponData;
 
 
-
     //DATA
     public Vector2 lastDirection2D = Vector2.up;//TODO: SOLVE THE ISSUE WITH DIRECTION PROPAGATION
-    EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
-
+    protected EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
 
 
     
