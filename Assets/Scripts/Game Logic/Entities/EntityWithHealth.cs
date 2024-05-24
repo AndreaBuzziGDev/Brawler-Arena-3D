@@ -26,7 +26,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     float shieldRechargeRate = 1;
     
     //SPEED
-    protected float movementSpeed = 1;
+    protected float movementSpeed = 1;//TODO: THIS HAS BECOME UNNECESSARY, CODE SHOULD BE REFACTORED
 
 
     //DATA-RELATED FUNCTIONS
@@ -38,13 +38,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //LIFECYCLE FUNCTIONS
-    // Start is called before the first frame update
     protected virtual void Start()
     {
         DataInitialization();
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         //CONDITION
