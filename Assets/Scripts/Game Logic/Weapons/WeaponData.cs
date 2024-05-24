@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon Data", menuName = "Gameplay Data/Weapon Data")]
 public class WeaponData : ScriptableObject
 {
+    //TODO: POLISH WITH MULTIPLE SUPPORTED TYPES
     //TODO: EMBELLISH
 
     
