@@ -9,6 +9,7 @@ public class WeaponSBombController : WeaponController
         //      SHOULD PROBABLY TRY TO INFLICT DAMAGE TO HITTABLES WITHIN A CERTAIN RADIUS
         //      FOR THE TIME BEING THE SOLUTION IS INSTANT DELIVERY OF DAMAGE
         //      COULD EFFECTIVELY WORK WITH AN EVENT-BASED DAMAGE DELIVERY
+        //      OR SIMPLY BY DOING A RAYCAST - MIGHT NEED MORE DATA FROM THE weaponData, WHICH MIGHT BE A DEDICATED CLASS
         if(weaponData)
         {
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
