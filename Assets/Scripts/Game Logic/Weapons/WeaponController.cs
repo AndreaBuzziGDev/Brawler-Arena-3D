@@ -26,7 +26,7 @@ public class WeaponController : MonoBehaviour
     //TODO: THIS IMPLEMENTATION IS EARLY AND SUPPORTS ONLY WEAPONS THAT FIRE BULLETS
     //TODO: ONCE ARCHITECTURE HAS BEEN IMPROVED, CHANGE VISIBILITY AND ORGANIZATION OF THESE DATA
     public Vector2 lastDirection2D = Vector2.up;
-    private EntityWithHealth owner;
+    private EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
 
 
 
