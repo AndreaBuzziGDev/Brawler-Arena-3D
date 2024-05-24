@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +12,23 @@ public class EnemyController : EntityWithHealth
 
 
     //ON COLLISION
-
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Enemy Collision");
+        IHittable hittable = other.gameObject?.GetComponent<IHittable>();
+        if(hittable is PlayerController)
+        {
+            //OPERATE WEAPON
+            enemyWeapon.Operate();
+        }
+    }
 
     //FUNCTIONALITIES
-
-
-    //WEAPON OPERATE
+    //...
 
 
     //EntityWithHealth CONCRETIZATION
+    //TODO: CHECK IF HANDLE DEATH IS MENTIONED IN SUPER CLASS
     public override void HandleDeath()
     {
         Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
