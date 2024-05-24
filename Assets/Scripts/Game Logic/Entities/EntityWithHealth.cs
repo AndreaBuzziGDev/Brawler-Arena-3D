@@ -50,14 +50,9 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
             return;
 
         if(IsAlive)
-        {
             HandleShieldAndHealthLogic();
-        }
         else
-        {
-            //TODO: FIRE DEATH EVENT
-            
-        }
+            HandleDeath();
     }
 
     //INITIALIZATION
