@@ -49,28 +49,4 @@ public abstract class WeaponController : MonoBehaviour
 
     //FUNCTIONALITIES
     public abstract void Operate();
-
-
-    //WEAPON TYPE OPERATION
-    protected void SwingMelee(){
-        //TODO: 
-    }
-
-    protected void SelfDestruct(){
-        //TODO: IMPLEMENT
-        //TODO: FIND A WAY TO IMPLEMENT DAMAGE DELIVERY
-        //      SHOULD PROBABLY TRY TO INFLICT DAMAGE TO HITTABLES WITHIN A CERTAIN RADIUS
-        //      FOR THE TIME BEING THE SOLUTION IS INSTANT DELIVERY OF DAMAGE
-
-        //TODO: CHANGE AND RENDER DIFFERENTLY THE IMPLEMENTATION
-        //      FOR NOW IT SIMPLY INFLICS DAMAGE TO THE PLAYER
-        if(weaponData)
-        {
-            PlayerController player = GameController.Instance.GetPlayerAnywhere;
-            player.HandleHit(new DamageInstance(weaponData));
-            if(owner) 
-                owner.HandleDeath();
-        }
-    }
-
 }

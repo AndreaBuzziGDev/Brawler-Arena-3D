@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMeleeController : MonoBehaviour
+public class WeaponMeleeController : WeaponController
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Operate(){
+        //TODO: 
+        Debug.Log("Melee Weapon " + gameObject.name + " Yet to be implemented");
     }
 }
