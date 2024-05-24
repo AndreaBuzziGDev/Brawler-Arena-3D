@@ -12,7 +12,7 @@ public class EnemyController : EntityWithHealth
 
 
     //ON COLLISION
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Enemy Collision");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
