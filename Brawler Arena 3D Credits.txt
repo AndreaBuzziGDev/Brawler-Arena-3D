@@ -13,3 +13,6 @@ Directional Arrow - https://opengameart.org/content/glow-arrow
 
 AUDIO
 
+Robot Death Sound:
+Mobeyee Sounds - https://opengameart.org/content/hurting-the-robot
+
