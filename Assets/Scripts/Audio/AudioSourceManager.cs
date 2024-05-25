@@ -8,15 +8,9 @@ using System;
 //TODO: RENAME AS SOMETHING ELSE - THIS IS DEDICATED TO SHORT AUDIO FX SPECIFICALLY
 public class AudioSourceManager : MonoBehaviour
 {
-    public enum EnumTest
-    {
-        CORRECT,
-        INCORRECT
-    }
-
 
     //DATA
-    [SerializeField] EnumTest volumeType = EnumTest.INCORRECT;
+    [SerializeField] SoundFXEventArgs.EType audioType = SoundFXEventArgs.EType.UNBOUND;
 
     List<AudioSource> sources = new();
 
@@ -25,9 +19,14 @@ public class AudioSourceManager : MonoBehaviour
     void Start()
     {
         sources = FindObjectsOfType<AudioSource>().ToList();
-        Debug.Log("Sources size: " + sources);
+        Debug.Log("AudioSourceManager - Sources size: " + sources);
 
-        //TODO: REGISTER TO EVENTS FROM EVENT MANAGER ABOUT AUDIO
+        EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
+    }
+
+    void OnDestroy()
+    {
+        EventManager<SoundFXEventArgs>.Instance.StopListening(HandleAudioEvent);
     }
 
     //PLAY SOUNDS
@@ -41,10 +40,12 @@ public class AudioSourceManager : MonoBehaviour
                 break;
             }
         }
-
     }
 
     //EVENT HANDLING
-    //1) SHOULD CHECK IF THE EVENT IS IN ANY WAY RELEVANT TO THE NOTIFIED ENTITY
-
+    private void HandleAudioEvent(object sender, SoundFXEventArgs e)
+    {
+        if(audioType == e.EventType)
+            PlaySound();
+    }
 }
