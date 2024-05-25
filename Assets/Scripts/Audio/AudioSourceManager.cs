@@ -31,6 +31,9 @@ public class AudioSourceManager : MonoBehaviour
         EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
     }
 
+    //TODO: HANDLE PAUSE STATE (PAUSE AUDIO?)
+
+
     void OnDestroy()
     {
         EventManager<SoundFXEventArgs>.Instance.StopListening(HandleAudioEvent);
