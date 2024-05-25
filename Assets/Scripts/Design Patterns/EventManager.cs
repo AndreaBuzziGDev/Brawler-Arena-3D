@@ -49,9 +49,7 @@ public class EventManager<T> where T : ManagedEvent
         if (listener == null) return;
 
         //
-        Debug.Log("Test StartListening " + listener + " on Type: " + typeof(T));
         subscribers.Add(listener);
-        Debug.Log("Test StartListening subscribers: " + subscribers.Count);
     }
 
     public void StopListening(Action<object, T> listener)
@@ -62,9 +60,7 @@ public class EventManager<T> where T : ManagedEvent
         //
         if(subscribers.Contains(listener))
         {
-            Debug.Log("Test StopListening " + listener + " on Type: " + typeof(T));
             subscribers.Remove(listener);
-            Debug.Log("Test StopListening subscribers: " + subscribers.Count);
         }
     }
 
@@ -78,7 +74,6 @@ public class EventManager<T> where T : ManagedEvent
         //CALL ACTIONS OF INVOLVED ITEMS
         foreach(Action<object, T> act in subscribers)
         {
-            Debug.Log("Test TriggerEvent - act " + act + " on Type: " + typeof(T));
             act?.Invoke(sender, eArgs);
         }
     }
