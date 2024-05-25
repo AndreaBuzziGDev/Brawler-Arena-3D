@@ -8,6 +8,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //SCRIPTABLE OBJECTS
     //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
     [SerializeField] EntityData data;
+    [SerializeField] EntityAudioData audioData;
 
 
     //DATA
