@@ -28,10 +28,10 @@ public class EnemyController : EntityWithHealth
 
 
     //EntityWithHealth CONCRETIZATION
-    //TODO: CHECK IF HANDLE DEATH IS MENTIONED IN SUPER CLASS
     public override void HandleDeath()
     {
         Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB_DEATH_SUICIDE_BOMBER));
         Destroy(gameObject);
     }
     
