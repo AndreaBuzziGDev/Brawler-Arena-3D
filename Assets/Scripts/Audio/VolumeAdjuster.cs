@@ -17,7 +17,9 @@ public class VolumeAdjuster : MonoBehaviour
 
     //DATA
     [SerializeField] EVolumeType volumeType = EVolumeType.MUSIC;
-    [SerializeField] List<AudioSource> sources = new();//TODO: USARE UN REQUIRE? MAKE IT AUTOMATIC?
+    //TODO: USARE UN REQUIRE? 
+    //TODO: MAKE IT AUTOMATIC?
+    [SerializeField] List<AudioSource> sources = new();
 
 
     //LIFECYCLE FUNCTIONS
