@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4c3241a2c18b02b428cb8f1041d855b6, type: 2}
+  audioData: {fileID: 11400000, guid: fc31409db77d5d049b150b604a28ff7b, type: 2}
   enemyWeapon: {fileID: 3635100725466191994}
 --- !u!114 &3635100725466191994
 MonoBehaviour:
