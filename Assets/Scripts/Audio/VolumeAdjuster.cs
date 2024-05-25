@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class VolumeAdjuster : MonoBehaviour
 
     //DATA
     [SerializeField] EVolumeType volumeType = EVolumeType.MUSIC;
+    [SerializeField] bool pauseAudioOnGamePause = true;
+
     //TODO: USARE UN REQUIRE? 
     //TODO: MAKE IT AUTOMATIC?
     [SerializeField] List<AudioSource> sources = new();
@@ -29,6 +32,23 @@ public class VolumeAdjuster : MonoBehaviour
         EventManager<VolumeChangeEventArgs>.Instance.StartListening(HandleVolumeChangeEvent);
         
         SetVolume();
+    }
+
+    void Update()
+    {
+        //TODO: CHANGE IMPLEMENTATION. THIS SHOULD LISTEN TO PAUSE AND UNPAUSE EVENTS INSTEAD!!!
+        //NB: THIS HAS BEEN DISABLED TO AVOID BUGS
+        if(GameController.Instance.IsPaused)
+        {
+            foreach(AudioSource aSource in sources)
+            {
+                if(aSource.isPlaying)
+                {
+                    aSource.Pause();
+                    //USE UnPause() WHEN NEEDING UNPAUSE
+                }
+            }
+        }
     }
 
     void OnDestroy()
