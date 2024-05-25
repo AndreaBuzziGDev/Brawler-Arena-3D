@@ -37,12 +37,13 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     //PLAY SOUNDS
-    private void PlaySound()
+    private void PlayClip(AudioClip aClip)
     {
         foreach(AudioSource aSource in sources)
         {
             if(!aSource.isPlaying)
             {
+                aSource.clip = aClip;
                 aSource.Play();
                 break;
             }
@@ -52,7 +53,12 @@ public class AudioSourceManager : MonoBehaviour
     //EVENT HANDLING
     private void HandleAudioEvent(object sender, SoundFXEventArgs e)
     {
-        if(audioType == e.EventType)
-            PlaySound();
+        if(e.CarriedAudioClip != null)
+        {
+            if(audioType == e.EventType)
+                PlayClip(e.CarriedAudioClip);
+        } else {
+            Debug.LogError("Received from: " + sender + " a null audio clip.");
+        }
     }
 }

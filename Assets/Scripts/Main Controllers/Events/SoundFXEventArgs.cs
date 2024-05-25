@@ -9,11 +9,15 @@ public class SoundFXEventArgs : ManagedEvent
     private EType eventType;
     public EType EventType { get { return eventType; } }
 
+    private AudioClip carriedAudioClip;
+    public AudioClip CarriedAudioClip { get {return carriedAudioClip;} }
+
 
     //CONSTRUCTOR
-    public SoundFXEventArgs (EType eventType = EType.UNBOUND)
+    public SoundFXEventArgs (EType eventType = EType.UNBOUND, AudioClip aClip = null)
     {
         this.eventType = eventType;
+        this.carriedAudioClip = aClip;
     }
 
     //ABSTRACT CONCRETIZATION
