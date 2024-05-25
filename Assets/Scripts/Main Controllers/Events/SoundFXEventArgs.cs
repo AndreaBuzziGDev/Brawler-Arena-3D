@@ -17,7 +17,7 @@ public class SoundFXEventArgs : ManagedEvent
     }
 
     //ABSTRACT CONCRETIZATION
-    public override int EventId{ get { return (int) eventType; } }
+    public override int EventId { get { return (int) eventType; } }
 
 
     //ENUMS
