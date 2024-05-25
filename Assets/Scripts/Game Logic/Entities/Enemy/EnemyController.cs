@@ -31,7 +31,7 @@ public class EnemyController : EntityWithHealth
     public override void HandleDeath()
     {
         Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB_DEATH_SUICIDE_BOMBER));
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB));
         Destroy(gameObject);
     }
     

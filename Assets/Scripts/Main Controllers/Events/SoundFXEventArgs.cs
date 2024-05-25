@@ -24,6 +24,7 @@ public class SoundFXEventArgs : ManagedEvent
     public enum EType
     {
         UNBOUND,//UNBOUND VALUE - SHOULD NOT USE
-        A_FX_MOB_DEATH_SUICIDE_BOMBER
+        A_FX_PLAYER,
+        A_FX_MOB
     }
 }
