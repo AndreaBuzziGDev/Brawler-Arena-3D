@@ -11,11 +11,12 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] bool spawnStrictlyOnRadius = false;
 
 
-
+    Vector3 randomVector;
     //TODO: DELETE UPDATE
     void Update()
     {
-        Debug.Log("Random Vec3: " + GetRandomSpawnVector());
+        randomVector = GetRandomSpawnVector();
+        Debug.Log("Random Vec3: " + randomVector);
     }
 
     //FUNCTIONALITIES
@@ -44,5 +45,8 @@ public class SpawnPoint : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + randomVector);
+
     }
 }
