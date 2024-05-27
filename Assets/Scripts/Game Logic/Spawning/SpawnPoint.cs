@@ -31,6 +31,11 @@ public class SpawnPoint : MonoBehaviour
         EventManager<SpawnEntityEventArgs>.Instance.StartListening(HandleSpawnEntityEvent);
     }
 
+    void OnDestroy()
+    {
+        EventManager<SpawnEntityEventArgs>.Instance.StopListening(HandleSpawnEntityEvent);
+    }
+
 
     //FUNCTIONALITIES
     public void SpawnEntity(EntityWithHealth toSpawn)
