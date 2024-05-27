@@ -14,24 +14,25 @@ public class SpawnPoint : MonoBehaviour
 
 
     //DATA
+    [SerializeField] SpawnPointType type = SpawnPointType.GROUND;
     [SerializeField] Color gizmoColor = Color.green;
     [SerializeField] float spawnRadius = 1.0f;
     [SerializeField] bool spawnStrictlyOnRadius = false;
 
     //TODO: REMOVE SerializeField?
-    [SerializeField] int testValue;
+    [SerializeField] int spawnerId;
 
 
 
     //LIFECYCLE FUNCTIONS
     void Start()
     {
-        testValue = gameObject.GetInstanceID();
+        spawnerId = gameObject.GetInstanceID();
+        EventManager<SpawnEntityEventArgs>.Instance.StartListening(HandleSpawnEntityEvent);
     }
 
 
     //FUNCTIONALITIES
-    //TODO: DEVELOP FUNCTIONALITY TO CARRY AND HANDLE SPAWN EVENT
     public void SpawnEntity(EntityWithHealth toSpawn)
     {
         Vector3 spawnDistance = GetRandomSpawnVector();
@@ -47,6 +48,17 @@ public class SpawnPoint : MonoBehaviour
             return spawnVector;
         else 
             return Vector3.Lerp(Vector3.zero, spawnVector, UnityEngine.Random.Range(0.0f, 1.0f));
+    }
+
+
+    //EVENT HANDLING
+    private void HandleSpawnEntityEvent(object sender, SpawnEntityEventArgs e)
+    {
+        if(spawnerId.Equals(e.SpawnPointInstanceID))
+        {
+            for(int i=0; i < e.Data.Quantity; i++)
+                SpawnEntity(e.Data.TargetPrefab);
+        }
     }
 
 
