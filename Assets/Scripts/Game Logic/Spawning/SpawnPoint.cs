@@ -12,6 +12,11 @@ public class SpawnPoint : MonoBehaviour
 
     //FUNCTIONALITIES
     //...
+    public void SpawnEntity(EntityWithHealth toSpawn)
+    {
+        //TODO: WAIT FOR RADIUS STUFF
+        
+    }
 
 
     //GIZMOS
