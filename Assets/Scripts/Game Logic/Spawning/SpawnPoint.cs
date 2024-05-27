@@ -5,11 +5,29 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    //ENUMS
+    public enum SpawnPointType
+    {
+        GROUND,
+        COPTER
+    }
+
+
     //DATA
     [SerializeField] Color gizmoColor = Color.green;
     [SerializeField] float spawnRadius = 1.0f;
     [SerializeField] bool spawnStrictlyOnRadius = false;
 
+    //TODO: REMOVE SerializeField?
+    [SerializeField] int testValue;
+
+
+
+    //LIFECYCLE FUNCTIONS
+    void Start()
+    {
+        testValue = gameObject.GetInstanceID();
+    }
 
 
     //FUNCTIONALITIES
@@ -36,7 +54,7 @@ public class SpawnPoint : MonoBehaviour
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.green;
+        Gizmos.color = gizmoColor;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
