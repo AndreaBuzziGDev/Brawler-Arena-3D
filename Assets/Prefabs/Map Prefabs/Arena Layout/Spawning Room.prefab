@@ -1218,31 +1218,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 923182467890441272, guid: ebbf41297ef41ca4c93a9cfc01536d79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2624666117740086719}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebbf41297ef41ca4c93a9cfc01536d79, type: 3}
---- !u!1 &8131989638422922466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 923182467890441272, guid: ebbf41297ef41ca4c93a9cfc01536d79, type: 3}
-  m_PrefabInstance: {fileID: 8941172402627373274}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2624666117740086719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8131989638422922466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdcb8ff4caee6a74ebb021d1800792bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
-  spawnRadius: 4
-  spawnStrictlyOnRadius: 0
 --- !u!4 &8852163951845071083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 489864157720424497, guid: ebbf41297ef41ca4c93a9cfc01536d79, type: 3}
