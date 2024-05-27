@@ -17,6 +17,7 @@ public class SpawnPoint : MonoBehaviour
     {
         randomVector = GetRandomSpawnVector();
         Debug.Log("Random Vec3: " + randomVector);
+        Debug.DrawLine(transform.position, transform.position + randomVector, Color.red, 0.0f, true);
     }
 
     //FUNCTIONALITIES
@@ -45,8 +46,5 @@ public class SpawnPoint : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + randomVector);
-
     }
 }
