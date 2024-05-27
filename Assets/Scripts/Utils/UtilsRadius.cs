@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UtilsRadius
+public static class UtilsRadius
 {
 
     public static Vector3 RandomPositionOnCircleRadius(float radius)
