@@ -20,7 +20,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] bool spawnStrictlyOnRadius = false;
 
     //TODO: REMOVE SerializeField?
-    [SerializeField] int spawnerId;
+    int spawnerId;
 
 
 
