@@ -6,17 +6,20 @@ using System;
 public class SpawnEntityEventArgs : ManagedEvent
 {
     //DATA
-    private int spawnPointInstanceID;
-    public int SpawnPointInstanceID { get { return spawnPointInstanceID; } }
+    public int SpawnPointInstanceID { get; }
+
+    public SpawnData Data { get; }
+
 
 
     //CONSTRUCTOR
-    public SpawnEntityEventArgs(int spawnPointInstanceID, )
+    public SpawnEntityEventArgs(int spawnPointInstanceID, SpawnData data)
     {
-        this.spawnPointInstanceID = spawnPointInstanceID;
+        this.SpawnPointInstanceID = spawnPointInstanceID;
+        this.Data = data;
     }
 
 
     //ABSTRACT CONCRETIZATION
-    public override int EventId { get { return (int) spawnPointInstanceID; } }
+    public override int EventId { get { return (int) SpawnPointInstanceID; } }
 }
