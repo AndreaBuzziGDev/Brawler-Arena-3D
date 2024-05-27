@@ -7,9 +7,7 @@ public class SpawnEntityEventArgs : ManagedEvent
 {
     //DATA
     public int SpawnPointInstanceID { get; }
-
     public SpawnData Data { get; }
-
 
 
     //CONSTRUCTOR
