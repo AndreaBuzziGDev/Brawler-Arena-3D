@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dbc374a3327e2488e523f5e374f37f, type: 3}
+  m_Name: Spawn Rate Suicide Bomber Regular 5
+  m_EditorClassIdentifier: 
+  targetEntityPrefab: {fileID: 2448708630289185219, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+  quantity: 30
+  variance: 0

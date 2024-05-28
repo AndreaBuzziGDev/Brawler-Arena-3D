@@ -82,6 +82,9 @@ public class SpawnController : MonoBehaviour
 
     private void NotifySpawner(int spawnerToNotifyId)
     {
+        //TODO: NEEDS RANDOMIZATION - RIGHT NOW EVERY SPAWNER SPAWNS THE CONTENT OF THE WAVES
+        //TODO: NEEDS TO ENABLE SPAWN TYPE DIVERSIFICATION
+        
         //int spawnPointInstanceID, List<SpawnRateData> rateData
         EventManager<SpawnEntityEventArgs>.Instance.Notify(
             this, 
