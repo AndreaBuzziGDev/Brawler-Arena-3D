@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788dd052a5af13545b613cb824a68292, type: 3}
   m_Name: Spawn Rate Data Table V1.0
   m_EditorClassIdentifier: 
-  orderedWaves: []
+  orderedWaves:
+  - {fileID: 11400000, guid: 1d23546a3180e9347b9673c686fb15f8, type: 2}
+  - {fileID: 11400000, guid: c4c88632d1974da4d9e04757620675fe, type: 2}
+  - {fileID: 11400000, guid: 32dc933e67e09314199ef5857a579adc, type: 2}
+  - {fileID: 11400000, guid: 94f561193a2c4db4a9f656af20a2a48e, type: 2}
+  - {fileID: 11400000, guid: 1648f703db094ba4b985f8de91e7c643, type: 2}
   lastWaveExtraCooldown: 30

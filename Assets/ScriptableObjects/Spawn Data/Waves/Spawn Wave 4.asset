@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178d96a309cb23744a133781c90d51b4, type: 3}
   m_Name: Spawn Wave 4
   m_EditorClassIdentifier: 
-  spawns: []
-  nextWaveCooldown: 30
+  spawns:
+  - {fileID: 11400000, guid: 5a4013617a664d145bb351255a183d14, type: 2}
+  - {fileID: 11400000, guid: 96e9a70638fa77b4baf40541edc19fb6, type: 2}
+  nextWaveCooldown: 120
