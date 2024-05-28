@@ -7,14 +7,14 @@ public class SpawnEntityEventArgs : ManagedEvent
 {
     //DATA
     public int SpawnPointInstanceID { get; }
-    public SpawnData Data { get; }
+    public List<SpawnData> Data { get; }
 
 
     //CONSTRUCTOR
-    public SpawnEntityEventArgs(int spawnPointInstanceID, SpawnData data)
+    public SpawnEntityEventArgs(int spawnPointInstanceID, List<SpawnRateData> rateData)
     {
         this.SpawnPointInstanceID = spawnPointInstanceID;
-        this.Data = data;
+        this.Data = SpawnData.GetDataFromRate(rateData);
     }
 
 

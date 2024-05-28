@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine;
 public class SpawnData
 {
     //DATA
-    //TODO: SOME CLASS (NOT NECESSARILY THIS ONE) MIGHT MAKE GOOD USE OF A SCRIPTABLEOBJECT TO CARRY PREFABS & OTHER THINGS
     public EntityWithHealth TargetPrefab { get; }
     public int Quantity { get; }
 
@@ -17,7 +17,22 @@ public class SpawnData
         this.Quantity = quantity;
     }
 
+    //FACTORY
+    public static List<SpawnData> GetDataFromRate(List<SpawnRateData> rateData)
+    {
+        List<SpawnData> result = new();
+        foreach(SpawnRateData singleRate in rateData)
+            result.Add(GetDataFromRate(singleRate));
 
-    //FUNCTIONALITIES
-    //...
+        return result;
+    }
+
+    public static SpawnData GetDataFromRate(SpawnRateData singleRate)
+    {
+        int calculatedRate = singleRate.Quantity + UnityEngine.Random.Range(-singleRate.Variance, singleRate.Variance);
+        return new SpawnData(
+            singleRate.TargetEntityPrefab, 
+            Mathf.Clamp(calculatedRate, 0, singleRate.Quantity + singleRate.Variance)
+        );
+    }
 }

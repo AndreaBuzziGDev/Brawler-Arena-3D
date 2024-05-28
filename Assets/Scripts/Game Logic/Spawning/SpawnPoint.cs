@@ -38,6 +38,15 @@ public class SpawnPoint : MonoBehaviour
 
 
     //FUNCTIONALITIES
+    public void SpawnWave(List<SpawnData> spawnData)
+    {
+        foreach(SpawnData sd in spawnData)
+        {
+            for(int i=0; i < sd.Quantity; i++)
+                SpawnEntity(sd.TargetPrefab);
+        }
+    }
+
     public void SpawnEntity(EntityWithHealth toSpawn)
     {
         Vector3 spawnDistance = GetRandomSpawnVector();
@@ -60,10 +69,7 @@ public class SpawnPoint : MonoBehaviour
     private void HandleSpawnEntityEvent(object sender, SpawnEntityEventArgs e)
     {
         if(spawnerId.Equals(e.SpawnPointInstanceID))
-        {
-            for(int i=0; i < e.Data.Quantity; i++)
-                SpawnEntity(e.Data.TargetPrefab);
-        }
+            SpawnWave(e.Data);
     }
 
 

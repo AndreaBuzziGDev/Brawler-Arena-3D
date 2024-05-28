@@ -9,27 +9,36 @@ public class SpawnController : MonoBehaviour
     List<SpawnPoint> spawnPoints = new();
     Dictionary<int, SpawnPoint> spDictionary = new();
 
-    //TODO: THIS IS A VERY BASIC IMPLEMENTATION OF WAVE SYSTEM, EVOLUTION EXPECTED
-    [SerializeField] float waveCooldownTimerMax = 10.0f;
+
+    //WAVE DATA
+    [SerializeField] int waveManualOverride = 0;
+    int waveIndex = 0;
+
+    [SerializeField] float gameStartDelay = 5.0f;
     float waveCooldownTimer = 0.0f;
-    
-    //TODO: EMBELLISH
-    [SerializeField] int maxSpawnedForWave = 10;
+
 
     //PREFAB REFERENCES
-    //TODO: INTRODUCE SUPPORT FOR MORE ENTITIES
-    [SerializeField] EntityWithHealth entityPrefab;
+    [SerializeField] SpawnRateDataTable sDataTable;
+
 
 
     //LIFECYCLE FUNCTIONS
     void Start()
     {
+        //ERROR CHECK
+        if(sDataTable == null || sDataTable.OrderedWaves.Count == 0)
+            Debug.LogError("SpawnController - No Waves have been set. Please configure and assign SpawnRateDataTable");
+
+        //SPAWN POINT INITIALIZATION
         spawnPoints = FindObjectsOfType<SpawnPoint>().ToList();
         foreach(SpawnPoint sp in spawnPoints)
             spDictionary.Add(sp.gameObject.GetInstanceID(), sp);
 
-        //INSTANTLY SPAWN
-        waveCooldownTimer = waveCooldownTimerMax;
+        //GAMEPLAY LOOP INITIALIZATION
+        waveCooldownTimer = gameStartDelay;
+        waveIndex = Mathf.Clamp(waveManualOverride, 0, sDataTable.OrderedWaves.Count);
+        Debug.Log("SpawnController - waveIndex: " + waveIndex);
     }
 
     void Update()
@@ -43,23 +52,41 @@ public class SpawnController : MonoBehaviour
     //FUNCTIONALITIES
     private void HandleTimer()
     {
-        if(waveCooldownTimer < waveCooldownTimerMax)
-            waveCooldownTimer += Time.deltaTime;
+        if(waveCooldownTimer > 0)
+            waveCooldownTimer -= Time.deltaTime;
+        else
+            HandleWave();
+    }
+
+    private void HandleWave()
+    {
+        //SPAWN ENTITIES
+        foreach(int sId in spDictionary.Keys)
+            NotifySpawner(sId);
+
+        //SET COOLDOWN TIMER
+        waveCooldownTimer = sDataTable.OrderedWaves[waveIndex].NextWaveCooldown;
+
+        //MANAGE WAVE INDEX
+        if(waveIndex < sDataTable.OrderedWaves.Count)
+            waveIndex++;
         else
         {
-            foreach(int sId in spDictionary.Keys)
-                NotifySpawner(sId);
-            
-            waveCooldownTimer = 0.0f;
+            //EXTRA COOLDOWN AT THE END
+            waveCooldownTimer += sDataTable.LastWaveExtraCooldown;
+            waveIndex = 0;
         }
+
     }
+
 
     private void NotifySpawner(int spawnerToNotifyId)
     {
-        SpawnData sData = new(entityPrefab, UnityEngine.Random.Range(0, maxSpawnedForWave+1));
-        EventManager<SpawnEntityEventArgs>.Instance.Notify(this, new(spawnerToNotifyId, sData));
+        //int spawnPointInstanceID, List<SpawnRateData> rateData
+        EventManager<SpawnEntityEventArgs>.Instance.Notify(
+            this, 
+            new(spawnerToNotifyId, sDataTable.OrderedWaves[waveIndex].Spawns)
+        );
     }
-
-
 
 }
