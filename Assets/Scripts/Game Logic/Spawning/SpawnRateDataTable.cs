@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Spawn Rate Data Table", menuName = "Spawn Rate Data Table")]
 public class SpawnRateDataTable : ScriptableObject
 {
     //DATA

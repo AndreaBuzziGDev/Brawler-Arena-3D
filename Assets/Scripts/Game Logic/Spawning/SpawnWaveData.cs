@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Spawn Wave Data", menuName = "Spawn Wave")]
 public class SpawnWaveData : ScriptableObject
 {
     //DATA
