@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9fa9e5d46872c4e883f585fc801770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveCooldownTimerMax: 10
-  maxSpawnedForWave: 10
-  entityPrefab: {fileID: -7945899802884322071, guid: c2bb076c475708541b136d9c7221515e, type: 3}
+  waveManualOverride: 0
+  gameStartDelay: 5
+  sDataTable: {fileID: 11400000, guid: 032174cf0556a1a42b9ddf9894b35e55, type: 2}
