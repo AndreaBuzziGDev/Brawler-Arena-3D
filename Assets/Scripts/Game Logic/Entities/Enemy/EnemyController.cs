@@ -29,7 +29,7 @@ public class EnemyController : EntityWithHealth
     //EntityWithHealth CONCRETIZATION
     public override void HandleDeath()
     {
-        Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
+        //Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB, audioData.DeathClip));
         Destroy(gameObject);
     }
