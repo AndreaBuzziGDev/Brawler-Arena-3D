@@ -14,7 +14,6 @@ public class EnemyController : EntityWithHealth
     //ON COLLISION
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Enemy Collision");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable is PlayerController)
         {
