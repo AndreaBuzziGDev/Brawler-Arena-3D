@@ -10,8 +10,8 @@ public class EntityAudioData : ScriptableObject
     [SerializeField] AudioClip damageShieldClip;
     [SerializeField] AudioClip damageHealthClip;
     [SerializeField] AudioClip deathClip;
-    //TODO: MIGHT EVALUATE ADDING MORE SOUND HERE - SHOOTING OR OTHER SOUNDS
 
+    //DATA GETTERS
     public AudioClip SpawnClip { get {return spawnClip;} }
     public AudioClip DamageShieldClip { get {return damageShieldClip;} }
     public AudioClip DamageHealthClip { get {return damageHealthClip;} }
