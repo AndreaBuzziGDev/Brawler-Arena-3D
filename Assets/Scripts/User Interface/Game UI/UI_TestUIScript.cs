@@ -13,6 +13,7 @@ public class UI_TestUIScript : MonoBehaviour
     void Start()
     {
         //START LISTENING TO GAME OVER EVENTS
+        thisCanvas.gameObject.SetActive(false);
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleMenuEvent);
     }
 

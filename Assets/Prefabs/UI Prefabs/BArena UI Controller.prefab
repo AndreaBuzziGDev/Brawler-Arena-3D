@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 267101155809362671}
   - component: {fileID: 8895282264652830982}
   - component: {fileID: 945280251485433431}
+  - component: {fileID: 6442600179567794991}
   m_Layer: 5
   m_Name: BArena UI Controller
   m_TagString: Untagged
@@ -236,6 +237,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6442600179567794991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948498062365112527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0ef4aa927c93429c6dc88a408e6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisCanvas: {fileID: 5252343792513550938}
 --- !u!1 &2058067471705306317
 GameObject:
   m_ObjectHideFlags: 0
