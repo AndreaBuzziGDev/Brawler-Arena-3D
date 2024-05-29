@@ -7,19 +7,15 @@ public class UI_TestUIScript : MonoBehaviour
     //A QUICK UI SCRIPT FOR THE SAKE OF HAVING A WORKING GAMEOVER SCREEN
     //DATA
     [SerializeField] CanvasRenderer thisCanvas;
-    
-    // Start is called before the first frame update
+
+
+    //LIFECYCLE FUNCTIONS
     void Start()
     {
         //START LISTENING TO GAME OVER EVENTS
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleMenuEvent);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnDestroy()
     {
         //STOP LISTENING TO GAME OVER EVENTS
