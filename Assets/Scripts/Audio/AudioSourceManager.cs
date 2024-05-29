@@ -26,7 +26,7 @@ public class AudioSourceManager : MonoBehaviour
     void Start()
     {
         sources = FindObjectsOfType<AudioSource>().ToList();
-        Debug.Log("AudioSourceManager - Sources size: " + sources);
+        Debug.Log("AudioSourceManager - Sources size: " + sources.Count);
 
         EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
     }
