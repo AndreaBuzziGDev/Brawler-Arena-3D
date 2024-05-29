@@ -16,6 +16,11 @@ AUDIO
 Robot Death Sound:
 Mobeyee Sounds - https://opengameart.org/content/hurting-the-robot
 
+Suicide Bomber Explosion Sound:
+Kutejnikov - https://opengameart.org/content/explosion-8
+
+
+
 Player Death Sound:
 DaGameKnower - https://opengameart.org/content/robot-1
 

@@ -199,4 +199,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
+  weaponAudioData: {fileID: 11400000, guid: 12cd01e6bd219e34cbd1a0d8e0050ea6, type: 2}
   lastDirection2D: {x: 0, y: 1}

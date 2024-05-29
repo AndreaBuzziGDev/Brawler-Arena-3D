@@ -13,6 +13,7 @@ public class WeaponSBombController : WeaponController
         if(weaponData)
         {
             //TODO: UNIFY WEAPON OPERATE AUDIO MANAGEMENT
+            EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
 
             //DAMAGE DEALING 
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
