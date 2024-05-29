@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72a73f1bff9fcd42bb0a56d10064153, type: 3}
   m_Name: Suicide Bomb - Strong Data
   m_EditorClassIdentifier: 
-  damageAmount: 2
+  damageAmount: 5
   projectileSpeed: 1
   maxLifetime: 10
   needsOwnerToOperate: 1
