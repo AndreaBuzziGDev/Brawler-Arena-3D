@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cc794757d9e144cb443b3c4b94f2ba, type: 3}
   m_Name: GameScene
   m_EditorClassIdentifier: 
-  associatedSceneName: GameScene
+  associatedSceneName: SampleScene
   stageID: 3
