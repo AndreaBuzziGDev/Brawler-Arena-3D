@@ -195,9 +195,14 @@ public class PlayerController : EntityWithHealth
     
     public override void HandleDeath()
     {
-        //TODO: DEVELOP
-        Debug.Log("PlayerController - Handle Death - TODO DEVELOP");
-        EventManager<GameMenuEventArgs>.Instance.Notify(this, new GameMenuEventArgs(GameMenuEventArgs.EType.GAME_OVER));
+        GameController.Instance.SetState(GameController.EGameState.GameOver);
+
+        //TODO: PLAYER DEATH SOUND
+        //TODO: PLAYER DEATH PARTICLE EFFECT
+        //TODO: 
+
+        //DESTROY
+        Destroy(this.gameObject);
     }
 
 }
