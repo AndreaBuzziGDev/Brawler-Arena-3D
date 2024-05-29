@@ -197,7 +197,9 @@ public class PlayerController : EntityWithHealth
     {
         GameController.Instance.SetState(GameController.EGameState.GameOver);
 
-        //TODO: PLAYER DEATH SOUND
+        //TODO: LOGIC IS THE SAME BETWEEN ENEMIES AND PLAYER, SHOULD TAKE THIS INTO ACCOUNT AND REFACTOR ACCORDINGLY
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_PLAYER, audioData.DeathClip));
+
         //TODO: PLAYER DEATH PARTICLE EFFECT
         //TODO: GAME OVER SCREEN (NOT HERE)
 
