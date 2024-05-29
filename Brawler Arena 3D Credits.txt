@@ -16,3 +16,8 @@ AUDIO
 Robot Death Sound:
 Mobeyee Sounds - https://opengameart.org/content/hurting-the-robot
 
+Player Death Sound:
+DaGameKnower - https://opengameart.org/content/robot-1
+
+Player Ranged Weapon Sound:
+Robin Lamb - https://opengameart.org/content/space-shoot-sounds
