@@ -117,7 +117,7 @@ public class SpawnController : MonoBehaviour
         switch(sRateData.SpawnType)
         {
             case SpawnType.EQUALIZED:
-                return sRateData.Quantity / sDataTable.OrderedWaves.Count;
+                return (int) (sRateData.Quantity / spawnPoints.Count);
             case SpawnType.RANDOMIZED:
                 int calculatedRate = sRateData.Quantity + UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance);
                 return Mathf.Clamp(calculatedRate, 0, sRateData.Quantity + sRateData.Variance);
