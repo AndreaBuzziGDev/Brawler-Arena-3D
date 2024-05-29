@@ -21,9 +21,9 @@ public class EnemyAgentController : MonoBehaviour
     void Update()
     {
         //TODO: ALTERNATIVELY USE "IsStopped" ON myNavAgent
-        if(GameController.Instance.IsPaused)
-            myNavAgent.destination = transform.position;
-        else if(target != null)
+        if(GameController.Instance.IsPlaying)
             myNavAgent.destination = target.position;
+        else if(target != null)
+            myNavAgent.destination = transform.position;
     }
 }
