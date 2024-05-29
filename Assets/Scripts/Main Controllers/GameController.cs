@@ -20,9 +20,15 @@ public class GameController : MonoSingleton<GameController>
     //DATA
     ///SIMPLE DATA
     private EGameState state = 0;
+
+    //GAME STATE GETTERS
     public bool IsPaused { get { return this.state == EGameState.Paused; } }
     public bool IsGameOver { get { return this.state == EGameState.GameOver; } }
-    public bool IsPlaying { get { return !(IsPaused || IsGameOver); } }
+    public bool IsRestarting { get { return this.state == EGameState.Restarting; } }
+    public bool IsQuitting { get { return this.state == EGameState.Quitting; } }
+    public bool IsExiting { get { return this.state == EGameState.Exiting; } }
+
+    public bool IsPlaying { get { return !(IsPaused || IsGameOver || IsRestarting || IsQuitting || IsExiting); } }
 
 
     //GAMEOBJECT REFERENCES
