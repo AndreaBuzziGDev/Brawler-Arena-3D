@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1cd1c3f9f465145843648dd7fa5c5b, type: 3}
   m_Name: Player Audio Data V1.0
   m_EditorClassIdentifier: 
+  spawnClip: {fileID: 0}
+  damageShieldClip: {fileID: 0}
+  damageHealthClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: feb4ff45c69c6bd40873cbc391ce28cc, type: 3}
