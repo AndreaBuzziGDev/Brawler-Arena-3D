@@ -30,7 +30,7 @@ public class UI_TestUIScript : MonoBehaviour
 
 
     //QUIT GAME
-    public void HandleQuit() => GameController.Instance.SetState(GameController.EGameState.Quitting);
+    public void HandleQuit() => GameController.Instance.SetState(GameController.EGameState.Exiting);
 
 
     //MENU EVENT LISTENING
