@@ -25,9 +25,7 @@ public class AudioSourceManager : MonoBehaviour
     //LIFECYCLE FUNCTIONS
     void Start()
     {
-        sources = FindObjectsOfType<AudioSource>().ToList();
-        Debug.Log("AudioSourceManager - Sources size: " + sources.Count);
-
+        sources = gameObject.GetComponents<AudioSource>().ToList();
         EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
     }
 
