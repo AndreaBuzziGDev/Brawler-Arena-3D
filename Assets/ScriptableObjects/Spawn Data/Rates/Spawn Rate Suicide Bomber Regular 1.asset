@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Spawn Rate Suicide Bomber Regular 1
   m_EditorClassIdentifier: 
   targetEntityPrefab: {fileID: 2448708630289185219, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
-  quantity: 10
+  quantity: 20
   variance: 0
+  spawnType: 1
