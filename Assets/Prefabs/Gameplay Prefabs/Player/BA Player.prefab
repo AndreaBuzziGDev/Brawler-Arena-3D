@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
+      propertyPath: weaponAudioData
+      value: 
+      objectReference: {fileID: 11400000, guid: ac58cc8350717f948983fb60589e874d, type: 2}
     - target: {fileID: 1703159227308830914, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: m_Name
       value: Player Ranged Weapon
