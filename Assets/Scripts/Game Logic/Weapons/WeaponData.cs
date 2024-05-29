@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,16 @@ public class WeaponData : ScriptableObject
     public float DamageAmount => damageAmount;
 
 
-    //
+    //PROJECTILE DATA
     [SerializeField] float projectileSpeed = 10;
     public float ProjectileSpeed => projectileSpeed;
 
-
     [SerializeField] float maxLifetime = 10;
     public float MaxLifetime => maxLifetime;
+
+    //
+    [SerializeField] bool needsOwnerToOperate = false;
+    public bool NeedsOwnerToOperate { get { return needsOwnerToOperate; } }
 
 }
 

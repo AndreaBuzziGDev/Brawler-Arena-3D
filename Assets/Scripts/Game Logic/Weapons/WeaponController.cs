@@ -35,7 +35,9 @@ public abstract class WeaponController : MonoBehaviour
     {
         //TODO: HANDLE COOLDOWN AND OTHER STUFF?
         owner = GetComponent<EntityWithHealth>();
-        if(!owner)
+        if(weaponData == null)
+            Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
+        else if(!owner && weaponData.NeedsOwnerToOperate)
             Debug.LogError("This Weapon doesn't have holder: " + gameObject.name);
     }
 
