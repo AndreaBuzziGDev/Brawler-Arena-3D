@@ -22,8 +22,10 @@ public class WeaponRangedController : WeaponController
         //SPAWN PREFAB
         //TODO: IMPROVE/FIX PROJECTILE SHOOTING BY FOLLOWING GUIDE
         Vector3 pDirection = ShootingDirection();
+        /*
         Debug.Log("Value 1: " + Quaternion.Euler(ShootingDirection()));
         Debug.Log("Value 2: " + projectile.transform.rotation);
+        */
 
         WeaponProjectile pInstance = Instantiate(
             projectile, 

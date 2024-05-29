@@ -38,7 +38,7 @@ public class WeaponProjectile : MonoBehaviour
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
 
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER INSTEAD
-        Debug.Log("Projectile " + gameObject.name + " Destroyed");
+        //Debug.Log("Projectile " + gameObject.name + " Destroyed");
     }
 
 
@@ -48,7 +48,7 @@ public class WeaponProjectile : MonoBehaviour
     //COLLISION DETECTION
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision");
+        //Debug.Log("Projectile Collision");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable != null)
         {
