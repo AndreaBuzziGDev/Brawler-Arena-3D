@@ -15,4 +15,4 @@ MonoBehaviour:
   spawns:
   - {fileID: 11400000, guid: 6518823943cc7e942acc47c59ba36d90, type: 2}
   - {fileID: 11400000, guid: f6a6c2490533972429f089c90fecdb01, type: 2}
-  nextWaveCooldown: 120
+  nextWaveCooldown: 90
