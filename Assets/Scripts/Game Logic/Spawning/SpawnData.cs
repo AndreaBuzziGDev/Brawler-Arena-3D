@@ -16,23 +16,4 @@ public class SpawnData
         this.TargetPrefab = targetPrefab;
         this.Quantity = quantity;
     }
-
-    //FACTORY
-    public static List<SpawnData> GetDataFromRate(List<SpawnRateData> rateData)
-    {
-        List<SpawnData> result = new();
-        foreach(SpawnRateData singleRate in rateData)
-            result.Add(GetDataFromRate(singleRate));
-
-        return result;
-    }
-
-    public static SpawnData GetDataFromRate(SpawnRateData singleRate)
-    {
-        int calculatedRate = singleRate.Quantity + UnityEngine.Random.Range(-singleRate.Variance, singleRate.Variance);
-        return new SpawnData(
-            singleRate.TargetEntityPrefab, 
-            Mathf.Clamp(calculatedRate, 0, singleRate.Quantity + singleRate.Variance)
-        );
-    }
 }

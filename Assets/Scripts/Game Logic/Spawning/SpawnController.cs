@@ -5,6 +5,15 @@ using System.Linq;
 
 public class SpawnController : MonoBehaviour
 {
+    //ENUMS
+    public enum SpawnType
+    {
+        FLAT,//QUANTITY
+        EQUALIZED,//= QUANTITY/SPAWNS
+        RANDOMIZED//FROM 1 UP TO QUANTITY
+    }
+
+
     //DATA
     List<SpawnPoint> spawnPoints = new();
     Dictionary<int, SpawnPoint> spDictionary = new();
@@ -79,17 +88,43 @@ public class SpawnController : MonoBehaviour
 
     }
 
-
     private void NotifySpawner(int spawnerToNotifyId)
     {
-        //TODO: NEEDS RANDOMIZATION - RIGHT NOW EVERY SPAWNER SPAWNS THE CONTENT OF THE WAVES
         //TODO: NEEDS TO ENABLE SPAWN TYPE DIVERSIFICATION
-        
+
+
         //int spawnPointInstanceID, List<SpawnRateData> rateData
-        EventManager<SpawnEntityEventArgs>.Instance.Notify(
-            this, 
-            new(spawnerToNotifyId, sDataTable.OrderedWaves[waveIndex].Spawns)
-        );
+        List<SpawnRateData> spawns = sDataTable.OrderedWaves[waveIndex].Spawns;
+        foreach(SpawnRateData sRateData in spawns)
+        {
+            EventManager<SpawnEntityEventArgs>.Instance.Notify(
+                this, 
+                new(
+                    spawnerToNotifyId, 
+                    new SpawnData(
+                        sRateData.TargetEntityPrefab, 
+                        CalculateQuantity(sRateData)
+                    )
+                )
+            );
+        }
+    }
+
+
+    //UTILITIES
+    private int CalculateQuantity(SpawnRateData sRateData)
+    {
+        switch(sRateData.SpawnType)
+        {
+            case SpawnType.EQUALIZED:
+                return sRateData.Quantity / sDataTable.OrderedWaves.Count;
+            case SpawnType.RANDOMIZED:
+                int calculatedRate = sRateData.Quantity + UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance);
+                return Mathf.Clamp(calculatedRate, 0, sRateData.Quantity + sRateData.Variance);
+            case SpawnType.FLAT:
+            default:
+                return sRateData.Quantity;
+        }
     }
 
 }

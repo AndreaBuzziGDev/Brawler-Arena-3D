@@ -38,19 +38,19 @@ public class SpawnPoint : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    public void SpawnWave(List<SpawnData> spawnData)
+    public void SpawnWave(SpawnData spawnData)
     {
-        foreach(SpawnData sd in spawnData)
-        {
-            for(int i=0; i < sd.Quantity; i++)
-                SpawnEntity(sd.TargetPrefab);
-        }
+        for(int i=0; i < spawnData.Quantity; i++)
+            SpawnEntity(spawnData.TargetPrefab);
     }
 
     public void SpawnEntity(EntityWithHealth toSpawn)
     {
-        Vector3 spawnDistance = GetRandomSpawnVector();
-        Instantiate(toSpawn, transform.position + spawnDistance, Quaternion.identity);
+        Instantiate(
+            toSpawn, 
+            transform.position + GetRandomSpawnVector(), 
+            Quaternion.identity
+        );
     }
 
 
