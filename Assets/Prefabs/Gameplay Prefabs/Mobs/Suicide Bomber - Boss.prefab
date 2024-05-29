@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7945899802884322071, guid: c2bb076c475708541b136d9c7221515e, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 63a03b36d06ba39418c3fb779e2beb20, type: 2}
     - target: {fileID: -4653765177041597452, guid: c2bb076c475708541b136d9c7221515e, type: 3}
       propertyPath: m_Speed
       value: 7.5
@@ -72,6 +76,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3635100725466191994, guid: c2bb076c475708541b136d9c7221515e, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 07153fcf3164aec41bd8387a7eef8fe4, type: 2}
     - target: {fileID: 6351360075028454145, guid: c2bb076c475708541b136d9c7221515e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
