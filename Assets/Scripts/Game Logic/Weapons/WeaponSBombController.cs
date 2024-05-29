@@ -12,8 +12,13 @@ public class WeaponSBombController : WeaponController
         //      OR SIMPLY BY DOING A RAYCAST - MIGHT NEED MORE DATA FROM THE weaponData, WHICH MIGHT BE A DEDICATED CLASS
         if(weaponData)
         {
+            //TODO: UNIFY WEAPON OPERATE AUDIO MANAGEMENT
+
+            //DAMAGE DEALING 
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
             player.HandleHit(new DamageInstance(weaponData));
+            
+            //SELF-DESTRUCT
             if(owner) 
                 owner.HandleDeath();
         }

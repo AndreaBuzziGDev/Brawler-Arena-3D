@@ -11,7 +11,11 @@ public class WeaponRangedController : WeaponController
     
     //FUNCTIONALITIES
     //TODO: IS IT OVERKILL TO MAKE THIS PRIVATE AND EXECUTE THIS VIA EVENT?
-    public override void Operate(){
+    public override void Operate()
+    {
+        //UNBOUND AUDIO EMISSION
+        //TODO: MIGHT IMPROVE VIA DEFINING AUDIO EMITTER IN WeaponAudioData
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
 
         if(!projectile)
         {

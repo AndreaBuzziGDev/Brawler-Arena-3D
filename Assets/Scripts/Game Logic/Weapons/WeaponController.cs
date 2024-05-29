@@ -21,6 +21,8 @@ public abstract class WeaponController : MonoBehaviour
     
     //INSPECTOR REFERENCES
     [SerializeField] protected WeaponData weaponData;
+    [SerializeField] protected WeaponAudioData weaponAudioData;
+
 
 
     //DATA
