@@ -538,21 +538,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnController
       objectReference: {fileID: 0}
-    - target: {fileID: 3675147220617189018, guid: 03c1d22f3291fb147b49578e02c303e7, type: 3}
-      propertyPath: gameStartDelay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5710502588389666588, guid: 03c1d22f3291fb147b49578e02c303e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.7009068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5710502588389666588, guid: 03c1d22f3291fb147b49578e02c303e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -65.57764
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5710502588389666588, guid: 03c1d22f3291fb147b49578e02c303e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.3436418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5710502588389666588, guid: 03c1d22f3291fb147b49578e02c303e7, type: 3}
       propertyPath: m_LocalRotation.w
