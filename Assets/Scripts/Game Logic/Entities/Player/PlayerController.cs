@@ -72,7 +72,8 @@ public class PlayerController : EntityWithHealth
         inputPlayer.BaseActionMap.DirectionalMovement.canceled += ReleaseMovement;
         
         //ROTATION INPUT
-        inputPlayer.BaseActionMap.DirectionalRotation.performed += UseRotation;
+        inputPlayer.BaseActionMap.ControllerRotation.performed += UseControllerRotation;
+        inputPlayer.BaseActionMap.MouseRotation.performed += UseMouseRotation;
 
         //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
@@ -92,7 +93,8 @@ public class PlayerController : EntityWithHealth
         inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
 
         //ROTATION INPUT
-        inputPlayer.BaseActionMap.DirectionalRotation.performed -= UseRotation;
+        inputPlayer.BaseActionMap.ControllerRotation.performed -= UseControllerRotation;
+        inputPlayer.BaseActionMap.MouseRotation.performed -= UseMouseRotation;
         
         //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
@@ -121,18 +123,35 @@ public class PlayerController : EntityWithHealth
         movementDirection = Vector2.zero;
     }
 
-    void UseRotation(InputAction.CallbackContext value)
+    void UseControllerRotation(InputAction.CallbackContext value)
     {
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
         lastValueInput = value.ReadValue<Vector2>().normalized;
-        //Debug.Log("UseRotation - value: " + lastValueInput);
 
         //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = lastValueInput;
         weaponRanged.lastDirection2D = lastValueInput;
+    }
+
+    void UseMouseRotation(InputAction.CallbackContext value)
+    {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
+        lastValueInput = value.ReadValue<Vector2>().normalized;
+        Debug.Log("UseRotation - value: " + lastValueInput);
+
+        //TODO: IMPLEMENT A SOLUTION THAT LERPS VECTORS
+        
+        //TODO: USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
+        /*
+        dir.lastDirection2D = lastValueInput;
+        weaponRanged.lastDirection2D = lastValueInput;
+        */
         
         //TODO: MOUSE DIRECTION NEEDS TO BE IMPLEMENTED IN ANOTHER WAY
     }

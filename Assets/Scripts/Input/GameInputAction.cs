@@ -46,9 +46,18 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Directional Rotation"",
+                    ""name"": ""Controller Rotation"",
                     ""type"": ""Value"",
                     ""id"": ""c82ec101-d477-4450-885b-c71e6fbda3ac"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse Rotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""472d31a8-304d-4140-a34f-aa6e1527b160"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -216,68 +225,13 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Mouse Movement"",
-                    ""id"": ""67669c61-a287-438f-a3f1-e18014f34b2f"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Directional Rotation"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Up"",
-                    ""id"": ""3d3aa537-bd21-4923-9c3a-86d73ae99585"",
-                    ""path"": ""<Mouse>/delta/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Directional Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""id"": ""c6790505-e698-4b3a-9066-817e07f66c6e"",
-                    ""path"": ""<Mouse>/delta/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Directional Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Left"",
-                    ""id"": ""956586b1-5d3e-4561-ad61-7ed844b90184"",
-                    ""path"": ""<Mouse>/delta/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Directional Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Right"",
-                    ""id"": ""de674777-9f01-43b2-af9c-d1aa6fc1969c"",
-                    ""path"": ""<Mouse>/delta/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Directional Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""Controller Right Stick"",
                     ""id"": ""60d16948-0b3a-41db-a6b9-5f9304074fd0"",
                     ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Directional Rotation"",
+                    ""action"": ""Controller Rotation"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -288,7 +242,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Directional Rotation"",
+                    ""action"": ""Controller Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -299,7 +253,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Directional Rotation"",
+                    ""action"": ""Controller Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -310,7 +264,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Directional Rotation"",
+                    ""action"": ""Controller Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -321,7 +275,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Directional Rotation"",
+                    ""action"": ""Controller Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -390,6 +344,61 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Weapon Utility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Mouse Movement"",
+                    ""id"": ""973ef5db-0419-47be-9481-e986b8d00546"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Rotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""347a662e-052b-48a2-92cf-93c50a61af5a"",
+                    ""path"": ""<Mouse>/delta/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""2d41e3bd-80b7-445f-9105-4213f2fbcfc1"",
+                    ""path"": ""<Mouse>/delta/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""efddea78-cdee-4ac7-990e-2bde2a0ffc13"",
+                    ""path"": ""<Mouse>/delta/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""9b5ac971-ac1a-4f8f-8a16-d369f4782116"",
+                    ""path"": ""<Mouse>/delta/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -400,7 +409,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         m_BaseActionMap = asset.FindActionMap("Base Action Map", throwIfNotFound: true);
         m_BaseActionMap_Escape = m_BaseActionMap.FindAction("Escape", throwIfNotFound: true);
         m_BaseActionMap_DirectionalMovement = m_BaseActionMap.FindAction("Directional Movement", throwIfNotFound: true);
-        m_BaseActionMap_DirectionalRotation = m_BaseActionMap.FindAction("Directional Rotation", throwIfNotFound: true);
+        m_BaseActionMap_ControllerRotation = m_BaseActionMap.FindAction("Controller Rotation", throwIfNotFound: true);
+        m_BaseActionMap_MouseRotation = m_BaseActionMap.FindAction("Mouse Rotation", throwIfNotFound: true);
         m_BaseActionMap_WeaponRanged = m_BaseActionMap.FindAction("Weapon Ranged", throwIfNotFound: true);
         m_BaseActionMap_WeaponMelee = m_BaseActionMap.FindAction("Weapon Melee", throwIfNotFound: true);
         m_BaseActionMap_WeaponUtility = m_BaseActionMap.FindAction("Weapon Utility", throwIfNotFound: true);
@@ -467,7 +477,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     private List<IBaseActionMapActions> m_BaseActionMapActionsCallbackInterfaces = new List<IBaseActionMapActions>();
     private readonly InputAction m_BaseActionMap_Escape;
     private readonly InputAction m_BaseActionMap_DirectionalMovement;
-    private readonly InputAction m_BaseActionMap_DirectionalRotation;
+    private readonly InputAction m_BaseActionMap_ControllerRotation;
+    private readonly InputAction m_BaseActionMap_MouseRotation;
     private readonly InputAction m_BaseActionMap_WeaponRanged;
     private readonly InputAction m_BaseActionMap_WeaponMelee;
     private readonly InputAction m_BaseActionMap_WeaponUtility;
@@ -477,7 +488,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         public BaseActionMapActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_BaseActionMap_Escape;
         public InputAction @DirectionalMovement => m_Wrapper.m_BaseActionMap_DirectionalMovement;
-        public InputAction @DirectionalRotation => m_Wrapper.m_BaseActionMap_DirectionalRotation;
+        public InputAction @ControllerRotation => m_Wrapper.m_BaseActionMap_ControllerRotation;
+        public InputAction @MouseRotation => m_Wrapper.m_BaseActionMap_MouseRotation;
         public InputAction @WeaponRanged => m_Wrapper.m_BaseActionMap_WeaponRanged;
         public InputAction @WeaponMelee => m_Wrapper.m_BaseActionMap_WeaponMelee;
         public InputAction @WeaponUtility => m_Wrapper.m_BaseActionMap_WeaponUtility;
@@ -496,9 +508,12 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @DirectionalMovement.started += instance.OnDirectionalMovement;
             @DirectionalMovement.performed += instance.OnDirectionalMovement;
             @DirectionalMovement.canceled += instance.OnDirectionalMovement;
-            @DirectionalRotation.started += instance.OnDirectionalRotation;
-            @DirectionalRotation.performed += instance.OnDirectionalRotation;
-            @DirectionalRotation.canceled += instance.OnDirectionalRotation;
+            @ControllerRotation.started += instance.OnControllerRotation;
+            @ControllerRotation.performed += instance.OnControllerRotation;
+            @ControllerRotation.canceled += instance.OnControllerRotation;
+            @MouseRotation.started += instance.OnMouseRotation;
+            @MouseRotation.performed += instance.OnMouseRotation;
+            @MouseRotation.canceled += instance.OnMouseRotation;
             @WeaponRanged.started += instance.OnWeaponRanged;
             @WeaponRanged.performed += instance.OnWeaponRanged;
             @WeaponRanged.canceled += instance.OnWeaponRanged;
@@ -518,9 +533,12 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @DirectionalMovement.started -= instance.OnDirectionalMovement;
             @DirectionalMovement.performed -= instance.OnDirectionalMovement;
             @DirectionalMovement.canceled -= instance.OnDirectionalMovement;
-            @DirectionalRotation.started -= instance.OnDirectionalRotation;
-            @DirectionalRotation.performed -= instance.OnDirectionalRotation;
-            @DirectionalRotation.canceled -= instance.OnDirectionalRotation;
+            @ControllerRotation.started -= instance.OnControllerRotation;
+            @ControllerRotation.performed -= instance.OnControllerRotation;
+            @ControllerRotation.canceled -= instance.OnControllerRotation;
+            @MouseRotation.started -= instance.OnMouseRotation;
+            @MouseRotation.performed -= instance.OnMouseRotation;
+            @MouseRotation.canceled -= instance.OnMouseRotation;
             @WeaponRanged.started -= instance.OnWeaponRanged;
             @WeaponRanged.performed -= instance.OnWeaponRanged;
             @WeaponRanged.canceled -= instance.OnWeaponRanged;
@@ -551,7 +569,8 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     {
         void OnEscape(InputAction.CallbackContext context);
         void OnDirectionalMovement(InputAction.CallbackContext context);
-        void OnDirectionalRotation(InputAction.CallbackContext context);
+        void OnControllerRotation(InputAction.CallbackContext context);
+        void OnMouseRotation(InputAction.CallbackContext context);
         void OnWeaponRanged(InputAction.CallbackContext context);
         void OnWeaponMelee(InputAction.CallbackContext context);
         void OnWeaponUtility(InputAction.CallbackContext context);
