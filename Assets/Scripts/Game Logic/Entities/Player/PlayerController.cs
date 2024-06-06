@@ -136,6 +136,7 @@ public class PlayerController : EntityWithHealth
         weaponRanged.lastDirection2D = lastValueInput;
     }
 
+    Vector2 testDirection = Vector2.up;
     void UseMouseRotation(InputAction.CallbackContext value)
     {
         //CONDITION
@@ -143,15 +144,16 @@ public class PlayerController : EntityWithHealth
             return;
         
         lastValueInput = value.ReadValue<Vector2>().normalized;
-        Debug.Log("UseRotation - value: " + lastValueInput);
-
-        //TODO: IMPLEMENT A SOLUTION THAT LERPS VECTORS
+        //Debug.Log("UseRotation - value: " + lastValueInput);
         
+        //NOT GOOD IMPLEMENTATION YET: BLOCKY AND BUGGY
+        testDirection += lastValueInput;
+        testDirection = testDirection.normalized;
+        Debug.Log("testDirection - value: " + testDirection);
         //TODO: USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
-        /*
-        dir.lastDirection2D = lastValueInput;
-        weaponRanged.lastDirection2D = lastValueInput;
-        */
+        dir.lastDirection2D = testDirection;
+        weaponRanged.lastDirection2D = testDirection;
+        
         
         //TODO: MOUSE DIRECTION NEEDS TO BE IMPLEMENTED IN ANOTHER WAY
     }
