@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9fa9e5d46872c4e883f585fc801770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disabledSpawn: 1
+  disabledSpawn: 0
   waveManualOverride: 0
   gameStartDelay: 1
   sDataTable: {fileID: 11400000, guid: 032174cf0556a1a42b9ddf9894b35e55, type: 2}
