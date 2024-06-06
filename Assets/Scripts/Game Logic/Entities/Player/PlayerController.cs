@@ -135,27 +135,27 @@ public class PlayerController : EntityWithHealth
         dir.lastDirection2D = lastValueInput;
         weaponRanged.lastDirection2D = lastValueInput;
     }
-
+    
+    //TODO: MOVE APPROPRIATELY
     Vector2 testDirection = Vector2.up;
+    float lerpSpeedMouse = 0.1f;
+
+
+    //TODO: SHOULD BE UNIFIED WITH UseControllerRotation
     void UseMouseRotation(InputAction.CallbackContext value)
     {
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
-        lastValueInput = value.ReadValue<Vector2>().normalized;
-        //Debug.Log("UseRotation - value: " + lastValueInput);
-        
-        //NOT GOOD IMPLEMENTATION YET: BLOCKY AND BUGGY
-        testDirection += lastValueInput;
-        testDirection = testDirection.normalized;
-        Debug.Log("testDirection - value: " + testDirection);
-        //TODO: USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
+        Vector3 mousePos = Input.mousePosition;
+        Vector2 mousePos2D = new(mousePos.x, mousePos.y);
+        Debug.Log("Mouse Pos: " + mousePos2D);
+        testDirection = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
+
+        //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = testDirection;
         weaponRanged.lastDirection2D = testDirection;
-        
-        
-        //TODO: MOUSE DIRECTION NEEDS TO BE IMPLEMENTED IN ANOTHER WAY
     }
 
 
