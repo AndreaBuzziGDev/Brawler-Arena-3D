@@ -15,6 +15,7 @@ public class SpawnController : MonoBehaviour
 
 
     //DATA
+    [SerializeField] bool disabledSpawn = false;
     List<SpawnPoint> spawnPoints = new();
     Dictionary<int, SpawnPoint> spDictionary = new();
 
@@ -53,7 +54,7 @@ public class SpawnController : MonoBehaviour
     void Update()
     {
         //...
-        if(GameController.Instance.IsPlaying)
+        if(GameController.Instance.IsPlaying && !disabledSpawn)
             HandleTimer();
 
     }
