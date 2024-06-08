@@ -26,7 +26,9 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //DATA
-    protected IAimingCapable owner;
+    //TODO: ADDRESS AND POSSIBLY SOLVE THIS
+    protected IAimingCapable ownerAiming;
+    protected EntityWithHealth ownerEntity;
 
 
     
@@ -35,10 +37,11 @@ public abstract class WeaponController : MonoBehaviour
     void Start()
     {
         //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
-        owner = GetComponent<IAimingCapable>();
+        ownerAiming = GetComponent<IAimingCapable>();
+        ownerEntity = GetComponent<EntityWithHealth>();
         if(weaponData == null)
             Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
-        else if((owner == null) && weaponData.NeedsOwnerToOperate)
+        else if((ownerEntity == null) && weaponData.NeedsOwnerToOperate)//TODO: DIFFERENTIATE BETWEEN AIMING AND ENTITY
             Debug.LogError("This Weapon doesn't have holder: " + gameObject.name);
     }
 

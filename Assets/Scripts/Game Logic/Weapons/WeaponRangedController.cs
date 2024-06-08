@@ -41,5 +41,5 @@ public class WeaponRangedController : WeaponController
     
     //UTILITIES
     //TODO: CAN CALL TO AimingDirection() BE OPTIMIZED?
-    public Vector3 ShootingDirection() => new Vector3(owner.AimingDirection().x, 0, owner.AimingDirection().y).normalized;
+    public Vector3 ShootingDirection() => new Vector3(ownerAiming.AimingDirection().x, 0, ownerAiming.AimingDirection().y).normalized;
 }

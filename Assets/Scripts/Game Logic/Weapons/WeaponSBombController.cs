@@ -20,8 +20,8 @@ public class WeaponSBombController : WeaponController
             player.HandleHit(new DamageInstance(weaponData));
             
             //SELF-DESTRUCT
-            if(owner) 
-                owner.HandleDeath();
+            if(ownerEntity) 
+                ownerEntity.HandleDeath();
         }
     }
 }
