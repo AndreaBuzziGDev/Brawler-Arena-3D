@@ -136,11 +136,6 @@ public class PlayerController : EntityWithHealth
         weaponRanged.lastDirection2D = lastValueInput;
     }
     
-    //TODO: MOVE APPROPRIATELY
-    Vector2 testDirection = Vector2.up;
-    float lerpSpeedMouse = 0.1f;
-
-
     //TODO: SHOULD BE UNIFIED WITH UseControllerRotation
     void UseMouseRotation(InputAction.CallbackContext value)
     {
@@ -151,11 +146,11 @@ public class PlayerController : EntityWithHealth
         Vector3 mousePos = Input.mousePosition;
         Vector2 mousePos2D = new(mousePos.x, mousePos.y);
         Debug.Log("Mouse Pos: " + mousePos2D);
-        testDirection = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
+        lastValueInput = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
 
         //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
-        dir.lastDirection2D = testDirection;
-        weaponRanged.lastDirection2D = testDirection;
+        dir.lastDirection2D = lastValueInput;
+        weaponRanged.lastDirection2D = lastValueInput;
     }
 
 
