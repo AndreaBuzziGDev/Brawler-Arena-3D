@@ -27,6 +27,7 @@ public abstract class WeaponController : MonoBehaviour
 
     //DATA
     //TODO: ADDRESS AND POSSIBLY SOLVE THIS
+    //TODO: RE-LINK PREFABS
     protected IAimingCapable ownerAiming;
     protected EntityWithHealth ownerEntity;
 
