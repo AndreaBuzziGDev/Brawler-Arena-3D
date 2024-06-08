@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d569ba9c8800af2448026cdba96ea62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1081987661556132137}
   sprite: {fileID: 8112895616197215247}
-  lastDirection2D: {x: 0, y: 1}
 --- !u!1 &6907586155588128813
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,27 +335,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
-      propertyPath: weaponAudioData
+      propertyPath: player
       value: 
-      objectReference: {fileID: 11400000, guid: ac58cc8350717f948983fb60589e874d, type: 2}
+      objectReference: {fileID: 1081987661556132137}
     - target: {fileID: 1703159227308830914, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: m_Name
       value: Player Ranged Weapon
       objectReference: {fileID: 0}
-    - target: {fileID: 1703159227308830914, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860960969893733084, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 995540219590673333, guid: 60a246e4391982f41b69330843e0ae83, type: 3}
-    - target: {fileID: 7860960969893733084, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
-      propertyPath: testWeaponData
-      value: 
-      objectReference: {fileID: 11400000, guid: eca230e0adafa1b4b9587d722113f973, type: 2}
-    m_RemovedComponents:
-    - {fileID: 7860960969893733084, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
