@@ -131,7 +131,7 @@ public class PlayerController : EntityWithHealth
         
         lastValueInput = value.ReadValue<Vector2>().normalized;
 
-        //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
+        //TODO: REFACTOR - USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = lastValueInput;
         weaponRanged.lastDirection2D = lastValueInput;
     }
@@ -145,10 +145,9 @@ public class PlayerController : EntityWithHealth
         
         Vector3 mousePos = Input.mousePosition;
         Vector2 mousePos2D = new(mousePos.x, mousePos.y);
-        Debug.Log("Mouse Pos: " + mousePos2D);
         lastValueInput = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
 
-        //USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
+        //TODO: REFACTOR - USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
         dir.lastDirection2D = lastValueInput;
         weaponRanged.lastDirection2D = lastValueInput;
     }
@@ -185,7 +184,6 @@ public class PlayerController : EntityWithHealth
 
     void UseEscape(InputAction.CallbackContext value)
     {
-        Debug.Log("Is Game Over: " + GameController.Instance.IsGameOver);
         if(!GameController.Instance.IsGameOver)
         {
             if(GameController.Instance.IsPaused)
@@ -209,6 +207,7 @@ public class PlayerController : EntityWithHealth
     }
 
     
+    //TODO: THIS SHOULD BE MOVED WHERE IT'S APPROPRIATE
     public override void HandleDeath()
     {
         GameController.Instance.SetState(GameController.EGameState.GameOver);
@@ -222,5 +221,9 @@ public class PlayerController : EntityWithHealth
         //DESTROY
         Destroy(this.gameObject);
     }
+
+
+    //UTILITIES
+    //...
 
 }
