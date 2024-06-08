@@ -20,14 +20,16 @@ public abstract class WeaponController : MonoBehaviour
     */
     
     //INSPECTOR REFERENCES
+    [SerializeField] PlayerController player;//TODO: SHOULD TARGET AN INTERFACE INSTEAD
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected WeaponAudioData weaponAudioData;
 
 
 
     //DATA
-    public Vector2 lastDirection2D = Vector2.up;//TODO: SOLVE THE ISSUE WITH DIRECTION PROPAGATION
+    public Vector2 aimingDirection = Vector2.up;//TODO: SOLVE THE ISSUE WITH DIRECTION PROPAGATION
     protected EntityWithHealth owner;//TODO: EVOLVE THIS FEATURE, IT'S NOT ENOUGH POLISHED YET
+    //TODO: ONCE THE INTERFACE REFERENCE TO THE AIMER IS REFACTORED, REFACTOR THIS TOO
 
 
     
@@ -47,7 +49,10 @@ public abstract class WeaponController : MonoBehaviour
     void Update()
     {
         //TODO: HANDLE COOLDOWN AND OTHER STUFF?
-
+        //TODO: HANDLE AIMING DIRECTION IMPROVEMENTS
+        //TODO: UPDATE THIS WHEN THE INTERFACE THING HAS BEEN IMPLEMENTED
+        if(player != null)
+            aimingDirection = player.AimingDirection;
     }
 
 

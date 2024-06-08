@@ -24,6 +24,12 @@ public class PlayerController : EntityWithHealth
 
     //DATA
     Vector2 movementDirection;
+    Vector2 aimingDirection;
+    public Vector2 AimingDirection { get { return aimingDirection; } }
+
+
+
+
 
     //LIFECYCLE FUNCTIONS
     protected override void Start()
@@ -123,20 +129,16 @@ public class PlayerController : EntityWithHealth
         movementDirection = Vector2.zero;
     }
 
+
     void UseControllerRotation(InputAction.CallbackContext value)
     {
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
-        lastValueInput = value.ReadValue<Vector2>().normalized;
-
-        //TODO: REFACTOR - USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
-        dir.lastDirection2D = lastValueInput;
-        weaponRanged.lastDirection2D = lastValueInput;
+        aimingDirection = value.ReadValue<Vector2>().normalized;
     }
     
-    //TODO: SHOULD BE UNIFIED WITH UseControllerRotation
     void UseMouseRotation(InputAction.CallbackContext value)
     {
         //CONDITION
@@ -145,11 +147,7 @@ public class PlayerController : EntityWithHealth
         
         Vector3 mousePos = Input.mousePosition;
         Vector2 mousePos2D = new(mousePos.x, mousePos.y);
-        lastValueInput = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
-
-        //TODO: REFACTOR - USING CHILD OBJECTS TO MAKE DIRECTION VISIBLE
-        dir.lastDirection2D = lastValueInput;
-        weaponRanged.lastDirection2D = lastValueInput;
+        aimingDirection = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
     }
 
 
@@ -195,15 +193,11 @@ public class PlayerController : EntityWithHealth
 
 
     //GIZMOS
-    Vector2 lastValueInput;
-    float lastValueMouse;
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueInput.x, 0, lastValueInput.y) * 5);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(Vector3.zero, new Vector3(lastValueMouse, 0, 0) * 5);
+        Gizmos.DrawLine(Vector3.zero, new Vector3(aimingDirection.x, 0, aimingDirection.y) * 5);
     }
 
     

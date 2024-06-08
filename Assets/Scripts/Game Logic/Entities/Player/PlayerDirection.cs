@@ -6,13 +6,11 @@ using UnityEngine;
 public class PlayerDirection : MonoBehaviour
 {
     //INSPECTOR REFERENCES
+    [SerializeField] PlayerController player;
     [SerializeField] SpriteRenderer sprite;
 
     //DATA
-    //TODO: ONCE ARCHITECTURE HAS BEEN IMPROVED, CHANGE VISIBILITY AND ORGANIZATION OF THESE DATA
-    public Vector2 lastDirection2D = Vector2.up;
-
-
+    //...
 
 
 
@@ -39,7 +37,8 @@ public class PlayerDirection : MonoBehaviour
         //lastDirection
         //TODO: CAN THIS BE OPTIMIZED?
         //YES, BY GETTING EULERS (WHICH ALSO FIT WHAT CRISTIANO DID DURING LESSONS) AND USING TRANSFORM.ROTATE(VECTOR 3 OF EULERS)
-        Vector3 newDirection = this.transform.position + new Vector3(lastDirection2D.x, 0, lastDirection2D.y);
+        Vector2 aimedDirection = player.AimingDirection;
+        Vector3 newDirection = this.transform.position + new Vector3(aimedDirection.x, 0, aimedDirection.y);
         transform.LookAt(newDirection);
     }
 

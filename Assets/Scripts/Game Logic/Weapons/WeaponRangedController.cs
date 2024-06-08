@@ -41,5 +41,5 @@ public class WeaponRangedController : WeaponController
     
     //UTILITIES
     //TODO: SOLVE ISSUE WITH 
-    public Vector3 ShootingDirection() => new Vector3(lastDirection2D.x, 0, lastDirection2D.y).normalized;
+    public Vector3 ShootingDirection() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
 }
