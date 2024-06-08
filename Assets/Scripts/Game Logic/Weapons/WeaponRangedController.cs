@@ -40,6 +40,6 @@ public class WeaponRangedController : WeaponController
     }
     
     //UTILITIES
-    //TODO: SOLVE ISSUE WITH 
-    public Vector3 ShootingDirection() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
+    //TODO: CAN CALL TO AimingDirection() BE OPTIMIZED?
+    public Vector3 ShootingDirection() => new Vector3(owner.AimingDirection().x, 0, owner.AimingDirection().y).normalized;
 }

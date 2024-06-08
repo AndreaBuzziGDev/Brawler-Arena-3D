@@ -7,7 +7,7 @@ using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 //TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
-public class PlayerController : EntityWithHealth
+public class PlayerController : EntityWithHealth, IAimingCapable
 {
     //INSPECTOR REFERENCES
     //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
@@ -25,7 +25,6 @@ public class PlayerController : EntityWithHealth
     //DATA
     Vector2 movementDirection;
     Vector2 aimingDirection;
-    public Vector2 AimingDirection { get { return aimingDirection; } }
 
 
 
@@ -190,6 +189,13 @@ public class PlayerController : EntityWithHealth
                 GameController.Instance.SetState(GameController.EGameState.Paused);
         }
     }
+
+
+
+    //IAimingCapable IMPLEMENTATION
+    public Vector2 AimingDirection() => aimingDirection;
+    public void SetAimTarget() => Debug.LogError("No player aiming implemented.");
+
 
 
     //GIZMOS

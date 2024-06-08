@@ -5,10 +5,11 @@ using UnityEngine;
 
 //TODO: MIGHT NEED FURTHER RAMIFICATION WITH SEVERAL LEVELS OF ABSTRACTION TO HANDLE DIFFERENT WEAPON TYPES
 //TODO: THIS IS MEANT AS SUICIDE BOMBER ENEMY
-public class EnemyController : EntityWithHealth
+public class EnemyController : EntityWithHealth, IAimingCapable
 {
     //DATA
     [SerializeField] WeaponController enemyWeapon;
+    Vector2 aimingDirection;
 
 
     //ON COLLISION
@@ -33,6 +34,10 @@ public class EnemyController : EntityWithHealth
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB, audioData.DeathClip));
         Destroy(gameObject);
     }
-    
 
+
+
+    //IAimingCapable IMPLEMENTATION
+    public Vector2 AimingDirection() => aimingDirection;
+    public void SetAimTarget() => Debug.LogError("No enemy aiming implemented yet.");//TODO: EVENTUALLY IMPLEMENT WHEN ENEMIES ARE NEEDED TO AIM
 }
