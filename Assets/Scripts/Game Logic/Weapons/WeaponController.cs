@@ -27,7 +27,7 @@ public abstract class WeaponController : MonoBehaviour
 
     //DATA
     //TODO: RE-LINK PREFABS
-    protected EntityWithHealth ownerEntity;
+    [SerializeField] protected EntityWithHealth ownerEntity;
 
 
     
@@ -35,7 +35,6 @@ public abstract class WeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ownerEntity = GetComponent<EntityWithHealth>();
         if(weaponData == null)
             Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
         else if((ownerEntity == null) && weaponData.NeedsOwnerToOperate)

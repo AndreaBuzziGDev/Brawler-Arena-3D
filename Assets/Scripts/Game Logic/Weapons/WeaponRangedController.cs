@@ -38,5 +38,5 @@ public class WeaponRangedController : WeaponController
         );
         pInstance.ProjectileData = new WeaponProjectileData(weaponData, pDirection);
     }
-    
+
 }

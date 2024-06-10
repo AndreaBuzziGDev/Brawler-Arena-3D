@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1081987661556132137}
+    - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
+      propertyPath: ownerEntity
+      value: 
+      objectReference: {fileID: 1081987661556132137}
     - target: {fileID: 1703159227308830914, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: m_Name
       value: Player Ranged Weapon
