@@ -25,9 +25,12 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable, IAimingCapabl
     float shieldCooldownTimer = 0;
     float maxShieldCooldownTimer = 1;
     float shieldRechargeRate = 1;
-    
+
     //SPEED
     protected float movementSpeed = 1;//TODO: THIS HAS BECOME UNNECESSARY, CODE SHOULD BE REFACTORED
+
+    //AIMING
+    protected Vector2 aimingDirection;
 
 
     //DATA-RELATED FUNCTIONS

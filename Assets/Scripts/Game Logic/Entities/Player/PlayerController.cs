@@ -24,7 +24,6 @@ public class PlayerController : EntityWithHealth
 
     //DATA
     Vector2 movementDirection;
-    Vector2 aimingDirection;
 
 
 

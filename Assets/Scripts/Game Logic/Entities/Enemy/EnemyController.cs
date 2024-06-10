@@ -9,7 +9,6 @@ public class EnemyController : EntityWithHealth
 {
     //DATA
     [SerializeField] WeaponController enemyWeapon;
-    Vector2 aimingDirection;
 
 
     //ON COLLISION
