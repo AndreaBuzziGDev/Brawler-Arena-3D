@@ -34,10 +34,4 @@ public class EnemyController : EntityWithHealth
         Destroy(gameObject);
     }
 
-
-
-    //IAimingCapable IMPLEMENTATION
-    public override Vector2 AimingDirection() => aimingDirection;
-    public override Vector3 AimingDirection3D() => new(aimingDirection.x, 0, aimingDirection.y);
-    public override void SetAimTarget() => Debug.LogError("No enemy aiming implemented yet.");//TODO: EVENTUALLY IMPLEMENT WHEN ENEMIES ARE NEEDED TO AIM
 }
