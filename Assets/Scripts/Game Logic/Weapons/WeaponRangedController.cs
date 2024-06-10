@@ -25,7 +25,7 @@ public class WeaponRangedController : WeaponController
         
         //SPAWN PREFAB
         //TODO: IMPROVE/FIX PROJECTILE SHOOTING BY FOLLOWING GUIDE
-        Vector3 pDirection = ShootingDirection();
+        Vector3 pDirection = ownerEntity.AimingDirection3D();
         /*
         Debug.Log("Value 1: " + Quaternion.Euler(ShootingDirection()));
         Debug.Log("Value 2: " + projectile.transform.rotation);
@@ -39,6 +39,4 @@ public class WeaponRangedController : WeaponController
         pInstance.ProjectileData = new WeaponProjectileData(weaponData, pDirection);
     }
     
-    //UTILITIES
-    public Vector3 ShootingDirection() => ownerEntity.AimingDirection3D();
 }
