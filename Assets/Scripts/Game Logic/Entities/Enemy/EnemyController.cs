@@ -5,7 +5,7 @@ using UnityEngine;
 
 //TODO: MIGHT NEED FURTHER RAMIFICATION WITH SEVERAL LEVELS OF ABSTRACTION TO HANDLE DIFFERENT WEAPON TYPES
 //TODO: THIS IS MEANT AS SUICIDE BOMBER ENEMY
-public class EnemyController : EntityWithHealth, IAimingCapable
+public class EnemyController : EntityWithHealth
 {
     //DATA
     [SerializeField] WeaponController enemyWeapon;
@@ -38,6 +38,6 @@ public class EnemyController : EntityWithHealth, IAimingCapable
 
 
     //IAimingCapable IMPLEMENTATION
-    public Vector2 AimingDirection() => aimingDirection;
-    public void SetAimTarget() => Debug.LogError("No enemy aiming implemented yet.");//TODO: EVENTUALLY IMPLEMENT WHEN ENEMIES ARE NEEDED TO AIM
+    public override Vector2 AimingDirection() => aimingDirection;
+    public override void SetAimTarget() => Debug.LogError("No enemy aiming implemented yet.");//TODO: EVENTUALLY IMPLEMENT WHEN ENEMIES ARE NEEDED TO AIM
 }

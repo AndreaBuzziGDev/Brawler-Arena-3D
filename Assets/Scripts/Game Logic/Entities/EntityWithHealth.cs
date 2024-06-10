@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityWithHealth : MonoBehaviour, IHittable
+public abstract class EntityWithHealth : MonoBehaviour, IHittable, IAimingCapable
 {
     //SCRIPTABLE OBJECTS
     //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
@@ -84,6 +84,12 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     }
 
     public abstract void HandleDeath();
+
+
+
+    //IAimingCapable IMPLEMENTATION
+    public abstract Vector2 AimingDirection();
+    public abstract void SetAimTarget();
 
 
 
