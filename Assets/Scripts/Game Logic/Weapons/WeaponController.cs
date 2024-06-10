@@ -26,9 +26,7 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //DATA
-    //TODO: ADDRESS AND POSSIBLY SOLVE THIS
     //TODO: RE-LINK PREFABS
-    protected IAimingCapable ownerAiming;
     protected EntityWithHealth ownerEntity;
 
 
@@ -38,7 +36,6 @@ public abstract class WeaponController : MonoBehaviour
     void Start()
     {
         //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
-        ownerAiming = GetComponent<IAimingCapable>();
         ownerEntity = GetComponent<EntityWithHealth>();
         if(weaponData == null)
             Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);

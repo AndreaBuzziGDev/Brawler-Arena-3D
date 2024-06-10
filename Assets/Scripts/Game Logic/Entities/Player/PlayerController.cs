@@ -194,6 +194,7 @@ public class PlayerController : EntityWithHealth
 
     //IAimingCapable IMPLEMENTATION
     public override Vector2 AimingDirection() => aimingDirection;
+    public override Vector3 AimingDirection3D() => new(aimingDirection.x, 0, aimingDirection.y);
     public override void SetAimTarget() => Debug.LogError("No player aiming implemented.");
 
 

@@ -89,6 +89,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable, IAimingCapabl
 
     //IAimingCapable IMPLEMENTATION
     public abstract Vector2 AimingDirection();
+    public abstract Vector3 AimingDirection3D();
     public abstract void SetAimTarget();
 
 
