@@ -5,10 +5,9 @@ using UnityEngine;
 public class WeaponRangedController : WeaponController
 {
     //INSPECTOR REFERENCES
-    //TODO: ENFORCE "wType" AS PROJECTILE/RANGED?
-
     [SerializeField] WeaponProjectile projectile;
-    
+
+
     //FUNCTIONALITIES
     //TODO: IS IT OVERKILL TO MAKE THIS PRIVATE AND EXECUTE THIS VIA EVENT?
     public override void Operate()
