@@ -13,9 +13,9 @@ public class WeaponRangedController : WeaponController
     //TODO: IS IT OVERKILL TO MAKE THIS PRIVATE AND EXECUTE THIS VIA EVENT?
     public override void Operate()
     {
+        base.Operate();
+
         //UNBOUND AUDIO EMISSION
-        //TODO: MIGHT IMPROVE VIA DEFINING AUDIO EMITTER IN WeaponAudioData
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
 
         if(!projectile)
         {
@@ -26,11 +26,6 @@ public class WeaponRangedController : WeaponController
         //SPAWN PREFAB
         //TODO: IMPROVE/FIX PROJECTILE SHOOTING BY FOLLOWING GUIDE
         Vector3 pDirection = ownerEntity.AimingDirection3D();
-        /*
-        Debug.Log("Value 1: " + Quaternion.Euler(ShootingDirection()));
-        Debug.Log("Value 2: " + projectile.transform.rotation);
-        */
-
         WeaponProjectile pInstance = Instantiate(
             projectile, 
             transform.position,

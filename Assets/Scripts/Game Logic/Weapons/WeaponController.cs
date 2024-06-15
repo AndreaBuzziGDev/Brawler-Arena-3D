@@ -51,5 +51,12 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    public abstract void Operate();
+    public virtual void Operate()
+    {
+        if(weaponAudioData)
+        {
+            //UNBOUND AUDIO EMISSION
+            EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
+        }
+    }
 }
