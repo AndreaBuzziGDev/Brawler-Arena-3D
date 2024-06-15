@@ -5,19 +5,6 @@ using UnityEngine;
 public abstract class WeaponController : MonoBehaviour
 {
     //ENUMS
-    //TODO: THIS IS FUNDAMENTALLY USELESS UNTIL IMPLEMENTED TO HAVE SOME CONSEQUENCES ON GAMEPLAY
-    /*
-    //TODO: RENAME ENUM
-    public enum WeaponType
-    {
-        Projectile,//TODO: RENAME RANGED
-        Melee,
-        SuicideBomb
-    }
-
-    //INSPECTOR REFERENCES
-    [SerializeField] WeaponType wType = WeaponType.Projectile;
-    */
     
     //INSPECTOR REFERENCES
     [SerializeField] protected WeaponData weaponData;
@@ -26,7 +13,6 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //DATA
-    //TODO: RE-LINK PREFABS
     [SerializeField] protected EntityWithHealth ownerEntity;
 
 
