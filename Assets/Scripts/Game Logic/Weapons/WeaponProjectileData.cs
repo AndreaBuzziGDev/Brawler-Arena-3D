@@ -26,7 +26,7 @@ public class WeaponProjectileData
 
 
     //CONSTRUCTOR
-    public WeaponProjectileData(WeaponData wData, Vector3 pDirection)
+    public WeaponProjectileData(WeaponRangedData wData, Vector3 pDirection)
     {
         this.dInstance = new DamageInstance(wData);
         this.maxLifetime = wData.MaxLifetime;

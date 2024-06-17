@@ -38,7 +38,7 @@ public class WeaponRangedController : WeaponController
         );
 
         //TODO: IMPROVE VISIBILITY ISSUES WITH PROJECTILE DATA
-        pInstance.ProjectileData = new WeaponProjectileData(WData, pDirection);
+        pInstance.ProjectileData = new WeaponProjectileData((WeaponRangedData) WData, pDirection);
     }
 
 }
