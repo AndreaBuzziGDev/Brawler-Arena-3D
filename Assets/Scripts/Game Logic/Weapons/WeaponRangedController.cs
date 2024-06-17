@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class WeaponRangedController : WeaponController
 {
+
     //INSPECTOR REFERENCES
     [SerializeField] WeaponProjectile projectile;
+    [SerializeField] protected WeaponRangedData wData;
+
+
+    //DATA GETTER
+    override protected WeaponData WData { get { return wData; } }
 
 
     //FUNCTIONALITIES
@@ -30,7 +36,9 @@ public class WeaponRangedController : WeaponController
             transform.position,
             projectile.transform.rotation
         );
-        pInstance.ProjectileData = new WeaponProjectileData(weaponData, pDirection);
+
+        //TODO: IMPROVE VISIBILITY ISSUES WITH PROJECTILE DATA
+        pInstance.ProjectileData = new WeaponProjectileData(WData, pDirection);
     }
 
 }

@@ -4,26 +4,22 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    //ENUMS
-    
     //INSPECTOR REFERENCES
-    [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected WeaponAudioData weaponAudioData;
-
-
-
-    //DATA
     [SerializeField] protected EntityWithHealth ownerEntity;
 
+
+    //DATA GETTER
+    abstract protected WeaponData WData { get; }
 
     
     //LIFECYCLE FUNCTIONS
     // Start is called before the first frame update
     void Start()
     {
-        if(weaponData == null)
+        if(WData == null)
             Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
-        else if((ownerEntity == null) && weaponData.NeedsOwnerToOperate)
+        else if((ownerEntity == null) && WData.NeedsOwnerToOperate)
             Debug.LogError("This Weapon doesn't have holder: " + gameObject.name);
         //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
     }
@@ -36,6 +32,7 @@ public abstract class WeaponController : MonoBehaviour
     }
 
 
+
     //FUNCTIONALITIES
     public virtual void Operate()
     {
@@ -45,4 +42,5 @@ public abstract class WeaponController : MonoBehaviour
             EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
         }
     }
+
 }

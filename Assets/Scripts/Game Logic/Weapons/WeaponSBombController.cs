@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class WeaponSBombController : WeaponController
 {
+    //INSPECTOR REFERENCES
+    [SerializeField] protected WeaponSBombData wData;
+
+
+    //DATA GETTER
+    override protected WeaponData WData { get { return wData; } }
+
+
+    //FUNCTIONALITIES
     public override void Operate(){
         base.Operate();
 
@@ -12,11 +21,11 @@ public class WeaponSBombController : WeaponController
         //      FOR THE TIME BEING THE SOLUTION IS INSTANT DELIVERY OF DAMAGE
         //      COULD EFFECTIVELY WORK WITH AN EVENT-BASED DAMAGE DELIVERY
         //      OR SIMPLY BY DOING A RAYCAST - MIGHT NEED MORE DATA FROM THE weaponData, WHICH MIGHT BE A DEDICATED CLASS
-        if(weaponData)
+        if(WData)
         {
             //DAMAGE DEALING 
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
-            player.HandleHit(new DamageInstance(weaponData));
+            player.HandleHit(new DamageInstance(WData));
             
             //SELF-DESTRUCT
             if(ownerEntity) 
