@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72a73f1bff9fcd42bb0a56d10064153, type: 3}
+  m_Script: {fileID: 11500000, guid: 0847f50078fa8f147a36baaf2b17fff2, type: 3}
   m_Name: Suicide Bomb - Strong Data
   m_EditorClassIdentifier: 
   damageAmount: 5
-  projectileSpeed: 1
-  maxLifetime: 10
   needsOwnerToOperate: 1
+  hasFriendlyFire: 1
+  effectiveRadius: 10
