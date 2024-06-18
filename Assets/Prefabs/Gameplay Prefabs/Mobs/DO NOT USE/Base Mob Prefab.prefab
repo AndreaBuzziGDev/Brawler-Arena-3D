@@ -198,6 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaa313061ee5b046837fbca8618f60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
   weaponAudioData: {fileID: 11400000, guid: 12cd01e6bd219e34cbd1a0d8e0050ea6, type: 2}
   ownerEntity: {fileID: -7945899802884322071}
+  wData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}

@@ -335,6 +335,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
+      propertyPath: wData
+      value: 
+      objectReference: {fileID: 11400000, guid: 564399f29587d6e45b1378587275eded, type: 2}
+    - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1081987661556132137}
