@@ -15,20 +15,35 @@ public class WeaponSBombController : WeaponController
     //FUNCTIONALITIES
     public override void Operate(){
         base.Operate();
-
-        //TODO: CHANGE THE IMPLEMENTATION - FOR NOW IT SIMPLY INFLICS DAMAGE TO THE PLAYER
-        //      SHOULD PROBABLY TRY TO INFLICT DAMAGE TO HITTABLES WITHIN A CERTAIN RADIUS
-        //      FOR THE TIME BEING THE SOLUTION IS INSTANT DELIVERY OF DAMAGE
-        //      COULD EFFECTIVELY WORK WITH AN EVENT-BASED DAMAGE DELIVERY
-        //      OR SIMPLY BY DOING A RAYCAST - MIGHT NEED MORE DATA FROM THE weaponData, WHICH MIGHT BE A DEDICATED CLASS
+        
         if(WData)
         {
             //FIND ALL HITTABLES IN A RADIUS
+            //TODO: POLISH AND/OR EXTRACT AS A UTILITY OR OTHER KIND OF FUNCTIONALITY (LIKELY TO BE USED ELSEWHERE)
+            List<IHittable> hittables = new();
+            PlayerController pc = null;
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, wData.EffectiveRadius);
+            foreach (var hitCollider in hitColliders)
+            {
+                IHittable hitOther = hitCollider.gameObject?.GetComponent<IHittable>();
+                if(hitOther != null)
+                {
+                    if(hitOther is PlayerController controller)
+                        pc = controller;
+                    else if(wData.HasFriendlyFire)
+                        hittables.Add((IHittable) hitOther);
+                }
+            }
             
+            //DAMAGE INSTANCE
+            DamageInstance dInstance = new DamageInstance(WData);
 
-            //DAMAGE DEALING 
-            PlayerController player = GameController.Instance.GetPlayerAnywhere;
-            player.HandleHit(new DamageInstance(WData));
+            //DAMAGE DEALING
+            if(pc != null)
+                pc.HandleHit(dInstance);
+
+            foreach(IHittable hitbl in hittables)
+                hitbl.HandleHit(dInstance);
             
             //SELF-DESTRUCT
             if(ownerEntity) 
