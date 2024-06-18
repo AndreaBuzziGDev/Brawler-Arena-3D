@@ -23,6 +23,9 @@ public class WeaponSBombController : WeaponController
         //      OR SIMPLY BY DOING A RAYCAST - MIGHT NEED MORE DATA FROM THE weaponData, WHICH MIGHT BE A DEDICATED CLASS
         if(WData)
         {
+            //FIND ALL HITTABLES IN A RADIUS
+            
+
             //DAMAGE DEALING 
             PlayerController player = GameController.Instance.GetPlayerAnywhere;
             player.HandleHit(new DamageInstance(WData));
