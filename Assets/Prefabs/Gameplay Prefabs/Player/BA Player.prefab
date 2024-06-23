@@ -140,11 +140,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203125406518960635}
-  - component: {fileID: 1081987661556132137}
   - component: {fileID: 2266190500621584568}
   - component: {fileID: 6351360075028454145}
   - component: {fileID: 4391159529738853700}
   - component: {fileID: 4459700897691503652}
+  - component: {fileID: 1081987661556132137}
+  - component: {fileID: 6151373417630674750}
   m_Layer: 6
   m_Name: BA Player
   m_TagString: Untagged
@@ -169,23 +170,6 @@ Transform:
   - {fileID: 2246508920744985557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1081987661556132137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907586155588128813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e9b939a699d2b2e4a927fa3b012d8b8a, type: 2}
-  audioData: {fileID: 11400000, guid: 9c357d3184963674aa241568bdb783de, type: 2}
-  dir: {fileID: 7500852056923462879}
-  weaponRanged: {fileID: 1227511429750810478}
-  gravityScale: 0.65
 --- !u!33 &2266190500621584568
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -286,6 +270,35 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1081987661556132137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907586155588128813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRanged: {fileID: 1227511429750810478}
+  gravityScale: 0.65
+  movementSpeed: 20
+--- !u!114 &6151373417630674750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907586155588128813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f08f20c32b175204dacdbd8526d3d427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: e9b939a699d2b2e4a927fa3b012d8b8a, type: 2}
+  audioData: {fileID: 11400000, guid: 9c357d3184963674aa241568bdb783de, type: 2}
 --- !u!1001 &1984113436083696379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,7 +358,7 @@ PrefabInstance:
     - target: {fileID: 756608638031648149, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: ownerEntity
       value: 
-      objectReference: {fileID: 1081987661556132137}
+      objectReference: {fileID: 6151373417630674750}
     - target: {fileID: 1703159227308830914, guid: a3ea9767165e2d24fa589940570de2d1, type: 3}
       propertyPath: m_Name
       value: Player Ranged Weapon
