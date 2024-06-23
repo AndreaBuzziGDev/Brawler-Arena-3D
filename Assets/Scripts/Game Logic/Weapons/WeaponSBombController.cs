@@ -19,7 +19,6 @@ public class WeaponSBombController : WeaponController
         if(WData)
         {
             //FIND ALL HITTABLES IN A RADIUS
-            //TODO: POLISH AND/OR EXTRACT AS A UTILITY OR OTHER KIND OF FUNCTIONALITY (LIKELY TO BE USED ELSEWHERE)
             UtilsDetection.DetectionInfos dInfo = UtilsDetection.DetectColliders(transform.position, wData.EffectiveRadius);
             
             //DAMAGE INSTANCE
