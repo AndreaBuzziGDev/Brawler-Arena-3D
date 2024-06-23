@@ -14,8 +14,9 @@ public class EnemyController : EntityWithHealth
     //ON COLLISION
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("OnCollisionEnter");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
-        if(hittable is PlayerController)
+        if(hittable is PlayerHittable)
         {
             //OPERATE WEAPON
             enemyWeapon.Operate();
@@ -29,7 +30,7 @@ public class EnemyController : EntityWithHealth
     //EntityWithHealth CONCRETIZATION
     public override void HandleDeath()
     {
-        //Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
+        Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB, audioData.DeathClip));
         Destroy(gameObject);
     }
