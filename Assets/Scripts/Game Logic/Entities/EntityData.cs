@@ -24,6 +24,7 @@ public class EntityData : ScriptableObject
 
 
     //MOVEMENT
+    //TODO: REMOVE. SPEED IS HANDLED IN ANOTHER WAY ENTIRELY.
     [SerializeField] float movementSpeed = 5;
     public float MovementSpeed => movementSpeed;
 

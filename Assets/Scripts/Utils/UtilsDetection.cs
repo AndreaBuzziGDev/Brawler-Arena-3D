@@ -6,15 +6,18 @@ public class UtilsDetection
 {
     public static DetectionInfos DetectColliders(Vector3 position, float radius)
     {
+        //DATA
         List<IHittable> hittables = new();
-        PlayerController pc = null;
+        PlayerHittable pc = null;
+
+        //DETECTION LOGIC
         Collider[] hitColliders = Physics.OverlapSphere(position, radius);
         foreach (var hitCollider in hitColliders)
         {
             IHittable hitOther = hitCollider.gameObject?.GetComponent<IHittable>();
             if(hitOther != null)
             {
-                if(hitOther is PlayerController controller)
+                if(hitOther is PlayerHittable controller)
                     pc = controller;
                 else 
                     hittables.Add((IHittable) hitOther);
@@ -27,10 +30,10 @@ public class UtilsDetection
     //NESTED CLASSES
     public class DetectionInfos
     {
-        public PlayerController Player { get; }
+        public PlayerHittable Player { get; }
         public List<IHittable> Hittables { get; }
 
-        public DetectionInfos(PlayerController playerInfo, List<IHittable> hittableInfo)
+        public DetectionInfos(PlayerHittable playerInfo, List<IHittable> hittableInfo)
         {
             this.Player = playerInfo;
             this.Hittables = hittableInfo;

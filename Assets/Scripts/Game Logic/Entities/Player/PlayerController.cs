@@ -7,32 +7,34 @@ using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 //TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
-public class PlayerController : EntityWithHealth
+public class PlayerController : MonoBehaviour
 {
     //INSPECTOR REFERENCES
-    //TODO: THIS COULD BE IMPROVED. MAYBE EVALUATE ANOTHER ARCHITECTURE, LIKE INPUT DIRECTLY HANDLED IN CHILD OBJECTS
-    [SerializeField] PlayerDirection dir;
     [SerializeField] WeaponController weaponRanged;
-    [SerializeField] float gravityScale = 0.65f;
 
-    //TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
-    Rigidbody rb;
+    //INSPECTOR DATA
+    [SerializeField] float gravityScale = 0.65f;
+    [SerializeField] float movementSpeed = 1.0f;//TODO: THIS NEEDS TO BE ASSIGNED BY COPYING IT FROM EXISTING ENTITY DATA
+
+
+    //DIRECTION VECTORS
+    Vector2 movementDirection;
+    protected Vector2 aimingDirection;
 
 
     //INPUT
     GameInputAction inputPlayer;
 
-    //DATA
-    Vector2 movementDirection;
+    //ADDITIONAL DATA
+    Rigidbody rb;//TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
 
 
 
 
 
     //LIFECYCLE FUNCTIONS
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         //ASSIGN REFERENCES
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -198,22 +200,6 @@ public class PlayerController : EntityWithHealth
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(aimingDirection.x, 0, aimingDirection.y) * 5);
-    }
-
-    
-    //TODO: THIS SHOULD BE MOVED WHERE IT'S APPROPRIATE
-    public override void HandleDeath()
-    {
-        GameController.Instance.SetState(GameController.EGameState.GameOver);
-
-        //TODO: LOGIC IS THE SAME BETWEEN ENEMIES AND PLAYER, SHOULD TAKE THIS INTO ACCOUNT AND REFACTOR ACCORDINGLY
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_PLAYER, audioData.DeathClip));
-
-        //TODO: PLAYER DEATH PARTICLE EFFECT
-        //TODO: GAME OVER SCREEN (NOT HERE)
-
-        //DESTROY
-        Destroy(this.gameObject);
     }
 
 
