@@ -6,7 +6,7 @@ public abstract class WeaponController : MonoBehaviour
 {
     //INSPECTOR REFERENCES
     [SerializeField] protected WeaponAudioData weaponAudioData;
-    [SerializeField] protected IAimingCapable aimingEntity;
+    [SerializeField] protected EntityWithAiming aimingEntity;
 
 
     //DATA GETTER

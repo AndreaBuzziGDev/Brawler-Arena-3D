@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyController : EntityWithHealth
 {
     //DATA
-    [SerializeField] WeaponController enemyWeapon;
+    [SerializeField] WeaponController enemyWeapon;//TODO: IN FURTHER EVOLUTIONS, THIS SHOULD MOVE IN A CHILD SCRIPT OF EntityWithAiming
 
 
     //ON COLLISION
