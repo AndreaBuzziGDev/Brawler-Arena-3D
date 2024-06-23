@@ -10,6 +10,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
+    [SerializeField] EntityWithHealth ownerEntity;
     [SerializeField] WeaponController weaponRanged;
 
     //INSPECTOR DATA
@@ -194,10 +195,10 @@ public class PlayerController : MonoBehaviour, IAimingCapable
 
 
     //IAimingCapable IMPLEMENTATION
-    public virtual Vector2 AimingDirection() => aimingDirection.normalized;
-    public virtual Vector3 AimingDirection3D() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
-    public virtual void SetAimTarget() => Debug.LogError("No aiming implemented.");
-
+    public Vector2 AimingDirection() => aimingDirection.normalized;
+    public Vector3 AimingDirection3D() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
+    public void SetAimTarget() => Debug.LogError("No aiming implemented.");
+    public void HandleSelfDestruction() => ownerEntity.HandleDeath();
 
 
 

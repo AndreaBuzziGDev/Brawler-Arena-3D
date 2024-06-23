@@ -30,7 +30,7 @@ public class WeaponRangedController : WeaponController
         
         //SPAWN PREFAB
         //TODO: IMPROVE/FIX PROJECTILE SHOOTING BY FOLLOWING GUIDE
-        Vector3 pDirection = ownerEntity.AimingDirection3D();
+        Vector3 pDirection = aimingEntity.AimingDirection3D();
         WeaponProjectile pInstance = Instantiate(
             projectile, 
             transform.position,

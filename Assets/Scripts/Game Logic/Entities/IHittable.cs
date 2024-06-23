@@ -8,5 +8,5 @@ public interface IHittable
 
     //TODO: THIS SHOULD PROBABLY DEFINE A DELEGATE OR SOME OTHER STRATEGY
     //TODO: THIS COULD BE IN ITS OWN INTERFACE
-    public void HandleDeath();
+    public void HandleDeath();//TODO: THIS SHOULD NOT BE PUBLIC
 }

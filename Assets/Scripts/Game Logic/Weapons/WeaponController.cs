@@ -6,7 +6,7 @@ public abstract class WeaponController : MonoBehaviour
 {
     //INSPECTOR REFERENCES
     [SerializeField] protected WeaponAudioData weaponAudioData;
-    [SerializeField] protected EntityWithHealth ownerEntity;
+    [SerializeField] protected IAimingCapable aimingEntity;
 
 
     //DATA GETTER
@@ -19,7 +19,7 @@ public abstract class WeaponController : MonoBehaviour
     {
         if(WData == null)
             Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
-        else if((ownerEntity == null) && WData.NeedsOwnerToOperate)
+        else if((aimingEntity == null) && WData.NeedsOwnerToOperate)
             Debug.LogError("This Weapon doesn't have holder: " + gameObject.name);
         //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
     }

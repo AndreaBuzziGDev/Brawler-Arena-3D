@@ -7,4 +7,6 @@ public interface IAimingCapable
     public Vector2 AimingDirection();
     public Vector3 AimingDirection3D();
     public void SetAimTarget();
+    public void HandleSelfDestruction();//TODO: THIS NEEDS TO BE SOLVED. SHOULD NOT BE PUBLIC BUT STILL NEEDS ACCESSIBILITY
+    //SHOULD PROBABLY REQUIRE IMPLEMENTING A RETURNABLE OF EntityWithHealth WHO CAN THEN BE MADE SELF-DESTRUCT
 }

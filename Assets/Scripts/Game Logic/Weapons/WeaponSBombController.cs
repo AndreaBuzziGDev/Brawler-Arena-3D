@@ -34,8 +34,8 @@ public class WeaponSBombController : WeaponController
                     hitbl.HandleHit(dInstance);
             
             //SELF-DESTRUCT
-            if(ownerEntity) 
-                ownerEntity.HandleDeath();
+            if(aimingEntity!= null) 
+                aimingEntity.HandleSelfDestruction();
         }
     }
 }
