@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerEntity: {fileID: 6151373417630674750}
   weaponRanged: {fileID: 1227511429750810478}
   gravityScale: 0.65
   movementSpeed: 20
