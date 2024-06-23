@@ -7,7 +7,7 @@ using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 //TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
     [SerializeField] WeaponController weaponRanged;
@@ -190,6 +190,14 @@ public class PlayerController : MonoBehaviour
                 GameController.Instance.SetState(GameController.EGameState.Paused);
         }
     }
+
+
+
+    //IAimingCapable IMPLEMENTATION
+    public virtual Vector2 AimingDirection() => aimingDirection.normalized;
+    public virtual Vector3 AimingDirection3D() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
+    public virtual void SetAimTarget() => Debug.LogError("No aiming implemented.");
+
 
 
 

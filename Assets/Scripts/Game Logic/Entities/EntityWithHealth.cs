@@ -85,7 +85,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable, IAimingCapabl
     public abstract void HandleDeath();
 
 
-    //IAimingCapable IMPLEMENTATION
+    //IAimingCapable IMPLEMENTATION - TODO: MIGHT BE BETTER TO STRIP AIMING FROM EntityWithHealth
     public virtual Vector2 AimingDirection() => aimingDirection.normalized;
     public virtual Vector3 AimingDirection3D() => new Vector3(aimingDirection.x, 0, aimingDirection.y).normalized;
     public virtual void SetAimTarget() => Debug.LogError("No aiming implemented.");
