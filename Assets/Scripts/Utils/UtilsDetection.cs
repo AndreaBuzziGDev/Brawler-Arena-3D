@@ -16,7 +16,6 @@ public class UtilsDetection
             {
                 if(hitOther is PlayerController controller)
                     pc = controller;
-                //TODO: SOLVE
                 else 
                     hittables.Add((IHittable) hitOther);
             }
