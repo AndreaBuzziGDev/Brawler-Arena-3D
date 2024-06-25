@@ -26,9 +26,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     float maxShieldCooldownTimer = 1;
     float shieldRechargeRate = 1;
 
-    //AIMING
-    protected Vector2 aimingDirection;//TODO: EVOLVE LOGIC. MIGHT BE BETTER IF AIMING FUNCTIONALITIES ARE HANDLED THROUGH A SEPARATE CONTROLLER.
-
 
     //DATA-RELATED FUNCTIONS
     Boolean IsAlive { get { return currentHealth > 0; } }
