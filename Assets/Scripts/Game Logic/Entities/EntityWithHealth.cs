@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class EntityWithHealth : MonoBehaviour, IHittable
 {
     //SCRIPTABLE OBJECTS
-    //TODO: NOTIFY TO EDITOR OR GAME THAT DATA IS MISSING?
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
 
@@ -110,4 +109,17 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         else if(IsRecharging)
             RechargeShield(GetShieldRecharge());
     }
+
+
+    //VALIDATION
+#if UNITY_EDITOR
+    protected void OnValidate()
+    {
+        if (data == null)
+            Debug.LogWarning("No Entity Data Assigned.", this);
+        if(audioData == null)
+            Debug.LogWarning("No Entity AudioData Assigned.", this);
+    }
+#endif
+
 }
