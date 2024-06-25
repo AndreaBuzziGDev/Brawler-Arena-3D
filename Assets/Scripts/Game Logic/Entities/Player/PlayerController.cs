@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-//TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : EntityWithAiming
 {
