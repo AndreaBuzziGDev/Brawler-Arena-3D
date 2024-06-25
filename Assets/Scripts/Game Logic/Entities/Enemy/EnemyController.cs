@@ -11,6 +11,18 @@ public class EnemyController : EntityWithHealth
     [SerializeField] WeaponController enemyWeapon;//TODO: IN FURTHER EVOLUTIONS, THIS SHOULD MOVE IN A CHILD SCRIPT OF EntityWithAiming
 
 
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (enemyWeapon == null)
+            Debug.LogWarning("No Enemy Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
+
+
     //ON COLLISION
     private void OnCollisionEnter(Collision other)
     {

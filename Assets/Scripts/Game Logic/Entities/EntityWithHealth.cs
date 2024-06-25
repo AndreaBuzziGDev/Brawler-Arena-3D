@@ -12,7 +12,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
+    protected virtual void OnValidate()
     {
         if (data == null)
             Debug.LogWarning("No Entity Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
