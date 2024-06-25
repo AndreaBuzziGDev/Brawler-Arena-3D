@@ -7,7 +7,7 @@ public class EntityWithAiming : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
     [SerializeField] EntityWithHealth ownerEntity;
-    
+
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
