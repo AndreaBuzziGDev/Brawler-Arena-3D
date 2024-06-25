@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class VolumeAdjuster : MonoBehaviour
 {
     //ENUM
@@ -20,7 +21,7 @@ public class VolumeAdjuster : MonoBehaviour
     [SerializeField] EVolumeType volumeType = EVolumeType.MUSIC;
     [SerializeField] bool pauseAudioOnGamePause = true;
 
-    //TODO: USARE UN REQUIRE? 
+
     //TODO: MAKE IT AUTOMATIC?
     [SerializeField] List<AudioSource> sources = new();
 
