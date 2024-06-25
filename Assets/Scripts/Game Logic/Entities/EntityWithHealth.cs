@@ -10,6 +10,19 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [SerializeField] protected EntityAudioData audioData;
 
 
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected void OnValidate()
+    {
+        if (data == null)
+            Debug.LogWarning("No Entity Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+        if(audioData == null)
+            Debug.LogWarning("No Entity AudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
+
+
     //DATA
     //HEALTH
     float currentHealth = 1;
@@ -109,18 +122,5 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         else if(IsRecharging)
             RechargeShield(GetShieldRecharge());
     }
-
-
-
-    //VALIDATION
-#if UNITY_EDITOR
-    protected void OnValidate()
-    {
-        if (data == null)
-            Debug.LogWarning("No Entity Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if(audioData == null)
-            Debug.LogWarning("No Entity AudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-    }
-#endif
 
 }
