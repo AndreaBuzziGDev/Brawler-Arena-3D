@@ -23,6 +23,20 @@ public class VolumeAdjuster : MonoBehaviour
 
 
     //TODO: MAKE IT AUTOMATIC?
+    /*
+    BEEN SUGGESTED TO MAKE IT LIKE THIS:
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        // Clear the list to avoid duplications
+        audioSources.Clear();
+        // Get all AudioSource components on this GameObject
+        audioSources.AddRange(GetComponents<AudioSource>());
+    }
+#endif
+
+    */
     [SerializeField] List<AudioSource> sources = new();
 
 
