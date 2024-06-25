@@ -11,8 +11,8 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float damping = 1.0f;
 
     //
-    private Camera cameraComp;
-    private float baseFOV;//TO BE USED FOR ZOOM?
+    Camera cameraComp;
+    float baseFOV;
 
 
     //LIFECYCLE FUNCTIONS
@@ -27,9 +27,7 @@ public class PlayerCamera : MonoBehaviour
     void FixedUpdate()
     {
         if(cameraTarget)
-        {
             FollowTarget();
-        }
     }
 
 
@@ -39,6 +37,5 @@ public class PlayerCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, cameraTarget.position + cameraOffset, Time.deltaTime * damping);
         transform.LookAt(cameraTarget.position - new Vector3(0, verticalOffset, 0), Vector3.up);
     }
-
 
 }
