@@ -12,7 +12,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //DATA
-    //TODO: HEALTH AND SHIELD ARCHITECTURE COULD BE IMPLEMENTED VIA A HELPER
     //HEALTH
     float currentHealth = 1;
     float maxHealth = 1;
