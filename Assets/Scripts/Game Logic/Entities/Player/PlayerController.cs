@@ -14,7 +14,7 @@ public class PlayerController : EntityWithAiming
 
     //INSPECTOR DATA
     [SerializeField] float gravityScale = 0.65f;
-    [SerializeField] float movementSpeed = 1.0f;//TODO: THIS NEEDS TO BE ASSIGNED BY COPYING IT FROM EXISTING ENTITY DATA
+    [SerializeField] float movementSpeed = 1.0f;
 
 
     //DIRECTION VECTORS
