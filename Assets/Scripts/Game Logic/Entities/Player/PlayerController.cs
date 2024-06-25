@@ -7,6 +7,7 @@ using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 //TODO: IS THIS SUPPOSED TO BE ANOTHER CONTROLLER ENTIRELY, SEPARATED FROM THE CONTROLLER HANDLING THE HEALTH LOGIC?
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : EntityWithAiming
 {
     //INSPECTOR REFERENCES
@@ -25,7 +26,7 @@ public class PlayerController : EntityWithAiming
     GameInputAction inputPlayer;
 
     //ADDITIONAL DATA
-    Rigidbody rb;//TODO: USE REQUIRED ON COMPONENTS LIKE RIGID BODY?
+    Rigidbody rb;
 
 
 
