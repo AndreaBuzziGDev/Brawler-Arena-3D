@@ -7,7 +7,7 @@ public class PlayerDirection : MonoBehaviour
     //INSPECTOR REFERENCES
     [SerializeField] PlayerController player;
     [SerializeField] SpriteRenderer sprite;
-    
+
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
