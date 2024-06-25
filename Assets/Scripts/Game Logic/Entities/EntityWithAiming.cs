@@ -7,6 +7,17 @@ public class EntityWithAiming : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
     [SerializeField] EntityWithHealth ownerEntity;
+    
+
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected void OnValidate()
+    {
+        if (ownerEntity == null)
+            Debug.LogWarning("No Owner Entity Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
 
     //DATA
     protected Vector2 aimingDirection;
