@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: EVALUATE IMPROVING THIS BY USING A REQUIRED OR SOMETHING ELSE?
 public class PlayerDirection : MonoBehaviour
 {
     //INSPECTOR REFERENCES
