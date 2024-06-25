@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     //DATA
-    [SerializeField] Transform cameraTarget;//TODO: HOW TO DECOUPLE?
+    [SerializeField] Transform cameraTarget;
     [SerializeField] Vector3 cameraOffset;
     [SerializeField] float verticalOffset;
     [SerializeField] float damping = 1.0f;
