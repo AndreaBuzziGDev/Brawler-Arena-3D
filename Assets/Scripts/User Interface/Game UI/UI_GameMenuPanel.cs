@@ -11,7 +11,6 @@ public class UI_GameMenuPanel : MonoBehaviour
 
 
     //INSPECTOR REFERENCES
-    //TODO: USE "REQUIRE"?
     [SerializeField] CanvasRenderer thisPanel;
 
 

@@ -10,7 +10,6 @@ public class UI_GameHUD : MonoBehaviour
     //TODO: THIS SHOULD BE THE EQUIVALENT OF UI_RaindropsGame
 
     //INSPECTOR REFERENCES
-    //TODO: USE "REQUIRE"?
     [SerializeField] CanvasRenderer thisPanel;
     
 

@@ -11,7 +11,6 @@ public class UI_MainMenu : MonoBehaviour
 
 
     //GAMEOBJECT REFERENCES
-    //TODO: USE "REQUIRE"?
     [SerializeField] Canvas mainMenuPanel;//TODO: CanvasRenderer INSTEAD OF Canvas?
     [SerializeField] TMP_Text textHighScore;
     
