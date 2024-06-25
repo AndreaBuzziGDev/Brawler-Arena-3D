@@ -13,9 +13,23 @@ public class PlayerController : EntityWithAiming
     //INSPECTOR REFERENCES
     [SerializeField] WeaponController weaponRanged;
 
-    //INSPECTOR DATA
+
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (weaponRanged == null)
+            Debug.LogWarning("No Ranged Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
+
+
+    //PHYSICS PARAMETERS
     [SerializeField] float gravityScale = 0.65f;
     [SerializeField] float movementSpeed = 1.0f;
+
 
 
     //DIRECTION VECTORS

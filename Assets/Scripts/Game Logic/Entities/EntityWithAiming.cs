@@ -11,7 +11,7 @@ public class EntityWithAiming : MonoBehaviour, IAimingCapable
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
+    protected virtual void OnValidate()
     {
         if (ownerEntity == null)
             Debug.LogWarning("No Owner Entity Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
