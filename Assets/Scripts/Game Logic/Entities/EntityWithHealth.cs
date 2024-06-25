@@ -111,14 +111,15 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     }
 
 
+
     //VALIDATION
 #if UNITY_EDITOR
     protected void OnValidate()
     {
         if (data == null)
-            Debug.LogWarning("No Entity Data Assigned.", this);
+            Debug.LogWarning("No Entity Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(audioData == null)
-            Debug.LogWarning("No Entity AudioData Assigned.", this);
+            Debug.LogWarning("No Entity AudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
 
