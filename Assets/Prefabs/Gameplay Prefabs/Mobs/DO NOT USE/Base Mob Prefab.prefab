@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4653765177041597452}
   - component: {fileID: 6072213199708396422}
   - component: {fileID: -7945899802884322071}
-  - component: {fileID: 6235096004507029814}
+  - component: {fileID: 3410234541537381172}
   - component: {fileID: 3635100725466191994}
   m_Layer: 7
   m_Name: Base Mob Prefab
@@ -187,7 +187,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4c3241a2c18b02b428cb8f1041d855b6, type: 2}
   audioData: {fileID: 11400000, guid: fc31409db77d5d049b150b604a28ff7b, type: 2}
   enemyWeapon: {fileID: 3635100725466191994}
---- !u!114 &6235096004507029814
+--- !u!114 &3410234541537381172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,10 +196,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6907586155588128813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29b8e44e936b3a49adad3c9a73a4cdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b7f5af107e2bc4b95abe28ae1d2a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ownerEntity: {fileID: -7945899802884322071}
+  enemyWeapon: {fileID: 3635100725466191994}
 --- !u!114 &3635100725466191994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +214,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAudioData: {fileID: 11400000, guid: 12cd01e6bd219e34cbd1a0d8e0050ea6, type: 2}
-  aimingEntity: {fileID: 6235096004507029814}
+  aimingEntity: {fileID: 0}
   wData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
