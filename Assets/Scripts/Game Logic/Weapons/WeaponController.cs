@@ -12,24 +12,22 @@ public abstract class WeaponController : MonoBehaviour
     //DATA GETTER
     abstract protected WeaponData WData { get; }
 
-    
-    //LIFECYCLE FUNCTIONS
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(WData == null)
-            Debug.LogError("This Weapon doesn't have any data: " + gameObject.name);
-        else if((aimingEntity == null) && WData.NeedsOwnerToOperate)
-            Debug.LogError("This Weapon doesn't have holder: " + gameObject.name);
-        //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
-    }
 
-    // Update is called once per frame
-    void Update()
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected virtual void OnValidate()
     {
-        //TODO: HANDLE COOLDOWN AND OTHER STUFF?
-        
+        if (WData == null)
+            Debug.LogWarning("No Weapon Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+        else if((aimingEntity == null) && WData.NeedsOwnerToOperate)
+            Debug.LogWarning("No Aiming Entity Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
+#endif
+
+
+
+    //LIFECYCLE FUNCTIONS
+    //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
 
 
 

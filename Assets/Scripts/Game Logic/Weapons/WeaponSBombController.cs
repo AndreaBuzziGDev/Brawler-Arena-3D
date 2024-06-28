@@ -12,6 +12,7 @@ public class WeaponSBombController : WeaponController
     override protected WeaponData WData { get { return wData; } }
 
 
+
     //FUNCTIONALITIES
     public override void Operate(){
         base.Operate();
@@ -34,8 +35,7 @@ public class WeaponSBombController : WeaponController
                     hitbl.HandleHit(dInstance);
             
             //SELF-DESTRUCT
-            if(aimingEntity!= null) 
-                aimingEntity.HandleSelfDestruction();
+            Destroy(this.gameObject);
         }
     }
 }
