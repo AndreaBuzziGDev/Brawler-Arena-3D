@@ -11,17 +11,6 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float damping = 1.0f;
 
 
-    //REFERENCE VALIDATION
-#if UNITY_EDITOR
-    protected void OnValidate()
-    {
-        if (cameraTarget == null)
-            Debug.LogWarning("No Camera Target Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-    }
-#endif
-
-
-
     //
     Camera cameraComp;
     float baseFOV;
