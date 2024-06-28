@@ -8,36 +8,10 @@ using UnityEngine;
 public class EnemyController : EntityWithHealth
 {
     //DATA
-    [SerializeField] WeaponController enemyWeapon;//TODO: IN FURTHER EVOLUTIONS, THIS SHOULD MOVE IN A CHILD SCRIPT OF EntityWithAiming
 
-
-    //REFERENCE VALIDATION
-#if UNITY_EDITOR
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-        if (enemyWeapon == null)
-            Debug.LogWarning("No Enemy Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-    }
-#endif
-
-
-
-    //ON COLLISION
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("OnCollisionEnter");
-        IHittable hittable = other.gameObject?.GetComponent<IHittable>();
-        if(hittable is PlayerHittable)
-        {
-            //OPERATE WEAPON
-            enemyWeapon.Operate();
-        }
-    }
 
     //FUNCTIONALITIES
     //...
-
 
     //EntityWithHealth CONCRETIZATION
     public override void HandleDeath()
@@ -46,5 +20,4 @@ public class EnemyController : EntityWithHealth
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.A_FX_MOB, audioData.DeathClip));
         Destroy(gameObject);
     }
-
 }
