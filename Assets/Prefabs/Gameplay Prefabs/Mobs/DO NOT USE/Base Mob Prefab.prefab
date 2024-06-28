@@ -186,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4c3241a2c18b02b428cb8f1041d855b6, type: 2}
   audioData: {fileID: 11400000, guid: fc31409db77d5d049b150b604a28ff7b, type: 2}
-  enemyWeapon: {fileID: 3635100725466191994}
 --- !u!114 &3410234541537381172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,5 +213,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAudioData: {fileID: 11400000, guid: 12cd01e6bd219e34cbd1a0d8e0050ea6, type: 2}
-  aimingEntity: {fileID: 0}
+  aimingEntity: {fileID: 3410234541537381172}
   wData: {fileID: 11400000, guid: 4f4bb17708bfdaf40a273809f4193d89, type: 2}
