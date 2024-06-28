@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: THIS SHOULD REALLY BECOME AN ABSTRACT CLASS EXTENDED BY PlayerController AND ANOTHER SCRIPT WITH REFACTORED EnemyController CODE
-public class EntityWithAiming : MonoBehaviour, IAimingCapable
+public abstract class EntityWithAiming : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
     [SerializeField] EntityWithHealth ownerEntity;

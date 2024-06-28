@@ -40,5 +40,4 @@ public abstract class WeaponController : MonoBehaviour
             EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
         }
     }
-
 }

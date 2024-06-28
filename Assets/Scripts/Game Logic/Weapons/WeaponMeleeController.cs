@@ -20,5 +20,4 @@ public class WeaponMeleeController : WeaponController
         //TODO: IMPLEMENT
         Debug.Log("Melee Weapon " + gameObject.name + " Yet to be implemented");
     }
-
 }
