@@ -68,7 +68,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     public void DataInitialization()
     {
         currentHealth = data.MaxHealth;
-        maxHealth = data.MaxHealth;//TODO: MIGHT ADDRESS DIRECTLY THE PROPERTY FROM THE SCRIPTABLE OBJECTS IN THESE CASES
+        maxHealth = data.MaxHealth;
 
         currentShield = data.MaxShield;
         maxShield = data.MaxShield;
