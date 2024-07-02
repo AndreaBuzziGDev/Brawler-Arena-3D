@@ -93,6 +93,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     public virtual void HandleDeath()
     {
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
+        //TODO: HANDLE OTHER EFFECTS SUCH AS PARTICLES
 
         //DESTROY
         Destroy(this.gameObject);
