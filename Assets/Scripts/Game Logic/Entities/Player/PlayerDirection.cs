@@ -45,14 +45,6 @@ public class PlayerDirection : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    private void UpdateDirection()
-    {
-        //lastDirection
-        //TODO: CAN THIS BE OPTIMIZED?
-        //YES, BY GETTING EULERS (WHICH ALSO FIT WHAT CRISTIANO DID DURING LESSONS) AND USING TRANSFORM.ROTATE(VECTOR 3 OF EULERS)
-        Vector2 aimedDirection = player.AimingDirection();
-        Vector3 newDirection = this.transform.position + new Vector3(aimedDirection.x, 0, aimedDirection.y);
-        transform.LookAt(newDirection);
-    }
+    private void UpdateDirection() => transform.LookAt(this.transform.position + player.AimingDirection3D());
 
 }
