@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178d96a309cb23744a133781c90d51b4, type: 3}
   m_Name: Spawn Wave 5
   m_EditorClassIdentifier: 
+  waveName: Wave #5
   spawns:
   - {fileID: 11400000, guid: 6518823943cc7e942acc47c59ba36d90, type: 2}
   - {fileID: 11400000, guid: f6a6c2490533972429f089c90fecdb01, type: 2}
