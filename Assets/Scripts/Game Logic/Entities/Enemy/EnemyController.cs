@@ -12,7 +12,7 @@ public class EnemyController : EntityWithHealth
     //...
 
     //EntityWithHealth CONCRETIZATION
-    protected override void HandleDeath()
+    public override void HandleDeath()
     {
         Debug.Log("EnemyController - HandleDeath - TODO: PARTICLE AND OTHER DEATH STUFF");
         base.HandleDeath();
