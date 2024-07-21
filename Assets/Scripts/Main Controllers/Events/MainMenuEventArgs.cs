@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MainMenuEventArgs : ManagedEvent
+public class MainMenuEventArgs : EventArgs
 {
     //ENUMS
     public enum EType
@@ -23,7 +23,4 @@ public class MainMenuEventArgs : ManagedEvent
     {
         this.eventType = eventType;
     }
-
-    //ABSTRACT CONCRETIZATION
-    public override int EventId{ get { return (int) eventType; } }
 }

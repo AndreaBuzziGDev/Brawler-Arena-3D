@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SpawnEntityEventArgs : ManagedEvent
+public class SpawnEntityEventArgs : EventArgs
 {
     //DATA
     public int SpawnPointInstanceID { get; }
@@ -16,8 +16,4 @@ public class SpawnEntityEventArgs : ManagedEvent
         this.SpawnPointInstanceID = spawnPointInstanceID;
         this.Data = data;
     }
-
-
-    //ABSTRACT CONCRETIZATION
-    public override int EventId { get { return (int) SpawnPointInstanceID; } }
 }

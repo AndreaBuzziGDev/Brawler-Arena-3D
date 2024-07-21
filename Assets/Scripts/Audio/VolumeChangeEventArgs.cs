@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class VolumeChangeEventArgs : ManagedEvent
+public class VolumeChangeEventArgs : EventArgs
 {
     //CONSTRUCTOR
     public VolumeChangeEventArgs(){}
-
-    //ABSTRACT CONCRETIZATION
-    public override int EventId{ get { return 0; } }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SoundFXEventArgs : ManagedEvent
+public class SoundFXEventArgs : EventArgs
 {
     //DATA
     private EType eventType;
@@ -19,9 +19,6 @@ public class SoundFXEventArgs : ManagedEvent
         this.eventType = eventType;
         this.carriedAudioClip = aClip;
     }
-
-    //ABSTRACT CONCRETIZATION
-    public override int EventId { get { return (int) eventType; } }
 
 
     //ENUMS

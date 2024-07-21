@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EventManager<T> where T : ManagedEvent
+public class EventManager<T> where T : EventArgs
 {
     //DATA
     private List<Action<object, T>> subscribers = new List<Action<object, T>>();
