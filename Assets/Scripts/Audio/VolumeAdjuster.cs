@@ -16,6 +16,14 @@ public class VolumeAdjuster : MonoBehaviour
         MISC
     }
 
+    //ENUM DICTIONARY
+    public static readonly Dictionary<EVolumeType, string> EVolumeTypeDictionary = new Dictionary<EVolumeType, string>{
+        { EVolumeType.MUSIC, SaveController.volumeMusic },
+        { EVolumeType.SOUND_FX, SaveController.volumeSoundFX },
+        { EVolumeType.VOICE, SaveController.volumeVoice },
+        { EVolumeType.MISC, SaveController.volumeMisc }
+    };
+
 
     //DATA
     [SerializeField] EVolumeType volumeType = EVolumeType.MUSIC;
