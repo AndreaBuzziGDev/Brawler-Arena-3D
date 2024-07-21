@@ -11,4 +11,6 @@ public static class SaveController
 
     public readonly static string volumeMusic = "VolumeMusic";
     public readonly static string volumeSoundFX = "VolumeSoundFX";
+    public readonly static string volumeVoice = "VolumeVoice";
+    public readonly static string volumeMisc = "VolumeMisc";
 }
