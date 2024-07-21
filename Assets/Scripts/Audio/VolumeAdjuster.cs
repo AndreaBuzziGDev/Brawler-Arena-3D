@@ -81,17 +81,7 @@ public class VolumeAdjuster : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    private float GetMatchingPref(EVolumeType targetType)
-    {
-        switch (volumeType)
-        {
-            //TODO: SUPPORT MORE EVENT TYPES
-            case EVolumeType.MUSIC:
-                return UtilsPrefs.Options.GetVolumeMusic();
-            default:
-                return UtilsPrefs.Options.GetVolumeEffects();
-        }
-    }
+    private float GetMatchingPref(EVolumeType targetType) => UtilsPrefs.Options.GetVolume(targetType);
 
     private void SetVolume()
     {

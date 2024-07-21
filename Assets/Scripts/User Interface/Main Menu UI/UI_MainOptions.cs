@@ -47,8 +47,9 @@ public class UI_MainOptions : MonoBehaviour
         //PRE-LOADING VALUES
         difficultyDropDown.value = UtilsPrefs.GameSettings.GetGameSpeed();
 
-        musicVolumeSlider.value = UtilsPrefs.Options.GetVolumeMusic();
-        soundFXVolumeSlider.value = UtilsPrefs.Options.GetVolumeEffects();
+        musicVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.MUSIC);
+        soundFXVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.SOUND_FX);
+        //TODO: MORE SLIDERS...
     }
 
 
@@ -62,12 +63,22 @@ public class UI_MainOptions : MonoBehaviour
     //TODO: COULD THESE BE UNIFIED? SHOULD THESE HANDLE EVENT TYPES VIA ENUMERATIONS INSTEAD?
     public void HandleVolumeMusicChange()
     {
-        UtilsPrefs.Options.SetVolumeMusic(musicVolumeSlider.value);
+        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MUSIC, musicVolumeSlider.value);
         EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
     }
     public void HandleVolumeSoundFXChange()
     {
-        UtilsPrefs.Options.SetVolumeEffects(soundFXVolumeSlider.value);
+        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.SOUND_FX, musicVolumeSlider.value);
+        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+    }
+    public void HandleVolumeVoiceChange()
+    {
+        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.VOICE, musicVolumeSlider.value);
+        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+    }
+    public void HandleVolumeMiscChange()
+    {
+        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MISC, musicVolumeSlider.value);
         EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
     }
 
