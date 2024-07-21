@@ -7,7 +7,6 @@ using UnityEngine;
 public class VolumeAdjuster : MonoBehaviour
 {
     //ENUM
-    //TODO: USE THIS ON VolumeChangeEventArgs FOR EVENT ID TYPES?
     public enum EVolumeType
     {
         MUSIC,
