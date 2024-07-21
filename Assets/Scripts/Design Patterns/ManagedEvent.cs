@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//TODO: IS THIS ACTUALLY USEFUL? SIMPLIFY ARCHITECTURE?
+//TODO: : THIS IS USELESS - DELETING
 public abstract class ManagedEvent : EventArgs
 {
     public abstract int EventId { get; }
