@@ -116,6 +116,5 @@ public class VolumeAdjuster : MonoBehaviour
                 Debug.Log("Unhandled Pause Event");
                 break;
         }
-
     }
 }
