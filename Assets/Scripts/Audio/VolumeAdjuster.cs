@@ -52,30 +52,15 @@ public class VolumeAdjuster : MonoBehaviour
     void Start()
     {
         EventManager<VolumeChangeEventArgs>.Instance.StartListening(HandleVolumeChangeEvent);
+        EventManager<GameMenuEventArgs>.Instance.StartListening(HandleGamePauseEvent);
         
         SetVolume();
-    }
-
-    void Update()
-    {
-        //TODO: CHANGE IMPLEMENTATION. THIS SHOULD LISTEN TO PAUSE AND UNPAUSE EVENTS INSTEAD!!!
-        //NB: THIS HAS BEEN DISABLED TO AVOID BUGS
-        if(GameController.Instance.IsPaused)
-        {
-            foreach(AudioSource aSource in sources)
-            {
-                if(aSource.isPlaying)
-                {
-                    aSource.Pause();
-                    //USE UnPause() WHEN NEEDING UNPAUSE
-                }
-            }
-        }
     }
 
     void OnDestroy()
     {
         EventManager<VolumeChangeEventArgs>.Instance.StopListening(HandleVolumeChangeEvent);
+        EventManager<GameMenuEventArgs>.Instance.StopListening(HandleGamePauseEvent);
     }
 
 
@@ -92,9 +77,52 @@ public class VolumeAdjuster : MonoBehaviour
     }
 
 
+
+    //PAUSE AUDIO HANDLING
+    //TODO: MIGHT NEED MORE ADVANCED PAUSING LOGIC (EXCLUSIONS AND SUCH)
+    private void PauseAudio()
+    {
+        foreach(AudioSource aSource in sources)
+        {
+            if(aSource.isPlaying)
+            {
+                aSource.Pause();
+            }
+        }
+    }
+    private void UnPauseAudio()
+    {
+        foreach(AudioSource aSource in sources)
+        {
+            if(!aSource.isPlaying)
+            {
+                aSource.UnPause();
+            }
+        }
+    }
+
+
+
     //EVENT HANDLING
     private void HandleVolumeChangeEvent(object sender, VolumeChangeEventArgs e)
     {
         SetVolume();
+    }
+
+    private void HandleGamePauseEvent(object sender, GameMenuEventArgs e)
+    {
+        switch(e.EventType)
+        {
+            case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
+                PauseAudio();
+                break;
+            case GameMenuEventArgs.EType.GAME_MENU_PAUSE_CLOSE:
+                UnPauseAudio();
+                break;
+            default:
+                Debug.Log("Unhandled Pause Event");
+                break;
+        }
+
     }
 }
