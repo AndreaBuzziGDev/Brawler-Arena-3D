@@ -29,22 +29,20 @@ public class VolumeAdjuster : MonoBehaviour
     [SerializeField] bool pauseAudioOnGamePause = true;
 
 
-    //TODO: MAKE IT AUTOMATIC?
-    /*
-    BEEN SUGGESTED TO MAKE IT LIKE THIS:
+    //INSPECTOR REFERENCES
+    [SerializeField] List<AudioSource> sources = new();
 
+    //AUTOMATICAL ASSIGNMENT OF AUDIOSOURCES
 #if UNITY_EDITOR
     private void OnValidate()
     {
         // Clear the list to avoid duplications
-        audioSources.Clear();
+        sources.Clear();
         // Get all AudioSource components on this GameObject
-        audioSources.AddRange(GetComponents<AudioSource>());
+        sources.AddRange(GetComponents<AudioSource>());
     }
 #endif
 
-    */
-    [SerializeField] List<AudioSource> sources = new();
 
 
     //LIFECYCLE FUNCTIONS
@@ -79,26 +77,23 @@ public class VolumeAdjuster : MonoBehaviour
 
 
     //PAUSE AUDIO HANDLING
-    //TODO: MIGHT NEED MORE ADVANCED PAUSING LOGIC (EXCLUSIONS AND SUCH)
     private void PauseAudio()
     {
+        if(!pauseAudioOnGamePause)
+            return;
+        
         foreach(AudioSource aSource in sources)
-        {
             if(aSource.isPlaying)
-            {
                 aSource.Pause();
-            }
-        }
     }
     private void UnPauseAudio()
     {
+        if(!pauseAudioOnGamePause)
+            return;
+        
         foreach(AudioSource aSource in sources)
-        {
             if(!aSource.isPlaying)
-            {
                 aSource.UnPause();
-            }
-        }
     }
 
 
