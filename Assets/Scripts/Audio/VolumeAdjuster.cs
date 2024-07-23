@@ -99,10 +99,8 @@ public class VolumeAdjuster : MonoBehaviour
 
 
     //EVENT HANDLING
-    private void HandleVolumeChangeEvent(object sender, VolumeChangeEventArgs e)
-    {
-        SetVolume();
-    }
+    private void HandleVolumeChangeEvent(object sender, VolumeChangeEventArgs e) => SetVolume();
+
 
     private void HandleGamePauseEvent(object sender, GameMenuEventArgs e)
     {
