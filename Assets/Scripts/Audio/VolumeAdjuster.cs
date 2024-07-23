@@ -70,7 +70,7 @@ public class VolumeAdjuster : MonoBehaviour
         float value = GetMatchingPref(volumeType);
         foreach(AudioSource aSource in sources)
         {
-            aSource.volume = value-1;//TODO: IMPROVE THIS?
+            aSource.volume = value-1;
         }
     }
 
