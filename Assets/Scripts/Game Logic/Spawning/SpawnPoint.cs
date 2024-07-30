@@ -19,7 +19,6 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] float spawnRadius = 1.0f;
     [SerializeField] bool spawnStrictlyOnRadius = false;
 
-    //TODO: REMOVE SerializeField?
     int spawnerId;
 
 
