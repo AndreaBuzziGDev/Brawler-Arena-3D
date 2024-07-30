@@ -30,7 +30,6 @@ public class WeaponProjectile : MonoBehaviour
             Destroy(this.gameObject);
         else
             rb.velocity = ProjectileData.Speed * ProjectileData.Direction;
-
     }
 
     void OnDestroy()
