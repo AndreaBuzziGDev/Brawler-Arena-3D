@@ -26,7 +26,6 @@ public class WeaponRangedController : WeaponController
 
 
     //FUNCTIONALITIES
-    //TODO: IS IT OVERKILL TO MAKE THIS PRIVATE AND EXECUTE THIS VIA EVENT?
     public override void Operate()
     {
         //BASE
