@@ -91,9 +91,6 @@ public class SpawnController : MonoBehaviour
 
     private void NotifySpawner(int spawnerToNotifyId)
     {
-        //TODO: NEEDS TO ENABLE SPAWN TYPE DIVERSIFICATION
-
-
         //int spawnPointInstanceID, List<SpawnRateData> rateData
         List<SpawnRateData> spawns = sDataTable.OrderedWaves[waveIndex].Spawns;
         foreach(SpawnRateData sRateData in spawns)
