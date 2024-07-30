@@ -6,6 +6,8 @@ public class WeaponProjectile : MonoBehaviour
 {
     //DATA
     public WeaponProjectileData ProjectileData { get; set; }
+    //TODO: IMPROVEMENT OF DATA HANDLING AND LIFECYCLE
+    //      SEE WeaponRangedController ON MATCHING TODO
 
 
     //TECHNICAL DATA
