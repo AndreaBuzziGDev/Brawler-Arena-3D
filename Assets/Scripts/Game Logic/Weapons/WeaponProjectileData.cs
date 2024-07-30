@@ -36,8 +36,5 @@ public class WeaponProjectileData
 
 
     //FUNCTIONALITIES
-    public void HandleLifetime(float lifetimeChange)
-    {
-        lifetime += lifetimeChange;
-    }
+    public void HandleLifetime(float lifetimeChange) => lifetime += lifetimeChange;
 }
