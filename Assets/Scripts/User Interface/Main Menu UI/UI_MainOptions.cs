@@ -63,7 +63,6 @@ public class UI_MainOptions : MonoBehaviour
 
     //SLIDERS
     //TODO: THESE REALLY SHOULD DEBOUNCE.
-    //TODO: COULD THESE BE UNIFIED? SHOULD THESE HANDLE EVENT TYPES VIA ENUMERATIONS INSTEAD?
     public void HandleVolumeMusicChange()
     {
         UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MUSIC, musicVolumeSlider.value);
