@@ -5,9 +5,21 @@ using UnityEngine;
 public class WeaponProjectile : MonoBehaviour
 {
     //DATA
-    public WeaponProjectileData ProjectileData { get; set; }
-    //TODO: IMPROVEMENT OF DATA HANDLING AND LIFECYCLE
-    //      SEE WeaponRangedController ON MATCHING TODO
+    private bool isDataInitialized = false;
+    public WeaponProjectileData ProjectileData 
+    { 
+        get => ProjectileData; 
+        set
+        {
+            if(!isDataInitialized)
+            {
+                isDataInitialized = true;
+                ProjectileData = value;
+            }
+            else
+                Debug.LogWarning("Projectile Data have already been initialized.");
+        } 
+    }
 
 
     //TECHNICAL DATA

@@ -57,13 +57,7 @@ public class WeaponRangedController : WeaponController
             transform.position,
             projectile.transform.rotation
         );
-
-        //TODO: IMPROVE VISIBILITY ISSUES WITH PROJECTILE DATA
-        //      THE ONLY PLAUSIBLE FIX TO THIS ISSUE IS MOVING WeaponProjectileData CREATION INTO WeaponProjectile 
-        //      THIS IS ACHIEVED BY IMPLEMENTING A WeaponRangedData VARIABLE DIRECTLY INTO WeaponProjectile AND SET UP PREFABS ACCORDINGLY.
-        //      IT ALSO IS THE BEST SOLUTION AS, IN THIS WAY, THE SAME WEAPON MIGHT SHOOT DIFFERENT PROJECTILES, WITHOUT HAVING TO DO MULTIPLE WEAPONS.
-        //      THE ISSUE MIGHT REMAIN WITH pDirection, BUT NOT IN A WAY THAT IS HARMFUL TO THE OVERALL CODE.
-        //      ALSO THIS SOLUTION SHOULD BE WAY BETTER WHEN IT COMES TO HANDLING POOLING OF OBJECTS.
+        
         pInstance.ProjectileData = new WeaponProjectileData((WeaponRangedData) WData, pDirection);
     }
 }
