@@ -22,6 +22,8 @@ public class UI_MainOptions : MonoBehaviour
     [SerializeField] TMP_Dropdown difficultyDropDown;
     [SerializeField] Slider musicVolumeSlider;
     [SerializeField] Slider soundFXVolumeSlider;
+    [SerializeField] Slider voiceVolumeSlider;
+    [SerializeField] Slider miscVolumeSlider;
 
     
     
@@ -49,7 +51,8 @@ public class UI_MainOptions : MonoBehaviour
 
         musicVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.MUSIC);
         soundFXVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.SOUND_FX);
-        //TODO: MORE SLIDERS...
+        voiceVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.VOICE);
+        miscVolumeSlider.value = UtilsPrefs.Options.GetVolume(VolumeAdjuster.EVolumeType.MISC);
     }
 
 
