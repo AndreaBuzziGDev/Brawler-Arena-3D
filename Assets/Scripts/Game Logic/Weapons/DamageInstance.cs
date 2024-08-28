@@ -8,8 +8,6 @@ public class DamageInstance
     //DATA
     float damageAmount = 0;
 
-    //TODO: EVENTUALLY HANDLE DAMAGE TYPE
-
 
     //DATA GETTERS
     public float DamageAmount => damageAmount;
