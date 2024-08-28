@@ -14,9 +14,6 @@ public class WeaponProjectile : MonoBehaviour
         get => projectileData; 
         set
         {
-            Debug.Log("This is ProjectileData Initialization.");
-            Debug.Log("ProjectileData: " + projectileData);
-
             if(!isDataInitialized)
             {
                 isDataInitialized = true;
