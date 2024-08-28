@@ -6,15 +6,21 @@ public class WeaponProjectile : MonoBehaviour
 {
     //DATA
     private bool isDataInitialized = false;
+    private WeaponProjectileData projectileData;
+    
+    //DATA SETTER
     public WeaponProjectileData ProjectileData 
     { 
-        get => ProjectileData; 
+        get => projectileData; 
         set
         {
+            Debug.Log("This is ProjectileData Initialization.");
+            Debug.Log("ProjectileData: " + projectileData);
+
             if(!isDataInitialized)
             {
                 isDataInitialized = true;
-                ProjectileData = value;
+                projectileData = value;
             }
             else
                 Debug.LogWarning("Projectile Data have already been initialized.");
@@ -39,11 +45,11 @@ public class WeaponProjectile : MonoBehaviour
         if(!GameController.Instance.IsPlaying)
             return;
         
-        ProjectileData.HandleLifetime(Time.fixedDeltaTime);
-        if(ProjectileData.HasExpired)
+        projectileData.HandleLifetime(Time.fixedDeltaTime);
+        if(projectileData.HasExpired)
             Destroy(this.gameObject);
         else
-            rb.velocity = ProjectileData.Speed * ProjectileData.Direction;
+            rb.velocity = projectileData.Speed * projectileData.Direction;
     }
 
     void OnDestroy()
@@ -65,7 +71,7 @@ public class WeaponProjectile : MonoBehaviour
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable != null)
         {
-            hittable.HandleHit(ProjectileData.DamageInstance);
+            hittable.HandleHit(projectileData.DamageInstance);
         }
 
         Destroy(gameObject);
