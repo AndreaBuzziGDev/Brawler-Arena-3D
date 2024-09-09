@@ -24,6 +24,13 @@ public class UI_MainOptions : MonoBehaviour
     [SerializeField] Slider soundFXVolumeSlider;
     [SerializeField] Slider voiceVolumeSlider;
     [SerializeField] Slider miscVolumeSlider;
+    
+    
+    //DEBOUNCERS
+    private Debouncer musicVolumeDebouncer;
+    private Debouncer soundFXVolumeDebouncer;
+    private Debouncer voiceVolumeDebouncer;
+    private Debouncer miscVolumeDebouncer;
 
     
     
@@ -31,6 +38,12 @@ public class UI_MainOptions : MonoBehaviour
     //LIFECYCLE FUNCTIONS
     void Awake()
     {
+        //DEBOUNCERS
+        musicVolumeDebouncer = new Debouncer(300);
+        soundFXVolumeDebouncer = new Debouncer(300);
+        voiceVolumeDebouncer = new Debouncer(300);
+        miscVolumeDebouncer = new Debouncer(300);
+        
         //LISTEN EVENTS
         EventManager<MainMenuEventArgs>.Instance.StartListening(HandleMainMenuEvent);
     }
@@ -62,26 +75,37 @@ public class UI_MainOptions : MonoBehaviour
 
 
     //SLIDERS
-    //TODO: THESE REALLY SHOULD DEBOUNCE.
     public void HandleVolumeMusicChange()
     {
-        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MUSIC, musicVolumeSlider.value);
-        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        musicVolumeDebouncer.Debounce(() =>
+        {
+            UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MUSIC, musicVolumeSlider.value);
+            EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        });
     }
     public void HandleVolumeSoundFXChange()
     {
-        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.SOUND_FX, musicVolumeSlider.value);
-        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        soundFXVolumeDebouncer.Debounce(() =>
+        {
+            UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.SOUND_FX, soundFXVolumeSlider.value);
+            EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        });
     }
     public void HandleVolumeVoiceChange()
     {
-        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.VOICE, musicVolumeSlider.value);
-        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        voiceVolumeDebouncer.Debounce(() =>
+        {
+            UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.VOICE, voiceVolumeSlider.value);
+            EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        });
     }
     public void HandleVolumeMiscChange()
     {
-        UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MISC, musicVolumeSlider.value);
-        EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        miscVolumeDebouncer.Debounce(() =>
+        {
+            UtilsPrefs.Options.SetVolume(VolumeAdjuster.EVolumeType.MISC, miscVolumeSlider.value);
+            EventManager<VolumeChangeEventArgs>.Instance.Notify(this, new VolumeChangeEventArgs());
+        });
     }
 
 
