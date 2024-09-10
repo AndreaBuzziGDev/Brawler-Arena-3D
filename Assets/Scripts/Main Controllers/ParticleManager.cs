@@ -8,24 +8,13 @@ public class ParticleManager : MonoSingleton<ParticleManager>
     //DATA
 
 
-
-
-    //PREFABS
-    /*
-    TODO: THIS SCRIPT NEEDS TO BE REWORKED.
-
-    THIS PROBABLY SHOULD USE OBJECT POOLS AND/OR A SYSTEM TO MATCH A PARTICLE EFFECT TO AN EMISSION EVENT BEING CAPTURED.
-
-    */
-
-
-
     //LIFECYCLE FUNCTIONS
     // Start is called before the first frame update
     void Start()
     {
         //REGISTER EVENTS
-
+        //TODO: SHOULD PROBABLY USE A CUSTOM EVENT WITH CENTRALIZED EVENT MANAGER
+        
     }
 
     void OnDestroy()
@@ -41,6 +30,7 @@ public class ParticleManager : MonoSingleton<ParticleManager>
     {
         ParticleSystem go = Instantiate(toSpawn);
         go.transform.position = position;
+        go.name = name;
 
         Destroy(go.gameObject, duration);
     }
