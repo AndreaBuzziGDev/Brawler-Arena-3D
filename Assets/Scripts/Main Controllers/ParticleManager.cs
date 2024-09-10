@@ -13,26 +13,26 @@ public class ParticleManager : MonoSingleton<ParticleManager>
     void Start()
     {
         //REGISTER EVENTS
-        //TODO: SHOULD PROBABLY USE A CUSTOM EVENT WITH CENTRALIZED EVENT MANAGER
-        
+        EventManager<ParticleEffectEventArgs>.Instance.StartListening(SpawnParticlesAutoDestroy);
     }
 
     void OnDestroy()
     {
         //UN-REGISTER EVENTS
-        
+        EventManager<ParticleEffectEventArgs>.Instance.StopListening(SpawnParticlesAutoDestroy);
     }
 
 
 
     //FUNCTIONALITIES
-    private void SpawnParticlesAutoDestroy(ParticleSystem toSpawn, Vector3 position, string name = "Orchestrated Particle", float duration = 5)
+    private void SpawnParticlesAutoDestroy(object sender, ParticleEffectEventArgs e)
     {
-        ParticleSystem go = Instantiate(toSpawn);
-        go.transform.position = position;
-        go.name = name;
+        //TODO: THIS CAN BE SIGNIFICANTLY IMPROVED BY USING AN OBJECT POOLER
+        ParticleSystem go = Instantiate(e.ToSpawn);
+        go.transform.position = e.Position;
+        go.name = e.Name;
 
-        Destroy(go.gameObject, duration);
+        Destroy(go.gameObject, e.Duration);
     }
 
 
