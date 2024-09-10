@@ -60,8 +60,6 @@ public class PlayerController : EntityWithAiming
 
     void FixedUpdate()
     {
-        //TODO: IS THIS SUPPOSED TO USE FORCES, OR SHOULD IT USE SOMETHING ELSE?
-        //TODO: READ VAMEDECUM ABOUT RIGIDBODY USAGE
         if(!GameController.Instance.IsPlaying)
             rb.velocity = new Vector3(0, 0, 0);
         else
