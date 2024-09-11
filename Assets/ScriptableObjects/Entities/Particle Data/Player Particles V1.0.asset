@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45fa2d127cf96e498668d88cb2dd942, type: 3}
   m_Name: Player Particles V1.0
   m_EditorClassIdentifier: 
-  deathParticleFX: {fileID: 0}
+  deathParticleFX: {fileID: 5005851307656695951, guid: f33a0a8a4e6bd5f4b912527e5f63ad74, type: 3}
