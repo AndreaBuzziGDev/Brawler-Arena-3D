@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45fa2d127cf96e498668d88cb2dd942, type: 3}
   m_Name: Suicide Bomber Boss Particles V1.0
   m_EditorClassIdentifier: 
-  deathParticleFX: {fileID: 5005851307656695951, guid: a76c6dea4a4848f45a3ca455fffed209, type: 3}
+  deathParticleFX: {fileID: 2333000938562323316, guid: 44ec24b9fc5aea1438c83ba0f8125368, type: 3}
