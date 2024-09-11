@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: 39b18d37590de284d9302bba684cb395, type: 2}
+    - target: {fileID: -7945899802884322071, guid: c2bb076c475708541b136d9c7221515e, type: 3}
+      propertyPath: particleData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ccc9e97861916b45a3a1a65ab4cc611, type: 2}
     - target: {fileID: -4653765177041597452, guid: c2bb076c475708541b136d9c7221515e, type: 3}
       propertyPath: m_Speed
       value: 10
