@@ -30,7 +30,7 @@ public class ParticleManager : MonoSingleton<ParticleManager>
         //TODO: THIS CAN BE SIGNIFICANTLY IMPROVED BY USING AN OBJECT POOLER
         if(e.ToSpawn != null)
         {
-            ParticleSystem go = Instantiate(e.ToSpawn);
+            GameObject go = Instantiate(e.ToSpawn);
             go.transform.position = e.Position;
             go.name = e.Name;
 
