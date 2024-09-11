@@ -6,9 +6,10 @@ using UnityEngine;
 public class EntityParticleData : ScriptableObject
 {
     //DATA - PARTICLE EFFECTS
-    [SerializeField] ParticleSystem deathParticleFX;
+    //TODO: THIS CAN BE IMPROVED BY DEVELOPING ANOTHER SCRIPTABLE OBJECT FOR DEDICATED USE CASE
+    [SerializeField] GameObject deathParticleFX;//TODO: THIS HAS TO HAVE PARTICLE SYSTEM
 
     //DATA GETTERS
-    public ParticleSystem DeathParticleFX { get { return deathParticleFX; } }
+    public GameObject DeathParticleFX { get { return deathParticleFX; } }
     
 }

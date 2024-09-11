@@ -6,14 +6,14 @@ using System;
 public class ParticleEffectEventArgs : EventArgs
 {
     //DATA
-    public ParticleSystem ToSpawn { get; }
+    public GameObject ToSpawn { get; }
     public Vector3 Position { get; }
     public string Name { get; }
     public float Duration { get; }
 
 
     //CONSTRUCTOR
-    public ParticleEffectEventArgs(ParticleSystem toSpawn, Vector3 position, float duration = 5)
+    public ParticleEffectEventArgs(GameObject toSpawn, Vector3 position, float duration = 5)
     {
         this.ToSpawn = toSpawn;
         this.Position = position;
