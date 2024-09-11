@@ -28,11 +28,14 @@ public class ParticleManager : MonoSingleton<ParticleManager>
     private void SpawnParticlesAutoDestroy(object sender, ParticleEffectEventArgs e)
     {
         //TODO: THIS CAN BE SIGNIFICANTLY IMPROVED BY USING AN OBJECT POOLER
-        ParticleSystem go = Instantiate(e.ToSpawn);
-        go.transform.position = e.Position;
-        go.name = e.Name;
+        if(e.ToSpawn != null)
+        {
+            ParticleSystem go = Instantiate(e.ToSpawn);
+            go.transform.position = e.Position;
+            go.name = e.Name;
 
-        Destroy(go.gameObject, e.Duration);
+            Destroy(go.gameObject, e.Duration);
+        }
     }
 
 }
