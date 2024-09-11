@@ -8,6 +8,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //SCRIPTABLE OBJECTS
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
+    [SerializeField] protected EntityParticleData particleData;
 
 
     //REFERENCE VALIDATION
@@ -15,9 +16,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     protected virtual void OnValidate()
     {
         if (data == null)
-            Debug.LogWarning("No Entity Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+            Debug.LogWarning("No Entity EntityData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(audioData == null)
-            Debug.LogWarning("No Entity AudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+            Debug.LogWarning("No Entity EntityAudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+        if(particleData == null)
+            Debug.LogWarning("No Entity EntityParticleData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
 
@@ -93,7 +96,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     public virtual void HandleDeath()
     {
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
-        //TODO: HANDLE OTHER EFFECTS SUCH AS PARTICLES
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData.DeathParticleFX, transform.position));
 
         //DESTROY
         Destroy(this.gameObject);

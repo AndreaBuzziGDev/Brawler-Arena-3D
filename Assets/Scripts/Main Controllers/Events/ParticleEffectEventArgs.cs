@@ -13,11 +13,11 @@ public class ParticleEffectEventArgs : EventArgs
 
 
     //CONSTRUCTOR
-    public ParticleEffectEventArgs(ParticleSystem toSpawn, Vector3 position, string name = "Orchestrated Particle", float duration = 5)
+    public ParticleEffectEventArgs(ParticleSystem toSpawn, Vector3 position, float duration = 5)
     {
         this.ToSpawn = toSpawn;
         this.Position = position;
-        this.Name = name;
+        this.Name = toSpawn.gameObject.name;
         this.Duration = duration;
     }
 }
