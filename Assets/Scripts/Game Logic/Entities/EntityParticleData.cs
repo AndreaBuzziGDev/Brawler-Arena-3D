@@ -6,20 +6,21 @@ using UnityEngine;
 public class EntityParticleData : ScriptableObject
 {
     //DATA - PARTICLE EFFECTS
-    //TODO: THIS CAN BE IMPROVED BY DEVELOPING ANOTHER SCRIPTABLE OBJECT FOR DEDICATED USE CASE
-    [SerializeField] GameObject deathParticleFX;
+    [SerializeField] ParticleDataStruct structDeathParticleFX;
 
     //DATA GETTERS
-    public GameObject DeathParticleFX { get { return deathParticleFX; } }
+    public ParticleDataStruct DeathParticleFX { get { return structDeathParticleFX; } }
+    
     
     //METHODS
     private void OnValidate()
     {
         //TODO: IN CASE OF MULTIPLE PARTICLE FX, USE A FOR CYCLE
-        if(deathParticleFX != null && deathParticleFX.GetComponent<ParticleSystem>() == null)
+        if(structDeathParticleFX?.particle != null && structDeathParticleFX.particle.GetComponent<ParticleSystem>() == null)
         {
-            Debug.LogError($"{deathParticleFX.name} must contain ParticleSystem!");
+            Debug.LogError($"{structDeathParticleFX.particle.name} must contain ParticleSystem!");
         }
+        //TODO: DURATION MUST BE A POSITIVE VALUE
     }
     
 }
