@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45fa2d127cf96e498668d88cb2dd942, type: 3}
   m_Name: Base Mob Particles V1.0
   m_EditorClassIdentifier: 
-  deathParticleFX: {fileID: 7226888052703040409, guid: 3688d7e0096da434e884fc2c2e23f426, type: 3}
+  structDeathParticleFX:
+    particle: {fileID: 7226888052703040409, guid: 3688d7e0096da434e884fc2c2e23f426, type: 3}
+    duration: 5
