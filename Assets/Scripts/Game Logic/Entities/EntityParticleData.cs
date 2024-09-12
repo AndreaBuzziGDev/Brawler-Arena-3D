@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Entity Audio Data", menuName = "Entity Data/Entity Particles/Mob Particles")]
@@ -15,12 +17,29 @@ public class EntityParticleData : ScriptableObject
     //METHODS
     private void OnValidate()
     {
-        //TODO: IN CASE OF MULTIPLE PARTICLE FX, USE A FOR CYCLE
-        if(structDeathParticleFX?.particle != null && structDeathParticleFX.particle.GetComponent<ParticleSystem>() == null)
+        foreach (ParticleDataStruct pdsField in GetAllParticleDataStructs())
         {
-            Debug.LogError($"{structDeathParticleFX.particle.name} must contain ParticleSystem!");
+            //
+            if(pdsField?.particle != null && pdsField.particle.GetComponent<ParticleSystem>() == null)
+                Debug.LogError($"{pdsField.particle.name} must contain ParticleSystem!");
+            //
+            if(pdsField?.duration != null && pdsField.duration < 0)
+                Debug.LogError($"{pdsField.particle.name} must have a positive duration!");
         }
-        //TODO: DURATION MUST BE A POSITIVE VALUE
+    }
+
+
+    //UTILITIES
+    private List<ParticleDataStruct> GetAllParticleDataStructs()
+    {
+        List<ParticleDataStruct> pdsFields = new();
+        Type type = this.GetType();
+        foreach (FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+        {
+            if (field.FieldType == typeof(ParticleDataStruct))
+                pdsFields.Add((ParticleDataStruct) field.GetValue(this));
+        }
+        return pdsFields;
     }
     
 }
