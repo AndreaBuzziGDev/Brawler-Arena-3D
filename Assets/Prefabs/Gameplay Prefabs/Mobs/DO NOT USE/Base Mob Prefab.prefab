@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4c3241a2c18b02b428cb8f1041d855b6, type: 2}
   audioData: {fileID: 11400000, guid: fc31409db77d5d049b150b604a28ff7b, type: 2}
+  particleData: {fileID: 11400000, guid: 504bd223c1416fd45bc4d45a156d9997, type: 2}
 --- !u!114 &3410234541537381172
 MonoBehaviour:
   m_ObjectHideFlags: 0

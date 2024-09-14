@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27cd6ce29db9b443b2f54b9d104538d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  weaponData: {fileID: 11400000, guid: eca230e0adafa1b4b9587d722113f973, type: 2}
   weaponAudioData: {fileID: 11400000, guid: ac58cc8350717f948983fb60589e874d, type: 2}
-  aimingDirection: {x: 0, y: 1}
+  aimingEntity: {fileID: 0}
   projectile: {fileID: 995540219590673333, guid: 60a246e4391982f41b69330843e0ae83, type: 3}
+  wData: {fileID: 11400000, guid: 564399f29587d6e45b1378587275eded, type: 2}
