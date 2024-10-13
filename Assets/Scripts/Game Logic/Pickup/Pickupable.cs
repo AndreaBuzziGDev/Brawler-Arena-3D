@@ -8,6 +8,6 @@ public class Pickupable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //TODO: CHECK IF COLLIDER IS PLAYER
-        
+        TriggerInfo tInfo = new(other.gameObject);
     }
 }
