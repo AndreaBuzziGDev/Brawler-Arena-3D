@@ -8,6 +8,11 @@ public class Pickupable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //TODO: CHECK IF COLLIDER IS PLAYER
-        TriggerInfo tInfo = new(other.gameObject);
+        //TRIGGER INFO
+        TriggerInfo tInfo = new(other.gameObject, this.gameObject);
+        
+        //DISPATCH EVENT
+        
+        //ADDITIONAL ACTIONS?
     }
 }
