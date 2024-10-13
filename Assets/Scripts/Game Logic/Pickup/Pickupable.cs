@@ -9,10 +9,14 @@ public class Pickupable : MonoBehaviour
     {
         //TODO: CHECK IF COLLIDER IS PLAYER
         //TRIGGER INFO
-        TriggerInfo tInfo = new(other.gameObject, this.gameObject);
+        TriggerInfoEventArgs tInfo = new(other.gameObject, this.gameObject);
         
         //DISPATCH EVENT
+        EventManager<TriggerInfoEventArgs>.Instance.Notify(this, new(other.gameObject, this.gameObject));
         
         //ADDITIONAL ACTIONS?
+        //TODO: IS THIS SUPPOSED TO IMPLEMENT A DELEGATE OR A SIMILAR FUNCTIONALITY OF SOME SORT?
+        //      MOST LIKELY, YES.
+        
     }
 }

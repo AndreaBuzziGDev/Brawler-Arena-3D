@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class TriggerInfo
+public class TriggerInfoEventArgs : EventArgs
 {
+    //ENUMS
+    public enum EType
+    {
+        ENTER,
+        LEAVE
+    }
+
+    //DATA
     public GameObject ColliderObject { get; private set; }
     public string ColliderTag { get; private set; }
     public Vector3 CollisionPosition { get; private set; }
+    
+    public GameObject Dispatcher { get; private set; }//NB: NECESSARY. EVENT SENDER MIGHT NOT BE A GAMEOBJECT
+    
 
-    public GameObject Dispatcher { get; private set; }
-
-    public TriggerInfo(GameObject colliderObject, GameObject dispatcher){
+    //CONSTRUCTOR
+    public TriggerInfoEventArgs(GameObject colliderObject, GameObject dispatcher){
         ColliderObject = colliderObject;
         ColliderTag = colliderObject.tag;
         CollisionPosition = colliderObject.transform.position;
@@ -18,4 +29,5 @@ public class TriggerInfo
         //TODO: DISPATCHER SHOULD ALWAYS BE SPECIFIED
         Dispatcher = dispatcher;
     }
+
 }
