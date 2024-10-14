@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: EVOLVE TO HANDLE INSTANT PICKUP VS PROMPTED PICKUP
 public class Pickupable : MonoBehaviour
 {
     //DATA
@@ -39,7 +40,7 @@ public class Pickupable : MonoBehaviour
             //TODO: IS THIS SUPPOSED TO IMPLEMENT A DELEGATE OR A SIMILAR FUNCTIONALITY OF SOME SORT?
             //      MOST LIKELY, YES.
             //      ACTUALLY: NO. DOESN'T NEED THAT BECAUSE IN THIS CASE, PICKUPABLES LOGIC WILL BE HANDLED BY A CENTRALIZED SCRIPT WITH EVENT HANDLING.
-            
+
         }
     }
 }
