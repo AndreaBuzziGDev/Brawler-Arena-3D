@@ -27,18 +27,17 @@ public class Pickupable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("This is Pickupable Script");
-        //TODO: SHOULD THIS CHECK FOR PLAYER IN ADVANCE?
-        //TODO: SHOULD THIS IGNORE AND SHOULD IT JUST RELY ON COLLISION MATRIX?
-
-        //TRIGGER INFO
-        TriggerInfoEventArgs tInfo = new(other.gameObject, this.gameObject);
-        
-        //DISPATCH EVENT
-        EventManager<TriggerInfoEventArgs>.Instance.Notify(this, new(other.gameObject, this.gameObject));
-        
-        //ADDITIONAL ACTIONS?
-        //TODO: IS THIS SUPPOSED TO IMPLEMENT A DELEGATE OR A SIMILAR FUNCTIONALITY OF SOME SORT?
-        //      MOST LIKELY, YES.
-        
+        if(!IsInert)
+        {
+            isInert = true;
+            //TODO: SHOULD THIS CHECK FOR PLAYER IN ADVANCE?
+            //TODO: SHOULD THIS IGNORE AND SHOULD IT JUST RELY ON COLLISION MATRIX?
+            //DISPATCH EVENT
+            EventManager<TriggerInfoEventArgs>.Instance.Notify(this, new(other.gameObject, this.gameObject));
+            
+            //ADDITIONAL ACTIONS?
+            //TODO: IS THIS SUPPOSED TO IMPLEMENT A DELEGATE OR A SIMILAR FUNCTIONALITY OF SOME SORT?
+            //      MOST LIKELY, YES.
+        }
     }
 }
