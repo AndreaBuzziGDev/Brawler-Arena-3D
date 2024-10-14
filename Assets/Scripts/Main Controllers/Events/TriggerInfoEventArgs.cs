@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//TODO: THIS SHOULD BE USED FOR TRIGGER EVENTS, NOT FOR PICKUP.
 public class TriggerInfoEventArgs : EventArgs
 {
     //ENUMS
