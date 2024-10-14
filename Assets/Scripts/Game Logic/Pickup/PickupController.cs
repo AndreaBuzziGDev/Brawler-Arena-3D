@@ -25,6 +25,7 @@ public class PickupController : MonoBehaviour
     {
         //REGISTER TO EVENT
         EventManager<PickupEventArgs>.Instance.StartListening(HandlePickupEvent);
+        //TODO: SHOULD THIS REGISTER TO OTHER (NOT YET IMPLEMENTED/DESIGNED) GAME EVENTS THAT ALTER THE GAME'S PARAMETERS?
     }
     
     void OnDestroy()
@@ -59,6 +60,7 @@ public class PickupController : MonoBehaviour
         }
     }
     
-    
+    //TODO: IMPLEMENT ALL THE PICKUP FUNCTIONALITIES
+    //      SHOULD THIS RELY ON AN "EQUIPMENT HELPER" SCRIPT ON THE PLAYER ITSELF?
     
 }
