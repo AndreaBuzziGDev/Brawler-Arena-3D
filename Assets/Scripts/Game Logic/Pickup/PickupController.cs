@@ -24,24 +24,39 @@ public class PickupController : MonoBehaviour
     void Start()
     {
         //REGISTER TO EVENT
-        EventManager<TriggerInfoEventArgs>.Instance.StartListening(HandlePickupEvent);
+        EventManager<PickupEventArgs>.Instance.StartListening(HandlePickupEvent);
     }
     
     void OnDestroy()
     {
-        EventManager<TriggerInfoEventArgs>.Instance.StopListening(HandlePickupEvent);
+        EventManager<PickupEventArgs>.Instance.StopListening(HandlePickupEvent);
     }
 
     //EVENT HANDLING
-    private void HandlePickupEvent(object sender, TriggerInfoEventArgs e)
+    private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
-        //TODO: HANDLE ENTER VS LEAVE?
-        /*
-        Switch(e.EventType)
+        switch(e.EventType)
         {
-
+            case EPickupTypes.Health:
+                //
+                
+                break;
+            case EPickupTypes.Weapon:
+                //
+                
+                break;
+            case EPickupTypes.Ability:
+                //
+                
+                break;
+            case EPickupTypes.Buff:
+                //
+                
+                break;
+            default:
+                UnityEngine.Debug.LogWarning("Invalid Pickup Type: " + e.EventType);
+                break;
         }
-        */
     }
     
     
