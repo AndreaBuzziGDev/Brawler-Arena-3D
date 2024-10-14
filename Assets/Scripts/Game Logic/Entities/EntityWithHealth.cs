@@ -42,10 +42,10 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //DATA-RELATED FUNCTIONS
-    Boolean IsAlive { get { return currentHealth > 0; } }
-    Boolean IsShielded { get { return currentShield > 0; } }
-    Boolean IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
-    Boolean IsRecharging { get { return currentShield < maxHealth; } }
+    bool IsAlive { get { return currentHealth > 0; } }
+    bool IsShielded { get { return currentShield > 0; } }
+    bool IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
+    bool IsRecharging { get { return currentShield < maxHealth; } }
 
 
 
