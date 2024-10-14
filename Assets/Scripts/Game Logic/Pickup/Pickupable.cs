@@ -26,6 +26,7 @@ public class Pickupable : MonoBehaviour
     //TRIGGER
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("This is Pickupable Script");
         //TODO: SHOULD THIS CHECK FOR PLAYER IN ADVANCE?
         //TODO: SHOULD THIS IGNORE AND SHOULD IT JUST RELY ON COLLISION MATRIX?
 
