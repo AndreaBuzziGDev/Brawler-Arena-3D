@@ -8,8 +8,8 @@ public class Pickupable : MonoBehaviour
 {
     //DATA
     [SerializeField] PickupController.EPickupTypes pickupType;
-    [SerializeField] Boolean enemyPickup = false;
-    Boolean isInert = false;
+    [SerializeField] bool enemyPickup = false;
+    bool isInert = false;
 
 
     //LIFECYCLE FUNCTIONS
