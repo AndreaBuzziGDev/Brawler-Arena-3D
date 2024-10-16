@@ -22,7 +22,7 @@ public class Pickupable : MonoBehaviour
     //TRIGGER
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("This is Pickupable Script");
+        Debug.Log("This is Pickupable Script colliding with: " + other.gameObject.name);
         if(!isInert)
         {
             isInert = true;
@@ -31,12 +31,7 @@ public class Pickupable : MonoBehaviour
             //DISPATCH EVENT
             EventManager<PickupEventArgs>.Instance.Notify(this, new(this.pickupType));
             
-            //ADDITIONAL ACTIONS?
-            //TODO: IS THIS SUPPOSED TO IMPLEMENT A DELEGATE OR A SIMILAR FUNCTIONALITY OF SOME SORT?
-            //      MOST LIKELY, YES.
-            //      ACTUALLY: NO. DOESN'T NEED THAT BECAUSE IN THIS CASE, PICKUPABLES LOGIC WILL BE HANDLED BY A CENTRALIZED SCRIPT WITH EVENT HANDLING.
-            //      GENERIC TRIGGER VOLUME, HOWEVER, SHOULD.
-
+            Destroy(this.gameObject);
         }
     }
 }
