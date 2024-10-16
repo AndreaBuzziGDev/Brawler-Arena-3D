@@ -26,11 +26,7 @@ public class Pickupable : MonoBehaviour
         if(!isInert)
         {
             isInert = true;
-            //TODO: SHOULD THIS CHECK FOR PLAYER IN ADVANCE?
-            //TODO: SHOULD THIS IGNORE AND SHOULD IT JUST RELY ON COLLISION MATRIX?
-            //DISPATCH EVENT
             EventManager<PickupEventArgs>.Instance.Notify(this, new(this.pickupType));
-            
             Destroy(this.gameObject);
         }
     }
