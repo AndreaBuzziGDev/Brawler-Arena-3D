@@ -36,6 +36,7 @@ public class PickupController : MonoBehaviour
     //EVENT HANDLING
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
+        UnityEngine.Debug.Log("Just Debugging for test reasons");
         switch(e.EventType)
         {
             case EPickupTypes.Health:
