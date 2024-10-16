@@ -37,6 +37,7 @@ public class PickupController : MonoBehaviour
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
         UnityEngine.Debug.Log("Just Debugging for test reasons");
+        PlayerController pc = GameController.Instance.GetPlayerAnywhere;
         switch(e.EventType)
         {
             case EPickupTypes.Health:
