@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class EntityWithAiming : MonoBehaviour, IAimingCapable
 {
     //INSPECTOR REFERENCES
-    [SerializeField] EntityWithHealth ownerEntity;
+    [SerializeField] EntityWithHealth ownerEntity;//TODO: IS THIS EVEN USED ANYMORE?
 
 
     //REFERENCE VALIDATION
