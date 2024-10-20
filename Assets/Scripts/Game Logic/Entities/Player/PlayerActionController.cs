@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //TODO: THIS MIGHT NECESSITATE SOME IMPROVEMENTS, LIKE INHERITANCE FROM AN ABSTRACT CLASS
-public class PlayerMovementController : MonoBehaviour
+public class PlayerActionController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
