@@ -13,37 +13,16 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : EntityWithAiming
 {
-    //INSPECTOR REFERENCES
-    [SerializeField] WeaponController weaponRanged;
-
-
-    //REFERENCE VALIDATION
-#if UNITY_EDITOR
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-        if (weaponRanged == null)
-            Debug.LogWarning("No Ranged Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-    }
-#endif
-
-
-
-    //PHYSICS PARAMETERS
-    [SerializeField] float gravityScale = 0.65f;
-    [SerializeField] float movementSpeed = 1.0f;
-
+    //PLAYER EVENT SUBSCRIBERS
+    private List<Action<object, EntityActionEventArgs>> pActSubscribers = new List<Action<object, EntityActionEventArgs>>();
+    private List<Action<object, EntityPickupEventArgs>> pUpSubscribers = new List<Action<object, EntityPickupEventArgs>>();
 
 
     //DIRECTION VECTORS
     Vector2 movementDirection;
 
-
     //INPUT
     GameInputAction inputPlayer;
-
-    //ADDITIONAL DATA
-    Rigidbody rb;
 
 
 
@@ -52,31 +31,15 @@ public class PlayerController : EntityWithAiming
     //LIFECYCLE FUNCTIONS
     void Start()
     {
-        //ASSIGN REFERENCES
-        rb = gameObject.GetComponent<Rigidbody>();
-
         //LISTEN TO INPUTS
         InputInitialization();
-        
-        //
-
-    }
-
-    void FixedUpdate()
-    {
-        if(!GameController.Instance.IsPlaying)
-            rb.velocity = new Vector3(0, 0, 0);
-        else
-        {
-            rb.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
-            rb.velocity += gravityScale * Physics.gravity;
-        }
     }
 
 
     void OnDestroy()
     {
         InputTermination();
+        //TODO: UNSUBSCRIBE ALL SUBSCRIBERS
     }
 
     
@@ -125,6 +88,28 @@ public class PlayerController : EntityWithAiming
         //ESCAPE
         inputPlayer.BaseActionMap.Escape.performed -= UseEscape;
     }
+
+
+
+    //NOTIFY EVENTS
+    public void notifyAction(){
+
+    }
+
+    public void notifyPickup(){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     //INPUT HANDLING
     void UseMovement(InputAction.CallbackContext value)
