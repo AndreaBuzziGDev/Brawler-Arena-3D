@@ -73,7 +73,7 @@ public class PlayerActionController : EntityWithAiming
     {
         //TODO: THIS SHOULD INSTEAD START LISTENING FROM THE "PlayerController" FOR EVENTS
         //TODO: SUBSCRIBE TO PARENT
-
+        pc.SubscribePlayerAction(HandleMovement);
     }
 
     //TODO: RENAME
@@ -82,24 +82,22 @@ public class PlayerActionController : EntityWithAiming
         //TODO: THIS SHOULD INSTEAD STOP LISTENING FROM THE "PlayerController" FOR EVENTS
         //TODO: UN-SUBSCRIBE TO PARENT
         //NB: THIS MIGHT NOT BE NECESSARY. 
+        
+        pc.UnsubscribePlayerAction(HandleMovement);
     }
 
     //INPUT HANDLING
-    void UseMovement(InputAction.CallbackContext value)
+    void HandleMovement(object sender, EntityActionEventArgs value)
     {
+        Debug.Log("This is HandleMovement in Action Controller");
+        //TODO: IGNORE INPUTS WHEN SENDER IS NOT pc? --> MIGHT IMPROVE FIDELITY
+        //      NO IT WOULDN'T REALLY. THE REASON BEING, REMEMBER THIS IS INCAPSULATED. THIS ENTITY DECIDES ON ITS OWN ON WHO TO SUBSCRIBE
+        //TODO: HOW TO PREVENT OBJECTS FROM SENDING SOMEONE ELSE TO PRETEND TO BE THEM?
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
-        movementDirection = value.ReadValue<Vector2>().normalized;
-    }
-    void ReleaseMovement(InputAction.CallbackContext value)
-    {
-        //CONDITION
-        if(!GameController.Instance.IsPlaying)
-            return;
-
-        movementDirection = Vector2.zero;
+        movementDirection = (Vector2) value.CarriedInfo;
     }
 
 
@@ -167,13 +165,15 @@ public class PlayerActionController : EntityWithAiming
 
 
     //GIZMOS
+    //TODO: UNCOMMENT HERE AND REMOVE ON PlayerController
+    /*
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(aimingDirection.x, 0, aimingDirection.y) * 5);
     }
-
+    */
 
     //UTILITIES
     //...

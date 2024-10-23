@@ -25,9 +25,6 @@ public class PlayerController : EntityWithAiming
     GameInputAction inputPlayer;
 
 
-
-
-
     //LIFECYCLE FUNCTIONS
     void Start()
     {
@@ -90,23 +87,34 @@ public class PlayerController : EntityWithAiming
     }
 
 
-
-    //NOTIFY EVENTS
-    public void notifyAction(){
-
+    //ENTITY EVENTS SUBSCRIPTION
+    //TODO: THIS ARCHITECTURE CAN BE FURTHER ABSTRACTED AND IMPLEMENTED IN PARENT ENTITIES INSTEAD.
+    public void SubscribePlayerAction(Action<object, EntityActionEventArgs> listener)
+    {
+        if (listener == null) return;
+        pActSubscribers.Add(listener);
+    }
+    public void UnsubscribePlayerAction(Action<object, EntityActionEventArgs> listener)
+    {
+        //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
+        //if(instance == null) return;
+        if(pActSubscribers.Contains(listener))
+            pActSubscribers.Remove(listener);
     }
 
-    public void notifyPickup(){
 
+    public void SubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    {
+        if (listener == null) return;
+        pUpSubscribers.Add(listener);
     }
-
-
-
-
-
-
-
-
+    public void UnsubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    {
+        //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
+        //if(instance == null) return;
+        if(pUpSubscribers.Contains(listener))
+            pUpSubscribers.Remove(listener);
+    }
 
 
 
@@ -119,6 +127,12 @@ public class PlayerController : EntityWithAiming
             return;
         
         movementDirection = value.ReadValue<Vector2>().normalized;
+
+        foreach(Action<object, EntityActionEventArgs> sub in pActSubscribers)
+        {
+            Debug.Log("Subscriber: " + sub);
+            sub?.Invoke(this, new(movementDirection));
+        }
     }
     void ReleaseMovement(InputAction.CallbackContext value)
     {
@@ -127,6 +141,10 @@ public class PlayerController : EntityWithAiming
             return;
 
         movementDirection = Vector2.zero;
+        foreach(Action<object, EntityActionEventArgs> sub in pActSubscribers)
+        {
+            sub?.Invoke(this, new(movementDirection));
+        }
     }
 
 
@@ -167,7 +185,7 @@ public class PlayerController : EntityWithAiming
         if(!GameController.Instance.IsPlaying)
             return;
         
-        weaponRanged.Operate();
+        //weaponRanged.Operate();
     }
 
     void UseAbility(InputAction.CallbackContext value)
