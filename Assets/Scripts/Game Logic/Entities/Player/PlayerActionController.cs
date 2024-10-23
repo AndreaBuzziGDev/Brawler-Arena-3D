@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerActionController : EntityWithAiming
 {
     //INSPECTOR REFERENCES
+    [SerializeField] PlayerController pc;
     [SerializeField] WeaponController weaponRanged;
     //TODO: WEAPON MELEE
     //TODO: ABILITY
@@ -18,6 +19,8 @@ public class PlayerActionController : EntityWithAiming
     protected override void OnValidate()
     {
         base.OnValidate();
+        if (pc == null)
+            Debug.LogWarning("No Player Controller Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if (rb == null)
             Debug.LogWarning("No Rigid Body Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if (weaponRanged == null)
@@ -29,15 +32,11 @@ public class PlayerActionController : EntityWithAiming
 
 
     //PHYSICS PARAMETERS
-    [SerializeField] float gravityScale = 0.65f;//TODO: RELY ON PHYSICS ENGINE INSTEAD OF SIMULATING IT?
+    [SerializeField] float gravityScale = 0.65f;
     [SerializeField] float movementSpeed = 1.0f;
     
     //DIRECTION VECTORS
     Vector2 movementDirection;
-
-    //INPUT
-    GameInputAction inputPlayer;
-
 
 
 
@@ -69,56 +68,100 @@ public class PlayerActionController : EntityWithAiming
     //FUNCTIONALITIES
     
     //INPUT FUNCTIONS
+    //TODO: RENAME
     void InputInitialization()
     {
         //TODO: THIS SHOULD INSTEAD START LISTENING FROM THE "PlayerController" FOR EVENTS
+        //TODO: SUBSCRIBE TO PARENT
+
     }
 
+    //TODO: RENAME
     void InputTermination()
     {
         //TODO: THIS SHOULD INSTEAD STOP LISTENING FROM THE "PlayerController" FOR EVENTS
+        //TODO: UN-SUBSCRIBE TO PARENT
+        //NB: THIS MIGHT NOT BE NECESSARY. 
     }
 
     //INPUT HANDLING
     void UseMovement(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
         
+        movementDirection = value.ReadValue<Vector2>().normalized;
     }
     void ReleaseMovement(InputAction.CallbackContext value)
     {
-        
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
+        movementDirection = Vector2.zero;
     }
 
 
     void UseControllerRotation(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
         
+        aimingDirection = value.ReadValue<Vector2>().normalized;
     }
     
     void UseMouseRotation(InputAction.CallbackContext value)
     {
-       
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+        
+        Vector3 mousePos = Input.mousePosition;
+        Vector2 mousePos2D = new(mousePos.x, mousePos.y);
+        aimingDirection = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
     }
 
 
     void UseAttackMelee(InputAction.CallbackContext value)
     {
-        
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
+        //TODO: DEVELOP
+        Debug.Log("No Melee Weapon");
     }
 
     void UseAttackRanged(InputAction.CallbackContext value)
     {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
         
+        weaponRanged.Operate();
     }
 
     void UseAbility(InputAction.CallbackContext value)
     {
-        
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
+        //TODO: DEVELOP
+        Debug.Log("No Ability");
     }
 
     void UseEscape(InputAction.CallbackContext value)
     {
-        
+        if(!GameController.Instance.IsGameOver)
+        {
+            if(GameController.Instance.IsPaused)
+                GameController.Instance.SetState(GameController.EGameState.Playing);
+            else
+                GameController.Instance.SetState(GameController.EGameState.Paused);
+        }
     }
 
 
