@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4459700897691503652}
   - component: {fileID: 6151373417630674750}
   - component: {fileID: 1081987661556132137}
+  - component: {fileID: 2954634974775755029}
   m_Layer: 6
   m_Name: BA Player
   m_TagString: Untagged
@@ -298,7 +299,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerEntity: {fileID: 6151373417630674750}
+--- !u!114 &2954634974775755029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907586155588128813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49523e04054b7dd48a847165bebd5c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerEntity: {fileID: 6151373417630674750}
+  pc: {fileID: 1081987661556132137}
   weaponRanged: {fileID: 1227511429750810478}
+  rb: {fileID: 4391159529738853700}
   gravityScale: 0.65
   movementSpeed: 20
 --- !u!1001 &1984113436083696379
