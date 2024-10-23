@@ -32,6 +32,7 @@ public class EventManager<T> where T : EventArgs
         MyHandler += TriggerEvent;
     }
 
+    //DESTRUCTOR
     ~EventManager()
     {
         //UN-REGISTER EVENT
