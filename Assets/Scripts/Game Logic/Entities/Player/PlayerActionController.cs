@@ -73,7 +73,9 @@ public class PlayerActionController : EntityWithAiming
     {
         //TODO: THIS SHOULD INSTEAD START LISTENING FROM THE "PlayerController" FOR EVENTS
         //TODO: SUBSCRIBE TO PARENT
-        pc.SubscribePlayerAction(HandleMovement);
+        pc.SubscribePlayerAction<EAMovementEventArgs>(HandleMovement);
+        //pc.SubscribePlayerAction<EAAimingEventArgs>(HandleMovement);
+        //pc.SubscribePlayerAction<EAPerformEventArgs>(HandleMovement);
     }
 
     //TODO: RENAME
@@ -83,7 +85,9 @@ public class PlayerActionController : EntityWithAiming
         //TODO: UN-SUBSCRIBE TO PARENT
         //NB: THIS MIGHT NOT BE NECESSARY. 
         
-        pc.UnsubscribePlayerAction(HandleMovement);
+        pc.UnsubscribePlayerAction<EAMovementEventArgs>(HandleMovement);
+        //pc.UnsubscribePlayerAction<EAAimingEventArgs>(HandleMovement);
+        //pc.UnsubscribePlayerAction<EAPerformEventArgs>(HandleMovement);
     }
 
     //INPUT HANDLING

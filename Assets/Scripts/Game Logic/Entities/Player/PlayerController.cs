@@ -14,8 +14,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : EntityWithAiming
 {
     //PLAYER EVENT SUBSCRIBERS
-    private List<Action<object, EntityActionEventArgs>> pActSubscribers = new List<Action<object, EntityActionEventArgs>>();
-    private List<Action<object, EntityPickupEventArgs>> pUpSubscribers = new List<Action<object, EntityPickupEventArgs>>();
+    private Dictionary<Type, List<Action<object, EntityActionEventArgs>>> pActSubscribers = new();
+    private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> pUpSubscribers = new();
 
 
     //DIRECTION VECTORS
@@ -89,31 +89,36 @@ public class PlayerController : EntityWithAiming
 
     //ENTITY EVENTS SUBSCRIPTION
     //TODO: THIS ARCHITECTURE CAN BE FURTHER ABSTRACTED AND IMPLEMENTED IN PARENT ENTITIES INSTEAD.
-    public void SubscribePlayerAction(Action<object, EntityActionEventArgs> listener)
+    public void SubscribePlayerAction<T>(Action<object, EntityActionEventArgs> listener) where T : EntityActionEventArgs
     {
         if (listener == null) return;
-        pActSubscribers.Add(listener);
+        if(!pActSubscribers.ContainsKey(typeof(T)))
+            pActSubscribers[typeof(T)] = new List<Action<object, EntityActionEventArgs>>();
+        pActSubscribers[typeof(T)].Add(listener);
     }
-    public void UnsubscribePlayerAction(Action<object, EntityActionEventArgs> listener)
+    public void UnsubscribePlayerAction<T>(Action<object, EntityActionEventArgs> listener) where T : EntityActionEventArgs
     {
         //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
         //if(instance == null) return;
-        if(pActSubscribers.Contains(listener))
-            pActSubscribers.Remove(listener);
+        if(pActSubscribers[typeof(T)].Contains(listener))
+            pActSubscribers[typeof(T)].Remove(listener);
     }
 
 
-    public void SubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    public void SubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
         if (listener == null) return;
-        pUpSubscribers.Add(listener);
+
+        if(!pUpSubscribers.ContainsKey(typeof(T)))
+            pUpSubscribers[typeof(T)] = new List<Action<object, EntityPickupEventArgs>>();
+        pUpSubscribers[typeof(T)].Add(listener);
     }
-    public void UnsubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    public void UnsubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
         //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
         //if(instance == null) return;
-        if(pUpSubscribers.Contains(listener))
-            pUpSubscribers.Remove(listener);
+        if(pUpSubscribers[typeof(T)].Contains(listener))
+            pUpSubscribers[typeof(T)].Remove(listener);
     }
 
 
@@ -128,7 +133,7 @@ public class PlayerController : EntityWithAiming
         
         movementDirection = value.ReadValue<Vector2>().normalized;
 
-        foreach(Action<object, EntityActionEventArgs> sub in pActSubscribers)
+        foreach(Action<object, EAMovementEventArgs> sub in pActSubscribers[typeof(EAMovementEventArgs)])
         {
             Debug.Log("Subscriber: " + sub);
             sub?.Invoke(this, new(movementDirection));
@@ -141,7 +146,7 @@ public class PlayerController : EntityWithAiming
             return;
 
         movementDirection = Vector2.zero;
-        foreach(Action<object, EntityActionEventArgs> sub in pActSubscribers)
+        foreach(Action<object, EAMovementEventArgs> sub in pActSubscribers[typeof(EAMovementEventArgs)])
         {
             sub?.Invoke(this, new(movementDirection));
         }
