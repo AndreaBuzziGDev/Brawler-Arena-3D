@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDirection : MonoBehaviour
 {
     //INSPECTOR REFERENCES
-    [SerializeField] PlayerController player;
+    [SerializeField] PlayerActionController playerAction;
     [SerializeField] SpriteRenderer sprite;
 
 
@@ -13,7 +13,7 @@ public class PlayerDirection : MonoBehaviour
 #if UNITY_EDITOR
     protected void OnValidate()
     {
-        if (player == null)
+        if (playerAction == null)
             Debug.LogWarning("No PlayerController Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(sprite == null)
             Debug.LogWarning("No SpriteRenderer Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
@@ -45,6 +45,6 @@ public class PlayerDirection : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    private void UpdateDirection() => transform.LookAt(this.transform.position + player.AimingDirection3D());
+    private void UpdateDirection() => transform.LookAt(this.transform.position + playerAction.AimingDirection3D());
 
 }

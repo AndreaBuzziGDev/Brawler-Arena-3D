@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerActionController : EntityWithAiming
 {
+    //TODO: EMBELLISH EDITOR VIEW
     //INSPECTOR REFERENCES
-    [SerializeField] PlayerController pc;
+    [SerializeField] Rigidbody playerRigidBody;
+
+    [SerializeField] PlayerController masterController;
     [SerializeField] WeaponController weaponRanged;
     //TODO: WEAPON MELEE
     //TODO: ABILITY
-
-    [SerializeField] Rigidbody rb;
 
 
     //REFERENCE VALIDATION
@@ -19,10 +20,10 @@ public class PlayerActionController : EntityWithAiming
     protected override void OnValidate()
     {
         base.OnValidate();
-        if (pc == null)
-            Debug.LogWarning("No Player Controller Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if (rb == null)
+        if (playerRigidBody == null)
             Debug.LogWarning("No Rigid Body Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+        if (masterController == null)
+            Debug.LogWarning("No Player Controller Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if (weaponRanged == null)
             Debug.LogWarning("No Ranged Weapon Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         //TODO: WEAPON MELEE
@@ -38,6 +39,8 @@ public class PlayerActionController : EntityWithAiming
     //DIRECTION VECTORS
     Vector2 movementDirection;
 
+    //INPUT
+    GameInputAction inputPlayer;
 
 
 
@@ -52,56 +55,86 @@ public class PlayerActionController : EntityWithAiming
     void FixedUpdate()
     {
         if(!GameController.Instance.IsPlaying)
-            rb.velocity = new Vector3(0, 0, 0);
+            playerRigidBody.velocity = new Vector3(0, 0, 0);
         else
         {
-            rb.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
-            rb.velocity += gravityScale * Physics.gravity;
+            playerRigidBody.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
+            playerRigidBody.velocity += gravityScale * Physics.gravity;
         }
     }
 
     void OnDestroy()
     {
         InputTermination();
+        //TODO: UNSUBSCRIBE ALL SUBSCRIBERS (ONCE SUBSCRIBER DICTIONARY HAS BEEN MOVED HERE)
     }
+
+
 
     //FUNCTIONALITIES
     
     //INPUT FUNCTIONS
-    //TODO: RENAME
     void InputInitialization()
     {
-        //TODO: THIS SHOULD INSTEAD START LISTENING FROM THE "PlayerController" FOR EVENTS
-        //TODO: SUBSCRIBE TO PARENT
-        pc.SubscribePlayerAction<EAMovementEventArgs>(HandleMovement);
-        //pc.SubscribePlayerAction<EAAimingEventArgs>(HandleMovement);
-        //pc.SubscribePlayerAction<EAPerformEventArgs>(HandleMovement);
+        inputPlayer = new GameInputAction();
+        inputPlayer.Enable();
+
+        //MOVEMENT INPUT
+        inputPlayer.BaseActionMap.DirectionalMovement.performed += UseMovement;
+        inputPlayer.BaseActionMap.DirectionalMovement.canceled += ReleaseMovement;
+        
+        //ROTATION INPUT
+        inputPlayer.BaseActionMap.ControllerRotation.performed += UseControllerRotation;
+        inputPlayer.BaseActionMap.MouseRotation.performed += UseMouseRotation;
+
+        //EQUIPMENT INPUT
+        inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
+        inputPlayer.BaseActionMap.WeaponRanged.performed += UseAttackRanged;
+        inputPlayer.BaseActionMap.WeaponUtility.performed += UseAbility;
+
+        //ESCAPE
+        inputPlayer.BaseActionMap.Escape.performed += UseEscape;
     }
 
-    //TODO: RENAME
     void InputTermination()
     {
-        //TODO: THIS SHOULD INSTEAD STOP LISTENING FROM THE "PlayerController" FOR EVENTS
-        //TODO: UN-SUBSCRIBE TO PARENT
-        //NB: THIS MIGHT NOT BE NECESSARY. 
+        inputPlayer.Disable();
         
-        pc.UnsubscribePlayerAction<EAMovementEventArgs>(HandleMovement);
-        //pc.UnsubscribePlayerAction<EAAimingEventArgs>(HandleMovement);
-        //pc.UnsubscribePlayerAction<EAPerformEventArgs>(HandleMovement);
+        //MOVEMENT INPUT
+        inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
+        inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
+
+        //ROTATION INPUT
+        inputPlayer.BaseActionMap.ControllerRotation.performed -= UseControllerRotation;
+        inputPlayer.BaseActionMap.MouseRotation.performed -= UseMouseRotation;
+        
+        //EQUIPMENT INPUT
+        inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
+        inputPlayer.BaseActionMap.WeaponRanged.performed -= UseAttackRanged;
+        inputPlayer.BaseActionMap.WeaponUtility.performed -= UseAbility;
+
+        //ESCAPE
+        inputPlayer.BaseActionMap.Escape.performed -= UseEscape;
     }
 
+
     //INPUT HANDLING
-    void HandleMovement(object sender, EntityActionEventArgs value)
+    void UseMovement(InputAction.CallbackContext value)
     {
-        Debug.Log("This is HandleMovement in Action Controller");
-        //TODO: IGNORE INPUTS WHEN SENDER IS NOT pc? --> MIGHT IMPROVE FIDELITY
-        //      NO IT WOULDN'T REALLY. THE REASON BEING, REMEMBER THIS IS INCAPSULATED. THIS ENTITY DECIDES ON ITS OWN ON WHO TO SUBSCRIBE
-        //TODO: HOW TO PREVENT OBJECTS FROM SENDING SOMEONE ELSE TO PRETEND TO BE THEM?
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
         
-        movementDirection = (Vector2) value.CarriedInfo;
+        movementDirection = value.ReadValue<Vector2>().normalized;
+    }
+    
+    void ReleaseMovement(InputAction.CallbackContext value)
+    {
+        //CONDITION
+        if(!GameController.Instance.IsPlaying)
+            return;
+
+        movementDirection = Vector2.zero;
     }
 
 
@@ -155,6 +188,7 @@ public class PlayerActionController : EntityWithAiming
         Debug.Log("No Ability");
     }
 
+
     void UseEscape(InputAction.CallbackContext value)
     {
         if(!GameController.Instance.IsGameOver)
@@ -169,15 +203,13 @@ public class PlayerActionController : EntityWithAiming
 
 
     //GIZMOS
-    //TODO: UNCOMMENT HERE AND REMOVE ON PlayerController
-    /*
     void OnDrawGizmos()
     {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(aimingDirection.x, 0, aimingDirection.y) * 5);
     }
-    */
+    
 
     //UTILITIES
     //...
