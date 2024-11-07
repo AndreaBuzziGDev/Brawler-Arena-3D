@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerDirection : MonoBehaviour
 {
-    //INSPECTOR REFERENCES
+    [Header("Inspector References")]
     [SerializeField] PlayerActionController playerAction;
     [SerializeField] SpriteRenderer sprite;
+
+
+    //DATA
+    //...
 
 
     //REFERENCE VALIDATION
@@ -22,20 +26,15 @@ public class PlayerDirection : MonoBehaviour
 
 
 
-    //DATA
-    //...
-
 
 
     //LIFECYCLE FUNCTIONS
-    // Start is called before the first frame update
     void Start()
     {
         //IMMEDIATELY ROTATE WHERE NEEDED
         UpdateDirection();
     }
 
-    // Update is called once per frame
     void Update()
     {
         //IMMEDIATELY ROTATE WHERE NEEDED
