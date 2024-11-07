@@ -13,7 +13,7 @@ public class SpawnPoint : MonoBehaviour
     }
 
 
-    //DATA
+    [Header("Spawn Point Properties")]
     [SerializeField] SpawnPointType type = SpawnPointType.GROUND;
     [SerializeField] Color gizmoColor = Color.green;
     [SerializeField] float spawnRadius = 1.0f;
@@ -75,7 +75,7 @@ public class SpawnPoint : MonoBehaviour
     //GIZMOS
     void OnDrawGizmos()
     {
-        // Draw a yellow sphere at the transform's position
+        //Draw a colored sphere at the transform's position
         Gizmos.color = gizmoColor;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
