@@ -6,13 +6,14 @@ using UnityEngine;
 public class EntityData : ScriptableObject
 {
 
+    [Header("Health Stats")]
     //HEALTH
     [Tooltip("The maximum amount of damage that can be absorbed after being shielded.")]
-    [Min(0)]
-    [SerializeField] int maxHealth = 5;
+    [Min(0)][SerializeField] int maxHealth = 5;
     public int MaxHealth => maxHealth;
 
 
+    [Header("Shield Stats")]
     //SHIELD CHARGE
     [Tooltip("Shield absorbs damage before health. Any damage instance with at least 1 shield charge is completely denied.")]
     [Min(0)]

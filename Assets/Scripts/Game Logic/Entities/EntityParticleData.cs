@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Entity Audio Data", menuName = "Entity Data/Entity Particles/Mob Particles")]
 public class EntityParticleData : ScriptableObject
 {
-    //DATA - PARTICLE EFFECTS
+    [Header("Particle Effect Data")]
     [SerializeField] ParticleDataStruct structDeathParticleFX;
 
     //DATA GETTERS

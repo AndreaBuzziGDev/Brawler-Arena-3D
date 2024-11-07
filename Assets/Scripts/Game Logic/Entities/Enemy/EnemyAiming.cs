@@ -5,7 +5,7 @@ using UnityEngine;
 //TODO: REFACTOR THIS. THIS WORKS PERFECTLY AS A SUICIDE BOMBER UNIT, BUT THE GAME WILL NEED TO WORK WITH OTHER SOLUTIONS AS WELL.
 public class EnemyAiming : EntityWithAiming
 {
-    //DATA
+    [Header("Inspector References")]
     [SerializeField] WeaponController enemyWeapon;
 
 

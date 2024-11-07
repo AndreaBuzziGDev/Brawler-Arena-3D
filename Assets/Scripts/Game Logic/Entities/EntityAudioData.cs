@@ -6,9 +6,11 @@ using UnityEngine;
 public class EntityAudioData : ScriptableObject
 {
     //DATA - TYPE
+    [Header("Type")]
     [SerializeField] SoundFXEventArgs.EType type;
 
     //DATA - AUDIO CLIPS
+    [Header("Audio Clips")]
     [SerializeField] AudioClip spawnClip;
     [SerializeField] AudioClip damageShieldClip;
     [SerializeField] AudioClip damageHealthClip;
