@@ -12,6 +12,7 @@ public class PlayerCamera : MonoBehaviour
     [Header("Camera Parameters")]
     [Tooltip("How many units of vertical offset this has compared to its target.")]
     [SerializeField] float verticalOffset;
+
     [Tooltip("Adjusts delay in camera orientation.")]
     [SerializeField] float damping = 1.0f;
 
