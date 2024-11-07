@@ -144,8 +144,8 @@ GameObject:
   - component: {fileID: 6351360075028454145}
   - component: {fileID: 4391159529738853700}
   - component: {fileID: 4459700897691503652}
-  - component: {fileID: 6151373417630674750}
   - component: {fileID: 1081987661556132137}
+  - component: {fileID: 6151373417630674750}
   - component: {fileID: 2954634974775755029}
   m_Layer: 6
   m_Name: BA Player
@@ -271,6 +271,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1081987661556132137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907586155588128813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6151373417630674750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,18 +298,6 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: e9b939a699d2b2e4a927fa3b012d8b8a, type: 2}
   audioData: {fileID: 11400000, guid: 9c357d3184963674aa241568bdb783de, type: 2}
   particleData: {fileID: 11400000, guid: 14686a714f88aa8408619e7576712a50, type: 2}
---- !u!114 &1081987661556132137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907586155588128813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2954634974775755029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49523e04054b7dd48a847165bebd5c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerEntity: {fileID: 6151373417630674750}
   playerRigidBody: {fileID: 4391159529738853700}
   masterController: {fileID: 1081987661556132137}
   weaponRanged: {fileID: 1227511429750810478}
