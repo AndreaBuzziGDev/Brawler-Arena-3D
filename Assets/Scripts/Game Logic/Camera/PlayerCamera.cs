@@ -5,14 +5,18 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     //DATA
+    [Header("Inspector References")]
     [SerializeField] Transform cameraTarget;
     [SerializeField] Vector3 cameraOffset;
+
+    [Header("Camera Parameters")]
+    [Tooltip("How many units of vertical offset this has compared to its target.")]
     [SerializeField] float verticalOffset;
+    [Tooltip("Adjusts delay in camera orientation.")]
     [SerializeField] float damping = 1.0f;
 
 
-    //
-    Camera cameraComp;
+    Camera cameraComp;//TODO: ENFORCE REQUIREMENT LIKE I ALREADY DID SOMEWHERE ELSE
     float baseFOV;
 
 
