@@ -11,9 +11,8 @@ public class EnemyAiming : EntityWithAiming
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected override void OnValidate()
+    protected void OnValidate()
     {
-        base.OnValidate();
         if (enemyWeapon == null)
             Debug.LogWarning("No Enemy Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }

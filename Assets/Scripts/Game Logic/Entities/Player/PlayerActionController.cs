@@ -6,20 +6,35 @@ using UnityEngine.InputSystem;
 public class PlayerActionController : EntityWithAiming
 {
     //TODO: EMBELLISH EDITOR VIEW
-    //INSPECTOR REFERENCES
+    [Header("Inspector References")]
     [SerializeField] Rigidbody playerRigidBody;
-
     [SerializeField] PlayerController masterController;
     [SerializeField] WeaponController weaponRanged;
     //TODO: WEAPON MELEE
     //TODO: ABILITY
 
 
+
+    //PHYSICS PARAMETERS
+    [Header("Physics Parameters")]
+    [SerializeField] float gravityScale = 0.65f;
+    [SerializeField] float movementSpeed = 1.0f;
+
+
+
+    //INTERNAL DATA
+    //DIRECTION VECTORS
+    Vector2 movementDirection;
+    //INPUT
+    GameInputAction inputPlayer;
+
+
+
+
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected override void OnValidate()
+    protected void OnValidate()
     {
-        base.OnValidate();
         if (playerRigidBody == null)
             Debug.LogWarning("No Rigid Body Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if (masterController == null)
@@ -32,15 +47,6 @@ public class PlayerActionController : EntityWithAiming
 #endif
 
 
-    //PHYSICS PARAMETERS
-    [SerializeField] float gravityScale = 0.65f;
-    [SerializeField] float movementSpeed = 1.0f;
-    
-    //DIRECTION VECTORS
-    Vector2 movementDirection;
-
-    //INPUT
-    GameInputAction inputPlayer;
 
 
 
@@ -49,7 +55,6 @@ public class PlayerActionController : EntityWithAiming
     {
         //LISTEN TO INPUTS
         InputInitialization();
-        
     }
 
     void FixedUpdate()
@@ -66,7 +71,6 @@ public class PlayerActionController : EntityWithAiming
     void OnDestroy()
     {
         InputTermination();
-        //TODO: UNSUBSCRIBE ALL SUBSCRIBERS (ONCE SUBSCRIBER DICTIONARY HAS BEEN MOVED HERE)
     }
 
 
