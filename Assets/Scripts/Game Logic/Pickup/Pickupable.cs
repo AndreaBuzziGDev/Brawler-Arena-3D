@@ -6,9 +6,12 @@ using UnityEngine;
 //TODO: EVOLVE TO HANDLE INSTANT PICKUP VS PROMPTED PICKUP
 public class Pickupable : MonoBehaviour
 {
-    //DATA
+    [Header("Pickup Properties")]
     [SerializeField] PickupController.EPickupTypes pickupType;
     [SerializeField] bool enemyPickup = false;
+
+
+    //DATA
     bool isInert = false;
 
 
