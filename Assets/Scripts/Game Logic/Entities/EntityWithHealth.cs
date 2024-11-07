@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class EntityWithHealth : MonoBehaviour, IHittable
 {
+    [Header("Scriptable Object References")]
     //SCRIPTABLE OBJECTS
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
