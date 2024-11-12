@@ -6,7 +6,10 @@ using UnityEngine;
 public class SpawnRateDataTable : ScriptableObject
 {
     //DATA
+    [Tooltip("A List of waves defined via scriptable objects")]
     [SerializeField] List<SpawnWaveData> orderedWaves = new();
+
+    [Tooltip("Cooldown before restarting from Wave 0 after reaching the final wave")]
     [Range(0.0f, 60.0f)][SerializeField] float lastWaveExtraCooldown = 30.0f;
 
 

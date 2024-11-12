@@ -6,9 +6,15 @@ using UnityEngine;
 public class SpawnRateData : ScriptableObject
 {
     //DATA
+    [Header("Spawn Rate Parameters")]
+    [Tooltip("Which mob to spawn")]
     [SerializeField] EntityWithHealth targetEntityPrefab;
+
     [Range(1, 100)][SerializeField] int quantity = 10;
+
     [Range(0, 100)][SerializeField] int variance = 5;
+
+    [Tooltip("Which spawn point is plausible")]
     [SerializeField] SpawnController.SpawnType spawnType;
 
 
