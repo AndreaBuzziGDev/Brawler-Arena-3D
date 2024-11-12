@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerActionController : EntityWithAiming
 {
-    //TODO: EMBELLISH EDITOR VIEW
     [Header("Inspector References")]
     [SerializeField] Rigidbody playerRigidBody;
     [SerializeField] PlayerController masterController;
