@@ -14,22 +14,24 @@ public class SpawnController : MonoBehaviour
     }
 
 
+
     //DATA
+    [Header("Inspector References")]
+    [SerializeField] SpawnRateDataTable sDataTable;
+
+
+    [Header("Wave Data")]
+    [SerializeField] int waveManualOverride = 0;
+    [SerializeField] float gameStartDelay = 5.0f;
     [SerializeField] bool disabledSpawn = false;
+
+
+
+    //INNER DATA
     List<SpawnPoint> spawnPoints = new();
     Dictionary<int, SpawnPoint> spDictionary = new();
-
-
-    //WAVE DATA
-    [SerializeField] int waveManualOverride = 0;
-    int waveIndex = 0;
-
-    [SerializeField] float gameStartDelay = 5.0f;
     float waveCooldownTimer = 0.0f;
-
-
-    //PREFAB REFERENCES
-    [SerializeField] SpawnRateDataTable sDataTable;
+    int waveIndex = 0;
 
 
 
@@ -58,6 +60,8 @@ public class SpawnController : MonoBehaviour
             HandleTimer();
 
     }
+
+
 
     //FUNCTIONALITIES
     private void HandleTimer()
@@ -89,6 +93,7 @@ public class SpawnController : MonoBehaviour
 
     }
 
+
     private void NotifySpawner(int spawnerToNotifyId)
     {
         //int spawnPointInstanceID, List<SpawnRateData> rateData
@@ -101,7 +106,7 @@ public class SpawnController : MonoBehaviour
                     spawnerToNotifyId, 
                     new SpawnData(
                         sRateData.TargetEntityPrefab, 
-                        CalculateQuantity(sRateData)
+                        CalculateSpawnedQuantity(sRateData)
                     )
                 )
             );
@@ -110,7 +115,7 @@ public class SpawnController : MonoBehaviour
 
 
     //UTILITIES
-    private int CalculateQuantity(SpawnRateData sRateData)
+    private int CalculateSpawnedQuantity(SpawnRateData sRateData)
     {
         switch(sRateData.SpawnType)
         {
