@@ -16,13 +16,18 @@ public class SpawnController : MonoBehaviour
 
 
     //DATA
-    [Header("Inspector References")]
+    [Header("Scriptable Objects")]
     [SerializeField] SpawnRateDataTable sDataTable;
 
 
     [Header("Wave Data")]
+    [Tooltip("Use this to start at a specific wave.")]
     [SerializeField] int waveManualOverride = 0;
+
+    [Tooltip("How many seconds before the first wave starts?")]
     [SerializeField] float gameStartDelay = 5.0f;
+
+    [Tooltip("Use this to disable spawning of mobs via this controller.")]
     [SerializeField] bool disabledSpawn = false;
 
 
