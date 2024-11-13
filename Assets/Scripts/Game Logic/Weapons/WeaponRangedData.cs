@@ -9,12 +9,17 @@ public class WeaponRangedData : WeaponData
     [Tooltip("The speed module of the projectile")]
     [Range(0, 100)]
     [SerializeField] float projectileSpeed = 10;
-    public float ProjectileSpeed => projectileSpeed;
 
 
     //LIFETIME
     [Tooltip("The duration in second before the projectile vanishes")]
     [Range(0, 20)]
     [SerializeField] float maxLifetime = 10;
+
+
+
+    //DATA GETTER
+    public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;
+
 }

@@ -6,9 +6,13 @@ using UnityEngine;
 public class WeaponSBombData : WeaponData
 {
     //RADIUS
-    [Tooltip("The radius of the explosion in units")]
+    [Tooltip("The radius of the explosion in game units")]
     [Range(0, 50)]
     [SerializeField] float effectiveRadius = 10;
+
+
+
+    //DATA GETTER
     public float EffectiveRadius => effectiveRadius;
 
 }

@@ -6,8 +6,14 @@ using UnityEngine;
 public class WeaponAudioData : ScriptableObject
 {
     //DATA - AUDIO CLIPS
+    [Header("Audioclips")]
+    [Tooltip("Plays when weapon is successfully used.")]
     [SerializeField] AudioClip operateClip;
+
+    [Tooltip("Plays when weapon is used but it's still in cooldown.")]
     [SerializeField] AudioClip operateCooldownClip;
+    
+    [Tooltip("Plays when the weapon deals a hit.")]
     [SerializeField] AudioClip hitClip;
 
     //DATA GETTERS

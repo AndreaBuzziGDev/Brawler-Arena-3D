@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WeaponSBombController : WeaponController
 {
-    //INSPECTOR REFERENCES
+    //DATA
+    [Header("Inspector References")]
+
+    [Tooltip("Reference to WeaponSBombData Scriptable Object.")]
     [SerializeField] protected WeaponSBombData wData;
 
 

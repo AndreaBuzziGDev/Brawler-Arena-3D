@@ -4,8 +4,13 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    //INSPECTOR REFERENCES
+    //DATA
+    [Header("Inspector References")]
+
+    [Tooltip("Reference to WeaponAudioData Scriptable Object.")]
     [SerializeField] protected WeaponAudioData weaponAudioData;
+    
+    [Tooltip("Reference to an enemy or player script. Necessary for complex logic to work.")]
     [SerializeField] protected EntityWithAiming aimingEntity;
 
 

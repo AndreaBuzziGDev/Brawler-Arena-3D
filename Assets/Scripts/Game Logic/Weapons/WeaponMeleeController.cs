@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class WeaponMeleeController : WeaponController
 {
-    
-    //INSPECTOR REFERENCES
+    //DATA
+    [Header("Inspector References")]
+
+    [Tooltip("Reference to WeaponMeleeData Scriptable Object.")]
     [SerializeField] protected WeaponMeleeData wData;
 
 

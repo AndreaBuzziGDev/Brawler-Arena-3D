@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class WeaponRangedController : WeaponController
 {
-    //INSPECTOR REFERENCES
-    [SerializeField] WeaponProjectile projectile;
+    //DATA
+    [Header("Inspector References")]
+
+    [Tooltip("Reference to WeaponRangedData Scriptable Object.")]
     [SerializeField] protected WeaponRangedData wData;
+
+    [Tooltip("Reference to the projectile Prefab.")]
+    [SerializeField] WeaponProjectile projectile;
 
 
     //DATA GETTER
