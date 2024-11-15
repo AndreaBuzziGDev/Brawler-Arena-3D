@@ -18,8 +18,8 @@ public class SceneNavigationController : MonoSingleton<SceneNavigationController
     
     //DATA
     #region DATA
-
-    ///SERIALIZED LIST OF ALL STAGES
+    [Header("Scriptable Objects")]
+    [Tooltip("Serialized List of all stages")]
     [SerializeField] private List<StageDataSO> StageData = new();
     
     
