@@ -8,7 +8,7 @@ public class Pickupable : MonoBehaviour
 {
     [Header("Pickup Properties")]
     [SerializeField] PickupController.EPickupTypes pickupType;
-    [SerializeField] bool enemyPickup = false;
+    [SerializeField] bool enemyPickup = false;//TODO: USE THIS TO SPECIFY THAT ENEMIES CAN PICK UP THIS PICKUPABLE
 
 
     //DATA
