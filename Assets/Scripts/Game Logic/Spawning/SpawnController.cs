@@ -124,6 +124,7 @@ public class SpawnController : MonoBehaviour
     {
         switch(sRateData.SpawnType)
         {
+            //TODO: EQUALIZED CURRENTLY IGNORES VARIANCE.
             case SpawnType.EQUALIZED:
                 return (int) (sRateData.Quantity / spawnPoints.Count);
             case SpawnType.RANDOMIZED:
@@ -131,6 +132,7 @@ public class SpawnController : MonoBehaviour
                 return Mathf.Clamp(calculatedRate, 0, sRateData.Quantity + sRateData.Variance);
             case SpawnType.FLAT:
             default:
+                //TODO: FLAT/DEFAULT CURRENTLY IGNORES VARIANCE.
                 return sRateData.Quantity;
         }
     }

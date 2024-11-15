@@ -10,11 +10,13 @@ public class SpawnRateData : ScriptableObject
     [Tooltip("Which mob to spawn")]
     [SerializeField] EntityWithHealth targetEntityPrefab;
 
+    [Tooltip("How many instances of this mob to create")]
     [Range(1, 100)][SerializeField] int quantity = 10;
 
+    [Tooltip("A variance on top of the given quantity")]
     [Range(0, 100)][SerializeField] int variance = 5;
 
-    [Tooltip("Which spawn point is plausible")]
+    [Tooltip("Which type of spawn point to use")]
     [SerializeField] SpawnController.SpawnType spawnType;
 
 
