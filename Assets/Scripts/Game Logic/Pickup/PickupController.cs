@@ -34,6 +34,8 @@ public class PickupController : MonoBehaviour
     }
 
     //EVENT HANDLING
+    //TODO: DECIDE WHAT TO DO. SHOULD THIS BE RE-MODELED ENTIRELY AND CHANGE THE BEHAVIOUR SO THAT IT ISN'T BASED ON EVENTS BUT ON INTERFACES INSTEAD?
+    //      INTERFACES SHOULD BE MORE IMMEDIATE AND OUTRIGHT UNDERSTANDABLE.
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
         UnityEngine.Debug.Log("Just Debugging for test reasons");
