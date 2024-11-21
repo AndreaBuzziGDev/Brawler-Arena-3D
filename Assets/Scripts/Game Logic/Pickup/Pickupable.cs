@@ -7,8 +7,11 @@ using UnityEngine;
 public class Pickupable : MonoBehaviour
 {
     [Header("Pickup Properties")]
+    [Tooltip("Specify which type of pickup is this")]
     [SerializeField] PickupController.EPickupTypes pickupType;
-    [SerializeField] bool enemyPickup = false;//TODO: USE THIS TO SPECIFY THAT ENEMIES CAN PICK UP THIS PICKUPABLE
+
+    [Tooltip("Can the enemy pick this up? (UNIMPLEMENTED)")]
+    [SerializeField] bool enemyPickup = false;//TODO: IMPLEMENT
 
 
     //DATA
