@@ -14,11 +14,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //PLAYER EVENT SUBSCRIBERS
-    private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> pUpSubscribers = new();
-    //TODO: THE IDEA BEHIND THIS HAS BEEN DISCARDED AND SIMPLIFIED
-    //TODO: THIS WILL BE USED AS A MEAN TO LET RECEIVERS BE ACKNOWLEDGED THAT AN ACTION HAS BEEN PERFORMED.
-    //      THIS SHOULD HOWEVER BE MOVED IN PlayerActionController
-    private Dictionary<Type, List<Action<object, EntityActionEventArgs>>> pActSubscribers = new();
+    private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
+
 
 
     //LIFECYCLE FUNCTIONS
@@ -30,49 +27,28 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-
+        //TODO: UNSUBSCRIBE ALL SUBSCRIBERS?
     }
 
     
     //FUNCTIONALITIES
 
-
     //TODO: THIS ARCHITECTURE CAN BE FURTHER ABSTRACTED AND IMPLEMENTED IN PARENT ENTITIES INSTEAD.
     //ENTITY EVENTS SUBSCRIPTION
-
-    //TODO: MOVE IN PlayerActionController
-    public void SubscribePlayerAction<T>(Action<object, EntityActionEventArgs> listener) where T : EntityActionEventArgs
-    {
-        if (listener == null) return;
-        if(!pActSubscribers.ContainsKey(typeof(T)))
-            pActSubscribers[typeof(T)] = new List<Action<object, EntityActionEventArgs>>();
-        pActSubscribers[typeof(T)].Add(listener);
-    }
-
-    //TODO: MOVE IN PlayerActionController
-    public void UnsubscribePlayerAction<T>(Action<object, EntityActionEventArgs> listener) where T : EntityActionEventArgs
-    {
-        //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
-        //if(instance == null) return;
-        if(pActSubscribers[typeof(T)].Contains(listener))
-            pActSubscribers[typeof(T)].Remove(listener);
-    }
-
-
     public void SubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
         if (listener == null) return;
 
-        if(!pUpSubscribers.ContainsKey(typeof(T)))
-            pUpSubscribers[typeof(T)] = new List<Action<object, EntityPickupEventArgs>>();
-        pUpSubscribers[typeof(T)].Add(listener);
+        if(!playerPickupSubscribers.ContainsKey(typeof(T)))
+            playerPickupSubscribers[typeof(T)] = new List<Action<object, EntityPickupEventArgs>>();
+        playerPickupSubscribers[typeof(T)].Add(listener);
     }
     public void UnsubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
         //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
         //if(instance == null) return;
-        if(pUpSubscribers[typeof(T)].Contains(listener))
-            pUpSubscribers[typeof(T)].Remove(listener);
+        if(playerPickupSubscribers[typeof(T)].Contains(listener))
+            playerPickupSubscribers[typeof(T)].Remove(listener);
     }
 
 
