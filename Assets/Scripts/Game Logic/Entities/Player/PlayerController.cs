@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     //LIFECYCLE FUNCTIONS
     void Start()
     {
-
+        //TODO: SUBSCRIBE TO EVENTMANAGER ON PROPER EVENT STREAM
     }
 
 
