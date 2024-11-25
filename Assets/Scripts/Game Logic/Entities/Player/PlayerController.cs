@@ -6,10 +6,6 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-//TODO: REFACTOR THIS
-//      THIS WILL BE USED AS A MULTIPLEXING SCRIPT THAT CAN HANDLE SOME FUNCTIONALITIES AS A SORT OF INCAPSULATOR.
-//      THE CODE CURRENTLY PRESENT IN THIS SCRIPT WILL BE MOVED IN A PlayerMovementController SCRIPT INSTEAD
-//      THIS SHOULD REFERENCE PlayerHittable, PlayerController, AND MAYBE EVEN OTHER FUTURE SCRIPTS
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
