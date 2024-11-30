@@ -10,10 +10,12 @@ public class PlayerHittable : EntityWithHealth
     protected override void Start()
     {
         base.Start();
+        //TODO: CHANGE THIS. SHOULD LISTEN TO SPECIFIC SUB-EVENTS CASTED BY THE PlayerController (NON EVENT-MANAGER BASED)
         EventManager<PickupEventArgs>.Instance.StartListening(HandlePickupEvent);
     }
 
     void OnDestroy(){
+        //TODO: CHANGE THIS. SHOULD LISTEN TO SPECIFIC SUB-EVENTS CASTED BY THE PlayerController (NON EVENT-MANAGER BASED)
         EventManager<PickupEventArgs>.Instance.StopListening(HandlePickupEvent);
     }
 
@@ -34,7 +36,7 @@ public class PlayerHittable : EntityWithHealth
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
         //DO LOGIC...
-        
+
     }
 
 

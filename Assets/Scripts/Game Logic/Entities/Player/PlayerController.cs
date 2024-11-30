@@ -12,26 +12,29 @@ public class PlayerController : MonoBehaviour
     //TODO: SHOULD THIS ACT AS A REFERENCE HANDLER FOR LOGIC ENTITIES "BELOW" IT?
 
     //PLAYER EVENT SUBSCRIBERS
+    //TODO: THESE MIGHT NEED TO BE RENAMED.
     private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
 
 
 
     //LIFECYCLE FUNCTIONS
+    //LIFECYCLE FUNCTIONS
+    //EntityWithHealth Override
     void Start()
     {
-        //TODO: SUBSCRIBE TO EVENTMANAGER ON PROPER EVENT STREAM
+        
     }
 
-
-    void OnDestroy()
-    {
-        //TODO: UNSUBSCRIBE ALL SUBSCRIBERS?
+    void OnDestroy(){
+        
     }
 
     
     //FUNCTIONALITIES
 
     //TODO: THIS ARCHITECTURE CAN BE FURTHER ABSTRACTED AND IMPLEMENTED IN PARENT ENTITIES INSTEAD.
+    //      DO THIS, OR USE A HELPER OF SORTS TO HANDLE THE LOGIC
+    
     //ENTITY EVENTS SUBSCRIPTION
     public void SubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
@@ -52,5 +55,7 @@ public class PlayerController : MonoBehaviour
 
     //UTILITIES
     //...
+    
+    
 
 }
