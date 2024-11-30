@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    //TODO: SHOULD THIS ACT AS A REFERENCE HANDLER FOR LOGIC ENTITIES "BELOW" IT?
+
     //PLAYER EVENT SUBSCRIBERS
     private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
 

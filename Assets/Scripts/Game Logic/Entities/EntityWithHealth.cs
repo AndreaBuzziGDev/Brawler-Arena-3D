@@ -93,7 +93,8 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         Debug.Log(gameObject.name + " has been Hit for " + dInstance.DamageAmount + " Damage.");
         ReceiveDamage(dInstance.DamageAmount);
     }
-
+    
+    //TODO: MOVE TO PROTECTED OR DO SOMETHING ELSE
     public virtual void HandleDeath()
     {
         //DEAHT SOUND

@@ -28,11 +28,14 @@ public class Pickupable : MonoBehaviour
     //TRIGGER
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("This is Pickupable Script colliding with: " + other.gameObject.name);
+        Debug.Log("This is Pickupable Script colliding with: " + other.gameObject.name + " with Id: " + other.gameObject.GetInstanceID());
         if(!isInert)
         {
             isInert = true;
-            EventManager<PickupEventArgs>.Instance.Notify(this, new(this.pickupType));
+            EventManager<PickupEventArgs>.Instance.Notify(
+                this, 
+                new(this.pickupType, other.gameObject.GetInstanceID())
+            );
             Destroy(this.gameObject);
         }
     }
