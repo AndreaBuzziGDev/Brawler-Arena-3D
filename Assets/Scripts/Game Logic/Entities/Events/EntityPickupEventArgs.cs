@@ -6,14 +6,14 @@ using System;
 public class EntityPickupEventArgs : EventArgs
 {
     //DATA
-    private object carriedInfo;
+    private PickupEventArgs originalInfo;
     
     //DATA GETTERS
-    public object CarriedInfo { get { return carriedInfo; } }
+    public PickupEventArgs OriginalInfo { get { return originalInfo; } }
 
     //CONSTRUCTOR
-    public EntityPickupEventArgs(object carriedInfo){
-        this.carriedInfo = carriedInfo;
+    public EntityPickupEventArgs(PickupEventArgs originalInfo){
+        this.originalInfo = originalInfo;
     }
 
 }
