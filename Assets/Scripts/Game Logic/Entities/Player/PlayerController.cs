@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 
     //PLAYER EVENT SUBSCRIBERS
     //TODO: THESE MIGHT NEED TO BE RENAMED.
-    private Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
+    //TODO: DEVELOP AND USE "PICKUP HELPER"
+    private List<Action<object, EntityPickupEventArgs>> playerPickupSubscribers = new();
 
 
 
@@ -22,11 +23,11 @@ public class PlayerController : MonoBehaviour
     //EntityWithHealth Override
     void Start()
     {
-        
+        EventManager<PickupEventArgs>.Instance.StartListening(publishToSubscribers);
     }
 
     void OnDestroy(){
-        
+        EventManager<PickupEventArgs>.Instance.StopListening(publishToSubscribers);
     }
 
     
@@ -40,16 +41,30 @@ public class PlayerController : MonoBehaviour
     {
         if (listener == null) return;
 
-        if(!playerPickupSubscribers.ContainsKey(typeof(T)))
-            playerPickupSubscribers[typeof(T)] = new List<Action<object, EntityPickupEventArgs>>();
-        playerPickupSubscribers[typeof(T)].Add(listener);
+        playerPickupSubscribers.Add(listener);
     }
     public void UnsubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
     {
-        //TODO: CHECK THE IMPLICATIONS OF THIS WHEN MONOBEHAVIOURS ARE INVOLVED
-        //if(instance == null) return;
-        if(playerPickupSubscribers[typeof(T)].Contains(listener))
-            playerPickupSubscribers[typeof(T)].Remove(listener);
+        if(listener == null) return;
+
+        //
+        if(playerPickupSubscribers.Contains(listener))
+        {
+            playerPickupSubscribers.Remove(listener);
+        }
+    }
+
+
+    //TODO: RENAME
+    private void publishToSubscribers(object sender, PickupEventArgs e)
+    {
+        //INVOKE EVENT ON playerPickupSubscribers
+        //TODO: IMPLEMENT
+        //Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers
+        foreach(Action<object, EntityPickupEventArgs> act in playerPickupSubscribers)
+        {
+            act?.Invoke(this, new EntityPickupEventArgs(e));
+        }
     }
 
 
