@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
         EventManager<PickupEventArgs>.Instance.StartListening(publishToSubscribers);
     }
 
-    void OnDestroy(){
+    void OnDestroy()
+    {
         EventManager<PickupEventArgs>.Instance.StopListening(publishToSubscribers);
     }
 
