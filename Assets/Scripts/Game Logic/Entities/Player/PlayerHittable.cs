@@ -17,11 +17,11 @@ public class PlayerHittable : EntityWithHealth
     protected override void Start()
     {
         base.Start();
-        pc.SubscribePlayerPickup(HandlePickupEvent);
+        pc.SubscribePlayerPickup(PickupController.EPickupTypes.Health, HandlePickupEvent);
     }
 
     void OnDestroy(){
-        pc.UnsubscribePlayerPickup(HandlePickupEvent);
+        pc.UnsubscribePlayerPickup(PickupController.EPickupTypes.Health, HandlePickupEvent);
     }
 
 

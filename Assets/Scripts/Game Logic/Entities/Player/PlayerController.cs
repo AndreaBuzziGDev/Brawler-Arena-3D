@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     //PLAYER EVENT SUBSCRIBERS
     //TODO: THESE MIGHT NEED TO BE RENAMED.
     //TODO: DEVELOP AND USE "PICKUP HELPER"
-    private List<Action<object, EntityPickupEventArgs>> playerPickupSubscribers = new();
+    private Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
 
 
 
@@ -37,21 +37,24 @@ public class PlayerController : MonoBehaviour
     //      DO THIS, OR USE A HELPER OF SORTS TO HANDLE THE LOGIC
     
     //ENTITY EVENTS SUBSCRIPTION
-    public void SubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    public void SubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
-        if (listener == null) return;
+        if (listener == null) 
+            return;
 
-        playerPickupSubscribers.Add(listener);
+        if(!playerPickupSubscribers.ContainsKey(type))
+            playerPickupSubscribers.Add(type, new());
+        
+        playerPickupSubscribers[type].Add(listener);
     }
-    public void UnsubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
+    public void UnsubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
-        if(listener == null) return;
+        if(listener == null || !playerPickupSubscribers.ContainsKey(type)) 
+            return;
 
         //
-        if(playerPickupSubscribers.Contains(listener))
-        {
-            playerPickupSubscribers.Remove(listener);
-        }
+        if(playerPickupSubscribers[type].Contains(listener))
+            playerPickupSubscribers[type].Remove(listener);
     }
 
 
@@ -61,10 +64,9 @@ public class PlayerController : MonoBehaviour
         //INVOKE EVENT ON playerPickupSubscribers
         //TODO: IMPLEMENT
         //Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers
-        foreach(Action<object, EntityPickupEventArgs> act in playerPickupSubscribers)
-        {
-            act?.Invoke(this, new EntityPickupEventArgs(e));
-        }
+        foreach(PickupController.EPickupTypes type in playerPickupSubscribers.Keys)
+            foreach(Action<object, EntityPickupEventArgs> act in playerPickupSubscribers[type])
+                act?.Invoke(this, new EntityPickupEventArgs(e));
     }
 
 
