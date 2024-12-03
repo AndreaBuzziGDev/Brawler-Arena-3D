@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHittable : EntityWithHealth
@@ -36,7 +37,11 @@ public class PlayerHittable : EntityWithHealth
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
         //DO LOGIC...
-
+        //IF EMITTER IS PLAYERCONTROLLER
+        if(sender.GetType() != typeof(PlayerController)) return;
+        
+        //SWITCH ON PickupEventArgs
+        Debug.Log("This is HandlePickupEvent in PlayerHittable");
     }
 
 
