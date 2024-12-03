@@ -37,13 +37,13 @@ public class PlayerController : MonoBehaviour
     //      DO THIS, OR USE A HELPER OF SORTS TO HANDLE THE LOGIC
     
     //ENTITY EVENTS SUBSCRIPTION
-    public void SubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
+    public void SubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
     {
         if (listener == null) return;
 
         playerPickupSubscribers.Add(listener);
     }
-    public void UnsubscribePlayerPickup<T>(Action<object, EntityPickupEventArgs> listener) where T : EntityPickupEventArgs
+    public void UnsubscribePlayerPickup(Action<object, EntityPickupEventArgs> listener)
     {
         if(listener == null) return;
 

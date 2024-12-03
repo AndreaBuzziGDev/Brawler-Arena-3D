@@ -6,18 +6,22 @@ using UnityEngine;
 
 public class PlayerHittable : EntityWithHealth
 {
+    //DATA
+    [Header("Gameobject References")]
+    [SerializeField] private PlayerController pc;//TODO: I DON'T LIKE THIS. CAN IT BE SOLVED BY USING STATIC CODE?
+
+
+
     //LIFECYCLE FUNCTIONS
     //EntityWithHealth Override
     protected override void Start()
     {
         base.Start();
-        //TODO: CHANGE THIS. SHOULD LISTEN TO SPECIFIC SUB-EVENTS CASTED BY THE PlayerController (NON EVENT-MANAGER BASED)
-        EventManager<PickupEventArgs>.Instance.StartListening(HandlePickupEvent);
+        pc.SubscribePlayerPickup(HandlePickupEvent);
     }
 
     void OnDestroy(){
-        //TODO: CHANGE THIS. SHOULD LISTEN TO SPECIFIC SUB-EVENTS CASTED BY THE PlayerController (NON EVENT-MANAGER BASED)
-        EventManager<PickupEventArgs>.Instance.StopListening(HandlePickupEvent);
+        pc.UnsubscribePlayerPickup(HandlePickupEvent);
     }
 
 
@@ -34,14 +38,35 @@ public class PlayerHittable : EntityWithHealth
 
 
     //PICKUP LOGIC IMPLEMENTATION
-    private void HandlePickupEvent(object sender, PickupEventArgs e)
+    private void HandlePickupEvent(object sender, EntityPickupEventArgs e)
     {
         //DO LOGIC...
         //IF EMITTER IS PLAYERCONTROLLER
         if(sender.GetType() != typeof(PlayerController)) return;
         
         //SWITCH ON PickupEventArgs
-        Debug.Log("This is HandlePickupEvent in PlayerHittable");
+        switch(e.OriginalInfo.EventType)
+        {
+            case PickupController.EPickupTypes.Health:
+                //
+                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
+                break;
+            case PickupController.EPickupTypes.Weapon:
+                //
+                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
+                break;
+            case PickupController.EPickupTypes.Ability:
+                //
+                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
+                break;
+            case PickupController.EPickupTypes.Buff:
+                //
+                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
+                break;
+            default:
+                UnityEngine.Debug.LogWarning("Invalid Pickup Type: " + e.OriginalInfo.EventType);
+                break;
+        }
     }
 
 
