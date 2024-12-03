@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     //EntityWithHealth Override
     void Start()
     {
-        EventManager<PickupEventArgs>.Instance.StartListening(publishToSubscribers);
+        EventManager<PickupEventArgs>.Instance.StartListening(PublishToSubscribers);
     }
 
     void OnDestroy()
     {
-        EventManager<PickupEventArgs>.Instance.StopListening(publishToSubscribers);
+        EventManager<PickupEventArgs>.Instance.StopListening(PublishToSubscribers);
     }
 
     
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
 
     //TODO: RENAME
-    private void publishToSubscribers(object sender, PickupEventArgs e)
+    private void PublishToSubscribers(object sender, PickupEventArgs e)
     {
         //INVOKE EVENT ON playerPickupSubscribers
         //TODO: IMPLEMENT

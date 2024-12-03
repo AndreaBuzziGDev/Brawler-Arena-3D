@@ -51,20 +51,8 @@ public class PlayerHittable : EntityWithHealth
                 //
                 Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
                 break;
-            case PickupController.EPickupTypes.Weapon:
-                //
-                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
-                break;
-            case PickupController.EPickupTypes.Ability:
-                //
-                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
-                break;
-            case PickupController.EPickupTypes.Buff:
-                //
-                Debug.Log("TODO: IMPLEMENT " + e.OriginalInfo.EventType);
-                break;
             default:
-                UnityEngine.Debug.LogWarning("Invalid Pickup Type: " + e.OriginalInfo.EventType);
+                UnityEngine.Debug.LogWarning("Unsupported type: " + e.OriginalInfo.EventType);
                 break;
         }
     }
