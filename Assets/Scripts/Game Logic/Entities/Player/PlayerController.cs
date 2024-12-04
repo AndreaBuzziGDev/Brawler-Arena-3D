@@ -17,12 +17,13 @@ public class PlayerController : MonoBehaviour
     private Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
 
 
-
-    //LIFECYCLE FUNCTIONS
     //LIFECYCLE FUNCTIONS
     //EntityWithHealth Override
     void Start()
     {
+        foreach(PickupController.EPickupTypes pickupType in Enum.GetValues(typeof(PickupController.EPickupTypes)))
+            playerPickupSubscribers.Add(pickupType, new());
+        
         EventManager<PickupEventArgs>.Instance.StartListening(PublishToSubscribers);
     }
 
@@ -43,9 +44,6 @@ public class PlayerController : MonoBehaviour
         if (listener == null) 
             return;
 
-        if(!playerPickupSubscribers.ContainsKey(type))
-            playerPickupSubscribers.Add(type, new());
-        
         playerPickupSubscribers[type].Add(listener);
     }
     public void UnsubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
@@ -65,9 +63,8 @@ public class PlayerController : MonoBehaviour
         //INVOKE EVENT ON playerPickupSubscribers
         //TODO: IMPLEMENT
         //Dictionary<Type, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers
-        foreach(PickupController.EPickupTypes type in playerPickupSubscribers.Keys)
-            foreach(Action<object, EntityPickupEventArgs> act in playerPickupSubscribers[type])
-                act?.Invoke(this, new EntityPickupEventArgs(e));
+        foreach(Action<object, EntityPickupEventArgs> act in playerPickupSubscribers[e.EventType])
+            act?.Invoke(this, new EntityPickupEventArgs(e));
     }
 
 
