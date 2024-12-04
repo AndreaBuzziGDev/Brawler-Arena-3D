@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     //PLAYER EVENT SUBSCRIBERS
     //TODO: THESE MIGHT NEED TO BE RENAMED.
     //TODO: DEVELOP AND USE "PICKUP HELPER"
+    //NB: HELPER MIGHT BE ENTIRELY STATIC CODE INSTEAD, AND THIS CLASS MIGHT RELY ON THE HELPER.
+    //THIS SHOULD ALSO SOLVE REFERENCING ISSUES.
     private Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> playerPickupSubscribers = new();
 
 
