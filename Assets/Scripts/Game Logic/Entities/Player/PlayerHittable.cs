@@ -8,7 +8,7 @@ public class PlayerHittable : EntityWithHealth
 {
     //DATA
     [Header("Gameobject References")]
-    [SerializeField] private PlayerController pc;//TODO: I DON'T LIKE THIS. CAN IT BE SOLVED BY USING STATIC CODE?
+    [SerializeField] private PlayerController pc;
 
 
 
@@ -17,11 +17,11 @@ public class PlayerHittable : EntityWithHealth
     protected override void Start()
     {
         base.Start();
-        pc.SubscribePlayerPickup(PickupController.EPickupTypes.Health, HandlePickupEvent);
+        PlayerPickupHelper.Subscribe(PickupController.EPickupTypes.Health, HandlePickupEvent);
     }
 
     void OnDestroy(){
-        pc.UnsubscribePlayerPickup(PickupController.EPickupTypes.Health, HandlePickupEvent);
+        PlayerPickupHelper.Unsubscribe(PickupController.EPickupTypes.Health, HandlePickupEvent);
     }
 
 
@@ -41,7 +41,8 @@ public class PlayerHittable : EntityWithHealth
     private void HandlePickupEvent(object sender, EntityPickupEventArgs e)
     {
         //DO LOGIC...
-        //IF EMITTER IS PLAYERCONTROLLER
+        //IF EMITTER IS PLAYERCONTROLLER+
+        //TODO: ALSO CHECK MATCHING REFERENCE ON pc
         if(sender.GetType() != typeof(PlayerController)) return;
         
         //SWITCH ON PickupEventArgs

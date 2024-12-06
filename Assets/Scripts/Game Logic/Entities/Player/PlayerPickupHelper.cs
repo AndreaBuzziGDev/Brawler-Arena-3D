@@ -31,7 +31,7 @@ public static class PlayerPickupHelper
 
 
     //FUNCTIONALITIES
-    public static void SubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
+    public static void Subscribe(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
         if (listener == null) 
             return;
@@ -39,7 +39,7 @@ public static class PlayerPickupHelper
         Subscribers[type].Add(listener);
     }
 
-    public static void UnsubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
+    public static void Unsubscribe(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
         if(listener == null || !Subscribers.ContainsKey(type)) 
             return;
