@@ -12,7 +12,7 @@ public static class PlayerPickupHelper
 
     //DATA GETTERS
     public static Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> Subscribers 
-    { 
+    {
         get 
         {
             if(initialized)
@@ -25,8 +25,7 @@ public static class PlayerPickupHelper
                 
                 return subscribers;
             }
-        } 
-        
+        }
     }
 
 
@@ -37,16 +36,17 @@ public static class PlayerPickupHelper
         if (listener == null) 
             return;
 
-        subscribers[type].Add(listener);
+        Subscribers[type].Add(listener);
     }
+
     public static void UnsubscribePlayerPickup(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
-        if(listener == null || !subscribers.ContainsKey(type)) 
+        if(listener == null || !Subscribers.ContainsKey(type)) 
             return;
 
         //
-        if(subscribers[type].Contains(listener))
-            subscribers[type].Remove(listener);
+        if(Subscribers[type].Contains(listener))
+            Subscribers[type].Remove(listener);
     }
 
 }
