@@ -95,6 +95,8 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     }
     
     //TODO: MOVE TO PROTECTED OR DO SOMETHING ELSE
+    //      THE SOLUTION MIGHT BE DEVELOPING A DELEGATE METHOD THAT IS THEN SENT TO SOMETHING ELSE FOR EXECUTION.
+    //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
     public virtual void HandleDeath()
     {
         //DEAHT SOUND
