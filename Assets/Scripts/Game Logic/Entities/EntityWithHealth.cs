@@ -27,10 +27,9 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
 
-    //DATA
-    //HEALTH
-    float currentHealth = 1;
-    float maxHealth = 1;
+    //DATA HELPERS
+    EntityHealthHelper health;
+    EntityShieldHelper shield;
 
     //SHIELD
     float currentShield = 1;
@@ -43,10 +42,10 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //DATA-RELATED FUNCTIONS
-    bool IsAlive { get { return currentHealth > 0; } }
+    bool IsAlive { get { return health.CurrentHealth > 0; } }
     bool IsShielded { get { return currentShield > 0; } }
     bool IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
-    bool IsRecharging { get { return currentShield < maxHealth; } }
+    bool IsRecharging { get { return currentShield < maxShield; } }
 
 
 
@@ -71,8 +70,9 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //INITIALIZATION
     public void DataInitialization()
     {
-        currentHealth = data.MaxHealth;
-        maxHealth = data.MaxHealth;
+        health = new EntityHealthHelper(data);
+        shield = new EntityShieldHelper(data);
+
 
         currentShield = data.MaxShield;
         maxShield = data.MaxShield;
@@ -80,8 +80,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         shieldCooldownTimer = 0;
         maxShieldCooldownTimer = data.ShieldCooldownTimer;
         shieldRechargeRate = data.ShieldRechargeRate;
-
-        currentHealth = data.MaxHealth;
     }
 
 
