@@ -9,7 +9,7 @@ public class EntityHealthHelper
     float maxHealth = 1;
 
 
-    //DATA FUNCTIONS
+    //DATA GETTERS
     public float CurrentHealth { get { return currentHealth; } }
     public float MaxHealth { get { return maxHealth; } }
 

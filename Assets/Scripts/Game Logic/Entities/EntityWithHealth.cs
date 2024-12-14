@@ -31,21 +31,12 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     EntityHealthHelper health;
     EntityShieldHelper shield;
 
-    //SHIELD
-    float currentShield = 1;
-    float maxShield = 1;
-
-    //SHIELD RECHARGE
-    float shieldCooldownTimer = 0;
-    float maxShieldCooldownTimer = 1;
-    float shieldRechargeRate = 1;
-
 
     //DATA-RELATED FUNCTIONS
     bool IsAlive { get { return health.CurrentHealth > 0; } }
-    bool IsShielded { get { return currentShield > 0; } }
-    bool IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
-    bool IsRecharging { get { return currentShield < maxShield; } }
+    bool IsShielded { get { return shield.CurrentShield > 0; } }
+    bool IsWaitingRecharge { get { return shield.ShieldCooldownTimer > 0; } }
+    bool IsRecharging { get { return shield.CurrentShield < shield.MaxShield; } }
 
 
 
@@ -75,24 +66,18 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     {
         health = new EntityHealthHelper(data);
         shield = new EntityShieldHelper(data);
-
-
-        currentShield = data.MaxShield;
-        maxShield = data.MaxShield;
-
-        shieldCooldownTimer = 0;
-        maxShieldCooldownTimer = data.ShieldCooldownTimer;
-        shieldRechargeRate = data.ShieldRechargeRate;
     }
 
 
 
 
+
+    //IHittable INTERFACE IMPLEMENTATION
     
     //TODO: MOVE TO PROTECTED OR DO SOMETHING ELSE
     //      THE SOLUTION MIGHT BE DEVELOPING A DELEGATE METHOD THAT IS THEN SENT TO SOMETHING ELSE FOR EXECUTION.
     //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
-    //IHittable INTERFACE IMPLEMENTATION
+
     public void HandleHit(DamageInstance dInstance)
     {
         Debug.Log(gameObject.name + " has been Hit for " + dInstance.DamageAmount + " Damage.");
@@ -116,27 +101,27 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     public void ReceiveDamage(float damageAmount)
     {
         if(IsShielded)
-            DamageShield(damageAmount);
+            shield.DamageShield(damageAmount);
         else
             health.DamageHealth(damageAmount);
         
         //SHIELD RECHARGE STUFF
-        shieldCooldownTimer = data.ShieldCooldownTimer;
+        shield.ResetShieldTimer();
+    }
+    
+    public void Heal(float healAmount)
+    {
+        health.RestoreHealth(healAmount);
     }
 
-
-    private void DamageShield(float damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
-    private float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
-    private void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, maxShield);
-    private void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
 
     protected void HandleShieldAndHealthLogic()
     {
         //
         if(IsWaitingRecharge)
-            DepleteShieldTimer();
+            shield.DepleteShieldTimer();
         else if(IsRecharging)
-            RechargeShield(GetShieldRecharge());
+            shield.RechargeShield(shield.GetShieldRecharge());
     }
 
 }
