@@ -60,4 +60,21 @@ public class EntityShieldHelper
         else if(IsRecharging)
             RechargeShield(GetShieldRecharge());
     }
+
+
+    //DEBUG
+    public void PrintDebug()
+    {
+        //DATA DEBUG
+        Debug.Log("currentShield: " + currentShield);
+        Debug.Log("maxShield: " + maxShield);
+        Debug.Log("shieldCooldownTimer: " + shieldCooldownTimer);
+        Debug.Log("maxShieldCooldownTimer: " + maxShieldCooldownTimer);
+        Debug.Log("shieldRechargeRate: " + shieldRechargeRate);
+
+        //FUNCTIONS DEBUG
+        Debug.Log("IsShielded: " + IsShielded);
+        Debug.Log("IsWaitingRecharge: " + IsWaitingRecharge);
+        Debug.Log("IsRecharging: " + IsRecharging);
+    }
 }
