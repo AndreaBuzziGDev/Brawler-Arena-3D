@@ -67,6 +67,9 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
             HandleDeath();
     }
 
+
+
+
     //INITIALIZATION
     public void DataInitialization()
     {
@@ -85,16 +88,17 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
 
+    
+    //TODO: MOVE TO PROTECTED OR DO SOMETHING ELSE
+    //      THE SOLUTION MIGHT BE DEVELOPING A DELEGATE METHOD THAT IS THEN SENT TO SOMETHING ELSE FOR EXECUTION.
+    //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
     //IHittable INTERFACE IMPLEMENTATION
     public void HandleHit(DamageInstance dInstance)
     {
         Debug.Log(gameObject.name + " has been Hit for " + dInstance.DamageAmount + " Damage.");
         ReceiveDamage(dInstance.DamageAmount);
     }
-    
-    //TODO: MOVE TO PROTECTED OR DO SOMETHING ELSE
-    //      THE SOLUTION MIGHT BE DEVELOPING A DELEGATE METHOD THAT IS THEN SENT TO SOMETHING ELSE FOR EXECUTION.
-    //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
+
     public virtual void HandleDeath()
     {
         //DEAHT SOUND
@@ -114,12 +118,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         if(IsShielded)
             DamageShield(damageAmount);
         else
-            DamageHealth(damageAmount);
+            health.DamageHealth(damageAmount);
         
         //SHIELD RECHARGE STUFF
         shieldCooldownTimer = data.ShieldCooldownTimer;
     }
-    private void DamageHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
 
 
     private void DamageShield(float damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);

@@ -23,7 +23,7 @@ public class EntityHealthHelper
 
 
     //FUNCTIONALITIES
-    //TODO: DAMAGE HEALTH
-
+    public void DamageHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
+    public void RestoreHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth + damageAmount, 0, maxHealth);
 
 }
