@@ -28,8 +28,8 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //DATA HELPERS
-    EntityHealthHelper health;
-    EntityShieldHelper shield;
+    protected EntityHealthHelper health;
+    protected EntityShieldHelper shield;
 
 
 
@@ -55,7 +55,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //INITIALIZATION
-    public void DataInitialization()
+    void DataInitialization()
     {
         health = new EntityHealthHelper(data);
         shield = new EntityShieldHelper(data);
