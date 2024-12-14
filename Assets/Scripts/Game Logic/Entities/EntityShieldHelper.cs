@@ -14,10 +14,7 @@ public class EntityShieldHelper
     float shieldCooldownTimer = 0;
     float maxShieldCooldownTimer = 1;
     float shieldRechargeRate = 1;
-    
-    
-    
-    //DATA GETTERS
+
 
 
     //DATA FUNCTIONS

@@ -9,13 +9,9 @@ public class EntityHealthHelper
     float maxHealth = 1;
 
 
-    //DATA GETTERS
-    public float CurrentHealth { get { return currentHealth; } }
-    public float MaxHealth { get { return maxHealth; } }
-
 
     //DATA FUNCTIONS
-    public bool IsAlive { get { return CurrentHealth > 0; } }
+    public bool IsAlive { get { return currentHealth > 0; } }
 
 
 
@@ -32,4 +28,15 @@ public class EntityHealthHelper
     public void DamageHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, maxHealth);
     public void RestoreHealth(float damageAmount) => currentHealth = Mathf.Clamp(currentHealth + damageAmount, 0, maxHealth);
 
+
+    //DEBUG
+    public void PrintDebug()
+    {
+        //DATA DEBUG
+        Debug.Log("currentHealth: " + currentHealth);
+        Debug.Log("maxHealth: " + maxHealth);
+
+        //FUNCTIONS DEBUG
+        Debug.Log("IsAlive: " + IsAlive);
+    }
 }
