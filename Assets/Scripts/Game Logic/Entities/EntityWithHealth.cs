@@ -32,13 +32,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     EntityShieldHelper shield;
 
 
-    //DATA-RELATED FUNCTIONS
-    bool IsAlive { get { return health.CurrentHealth > 0; } }
-    bool IsShielded { get { return shield.CurrentShield > 0; } }
-    bool IsWaitingRecharge { get { return shield.ShieldCooldownTimer > 0; } }
-    bool IsRecharging { get { return shield.CurrentShield < shield.MaxShield; } }
-
-
 
     //LIFECYCLE FUNCTIONS
     protected virtual void Start()
@@ -52,8 +45,8 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         if(!GameController.Instance.IsPlaying)
             return;
 
-        if(IsAlive)
-            HandleShieldAndHealthLogic();
+        if(health.IsAlive)
+            shield.HandleLogic();
         else
             HandleDeath();
     }
@@ -100,7 +93,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //HEALTH AND SHIELD FUNCTIONALITIES
     public void ReceiveDamage(float damageAmount)
     {
-        if(IsShielded)
+        if(shield.IsShielded)
             shield.DamageShield(damageAmount);
         else
             health.DamageHealth(damageAmount);
@@ -114,14 +107,5 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         health.RestoreHealth(healAmount);
     }
 
-
-    protected void HandleShieldAndHealthLogic()
-    {
-        //
-        if(IsWaitingRecharge)
-            shield.DepleteShieldTimer();
-        else if(IsRecharging)
-            shield.RechargeShield(shield.GetShieldRecharge());
-    }
 
 }

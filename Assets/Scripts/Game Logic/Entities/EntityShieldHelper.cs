@@ -18,15 +18,12 @@ public class EntityShieldHelper
     
     
     //DATA GETTERS
-    public float CurrentShield { get { return currentShield; } }
-    public float MaxShield { get { return maxShield; } }
-    public float ShieldCooldownTimer { get { return shieldCooldownTimer; } }
-    public float MaxShieldCooldownTimer { get { return maxShieldCooldownTimer; } }
-    public float ShieldRechargeRate { get { return shieldRechargeRate; } }
 
 
     //DATA FUNCTIONS
-
+    public bool IsShielded { get { return currentShield > 0; } }
+    public bool IsWaitingRecharge { get { return shieldCooldownTimer > 0; } }
+    public bool IsRecharging { get { return currentShield < maxShield; } }
 
 
 
@@ -51,6 +48,16 @@ public class EntityShieldHelper
     public float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
     public void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
     public void ResetShieldTimer() => shieldCooldownTimer = maxShieldCooldownTimer;
-    
-    
+
+
+
+    //COMPOSITE FUNCTIONALITIES
+    public void HandleLogic()
+    {
+        //
+        if(IsWaitingRecharge)
+            DepleteShieldTimer();
+        else if(IsRecharging)
+            RechargeShield(GetShieldRecharge());
+    }
 }

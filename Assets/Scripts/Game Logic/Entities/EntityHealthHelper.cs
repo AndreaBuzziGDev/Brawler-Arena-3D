@@ -14,6 +14,12 @@ public class EntityHealthHelper
     public float MaxHealth { get { return maxHealth; } }
 
 
+    //DATA FUNCTIONS
+    public bool IsAlive { get { return CurrentHealth > 0; } }
+
+
+
+
     //CONSTRUCTOR
     public EntityHealthHelper(EntityData data)
     {
