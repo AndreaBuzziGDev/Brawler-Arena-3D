@@ -8,6 +8,10 @@ public class EntityHealthHelper
     float currentHealth = 1;
     float maxHealth = 1;
 
+    //DATA GETTERS
+    public float CurrentHealth { get { return currentHealth; } }
+    public float MaxHealth { get { return MaxHealth; } }
+
 
 
     //DATA FUNCTIONS
