@@ -19,9 +19,9 @@ public class EntityShieldHelper
     //DATA GETTERS
     public float CurrentShield { get { return currentShield; } }
     public float MaxShield { get { return maxShield; } }
-    float ShieldCooldownTimer { get { return shieldCooldownTimer; } }
-    float MaxShieldCooldownTimer { get { return maxShieldCooldownTimer; } }
-    float ShieldRechargeRate { get { return shieldRechargeRate; } }
+    public float ShieldCooldownTimer { get { return shieldCooldownTimer; } }
+    public float MaxShieldCooldownTimer { get { return maxShieldCooldownTimer; } }
+    public float ShieldRechargeRate { get { return shieldRechargeRate; } }
 
 
 

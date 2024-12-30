@@ -30,6 +30,19 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //DATA HELPERS
     protected EntityHealthHelper health;
     protected EntityShieldHelper shield;
+    
+    //DATA HELPERS ACCESSORS
+    ///HEALTH SUB-ACCESSOR
+    public float CurrentHealth { get { return health.CurrentHealth; } }
+    public float MaxHealth { get { return health.MaxHealth; } }
+    
+    ///SHIELD SUB-ACCESSOR
+    public float CurrentShield { get { return shield.CurrentShield; } }
+    public float MaxShield { get { return shield.MaxShield; } }
+    public float ShieldCooldownTimer { get { return shield.ShieldCooldownTimer; } }
+    public float MaxShieldCooldownTimer { get { return shield.MaxShieldCooldownTimer; } }
+    public float ShieldRechargeRate { get { return shield.ShieldRechargeRate; } }
+    
 
 
 
