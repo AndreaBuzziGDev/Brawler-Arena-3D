@@ -9,6 +9,8 @@ IMAGES
 
 Directional Arrow - https://opengameart.org/content/glow-arrow
 
+Health Bar - https://opengameart.org/content/health-bar-0
+
 
 
 AUDIO
