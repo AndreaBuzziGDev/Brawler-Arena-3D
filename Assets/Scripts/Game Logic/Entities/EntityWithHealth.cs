@@ -106,10 +106,14 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //HEALTH AND SHIELD FUNCTIONALITIES
     public void ReceiveDamage(float damageAmount)
     {
-        if(shield.IsShielded)
+        if(shield.IsShielded){
             shield.DamageShield(damageAmount);
-        else
+            //TODO: DELEGATE
+        }
+        else{
             health.DamageHealth(damageAmount);
+            //TODO: DELEGATE
+        }
         
         //SHIELD RECHARGE STUFF
         shield.ResetShieldTimer();
