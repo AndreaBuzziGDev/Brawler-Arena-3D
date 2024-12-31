@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_FilledBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //DATA
+    
 
-    // Update is called once per frame
-    void Update()
+    [Header("Inspector References")]
+    [SerializeField] Image filledImage;
+
+
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected void OnValidate()
     {
-        
+        //TODO: MAKE THIS REUSABLE, ALSO RE-USE IT ON AWAKE OR OTHER SCRIPTS
+        if (filledImage == null)
+            Debug.LogWarning("No Filled Image assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
+
+
+    //FUNCTIONALITIES
+    public void UpdateFill(float fillAmount)
+    {
+        if (filledImage != null)
+        {
+            filledImage.fillAmount = Mathf.Clamp01(fillAmount);
+        }
     }
 }
