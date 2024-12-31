@@ -10,7 +10,7 @@ public class UI_GameHUD : MonoBehaviour
     //TODO: THIS SHOULD BE THE EQUIVALENT OF UI_RaindropsGame
 
     //INSPECTOR REFERENCES
-    [SerializeField] CanvasRenderer thisPanel;
+    [SerializeField] CanvasRenderer thisCanvas;
     
 
     //LIFECYCLE FUNCTIONS
@@ -21,7 +21,8 @@ public class UI_GameHUD : MonoBehaviour
 
     void Update()
     {
-        EventManager<GameMenuEventArgs>.Instance.Notify(this, new GameMenuEventArgs(GameMenuEventArgs.EType.GAME_OVER));
+        //TODO: WHY WAS THIS PUT IN HERE? IS IT A CODE EDIT LEFTOVER?
+        //EventManager<GameMenuEventArgs>.Instance.Notify(this, new GameMenuEventArgs(GameMenuEventArgs.EType.GAME_OVER));
     }
 
     void OnDestroy()
@@ -40,12 +41,12 @@ public class UI_GameHUD : MonoBehaviour
         Debug.Log("This Object is: " + this.gameObject.name);
         switch(e.EventType)
         {
-            case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
-                thisPanel.gameObject.SetActive(true);
-                break;
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_CLOSE:
+                thisCanvas.gameObject.SetActive(true);
+                break;
+            case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
             case GameMenuEventArgs.EType.GAME_OVER:
-                thisPanel.gameObject.SetActive(false);
+                thisCanvas.gameObject.SetActive(false);
                 break;
         }
     }
