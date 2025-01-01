@@ -41,7 +41,6 @@ public class PickupController : MonoBehaviour
     //      INTERFACES SHOULD BE MORE IMMEDIATE AND OUTRIGHT UNDERSTANDABLE.
     private void HandlePickupEvent(object sender, PickupEventArgs e)
     {
-        UnityEngine.Debug.Log("Just Debugging for test reasons");
         PlayerController pc = GameController.Instance.GetPlayerAnywhere;
         switch(e.EventType)
         {
