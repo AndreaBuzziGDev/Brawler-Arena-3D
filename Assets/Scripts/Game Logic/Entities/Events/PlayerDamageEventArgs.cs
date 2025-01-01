@@ -7,5 +7,5 @@ using System;
 public class PlayerDamageEventArgs : EntityDamageEventArgs
 {
     //CONSTRUCTOR
-    public PlayerDamageEventArgs(EDamageType damageType) : base(damageType){}
+    public PlayerDamageEventArgs(EDamageType damageType, float maxFill, float currentFill) : base(damageType, maxFill, currentFill){}
 }
