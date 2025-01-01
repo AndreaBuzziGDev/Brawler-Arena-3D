@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 9076270086616651769}
   - component: {fileID: 7549485496545550576}
   - component: {fileID: 4337062357754411676}
+  - component: {fileID: 6693380925460097306}
   m_Layer: 5
   m_Name: Left Game UI Panel
   m_TagString: Untagged
@@ -210,6 +211,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6693380925460097306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764372099567289531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474269256776a14ebedd22b29f4ef61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2324749514166499988}
+  shieldBar: {fileID: 0}
 --- !u!1 &948498062365112527
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +353,7 @@ GameObject:
   - component: {fileID: 36383424755754639}
   - component: {fileID: 6874058276408449131}
   - component: {fileID: 628058309832422195}
+  - component: {fileID: 2324749514166499988}
   m_Layer: 5
   m_Name: Full Bar
   m_TagString: Untagged
@@ -402,6 +418,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2324749514166499988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151943713634790478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768358eb1e89d134e8050ba1457b8a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filledImage: {fileID: 628058309832422195}
 --- !u!1 &2058067471705306317
 GameObject:
   m_ObjectHideFlags: 0
