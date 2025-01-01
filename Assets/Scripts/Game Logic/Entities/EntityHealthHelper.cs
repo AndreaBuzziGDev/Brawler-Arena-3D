@@ -10,7 +10,7 @@ public class EntityHealthHelper
 
     //DATA GETTERS
     public float CurrentHealth { get { return currentHealth; } }
-    public float MaxHealth { get { return MaxHealth; } }
+    public float MaxHealth { get { return maxHealth; } }
 
 
 
