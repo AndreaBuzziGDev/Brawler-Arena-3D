@@ -10,25 +10,33 @@ public class UI_GameHUDLeft : MonoBehaviour
 
     [Header("Inspector References")]
     [SerializeField] private UI_FilledBar healthBar;
-    //[SerializeField] private UI_FilledBar shieldBar;
+    [SerializeField] private UI_FilledBar shieldBar;
 
     // Start is called before the first frame update
     private void Start()
     {
-        pc = GameController.Instance.GetPlayerAnywhere;
-        if (pc != null)
-        {
-            pc.PlayerHealthAndShield.OnHealthChanged += healthBar.UpdateFill;
-            //pc.PlayerHealthAndShield.OnShieldChanged += shieldBar.UpdateFill;
-        }
+        EventManager<EntityDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
     }
 
     private void OnDestroy()
     {
-        if (pc != null)
-        {
-            pc.PlayerHealthAndShield.OnHealthChanged -= healthBar.UpdateFill;
-            //pc.PlayerHealthAndShield.OnShieldChanged -= shieldBar.UpdateFill;
+        EventManager<EntityDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
+    }
+    
+    
+    //EVENT HANDLING
+    private void HandlePlayerDamageEvent(object sender, EntityDamageEventArgs e){
+        switch(e.DamageType){
+            case EntityDamageEventArgs.EDamageType.HEALTH:
+                healthBar.UpdateFill(10.0f);
+                break;
+            case EntityDamageEventArgs.EDamageType.SHIELD:
+                shieldBar.UpdateFill(10.0f);
+                break;
+            default:
+                Debug.LogError("Invalid Damage Type: " + e.DamageType);
+                break;
         }
     }
+    
 }
