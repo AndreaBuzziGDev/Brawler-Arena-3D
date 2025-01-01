@@ -15,23 +15,23 @@ public class UI_GameHUDLeft : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        EventManager<EntityDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
+        EventManager<PlayerDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
     }
 
     private void OnDestroy()
     {
-        EventManager<EntityDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
+        EventManager<PlayerDamageEventArgs>.Instance.StartListening(HandlePlayerDamageEvent);
     }
     
     
     //EVENT HANDLING
-    private void HandlePlayerDamageEvent(object sender, EntityDamageEventArgs e){
+    private void HandlePlayerDamageEvent(object sender, PlayerDamageEventArgs e){
         switch(e.DamageType){
             case EntityDamageEventArgs.EDamageType.HEALTH:
-                healthBar.UpdateFill(10.0f);
+                healthBar.UpdateFill(e.PercentFill);
                 break;
             case EntityDamageEventArgs.EDamageType.SHIELD:
-                shieldBar.UpdateFill(10.0f);
+                shieldBar.UpdateFill(e.PercentFill);
                 break;
             default:
                 Debug.LogError("Invalid Damage Type: " + e.DamageType);
