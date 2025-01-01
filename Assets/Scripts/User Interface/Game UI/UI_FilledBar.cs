@@ -16,7 +16,6 @@ public class UI_FilledBar : MonoBehaviour
 #if UNITY_EDITOR
     protected void OnValidate()
     {
-        //TODO: MAKE THIS REUSABLE, ALSO RE-USE IT ON AWAKE OR OTHER SCRIPTS
         if (filledImage == null)
             Debug.LogWarning("No Filled Image assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
