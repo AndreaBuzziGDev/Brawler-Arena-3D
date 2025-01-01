@@ -24,7 +24,6 @@ public class EnemyAiming : EntityWithAiming
     //TODO: KEEP THIS ONLY FOR ENEMIES THAT ARE SUICIDE BOMBERS
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("OnCollisionEnter");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable is PlayerHittable)
         {
