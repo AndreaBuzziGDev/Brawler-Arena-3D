@@ -43,6 +43,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     public float MaxShieldCooldownTimer { get { return shield.MaxShieldCooldownTimer; } }
     public float ShieldRechargeRate { get { return shield.ShieldRechargeRate; } }
     
+    //DATA CHANGE DELEGATION
+    public delegate void OnValueChanged(float normalizedValue);
+    public event OnValueChanged OnHealthChanged;
+    public event OnValueChanged OnShieldChanged;
+    
 
 
 
@@ -108,11 +113,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     {
         if(shield.IsShielded){
             shield.DamageShield(damageAmount);
-            //TODO: DELEGATE
+            OnHealthChanged?.Invoke(shield.CurrentShield / shield.MaxShield);
         }
         else{
             health.DamageHealth(damageAmount);
-            //TODO: DELEGATE
+            OnShieldChanged?.Invoke(health.CurrentHealth / health.MaxHealth);
         }
         
         //SHIELD RECHARGE STUFF
