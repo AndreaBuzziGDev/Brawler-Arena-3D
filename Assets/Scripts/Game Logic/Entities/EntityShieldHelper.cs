@@ -75,7 +75,6 @@ public class EntityShieldHelper
     
     //NOTIFICATION
     private void NotifyValueChange(){
-        Debug.Log("Notify Change for Shield");
         switch(entityType){
             case EntityData.EEntityType.PLAYER:
                 EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));

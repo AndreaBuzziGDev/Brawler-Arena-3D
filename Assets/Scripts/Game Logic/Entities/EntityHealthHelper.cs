@@ -40,7 +40,6 @@ public class EntityHealthHelper
     
     //NOTIFICATION
     private void NotifyValueChange(){
-        Debug.Log("Notify Change for Health");
         switch(entityType){
             case EntityData.EEntityType.PLAYER:
                 EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.HEALTH, maxHealth, currentHealth));
