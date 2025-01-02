@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb6f4d0ea7b3ce48998c03ef495b5e9, type: 3}
   m_Name: Player Params V1.0
   m_EditorClassIdentifier: 
+  entityType: 0
   maxHealth: 5
   maxShield: 5
   shieldRechargeRate: 1
   shieldCooldownTimer: 7
-  movementSpeed: 20
