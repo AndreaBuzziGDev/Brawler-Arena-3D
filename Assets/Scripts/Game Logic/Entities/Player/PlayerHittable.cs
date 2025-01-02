@@ -50,7 +50,7 @@ public class PlayerHittable : EntityWithHealth
         {
             case PickupController.EPickupTypes.Health:
                 //TODO: WHO DETERMINES HOW MUCH HEALTH IS RESTORED AND HOW DOES IT DO IT?
-                health.RestoreHealth(1);
+                health.ChangeHealth(1);
                 break;
             default:
                 UnityEngine.Debug.LogWarning("Unsupported type: " + e.OriginalInfo.EventType);

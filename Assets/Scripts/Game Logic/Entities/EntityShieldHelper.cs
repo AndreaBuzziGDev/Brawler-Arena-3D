@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityShieldHelper
 {
     //DATA
+    EntityData.EEntityType entityType;
 
     //SHIELD
     float currentShield = 1;
@@ -36,20 +37,35 @@ public class EntityShieldHelper
     //CONSTRUCTOR
     public EntityShieldHelper(EntityData data)
     {
-        currentShield = data.MaxShield;
-        maxShield = data.MaxShield;
-
-        shieldCooldownTimer = 0;
-        maxShieldCooldownTimer = data.ShieldCooldownTimer;
-        shieldRechargeRate = data.ShieldRechargeRate;
+        this.entityType = data.EntityType;
+        
+        this.currentShield = data.MaxShield;
+        this.maxShield = data.MaxShield;
+        
+        this.shieldCooldownTimer = 0;
+        this.maxShieldCooldownTimer = data.ShieldCooldownTimer;
+        this.shieldRechargeRate = data.ShieldRechargeRate;
     }
 
 
 
     //FUNCTIONALITIES
     //TODO: MIGHT NOT WORK WITH DELTATIME OUTSIDE OF GAMEOBJECTS
-    public void DamageShield(float damageAmount) => currentShield = Mathf.Clamp(currentShield - damageAmount, 0, maxShield);
-    public void RechargeShield(float rechargedAmount) => currentShield = Mathf.Clamp(currentShield + rechargedAmount, 0, maxShield);
+    public void ChangeShield(float changeAmount){
+        currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
+        
+        switch(entityType){
+            case EntityData.EEntityType.PLAYER:
+                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
+                break;
+            case EntityData.EEntityType.NPC:
+            default:
+                //EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
+                break;
+            
+        }
+    }
+
     public float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
     public void DepleteShieldTimer() => shieldCooldownTimer = Mathf.Clamp(shieldCooldownTimer - Time.deltaTime, 0, maxShieldCooldownTimer);
     public void ResetShieldTimer() => shieldCooldownTimer = maxShieldCooldownTimer;
@@ -63,7 +79,7 @@ public class EntityShieldHelper
         if(IsWaitingRecharge)
             DepleteShieldTimer();
         else if(IsRecharging)
-            RechargeShield(GetShieldRecharge());
+            ChangeShield(GetShieldRecharge());
     }
 
 

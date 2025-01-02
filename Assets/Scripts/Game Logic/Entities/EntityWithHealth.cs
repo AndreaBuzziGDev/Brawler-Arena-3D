@@ -107,45 +107,18 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //TODO: EVOLVE THE FOLLOWING CODE TO HANDLE SHIELD AND HEALTH UPDATES DIRECTLY
     public void ReceiveDamage(float damageAmount)
     {
-        EntityDamageEventArgs.EDamageType damageType;
-        float maxFill;
-        float currentFill;
-        if(shield.IsShielded){
-            shield.DamageShield(damageAmount);
-            
-            damageType = EntityDamageEventArgs.EDamageType.SHIELD;
-            maxFill = shield.MaxShield;
-            currentFill = shield.CurrentShield;
-        }
-        else{
-            health.DamageHealth(damageAmount);
-            
-            damageType = EntityDamageEventArgs.EDamageType.HEALTH;
-            maxFill = health.MaxHealth;
-            currentFill = health.CurrentHealth;
-        }
+        if(shield.IsShielded)
+            shield.ChangeShield(-damageAmount);
+        else
+            health.ChangeHealth(-damageAmount);
         
         //SHIELD RECHARGE STUFF
         shield.ResetShieldTimer();
-        
-        //NOTIFY
-        switch(this){
-            case PlayerHittable:
-                Debug.Log("Player Damage");
-                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(damageType, maxFill, currentFill));
-                break;
-            default:
-            /*
-                Debug.Log("Other Entity Damage");
-                EventManager<EntityDamageEventArgs>.Instance.Notify(this, new(damageType, maxFill, currentFill));
-            */
-                break;
-        }
     }
     
     public void Heal(float healAmount)
     {
-        health.RestoreHealth(healAmount);
+        health.ChangeHealth(healAmount);
     }
 
 

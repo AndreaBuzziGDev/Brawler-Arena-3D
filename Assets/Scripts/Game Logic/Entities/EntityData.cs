@@ -5,6 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Entity Parameters", menuName = "Entity Data/Entity Params")]
 public class EntityData : ScriptableObject
 {
+    //ENUMS
+    public enum EEntityType{
+        PLAYER,
+        NPC
+    }
+
+    //ENTITY TYPE
+    
+    [Header("Entity Identity")]
+    [Tooltip("The Type of entity this is supposed to be.")]
+    EEntityType entityType = EEntityType.NPC;
+    public EEntityType EntityType => entityType;
+
 
     [Header("Health Stats")]
     //HEALTH
