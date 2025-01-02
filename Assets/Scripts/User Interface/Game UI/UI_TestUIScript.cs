@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: THIS IS A VALID SCRIPT, MIGHT JUST NEED RENAMING AND THAT'S ALL.
 public class UI_TestUIScript : MonoBehaviour
 {
     //A QUICK UI SCRIPT FOR THE SAKE OF HAVING A WORKING GAMEOVER SCREEN

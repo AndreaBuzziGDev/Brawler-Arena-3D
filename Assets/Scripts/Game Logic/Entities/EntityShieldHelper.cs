@@ -50,7 +50,6 @@ public class EntityShieldHelper
 
 
     //FUNCTIONALITIES
-    //TODO: MIGHT NOT WORK WITH DELTATIME OUTSIDE OF GAMEOBJECTS
     public void ChangeShield(float changeAmount){
         currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
         NotifyValueChange();

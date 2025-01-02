@@ -104,7 +104,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
     //HEALTH AND SHIELD FUNCTIONALITIES
     //TODO: MAKE PROTECTED
-    //TODO: EVOLVE THE FOLLOWING CODE TO HANDLE SHIELD AND HEALTH UPDATES DIRECTLY
     public void ReceiveDamage(float damageAmount)
     {
         if(shield.IsShielded)
