@@ -26,6 +26,7 @@ public class UI_GameHUDLeft : MonoBehaviour
     
     //EVENT HANDLING
     private void HandlePlayerDamageEvent(object sender, PlayerDamageEventArgs e){
+        Debug.Log("Handling a damage Event");
         switch(e.DamageType){
             case EntityDamageEventArgs.EDamageType.HEALTH:
                 healthBar.UpdateFill(e.PercentFill);

@@ -27,16 +27,23 @@ public class EntityHealthHelper
         this.entityType = data.EntityType;
         this.currentHealth = data.MaxHealth;
         this.maxHealth = data.MaxHealth;
+
     }
 
 
     //FUNCTIONALITIES
     public void ChangeHealth(float changeAmount){
         currentHealth = Mathf.Clamp(currentHealth + changeAmount, 0, maxHealth);
-        
+        NotifyValueChange();
+    }
+    
+    
+    //NOTIFICATION
+    private void NotifyValueChange(){
+        Debug.Log("Notify Change for Health");
         switch(entityType){
             case EntityData.EEntityType.PLAYER:
-                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.HEALTH, maxHealth, currentHealth));
+                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.HEALTH, maxHealth, currentHealth));
                 break;
             case EntityData.EEntityType.NPC:
             default:

@@ -53,17 +53,7 @@ public class EntityShieldHelper
     //TODO: MIGHT NOT WORK WITH DELTATIME OUTSIDE OF GAMEOBJECTS
     public void ChangeShield(float changeAmount){
         currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
-        
-        switch(entityType){
-            case EntityData.EEntityType.PLAYER:
-                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
-                break;
-            case EntityData.EEntityType.NPC:
-            default:
-                //EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
-                break;
-            
-        }
+        NotifyValueChange();
     }
 
     public float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
@@ -80,6 +70,22 @@ public class EntityShieldHelper
             DepleteShieldTimer();
         else if(IsRecharging)
             ChangeShield(GetShieldRecharge());
+    }
+    
+    
+    //NOTIFICATION
+    private void NotifyValueChange(){
+        Debug.Log("Notify Change for Shield");
+        switch(entityType){
+            case EntityData.EEntityType.PLAYER:
+                EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
+                break;
+            case EntityData.EEntityType.NPC:
+            default:
+                //EventManager<EntityDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxHealth, currentHealth));
+                break;
+            
+        }
     }
 
 
