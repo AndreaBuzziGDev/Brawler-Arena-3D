@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     //TODO: SHOULD THIS ACT AS A REFERENCE HANDLER FOR LOGIC ENTITIES "BELOW" IT?
@@ -17,6 +16,19 @@ public class PlayerController : MonoBehaviour
 
     //ACCESSORS
     public PlayerHittable PlayerHealthAndShield { get { return playerHS; } }
+
+
+
+
+    //LIFECYCLE FUNCTIONS
+#if UNITY_EDITOR
+    protected virtual void OnValidate()
+    {
+        if (playerHS == null)
+            Debug.LogWarning("No Entity PlayerHittable Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
+
 
 
 
