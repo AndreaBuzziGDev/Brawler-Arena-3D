@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //      IN REALITY, THIS IS GOING TO BACKFIRE FOR SOME REASONS, EXPECIALLY WHEN TRYING TO INCAPSULATE AND HIDE FUNCTIONALITIES FROM THE OUTSIDE.
     //      IT MIGHT HAVE ITS BENEFITS, BUT FOR NOW, THEY AREN'T THERE.
     [Header("Inspector References")]
-    [SerializeField] private PlayerHittable playerHS;
+    [SerializeField] private PlayerHittable playerHS;//TODO: ENFORCE REQUIREMENT LIKE I ALREADY DID SOMEWHERE ELSE
 
     //ACCESSORS
     public PlayerHittable PlayerHealthAndShield { get { return playerHS; } }
