@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class PlayerCamera : MonoBehaviour
 {
     //DATA
@@ -17,8 +18,9 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float damping = 1.0f;
 
 
-    Camera cameraComp;//TODO: ENFORCE REQUIREMENT LIKE I ALREADY DID SOMEWHERE ELSE
+    Camera cameraComp;
     float baseFOV;
+
 
 
     //LIFECYCLE FUNCTIONS
