@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-        //TODO: MIGHT NEED FLUSHING OF PlayerPickupHelper's Subscribers IN SOME WAY.
         EventManager<PickupEventArgs>.Instance.StopListening(PublishToSubscribers);
     }
 
