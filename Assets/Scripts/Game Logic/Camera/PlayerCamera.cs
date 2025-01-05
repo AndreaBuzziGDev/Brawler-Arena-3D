@@ -7,8 +7,11 @@ public class PlayerCamera : MonoBehaviour
 {
     //DATA
     [Header("Inspector References")]
+    [Tooltip("Who is the camera following")]
     [SerializeField] Transform cameraTarget;
+    [Tooltip("Describe the fixed distance between camera and target.")]
     [SerializeField] Vector3 cameraOffset;
+
 
     [Header("Camera Parameters")]
     [Tooltip("How many units of vertical offset this has compared to its target.")]
