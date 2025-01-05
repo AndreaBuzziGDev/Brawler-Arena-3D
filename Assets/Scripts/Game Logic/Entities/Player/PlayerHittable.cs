@@ -7,8 +7,20 @@ using UnityEngine;
 public class PlayerHittable : EntityWithHealth
 {
     //DATA
-    [Header("Gameobject References")]
-    [SerializeField] private PlayerController pc;
+    [Header("Inspector References")]
+    [SerializeField] private PlayerController master;
+
+
+
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        if (master == null)
+            Debug.LogWarning("No Entity PlayerController Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+    }
+#endif
 
 
 
@@ -40,10 +52,9 @@ public class PlayerHittable : EntityWithHealth
     //PICKUP LOGIC IMPLEMENTATION
     private void HandlePickupEvent(object sender, EntityPickupEventArgs e)
     {
-        //DO LOGIC...
-        //IF EMITTER IS PLAYERCONTROLLER+
-        //TODO: ALSO CHECK MATCHING REFERENCE ON pc
-        if(sender.GetType() != typeof(PlayerController)) return;
+        //CHECK VALID EMITTER
+        PlayerController recastSender = sender as PlayerController;
+        if(!recastSender || recastSender != master) return;
         
         //SWITCH ON PickupEventArgs
         switch(e.OriginalInfo.EventType)

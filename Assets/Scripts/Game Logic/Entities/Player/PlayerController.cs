@@ -8,30 +8,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //TODO: SHOULD THIS ACT AS A REFERENCE HANDLER FOR LOGIC ENTITIES "BELOW" IT?
-    //      IN REALITY, THIS IS GOING TO BACKFIRE FOR SOME REASONS, EXPECIALLY WHEN TRYING TO INCAPSULATE AND HIDE FUNCTIONALITIES FROM THE OUTSIDE.
-    //      IT MIGHT HAVE ITS BENEFITS, BUT FOR NOW, THEY AREN'T THERE.
-    [Header("Inspector References")]
-    [SerializeField] private PlayerHittable playerHS;//TODO: ENFORCE REQUIREMENT LIKE I ALREADY DID SOMEWHERE ELSE
-
-    //ACCESSORS
-    public PlayerHittable PlayerHealthAndShield { get { return playerHS; } }
-
-
-
-
-    //LIFECYCLE FUNCTIONS
-#if UNITY_EDITOR
-    protected virtual void OnValidate()
-    {
-        if (playerHS == null)
-            Debug.LogWarning("No Entity PlayerHittable Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-    }
-#endif
-
-
-
-
     //LIFECYCLE FUNCTIONS
     void Start()
     {
