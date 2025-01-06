@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: EVOLVE TO HANDLE INSTANT PICKUP VS PROMPTED PICKUP
 public class Pickupable : MonoBehaviour
 {
     [Header("Pickup Properties")]
