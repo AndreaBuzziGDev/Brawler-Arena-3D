@@ -122,18 +122,17 @@ public class SpawnController : MonoBehaviour
     //UTILITIES
     private int CalculateSpawnedQuantity(SpawnRateData sRateData)
     {
+        int variance = UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance); 
         switch(sRateData.SpawnType)
         {
-            //TODO: EQUALIZED CURRENTLY IGNORES VARIANCE.
             case SpawnType.EQUALIZED:
-                return (int) (sRateData.Quantity / spawnPoints.Count);
+                return (int) ((sRateData.Quantity + variance) / spawnPoints.Count);
             case SpawnType.RANDOMIZED:
-                int calculatedRate = sRateData.Quantity + UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance);
+                int calculatedRate = sRateData.Quantity + variance;
                 return Mathf.Clamp(calculatedRate, 0, sRateData.Quantity + sRateData.Variance);
             case SpawnType.FLAT:
             default:
-                //TODO: FLAT/DEFAULT CURRENTLY IGNORES VARIANCE.
-                return sRateData.Quantity;
+                return (sRateData.Quantity + variance);
         }
     }
 
