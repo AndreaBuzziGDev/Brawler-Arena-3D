@@ -1,15 +1,16 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Spawn Wave Data", menuName = "Spawn Wave")]
 public class SpawnWaveData : ScriptableObject
 {
     //DATA
     [Header("Spawn Wave Parameters")]
-    [SerializeField] string waveName = "Wave #_";   //TODO: IS IT POSSIBLE/DOES IT MAKE SENSE TO AUTO-NAME THESE?
-                                                    //YES, IT'S POSSIBLE WITH MENUITEMS
+    [SerializeField] string waveName = "Wave #_";
 
     [Tooltip("A List of Scriptable objects that defines spawn rates for each mob.")]
     [SerializeField] List<SpawnRateData> spawns = new();
@@ -21,5 +22,4 @@ public class SpawnWaveData : ScriptableObject
     public string WaveName { get { return waveName; } }
     public List<SpawnRateData> Spawns { get { return spawns; } }
     public float NextWaveCooldown { get { return nextWaveCooldown; } }
-
 }
