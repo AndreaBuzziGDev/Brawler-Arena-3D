@@ -8,7 +8,8 @@ public class SpawnWaveData : ScriptableObject
 {
     //DATA
     [Header("Spawn Wave Parameters")]
-    [SerializeField] string waveName = "Wave #_";//TODO: IS IT POSSIBLE/DOES IT MAKE SENSE TO AUTO-NAME THESE?
+    [SerializeField] string waveName = "Wave #_";   //TODO: IS IT POSSIBLE/DOES IT MAKE SENSE TO AUTO-NAME THESE?
+                                                    //YES, IT'S POSSIBLE WITH MENUITEMS
 
     [Tooltip("A List of Scriptable objects that defines spawn rates for each mob.")]
     [SerializeField] List<SpawnRateData> spawns = new();
