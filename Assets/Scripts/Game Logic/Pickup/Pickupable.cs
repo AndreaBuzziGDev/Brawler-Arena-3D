@@ -10,17 +10,19 @@ public class Pickupable : MonoBehaviour
     [SerializeField] PickupController.EPickupTypes pickupType;
 
     [Tooltip("Can the enemy pick this up? (UNIMPLEMENTED)")]
-    [SerializeField] bool enemyPickup = false;//TODO: IMPLEMENT
+    [SerializeField] bool enemyPickup = false;
 
 
     //DATA
     bool isInert = false;
+    int targetLayer = -1;
 
 
     //LIFECYCLE FUNCTIONS
     void OnEnable()
     {
         isInert = false;
+        targetLayer = LayerMask.NameToLayer("Enemy Collider");//NB: Needed to avoid errors due to lifecycle functions binding
     }
 
 
@@ -28,14 +30,18 @@ public class Pickupable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("This is Pickupable Script colliding with: " + other.gameObject.name + " with Id: " + other.gameObject.GetInstanceID());
+        
         if(!isInert)
         {
-            isInert = true;
-            EventManager<PickupEventArgs>.Instance.Notify(
-                this, 
-                new(this.pickupType, other.gameObject.GetInstanceID())
-            );
-            Destroy(this.gameObject);
+            bool isEnemy = other.gameObject.layer == targetLayer;
+            if(!isEnemy || (isEnemy && enemyPickup)){
+                isInert = true;
+                EventManager<PickupEventArgs>.Instance.Notify(
+                    this,
+                    new(this.pickupType, other.gameObject.GetInstanceID())
+                );
+                Destroy(this.gameObject);
+            }
         }
     }
 }

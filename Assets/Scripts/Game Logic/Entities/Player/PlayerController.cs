@@ -23,8 +23,10 @@ public class PlayerController : MonoBehaviour
     //FUNCTIONALITIES
     private void PublishToSubscribers(object sender, PickupEventArgs e)
     {
-        foreach(Action<object, EntityPickupEventArgs> act in PlayerPickupHelper.Subscribers[e.EventType])
-            act?.Invoke(this, new EntityPickupEventArgs(e));
+        if(e.PickerId == this.gameObject.GetInstanceID()){
+            foreach(Action<object, EntityPickupEventArgs> act in PlayerPickupHelper.Subscribers[e.EventType])
+                act?.Invoke(this, new EntityPickupEventArgs(e));
+        }
     }
 
 
