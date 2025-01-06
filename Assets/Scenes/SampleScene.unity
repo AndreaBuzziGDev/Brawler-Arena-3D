@@ -458,6 +458,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2bb076c475708541b136d9c7221515e, type: 3}
+--- !u!1001 &1960718668
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.983088
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.052238
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374432272022852817, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042686481973028103, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
+      propertyPath: m_Name
+      value: Suicide Bomber - Boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d4046aaf8c10c14c914ba25b4ae62c5, type: 3}
 --- !u!1 &2047391181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,3 +1167,4 @@ SceneRoots:
   - {fileID: 2047391184}
   - {fileID: 2306043290620022547}
   - {fileID: 86297698}
+  - {fileID: 1960718668}
