@@ -51,9 +51,10 @@ public class WeaponProjectile : MonoBehaviour
 
     void OnDestroy()
     {
+        //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER ON TOP OF THE PARTICLE SPAWNER
+        
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
-
-        //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER INSTEAD
+        
         //Debug.Log("Projectile " + gameObject.name + " Destroyed");
     }
 
