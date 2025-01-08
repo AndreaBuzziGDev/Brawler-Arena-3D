@@ -18,6 +18,8 @@ public class WeaponAudioData : ScriptableObject
 
     //DATA GETTERS
     public AudioClip OperateClip { get {return operateClip;} }
+    //TODO: USE THIS
     public AudioClip OperateCooldownClip { get {return operateCooldownClip;} }
+    //TODO: USE THIS
     public AudioClip HitClip { get {return hitClip;} }
 }
