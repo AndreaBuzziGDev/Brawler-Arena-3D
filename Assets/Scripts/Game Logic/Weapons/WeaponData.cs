@@ -26,6 +26,11 @@ public abstract class WeaponData : ScriptableObject
     //FRIENDLY FIRE
     [Tooltip("Used for enemies. If checked, this weapon can damage other enemies")]
     [SerializeField] bool hasFriendlyFire = false;
+    
+    
+    //AUDIO
+    [Tooltip("Reference to WeaponAudioData Scriptable Object.")]
+    [SerializeField] protected WeaponAudioData weaponAudioData;
 
 
 
@@ -33,6 +38,7 @@ public abstract class WeaponData : ScriptableObject
     public float DamageAmount => damageAmount;
     public bool NeedsOwnerToOperate { get { return needsOwnerToOperate; } }
     public bool HasFriendlyFire { get { return hasFriendlyFire; } }
+    public bool WeaponAudioData { get { return weaponAudioData; } }//TODO: AS INSTRUCTED, MAKE THIS ABSTRACT
 
 }
 

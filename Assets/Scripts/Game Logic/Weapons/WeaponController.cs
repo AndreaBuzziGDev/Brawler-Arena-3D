@@ -8,7 +8,7 @@ public abstract class WeaponController : MonoBehaviour
     [Header("Inspector References")]
 
     [Tooltip("Reference to WeaponAudioData Scriptable Object.")]
-    [SerializeField] protected WeaponAudioData weaponAudioData;
+    [SerializeField] protected WeaponAudioData weaponAudioData;//TODO: REMOVE
     
     [Tooltip("Reference to an enemy or player script. Necessary for complex logic to work.")]
     [SerializeField] protected EntityWithAiming aimingEntity;
@@ -42,6 +42,7 @@ public abstract class WeaponController : MonoBehaviour
         if(weaponAudioData)
         {
             //UNBOUND AUDIO EMISSION
+            //WData
             EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, weaponAudioData.OperateClip));
         }
     }
