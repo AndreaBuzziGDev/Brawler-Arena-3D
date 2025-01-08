@@ -16,6 +16,7 @@ public class WeaponAudioData : ScriptableObject
     [Tooltip("Plays when the weapon deals a hit.")]
     [SerializeField] AudioClip hitClip;
 
+
     //DATA GETTERS
     public AudioClip OperateClip { get {return operateClip;} }
     //TODO: USE THIS
