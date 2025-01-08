@@ -15,6 +15,13 @@ public class WeaponRangedData : WeaponData
     [Tooltip("The duration in second before the projectile vanishes")]
     [Range(0, 20)]
     [SerializeField] float maxLifetime = 10;
+    
+    
+    //PARTICLES
+    [Tooltip("Particle effects associated with this projectile")]
+    [SerializeField] protected EntityParticleData particleShooting;
+    [SerializeField] protected EntityParticleData particleHitting;
+    [SerializeField] protected EntityParticleData particleTrespassing;
 
 
 
