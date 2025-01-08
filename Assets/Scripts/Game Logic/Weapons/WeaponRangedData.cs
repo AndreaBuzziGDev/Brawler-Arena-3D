@@ -16,6 +16,10 @@ public class WeaponRangedData : WeaponData
     [Range(0, 20)]
     [SerializeField] float maxLifetime = 10;
     
+    //BEHAVIOUR
+    [Tooltip("The duration in second before the projectile vanishes")]
+    [SerializeField] bool tresspass = false;
+    
     
     //PARTICLES
     [Tooltip("Particle effects associated with this projectile")]
@@ -28,5 +32,11 @@ public class WeaponRangedData : WeaponData
     //DATA GETTER
     public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;
+    public bool Tresspass => tresspass;
+    
+    
+    public EntityParticleData ParticleShooting;
+    public EntityParticleData ParticleHitting;
+    public EntityParticleData ParticleTrespassing;
 
 }
