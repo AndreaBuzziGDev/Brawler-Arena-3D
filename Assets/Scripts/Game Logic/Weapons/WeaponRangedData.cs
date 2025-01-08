@@ -27,6 +27,11 @@ public class WeaponRangedData : WeaponData
     [SerializeField] protected EntityParticleData particleHitting;
     [SerializeField] protected EntityParticleData particleTrespassing;
     
+    //AUDIO
+    [Tooltip("Reference to WeaponAudioData Scriptable Object.")]
+    [SerializeField] protected WeaponAudioData weaponAudioData;//TODO: MIGHT NEED SPECIFIC WeaponAudioData SUBCLASS
+
+    
     
 
     //DATA GETTER
@@ -38,5 +43,9 @@ public class WeaponRangedData : WeaponData
     public EntityParticleData ParticleShooting;
     public EntityParticleData ParticleHitting;
     public EntityParticleData ParticleTrespassing;
+    
+    
+    //ABSTRACT DATA GETTER CONCRETIZATION
+    public override WeaponAudioData WAudioData { get {return weaponAudioData; } } //{ get { return weaponAudioData; } }
 
 }
