@@ -26,6 +26,8 @@ public class WeaponRangedData : WeaponData
     [SerializeField] protected EntityParticleData particleShooting;
     [SerializeField] protected EntityParticleData particleHitting;
     [SerializeField] protected EntityParticleData particleTrespassing;
+    
+    //TODO: SOUND FX
 
 
 
