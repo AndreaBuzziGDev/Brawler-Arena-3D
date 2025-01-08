@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eefe0bf3e1a5f94b8d286d4b9eb32d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHS: {fileID: 6151373417630674750}
 --- !u!114 &6151373417630674750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +298,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: e9b939a699d2b2e4a927fa3b012d8b8a, type: 2}
   audioData: {fileID: 11400000, guid: 9c357d3184963674aa241568bdb783de, type: 2}
   particleData: {fileID: 11400000, guid: 14686a714f88aa8408619e7576712a50, type: 2}
-  pc: {fileID: 1081987661556132137}
+  master: {fileID: 1081987661556132137}
 --- !u!114 &2954634974775755029
 MonoBehaviour:
   m_ObjectHideFlags: 0
