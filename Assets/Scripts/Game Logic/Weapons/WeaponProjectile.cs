@@ -30,9 +30,10 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
+    void Awake()
     {
         //ASSIGN REFERENCES
+        //TODO: HANDLE/STREAMLINE/IMPROVE THIS WITH HARD REQUIREMENT?
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -49,6 +50,13 @@ public class WeaponProjectile : MonoBehaviour
             rb.velocity = projectileData.Speed * projectileData.Direction;
     }
 
+
+    void OnEnable()
+    {
+
+    }
+
+    //TODO: IF AN OBJECT POOLER WILL BE USED FOR PROJECTILES, CHANGE THIS TO OnDisable
     void OnDestroy()
     {
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER ON TOP OF THE PARTICLE SPAWNER
