@@ -38,7 +38,7 @@ public abstract class WeaponData : ScriptableObject
     public float DamageAmount => damageAmount;
     public bool NeedsOwnerToOperate { get { return needsOwnerToOperate; } }
     public bool HasFriendlyFire { get { return hasFriendlyFire; } }
-    public bool WAudioData { get { return weaponAudioData; } }//TODO: AS INSTRUCTED, MAKE THIS ABSTRACT
+    public WeaponAudioData WAudioData { get { return weaponAudioData; } }//TODO: AS INSTRUCTED, MAKE THIS ABSTRACT
 
 }
 
