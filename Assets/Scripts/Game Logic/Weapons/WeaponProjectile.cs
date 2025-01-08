@@ -57,6 +57,7 @@ public class WeaponProjectile : MonoBehaviour
     }
 
     //TODO: IF AN OBJECT POOLER WILL BE USED FOR PROJECTILES, CHANGE THIS TO OnDisable
+    //      ALSO, ON DISABLE MIGHT NECESSITATE projectileData DE-INITIALIZATION
     void OnDestroy()
     {
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER ON TOP OF THE PARTICLE SPAWNER
