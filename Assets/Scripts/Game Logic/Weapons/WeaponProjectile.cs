@@ -74,6 +74,16 @@ public class WeaponProjectile : MonoBehaviour
     //COLLISION DETECTION
     private void OnTriggerEnter(Collider other)
     {
+        //TODO: HIT PARTICLES
+        /*
+        //DEATH SOUND
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
+        //DEATH PARTICLES
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData.DeathParticleFX, transform.position));
+        */
+        
+        //TODO: TRESPASS PARTICLES
+        
         //Debug.Log("Projectile Collision");
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable != null)
