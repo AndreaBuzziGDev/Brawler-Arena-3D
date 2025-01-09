@@ -74,23 +74,21 @@ public class WeaponProjectile : MonoBehaviour
     //COLLISION DETECTION
     private void OnTriggerEnter(Collider other)
     {
-        //TODO: HIT PARTICLES
-        /*
-        //DEATH SOUND
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
-        //DEATH PARTICLES
-        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData.DeathParticleFX, transform.position));
-        */
+        //HIT SOUND
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.AudioType, projectileData.WData.WAudioData.HitClip));
+        //HIT PARTICLES
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
         
-        //TODO: TRESPASS PARTICLES
         
         //Debug.Log("Projectile Collision");
+        //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         if(hittable != null)
         {
             hittable.HandleHit(projectileData.DamageInstance);
         }
 
+        //TODO: TRESPASS MECHANICS
         Destroy(gameObject);
     }
 }
