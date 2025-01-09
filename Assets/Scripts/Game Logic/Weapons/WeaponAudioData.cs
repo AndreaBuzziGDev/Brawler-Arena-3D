@@ -7,6 +7,9 @@ public class WeaponAudioData : ScriptableObject
 {
     //DATA - AUDIO CLIPS
     [Header("Audioclips")]
+    [Tooltip("The type of this audio data.")]
+    [SerializeField] SoundFXEventArgs.EType audioType = SoundFXEventArgs.EType.A_FX_MOB;
+    
     [Tooltip("Plays when weapon is successfully used.")]
     [SerializeField] AudioClip operateClip;
 
@@ -15,9 +18,13 @@ public class WeaponAudioData : ScriptableObject
     
     [Tooltip("Plays when the weapon deals a hit.")]
     [SerializeField] AudioClip hitClip;
+    //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE
+    
+    
 
 
     //DATA GETTERS
+    public SoundFXEventArgs.EType AudioType { get {return audioType;} }
     public AudioClip OperateClip { get {return operateClip;} }
     //TODO: USE THIS
     public AudioClip OperateCooldownClip { get {return operateCooldownClip;} }
