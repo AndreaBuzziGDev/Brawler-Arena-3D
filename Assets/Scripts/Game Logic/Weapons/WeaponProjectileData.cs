@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponProjectileData
 {
     //DATA
+    private WeaponRangedData wData;
     private DamageInstance dInstance;
 
     private float lifetime = 0.0f;
@@ -15,6 +16,7 @@ public class WeaponProjectileData
 
 
     //DATA GETTERS
+    public WeaponRangedData WData => wData;
     public DamageInstance DamageInstance => dInstance;
 
     public float MaxLifetime => maxLifetime;
@@ -28,7 +30,8 @@ public class WeaponProjectileData
     //CONSTRUCTOR
     public WeaponProjectileData(WeaponRangedData wData, Vector3 pDirection)
     {
-        this.dInstance = new DamageInstance(wData);
+        this.wData = wData;
+        this.dInstance = new DamageInstance(wData);//TODO: THIS MIGHT BECOME UNNECESSARY BASED ON SEVERAL ASPECTS
         this.maxLifetime = wData.MaxLifetime;
         this.projectileSpeed = wData.ProjectileSpeed;
         this.direction = pDirection;
