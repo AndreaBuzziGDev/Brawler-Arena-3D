@@ -17,3 +17,14 @@ MonoBehaviour:
   hasFriendlyFire: 0
   projectileSpeed: 50
   maxLifetime: 10
+  tresspass: 0
+  particleShooting:
+    particle: {fileID: 0}
+    duration: 5
+  particleHitting:
+    particle: {fileID: 0}
+    duration: 5
+  particleTrespassing:
+    particle: {fileID: 0}
+    duration: 5
+  weaponAudioData: {fileID: 11400000, guid: ac58cc8350717f948983fb60589e874d, type: 2}

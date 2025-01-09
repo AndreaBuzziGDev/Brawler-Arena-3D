@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4fe6acb755e3649aa47f28b05a9361, type: 3}
   m_Name: Player Ranged Weapon Data
   m_EditorClassIdentifier: 
+  audioType: 1
   operateClip: {fileID: 8300000, guid: f3cf5f6f5c954f14f91d34bd4dac81d3, type: 3}
   operateCooldownClip: {fileID: 0}
   hitClip: {fileID: 0}

@@ -16,3 +16,4 @@ MonoBehaviour:
   needsOwnerToOperate: 1
   hasFriendlyFire: 1
   effectiveRadius: 10
+  weaponAudioData: {fileID: 11400000, guid: 12cd01e6bd219e34cbd1a0d8e0050ea6, type: 2}
