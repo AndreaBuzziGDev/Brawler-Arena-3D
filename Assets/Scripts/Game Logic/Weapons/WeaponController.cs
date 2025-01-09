@@ -39,7 +39,7 @@ public abstract class WeaponController : MonoBehaviour
     //FUNCTIONALITIES
     public virtual void Operate()
     {
-        if(weaponAudioData)
+        if(WData.WAudioData)
         {
             //UNBOUND AUDIO EMISSION
             //WData
