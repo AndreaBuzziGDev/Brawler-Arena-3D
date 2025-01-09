@@ -78,6 +78,7 @@ public class WeaponProjectile : MonoBehaviour
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.AudioType, projectileData.WData.WAudioData.HitClip));
         //HIT PARTICLES
         //TODO: UNCOMMENT
+        //TODO: UPGRADE THE OTHER CLASS LIKE I DID THE AudioSourceManager TO NOTIFY NULL ARGUMENTS
         //EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
         
         
