@@ -18,7 +18,7 @@ public class ParticleEffectEventArgs : EventArgs
     {
         this.ToSpawn = particleStruct.particle;
         this.Position = position;
-        this.Name = particleStruct.particle.name;
+        this.Name = particleStruct.particle != null ? particleStruct.particle.name : "Null Particle FX";
         this.Duration = particleStruct.duration;
     }
 }
