@@ -9,7 +9,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [Header("Scriptable Object References")]
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
-    [SerializeField] protected EntityParticleData particleData;
+    [SerializeField] protected ParticleData particleData;
 
 
     //REFERENCE VALIDATION
@@ -21,7 +21,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         if(audioData == null)
             Debug.LogWarning("No Entity EntityAudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(particleData == null)
-            Debug.LogWarning("No Entity EntityParticleData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+            Debug.LogWarning("No Entity ParticleData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
 

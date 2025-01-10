@@ -6,7 +6,7 @@ using UnityEngine;
 
 //TODO: RENAME. THIS IS NOT USED FOR ENTITIES ONLY ANYMORE.
 [CreateAssetMenu(fileName = "New Entity Particle Data", menuName = "Entity Data/Entity Particles/Mob Particles")]
-public class EntityParticleData : ScriptableObject
+public class ParticleData : ScriptableObject
 {
     [Header("Particle Effect Data")]
     [SerializeField] ParticleDataStruct structParticleFX;
