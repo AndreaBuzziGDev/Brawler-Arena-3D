@@ -94,7 +94,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         //DEATH SOUND
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
         //DEATH PARTICLES
-        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData.DeathParticleFX, transform.position));
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData.ParticleFX, transform.position));
         //DESTROY
         Destroy(this.gameObject);
     }

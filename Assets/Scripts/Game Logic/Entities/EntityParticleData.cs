@@ -9,10 +9,10 @@ using UnityEngine;
 public class EntityParticleData : ScriptableObject
 {
     [Header("Particle Effect Data")]
-    [SerializeField] ParticleDataStruct structDeathParticleFX;//TODO: RENAME
+    [SerializeField] ParticleDataStruct structParticleFX;
 
     //DATA GETTERS
-    public ParticleDataStruct DeathParticleFX { get { return structDeathParticleFX; } }
+    public ParticleDataStruct ParticleFX { get { return structParticleFX; } }
     
     
     //METHODS
