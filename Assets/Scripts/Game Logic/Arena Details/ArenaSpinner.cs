@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: SWITCH TO AN ANIMATOR, DITCH THIS CONTROLLER
 public class ArenaSpinner : MonoBehaviour
 {
     //DATA
