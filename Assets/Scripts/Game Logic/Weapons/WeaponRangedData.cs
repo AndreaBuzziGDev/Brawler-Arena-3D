@@ -23,9 +23,9 @@ public class WeaponRangedData : WeaponData
     
     //PARTICLES
     [Tooltip("Particle effects associated with this projectile")]
-    [SerializeField] protected ParticleDataStruct particleShooting;
-    [SerializeField] protected ParticleDataStruct particleHitting;
-    [SerializeField] protected ParticleDataStruct particleTrespassing;
+    [SerializeField] protected ParticleData particleShooting;
+    [SerializeField] protected ParticleData particleHitting;
+    [SerializeField] protected ParticleData particleTrespassing;
     
     //AUDIO
     [Tooltip("Reference to WeaponAudioData Scriptable Object.")]
@@ -40,9 +40,9 @@ public class WeaponRangedData : WeaponData
     public bool Tresspass => tresspass;
     
     
-    public ParticleDataStruct ParticleShooting => particleShooting;
-    public ParticleDataStruct ParticleHitting => particleHitting;
-    public ParticleDataStruct ParticleTrespassing => particleTrespassing;
+    public ParticleData ParticleShooting => particleShooting;
+    public ParticleData ParticleHitting => particleHitting;
+    public ParticleData ParticleTrespassing => particleTrespassing;
     
     
     //ABSTRACT DATA GETTER CONCRETIZATION
