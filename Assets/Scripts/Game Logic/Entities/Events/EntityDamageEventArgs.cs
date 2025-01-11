@@ -15,7 +15,7 @@ public class EntityDamageEventArgs : EventArgs
     public EDamageType DamageType { get; }
     public float MaxFill { get; }
     public float CurrentFill { get; }
-    public float PercentFill { get { return (float) (CurrentFill / PercentFill); } }
+    public float PercentFill { get { return (float) (CurrentFill / MaxFill); } }
 
 
 
