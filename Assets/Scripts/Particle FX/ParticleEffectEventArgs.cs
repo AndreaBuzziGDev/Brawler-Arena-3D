@@ -14,11 +14,11 @@ public class ParticleEffectEventArgs : EventArgs
 
 
     //CONSTRUCTOR
-    public ParticleEffectEventArgs(ParticleDataStruct particleDataStruct, Vector3 position)
+    public ParticleEffectEventArgs(ParticleData particleData, Vector3 position)
     {
-        this.ToSpawn = particleDataStruct?.particle;
+        this.ToSpawn = particleData?.ParticleFX?.particle;
         this.Position = position;
-        this.Name = particleDataStruct?.particle?.name ?? "Null Particle FX";
-        this.Duration = particleDataStruct?.duration ?? 1.0f;
+        this.Name = particleData?.ParticleFX?.particle?.name ?? "Null Particle FX";
+        this.Duration = particleData?.ParticleFX?.duration ?? 1.0f;
     }
 }
