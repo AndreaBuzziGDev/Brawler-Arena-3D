@@ -15,7 +15,9 @@ public class SpawnPoint : MonoBehaviour
 
     //DATA
     [Header("Spawn Point Properties")]
-    [SerializeField] SpawnPointType type = SpawnPointType.GROUND;//TODO: THIS IS UNUSED. USE IT FOR FUTURE ITERATIONS
+    //TODO: THIS IS UNUSED. USE IT FOR FUTURE ITERATIONS
+    //      IN ORDER TO "FIX" THIS, CHANGE SPAWN MECHANICS ALTOGETHER
+    [SerializeField] SpawnPointType type = SpawnPointType.GROUND;
     [SerializeField] Color gizmoColor = Color.green;
     [SerializeField] float spawnRadius = 1.0f;
     [SerializeField] bool spawnStrictlyOnRadius = false;
