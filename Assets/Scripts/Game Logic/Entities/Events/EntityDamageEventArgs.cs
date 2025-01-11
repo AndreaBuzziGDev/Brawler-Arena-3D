@@ -12,23 +12,17 @@ public class EntityDamageEventArgs : EventArgs
     }
     
     //DATA
-    protected EDamageType damageType;
-    protected float maxFill;
-    protected float currentFill;
-
-
-    //DATA GETTERS
-    public EDamageType DamageType { get { return damageType; } }
-    public float MaxFill { get { return maxFill; } }
-    public float CurrentFill { get { return currentFill; } }
-    public float PercentFill { get { return (float) (currentFill / maxFill); } }
+    public EDamageType DamageType { get; }
+    public float MaxFill { get; }
+    public float CurrentFill { get; }
+    public float PercentFill { get { return (float) (CurrentFill / PercentFill); } }
 
 
 
     //CONSTRUCTOR
     public EntityDamageEventArgs(EDamageType damageType, float maxFill, float currentFill){
-        this.damageType = damageType;
-        this.maxFill = maxFill;
-        this.currentFill = currentFill;
+        this.DamageType = damageType;
+        this.MaxFill = maxFill;
+        this.CurrentFill = currentFill;
     }
 }
