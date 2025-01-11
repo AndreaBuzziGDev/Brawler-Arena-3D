@@ -13,14 +13,13 @@ public class MainMenuEventArgs : EventArgs
     }
     
     //DATA
-    private EType eventType;
-    public EType EventType { get { return eventType; } }
+    public EType EventType { get; }
 
 
 
     //CONSTRUCTOR
     public MainMenuEventArgs (EType eventType = EType.MAIN_MENU)
     {
-        this.eventType = eventType;
+        this.EventType = eventType;
     }
 }

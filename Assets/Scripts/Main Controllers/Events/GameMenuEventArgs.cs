@@ -14,14 +14,12 @@ public class GameMenuEventArgs : EventArgs
     }
 
     //DATA
-    private EType eventType;
-    public EType EventType { get { return eventType; } }
-
+    public EType EventType { get; }
 
 
     //CONSTRUCTOR
     public GameMenuEventArgs (EType eventType = EType.GAME_MENU_PAUSE_OPEN)
     {
-        this.eventType = eventType;
+        this.EventType = eventType;
     }
 }

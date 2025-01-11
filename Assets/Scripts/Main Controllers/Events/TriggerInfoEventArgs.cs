@@ -14,11 +14,11 @@ public class TriggerInfoEventArgs : EventArgs
     }
 
     //DATA
-    public GameObject ColliderObject { get; private set; }
-    public string ColliderTag { get; private set; }
-    public Vector3 CollisionPosition { get; private set; }
+    public GameObject ColliderObject { get; }
+    public string ColliderTag { get; }
+    public Vector3 CollisionPosition { get; }
     
-    public GameObject Dispatcher { get; private set; }//NB: NECESSARY. EVENT SENDER MIGHT NOT BE A GAMEOBJECT
+    public GameObject Dispatcher { get; }//NB: NECESSARY. EVENT SENDER MIGHT NOT BE A GAMEOBJECT
     
 
     //CONSTRUCTOR
