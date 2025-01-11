@@ -16,9 +16,9 @@ public class ParticleEffectEventArgs : EventArgs
     //CONSTRUCTOR
     public ParticleEffectEventArgs(ParticleDataStruct particleStruct, Vector3 position)
     {
-        this.ToSpawn = particleStruct.particle;
+        this.ToSpawn = particleStruct?.particle;
         this.Position = position;
-        this.Name = particleStruct.particle?.name ?? "Null Particle FX";
+        this.Name = particleStruct?.particle?.name ?? "Null Particle FX";
         this.Duration = particleStruct.duration;
     }
 }
