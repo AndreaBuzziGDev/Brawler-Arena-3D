@@ -9,7 +9,7 @@ public abstract class WeaponData : ScriptableObject
     [Tooltip("The damage dealt by operating this weapon")]
     [Range(0, 100)]
     [SerializeField] float damageAmount = 1;
-
+    
 
     //OWNERSHIP
     [Tooltip("If checked, this weapon needs to be linked to an owner (EG: self-destruction)")]
