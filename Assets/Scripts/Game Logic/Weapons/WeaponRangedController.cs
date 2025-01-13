@@ -11,7 +11,7 @@ public class WeaponRangedController : WeaponController
     [SerializeField] protected WeaponRangedData wData;
 
     [Tooltip("Reference to the projectile Prefab.")]
-    [SerializeField] WeaponProjectile projectile;
+    [SerializeField] WeaponProjectile projectile;//TODO: COULD/SHOULD THIS BE ON THE WEAPON DATA INSTEAD? -> PROBABLY YES
 
 
     //DATA GETTER
