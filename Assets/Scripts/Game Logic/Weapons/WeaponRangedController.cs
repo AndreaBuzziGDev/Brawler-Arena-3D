@@ -30,13 +30,20 @@ public class WeaponRangedController : WeaponController
 
 
 
-    //FUNCTIONALITIES
+    //LIFECYCLE FUNCTIONS
+    //TODO: IMPLEMENT UPDATE METHOD
+    //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
+
+
+
+    //PARENT CLASS OVERRIDE
     public override void Operate()
     {
         //BASE
         base.Operate();
 
         //SANITY CHECK
+        //TODO: IMPROVE THIS BY USING ANOTHER SOLUTION, VALIDATE SCRIPTABLE OBJECTS OR TAKE INSPIRATION FROM SOMEWHERE ELSE.
         if(!projectile)
         {
             Debug.LogError("No Projectile on weapon: " + gameObject.name);
@@ -49,10 +56,27 @@ public class WeaponRangedController : WeaponController
         }
         
         //
-        Shoot();
+        switch(wData.OperateMode){
+            case WeaponRangedData.EOperateMode.AUTO:
+                //TODO: IMPLEMENT AUTO-SHOOTING MODE
+                Debug.Log("Weapon Operate Mode: Auto NOT IMPLEMENTED");
+                break;
+            case WeaponRangedData.EOperateMode.CHARGED:
+                //TODO: IMPLEMENT CHRGED MODE
+                Debug.Log("Weapon Operate Mode: Auto NOT IMPLEMENTED");
+                break;
+            case WeaponRangedData.EOperateMode.SINGLE:
+                Shoot();
+                break;
+            default:
+                Debug.Log("Unhandled Pause Event");
+                break;
+        }
     }
 
 
+
+    //FUNCTIONALITIES
     private void Shoot()
     {
         //SPAWN PREFAB
