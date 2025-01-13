@@ -39,7 +39,15 @@ public abstract class WeaponController : MonoBehaviour
         {
             //UNBOUND AUDIO EMISSION
             //WData
-            EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, WData.WAudioData.OperateClip));
+            //TODO: THIS MIGHT NEED TO DELVE INTO WData AND PICK UP WETHER THE USER IS UNBOUND, PLAYER OR ELSE
+            EventManager<SoundFXEventArgs>.Instance.Notify(
+                this, 
+                new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, WData.WAudioData.OperateClip)
+            );
         }
+    }
+    
+    public virtual void Release(){
+        
     }
 }
