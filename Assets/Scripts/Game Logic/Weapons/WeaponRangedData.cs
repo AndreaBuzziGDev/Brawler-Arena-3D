@@ -9,6 +9,7 @@ public class WeaponRangedData : WeaponData
     public enum EOperateMode
     {
         SINGLE,
+        BURST,
         AUTO,
         CHARGED
     }

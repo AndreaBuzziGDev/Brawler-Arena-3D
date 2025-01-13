@@ -59,11 +59,15 @@ public class WeaponRangedController : WeaponController
         switch(wData.OperateMode){
             case WeaponRangedData.EOperateMode.AUTO:
                 //TODO: IMPLEMENT AUTO-SHOOTING MODE
-                Debug.Log("Weapon Operate Mode: Auto NOT IMPLEMENTED");
+                Debug.Log("Weapon Operate Mode: AUTO NOT IMPLEMENTED");
+                break;
+            case WeaponRangedData.EOperateMode.BURST:
+                //TODO: IMPLEMENT CHRGED MODE
+                Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
                 break;
             case WeaponRangedData.EOperateMode.CHARGED:
                 //TODO: IMPLEMENT CHRGED MODE
-                Debug.Log("Weapon Operate Mode: Auto NOT IMPLEMENTED");
+                Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
                 break;
             case WeaponRangedData.EOperateMode.SINGLE:
                 Shoot();
