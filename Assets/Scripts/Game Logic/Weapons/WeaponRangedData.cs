@@ -5,11 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon Data", menuName = "Gameplay Data/Weapon Data/Ranged")]
 public class WeaponRangedData : WeaponData
 {
+    //ENUM
+    public enum EOperateMode
+    {
+        SINGLE,
+        AUTO,
+        CHARGED
+    }
+
+    //OPERATE MODE
+    [Tooltip("How does the weapon operate?")]
+    EOperateMode operateMode = EOperateMode.SINGLE;
+    
     //SPEED
     [Tooltip("The speed module of the projectile")]
     [Range(0, 100)]
     [SerializeField] float projectileSpeed = 10;
-
 
     //LIFETIME
     [Tooltip("The duration in second before the projectile vanishes")]
@@ -35,6 +46,7 @@ public class WeaponRangedData : WeaponData
     
 
     //DATA GETTER
+    public EOperateMode OperateMode => operateMode;
     public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;
     public bool Tresspass => tresspass;
