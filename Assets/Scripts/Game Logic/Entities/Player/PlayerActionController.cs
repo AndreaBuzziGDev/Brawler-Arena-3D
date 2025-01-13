@@ -95,6 +95,7 @@ public class PlayerActionController : EntityWithAiming
         //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed += UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed += UseAttackRanged;
+        inputPlayer.BaseActionMap.WeaponRanged.canceled += TestActionBind;
         inputPlayer.BaseActionMap.WeaponUtility.performed += UseAbility;
 
         //ESCAPE
@@ -181,6 +182,12 @@ public class PlayerActionController : EntityWithAiming
             return;
         
         weaponRanged.Operate();
+    }
+    
+    void TestActionBind(InputAction.CallbackContext value){
+        Debug.Log("Test Action bind (button release? )");
+        Debug.Log("Value: " + value);
+        //TODO: DEVELOP RELEASE FUNCTIONALITY FOR WEAPONS
     }
 
     void UseAbility(InputAction.CallbackContext value)
