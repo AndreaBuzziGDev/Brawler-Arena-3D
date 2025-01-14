@@ -40,6 +40,8 @@ public abstract class WeaponController : MonoBehaviour
             //UNBOUND AUDIO EMISSION
             //WData
             //TODO: THIS MIGHT NEED TO DELVE INTO WData AND PICK UP WETHER THE USER IS UNBOUND, PLAYER OR ELSE
+            //TODO: THIS SOUND SHOULD REFRESH EVERY TIME A SHOT HAPPENS, SO THE CURRENT UNIFIED AUDIO ARCHITECTURE DOESN'T SUPPORT THE INTENDED BEHAVIOUR AS OF YET.
+            //      CURRENTLY, THE AUDIO GETS REPEATED WHEN IT ENDS.
             EventManager<SoundFXEventArgs>.Instance.Notify(
                 this, 
                 new SoundFXEventArgs(SoundFXEventArgs.EType.UNBOUND, WData.WAudioData.OperateClip)

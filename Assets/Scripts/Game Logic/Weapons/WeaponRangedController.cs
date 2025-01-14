@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponRangedController : WeaponController
 {
-    //DATA
+    //INSPECTOR REFERENCES
     [Header("Inspector References")]
 
     [Tooltip("Reference to WeaponRangedData Scriptable Object.")]
@@ -16,6 +16,12 @@ public class WeaponRangedController : WeaponController
 
     //DATA GETTER
     override protected WeaponData WData { get { return wData; } }
+    
+    
+    //DATA
+    bool isOperating = false;
+    
+    
 
 
     //REFERENCE VALIDATION
@@ -32,16 +38,42 @@ public class WeaponRangedController : WeaponController
 
     //LIFECYCLE FUNCTIONS
     //TODO: IMPLEMENT UPDATE METHOD
-    //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
+    void Update(){
+        if(!isOperating) return;
+        
+        //
+        //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
+        switch(wData.OperateMode){
+            case WeaponRangedData.EOperateMode.AUTO:
+                //TODO: IMPLEMENT AUTO-SHOOTING MODE
+                //      AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
+                Shoot();
+                break;
+            case WeaponRangedData.EOperateMode.BURST:
+                //TODO: IMPLEMENT CHRGED MODE
+                //      BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
+                Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
+                break;
+            case WeaponRangedData.EOperateMode.CHARGED:
+                //TODO: IMPLEMENT CHARGED MODE
+                //      CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
+                Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
+                break;
+            case WeaponRangedData.EOperateMode.SINGLE:
+                Shoot();
+                isOperating = false;
+                break;
+            default:
+                Debug.LogWarning("Invalid Ranged Weapon Operate Mode: " + wData.OperateMode);
+                break;
+        }
+    }
 
 
 
     //PARENT CLASS OVERRIDE
     public override void Operate()
     {
-        //BASE
-        base.Operate();
-
         //SANITY CHECK
         //TODO: IMPROVE THIS BY USING ANOTHER SOLUTION, VALIDATE SCRIPTABLE OBJECTS OR TAKE INSPIRATION FROM SOMEWHERE ELSE.
         if(!projectile)
@@ -55,27 +87,15 @@ public class WeaponRangedController : WeaponController
             return;
         }
         
-        //
-        switch(wData.OperateMode){
-            case WeaponRangedData.EOperateMode.AUTO:
-                //TODO: IMPLEMENT AUTO-SHOOTING MODE
-                Debug.Log("Weapon Operate Mode: AUTO NOT IMPLEMENTED");
-                break;
-            case WeaponRangedData.EOperateMode.BURST:
-                //TODO: IMPLEMENT CHRGED MODE
-                Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
-                break;
-            case WeaponRangedData.EOperateMode.CHARGED:
-                //TODO: IMPLEMENT CHRGED MODE
-                Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
-                break;
-            case WeaponRangedData.EOperateMode.SINGLE:
-                Shoot();
-                break;
-            default:
-                Debug.Log("Unhandled Pause Event");
-                break;
-        }
+        //TODO: TO ACHIEVE A BETTER IMPLEMENTATION, MIGHT BE BETTER TO HANDLE SOME INITIAL LOGIC HERE
+        //TODO: EVENTUALLY MOVE THAT INITIAL LOGIC TO AN HELPER
+
+        isOperating = true;
+    }
+    
+    public override void Release(){
+        base.Release();
+        isOperating = false;
     }
 
 
@@ -83,6 +103,9 @@ public class WeaponRangedController : WeaponController
     //FUNCTIONALITIES
     private void Shoot()
     {
+        //
+        base.Operate();
+
         //SPAWN PREFAB
         Vector3 pDirection = aimingEntity.AimingDirection3D();
         WeaponProjectile pInstance = Instantiate(

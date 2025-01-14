@@ -16,7 +16,7 @@ public class WeaponRangedData : WeaponData
 
     //OPERATE MODE
     [Tooltip("How does the weapon operate?")]
-    EOperateMode operateMode = EOperateMode.SINGLE;
+    [SerializeField] EOperateMode operateMode = EOperateMode.SINGLE;
     
     //SPEED
     [Tooltip("The speed module of the projectile")]
