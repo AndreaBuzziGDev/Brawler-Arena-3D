@@ -21,8 +21,8 @@ public class WeaponRangedData : WeaponData
     //ATTACK RATE
     //TODO: THIS CAN/SHOULD BE EXPORTED TO SUPERCLASS
     [Tooltip("The weapon attack rate (attacks/second)")]
-    [Range(0, 100)]
-    [SerializeField] float attackRate = 2;
+    [Range(0.1f, 30)]//TODO: THERE ARE WORKAROUNDS TO GO HIGHER THAN 30 ON 30FPS, LIKE MAKING IT SHOOT MULTIPLE PROJECTILES AT A TIME
+    [SerializeField] float attackRate = 2;//TODO
     
     //PROJECTILE SPEED
     [Tooltip("The speed module of the projectile")]
@@ -54,6 +54,7 @@ public class WeaponRangedData : WeaponData
 
     //DATA GETTER
     public EOperateMode OperateMode => operateMode;
+    public float AttackRate => attackRate;
     public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;
     public bool Tresspass => tresspass;

@@ -20,6 +20,8 @@ public class WeaponRangedController : WeaponController
     
     //DATA
     bool isOperating = false;
+    //TODO: EVENTUALLY EXPORT ATTACK RATE FUNCTIONALITY TO UPPER CLASS
+    float attackTimer = 0.0f;
     
     
 
@@ -39,10 +41,33 @@ public class WeaponRangedController : WeaponController
     //LIFECYCLE FUNCTIONS
     //TODO: IMPLEMENT UPDATE METHOD
     void Update(){
+        //TODO: THIS SHOULD WORK ONLY IF THE GAME IS NOT PAUSED
+        
         if(!isOperating) return;
         
         //
         //TODO: IMPLEMENT ATTACK RATE MECHANICS
+        //STEP 1: ADD TIMER 
+        attackTimer += Time.deltaTime;//TODO: SHOULD THIS MOVE TO FIXEDUPDATE INSTEAD, USE FIXED DELTA TIME
+        Debug.Log("WeaponRangedController - attackTimer: " + attackTimer);
+        
+        //STEP 2: QUANDO IL TIMER SUPERA UNA SOGLIA, SHOOT
+        //CALCOLA SOGLIA
+        float threshold = 1.0f/wData.AttackRate;
+        Debug.Log("WeaponRangedController - threshold: " + threshold);
+        
+        //CONTROLLA SUPERAMENTO SOGLIA
+        bool crossed = attackTimer > threshold;
+        Debug.Log("WeaponRangedController - crossed: " + crossed);
+        
+        //
+        if(crossed){
+            //
+            //STEP 3: QUANDO SHOOT, IL TEMPO RESIDUO (TIMER - SOGLIA) VIENE SOMMATO A 0
+            attackTimer = 0 + (attackTimer - threshold);
+            Debug.Log("WeaponRangedController - reset attackTimer: " + attackTimer);
+        }
+        
         
         //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
         switch(wData.OperateMode){
