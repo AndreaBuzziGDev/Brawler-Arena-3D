@@ -16,6 +16,7 @@ public class WeaponProjectileData
 
 
     //DATA GETTERS
+    //TODO: IMPROVE GETTERS
     public WeaponRangedData WData => wData;
     public DamageInstance DamageInstance => dInstance;
 
