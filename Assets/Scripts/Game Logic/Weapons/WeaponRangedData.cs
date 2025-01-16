@@ -18,7 +18,13 @@ public class WeaponRangedData : WeaponData
     [Tooltip("How does the weapon operate?")]
     [SerializeField] EOperateMode operateMode = EOperateMode.SINGLE;
     
-    //SPEED
+    //ATTACK RATE
+    //TODO: THIS CAN/SHOULD BE EXPORTED TO SUPERCLASS
+    [Tooltip("The weapon attack rate (attacks/second)")]
+    [Range(0, 100)]
+    [SerializeField] float attackRate = 2;
+    
+    //PROJECTILE SPEED
     [Tooltip("The speed module of the projectile")]
     [Range(0, 100)]
     [SerializeField] float projectileSpeed = 10;
@@ -28,7 +34,7 @@ public class WeaponRangedData : WeaponData
     [Range(0, 20)]
     [SerializeField] float maxLifetime = 10;
     
-    //BEHAVIOUR
+    //OTHER BEHAVIOURS
     [Tooltip("The duration in second before the projectile vanishes")]
     [SerializeField] bool tresspass = false;
     

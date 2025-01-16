@@ -42,6 +42,8 @@ public class WeaponRangedController : WeaponController
         if(!isOperating) return;
         
         //
+        //TODO: IMPLEMENT ATTACK RATE MECHANICS
+        
         //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
         switch(wData.OperateMode){
             case WeaponRangedData.EOperateMode.AUTO:
