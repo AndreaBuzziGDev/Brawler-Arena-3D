@@ -63,7 +63,7 @@ public class WeaponRangedController : WeaponController
 
         if(!isOperating) return;
         
-        //
+        //TODO: ESPORTABILE IN FUNZIONALITà DEDICATA DI SHOOTING
         if(readyToShoot){
             //
             readyToShoot = false;
