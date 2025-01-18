@@ -22,6 +22,8 @@ public class WeaponRangedController : WeaponController
     bool isOperating = false;
     //TODO: EVENTUALLY EXPORT ATTACK RATE FUNCTIONALITY TO UPPER CLASS
     float attackTimer = 0.0f;
+    bool readyToShoot = true;
+    float threshold = 1;
     
     
 
@@ -39,60 +41,60 @@ public class WeaponRangedController : WeaponController
 
 
     //LIFECYCLE FUNCTIONS
+    
+    void Start(){
+        threshold = 1.0f/wData.AttackRate;
+    }
+    
+    
     //TODO: IMPLEMENT UPDATE METHOD
+    //TODO: SHOULD THIS LOGIC MOVE TO FIXEDUPDATE INSTEAD, USE FIXED DELTA TIME
     void Update(){
-        //TODO: THIS SHOULD WORK ONLY IF THE GAME IS NOT PAUSED
         
+        if(!GameController.Instance.IsPlaying) return;
+        if(!readyToShoot){
+            //STEP 1: ADD TIMER 
+            attackTimer += Time.deltaTime;
+            readyToShoot = attackTimer > threshold;
+            Debug.Log("WeaponRangedController - attackTimer: " + attackTimer);
+            Debug.Log("WeaponRangedController - threshold: " + threshold);
+            Debug.Log("WeaponRangedController - readyToShoot: " + readyToShoot);
+        }
+
         if(!isOperating) return;
         
         //
-        //TODO: IMPLEMENT ATTACK RATE MECHANICS
-        //STEP 1: ADD TIMER 
-        attackTimer += Time.deltaTime;//TODO: SHOULD THIS MOVE TO FIXEDUPDATE INSTEAD, USE FIXED DELTA TIME
-        Debug.Log("WeaponRangedController - attackTimer: " + attackTimer);
-        
-        //STEP 2: QUANDO IL TIMER SUPERA UNA SOGLIA, SHOOT
-        //CALCOLA SOGLIA
-        float threshold = 1.0f/wData.AttackRate;
-        Debug.Log("WeaponRangedController - threshold: " + threshold);
-        
-        //CONTROLLA SUPERAMENTO SOGLIA
-        bool crossed = attackTimer > threshold;
-        Debug.Log("WeaponRangedController - crossed: " + crossed);
-        
-        //
-        if(crossed){
+        if(readyToShoot){
             //
-            //STEP 3: QUANDO SHOOT, IL TEMPO RESIDUO (TIMER - SOGLIA) VIENE SOMMATO A 0
-            attackTimer = 0 + (attackTimer - threshold);
+            readyToShoot = false;
+            attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
             Debug.Log("WeaponRangedController - reset attackTimer: " + attackTimer);
-        }
-        
-        
-        //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
-        switch(wData.OperateMode){
-            case WeaponRangedData.EOperateMode.AUTO:
-                //TODO: IMPLEMENT AUTO-SHOOTING MODE
-                //      AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
-                Shoot();
-                break;
-            case WeaponRangedData.EOperateMode.BURST:
-                //TODO: IMPLEMENT CHRGED MODE
-                //      BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
-                Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
-                break;
-            case WeaponRangedData.EOperateMode.CHARGED:
-                //TODO: IMPLEMENT CHARGED MODE
-                //      CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
-                Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
-                break;
-            case WeaponRangedData.EOperateMode.SINGLE:
-                Shoot();
-                isOperating = false;
-                break;
-            default:
-                Debug.LogWarning("Invalid Ranged Weapon Operate Mode: " + wData.OperateMode);
-                break;
+
+            //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
+            switch(wData.OperateMode){
+                case WeaponRangedData.EOperateMode.AUTO:
+                    //TODO: IMPLEMENT AUTO-SHOOTING MODE
+                    //      AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
+                    Shoot();
+                    break;
+                case WeaponRangedData.EOperateMode.BURST:
+                    //TODO: IMPLEMENT CHRGED MODE
+                    //      BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
+                    Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
+                    break;
+                case WeaponRangedData.EOperateMode.CHARGED:
+                    //TODO: IMPLEMENT CHARGED MODE
+                    //      CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
+                    Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
+                    break;
+                case WeaponRangedData.EOperateMode.SINGLE:
+                    Shoot();
+                    isOperating = false;
+                    break;
+                default:
+                    Debug.LogWarning("Invalid Ranged Weapon Operate Mode: " + wData.OperateMode);
+                    break;
+            }
         }
     }
 
