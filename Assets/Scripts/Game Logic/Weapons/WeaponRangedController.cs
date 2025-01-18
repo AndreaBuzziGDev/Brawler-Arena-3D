@@ -20,10 +20,11 @@ public class WeaponRangedController : WeaponController
     
     //DATA
     bool isOperating = false;
-    //TODO: EVENTUALLY EXPORT ATTACK RATE FUNCTIONALITY TO UPPER CLASS
     float attackTimer = 0.0f;
     bool readyToShoot = true;
     float threshold = 1;
+    
+    WeaponRangedHelper logicHelper;
     
     
 
@@ -43,6 +44,7 @@ public class WeaponRangedController : WeaponController
     //LIFECYCLE FUNCTIONS
     
     void Start(){
+        logicHelper = new WeaponRangedHelper(wData);
         threshold = 1.0f/wData.AttackRate;
     }
     
