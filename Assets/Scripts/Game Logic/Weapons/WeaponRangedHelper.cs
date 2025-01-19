@@ -7,8 +7,13 @@ public class WeaponRangedHelper
     //DATA
     bool isOperating = false;
     float attackTimer = 0.0f;
-    bool readyToShoot = true;
     float threshold = 1;
+    
+    
+    //DATA GETTERS
+    bool ReadyToShoot { get { return attackTimer > threshold; } }
+    
+    
     
     
     //CONSTRUCTOR
@@ -21,9 +26,16 @@ public class WeaponRangedHelper
     
     
     //FUNCTIONALITIES
-    //TODO: METHOD THAT HANDLES TIMER LOGIC
     //TODO: METHOD THAT HANDLES SHOOTING LOGIC
     //...
+    public void HandleWeaponTimer(float deltaTime){
+        if(!ReadyToShoot){
+            attackTimer += deltaTime;
+            Debug.Log("WeaponRangedHelper - attackTimer: " + attackTimer);
+            Debug.Log("WeaponRangedHelper - threshold: " + threshold);
+            Debug.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
+        }
+    }
     
     
 
