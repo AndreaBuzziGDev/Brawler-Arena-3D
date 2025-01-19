@@ -59,10 +59,8 @@ public class WeaponRangedHelper
     public bool HandleShooting(){
         
         attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
-        Debug.Log("WeaponRangedController - reset attackTimer: " + attackTimer);
-        Debug.Log("WeaponRangedController - burstCooldown: " + burstCooldown);
-        
         bool result = false;
+        
         switch(operateMode){
             case WeaponRangedData.EOperateMode.AUTO:
                 //AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
