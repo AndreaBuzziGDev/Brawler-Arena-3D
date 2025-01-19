@@ -39,6 +39,16 @@ public class WeaponRangedData : WeaponData
     [SerializeField] bool tresspass = false;
     
     
+    //TYPE SPECIFIC BEHAVIOURS
+    //TODO: SET UP EDITOR SO THAT IT SHOWS THESE DATA ONLY WHERE IT MAKES SENSE FOR IT TO DO SO.
+    [Tooltip("The times whe weapon fires in a burst")]
+    [SerializeField] int burstCount = 3;
+    [Tooltip("The minimum time between the end of a burst and the start of a new one")]
+    [SerializeField] float burstCooldown = 0.5f;
+    
+    
+    
+    
     //PARTICLES
     [Tooltip("Particle effects associated with this projectile")]
     [SerializeField] protected ParticleData particleShooting;
@@ -58,6 +68,13 @@ public class WeaponRangedData : WeaponData
     public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;
     public bool Tresspass => tresspass;
+    
+    public int BurstCount => burstCount;
+    public float BurstCooldown => burstCooldown;
+    
+    
+    
+    
     
     
     public ParticleData ParticleShooting => particleShooting;

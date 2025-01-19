@@ -52,6 +52,7 @@ public class WeaponRangedController : WeaponController
     void Update(){
         
         if(!GameController.Instance.IsPlaying) return;
+        
         logicHelper.HandleWeaponTimer(Time.deltaTime);
 
         if(!logicHelper.IsOperating) return;
@@ -59,6 +60,7 @@ public class WeaponRangedController : WeaponController
         //TODO: ESPORTABILE IN FUNZIONALITà DEDICATA DI SHOOTING
         if(logicHelper.ReadyToShoot && logicHelper.HandleShooting()){
             Shoot();
+            //TODO: HANDLE RELEASE BEHAVIOUR WHEN BURST ENDS
         }
     }
 
@@ -80,15 +82,19 @@ public class WeaponRangedController : WeaponController
             return;
         }
         
-        //TODO: TO ACHIEVE A BETTER IMPLEMENTATION, MIGHT BE BETTER TO HANDLE SOME INITIAL LOGIC HERE
-        //TODO: EVENTUALLY MOVE THAT INITIAL LOGIC TO AN HELPER
 
-        logicHelper.IsOperating = true;
+        //TODO: LOGIC FOR THIS CAN BE MOVED IN THE HELPER
+        if(wData.OperateMode != WeaponRangedData.EOperateMode.BURST || logicHelper.IsBurstReady){
+            logicHelper.IsOperating = true;
+        }
     }
     
     public override void Release(){
-        base.Release();
-        logicHelper.IsOperating = false;
+        //TODO: LOGIC FOR THIS CAN BE MOVED IN THE HELPER
+        if(wData.OperateMode != WeaponRangedData.EOperateMode.BURST){
+            base.Release();
+            logicHelper.IsOperating = false;
+        }
     }
 
 

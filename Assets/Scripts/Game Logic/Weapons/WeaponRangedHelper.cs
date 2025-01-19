@@ -7,12 +7,24 @@ public class WeaponRangedHelper
     //DATA
     float attackTimer = 0.0f;
     float threshold = 1;
+    
+    ///BURST LOGIC
+    int burstCountMax = 0;
+    int burstCount = 0;
+    float burstCooldownMax = 0.5f;
+    float burstCooldown = 0.0f;
+    
+    ///CHARGE LOGIC
+    
+    
     WeaponRangedData.EOperateMode operateMode;
 
     
     //DATA FUNCTIONS
     public bool IsOperating { get; set; }
     public bool ReadyToShoot { get { return attackTimer >= threshold; } }
+    public bool IsBursting { get { return burstCountMax > burstCount; } }
+    public bool IsBurstReady { get { return burstCooldown > burstCooldownMax; } }
     
     
     
@@ -21,9 +33,14 @@ public class WeaponRangedHelper
     //TODO: THIS EVENTUALLY CAN BE MODIFIED TO HANDLE GENERALIZATION OF LOGIC
     public WeaponRangedHelper(WeaponRangedData wData){
         //TODO: IMPLEMENT DEFAULTING WHEN wData IS NOT PROVIDED
+        operateMode = wData.OperateMode;
+        
         threshold = 1.0f/wData.AttackRate;
         attackTimer = threshold;
-        operateMode = wData.OperateMode;
+        
+        burstCountMax = wData.BurstCount;
+        burstCooldownMax = wData.BurstCooldown;
+        burstCooldown = burstCooldownMax;
     }
     
     
@@ -31,14 +48,19 @@ public class WeaponRangedHelper
     public void HandleWeaponTimer(float deltaTime){
         if(!ReadyToShoot){
             attackTimer += deltaTime;
-            //DebugProperties();
         }
+        if(!IsBurstReady){
+            burstCooldown += deltaTime;
+        }
+        //DebugProperties();
     }
     
     
     public bool HandleShooting(){
+        
         attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
         Debug.Log("WeaponRangedController - reset attackTimer: " + attackTimer);
+        Debug.Log("WeaponRangedController - burstCooldown: " + burstCooldown);
         
         bool result = false;
         switch(operateMode){
@@ -47,16 +69,20 @@ public class WeaponRangedHelper
                 result = true;
                 break;
             case WeaponRangedData.EOperateMode.BURST:
-                //TODO: IMPLEMENT BURST MODE
-                
                 //BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
-                Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
+                result = true;
+                burstCount++;
+                if(!IsBursting){
+                    IsOperating = false;
+                    burstCount = 0;
+                    burstCooldown = 0.0f;
+                }
                 break;
             case WeaponRangedData.EOperateMode.CHARGED:
                 //TODO: IMPLEMENT CHARGED MODE
                 
                 //CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
-                Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
+                Debug.LogWarning("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
                 break;
             case WeaponRangedData.EOperateMode.SINGLE:
                 result = true;
@@ -78,6 +104,8 @@ public class WeaponRangedHelper
         Debug.Log("WeaponRangedHelper - attackTimer: " + attackTimer);
         Debug.Log("WeaponRangedHelper - threshold: " + threshold);
         Debug.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
+        
+        //TODO: ADD DEBUG FOR OTHER PROPERTIES BASED ON OPERATE MODE
     }
 
 }
