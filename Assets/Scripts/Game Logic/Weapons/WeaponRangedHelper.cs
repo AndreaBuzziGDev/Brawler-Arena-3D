@@ -35,6 +35,7 @@ public class WeaponRangedHelper
         //TODO: IMPLEMENT DEFAULTING WHEN wData IS NOT PROVIDED
         operateMode = wData.OperateMode;
         
+        //TODO: THRESHOLD MIGHT NEED TO BE ADJUSTED SPECIFICALLY FOR BURST GAMEPLAY IN ORDER TO MAKE BURST WEAPONS SHOOT FASTER
         threshold = 1.0f/wData.AttackRate;
         attackTimer = threshold;
         
