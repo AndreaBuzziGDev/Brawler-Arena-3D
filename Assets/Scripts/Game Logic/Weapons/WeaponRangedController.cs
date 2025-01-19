@@ -19,9 +19,7 @@ public class WeaponRangedController : WeaponController
     
     
     //DATA
-    bool isOperating = false;
     float attackTimer = 0.0f;
-    bool readyToShoot = true;
     float threshold = 1;
     
     WeaponRangedHelper logicHelper;
@@ -54,49 +52,13 @@ public class WeaponRangedController : WeaponController
     void Update(){
         
         if(!GameController.Instance.IsPlaying) return;
-        if(!readyToShoot){
-            //STEP 1: ADD TIMER 
-            attackTimer += Time.deltaTime;
-            readyToShoot = attackTimer > threshold;
-            Debug.Log("WeaponRangedController - attackTimer: " + attackTimer);
-            Debug.Log("WeaponRangedController - threshold: " + threshold);
-            Debug.Log("WeaponRangedController - readyToShoot: " + readyToShoot);
-        }
+        logicHelper.HandleWeaponTimer(Time.deltaTime);
 
-        if(!isOperating) return;
+        if(!logicHelper.IsOperating) return;
         
         //TODO: ESPORTABILE IN FUNZIONALITà DEDICATA DI SHOOTING
-        if(readyToShoot){
-            //
-            readyToShoot = false;
-            attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
-            Debug.Log("WeaponRangedController - reset attackTimer: " + attackTimer);
-
-            //TODO: WEAPONS MIGHT BENEFIT FROM AN HELPER HANDLING THE DETAILS OF LOGIC, SUCH AS COOLDOWNS ETC
-            switch(wData.OperateMode){
-                case WeaponRangedData.EOperateMode.AUTO:
-                    //TODO: IMPLEMENT AUTO-SHOOTING MODE
-                    //      AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
-                    Shoot();
-                    break;
-                case WeaponRangedData.EOperateMode.BURST:
-                    //TODO: IMPLEMENT CHRGED MODE
-                    //      BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
-                    Debug.Log("Weapon Operate Mode: BURST NOT IMPLEMENTED");
-                    break;
-                case WeaponRangedData.EOperateMode.CHARGED:
-                    //TODO: IMPLEMENT CHARGED MODE
-                    //      CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
-                    Debug.Log("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
-                    break;
-                case WeaponRangedData.EOperateMode.SINGLE:
-                    Shoot();
-                    isOperating = false;
-                    break;
-                default:
-                    Debug.LogWarning("Invalid Ranged Weapon Operate Mode: " + wData.OperateMode);
-                    break;
-            }
+        if(logicHelper.ReadyToShoot && logicHelper.HandleShooting()){
+            Shoot();
         }
     }
 
@@ -121,12 +83,12 @@ public class WeaponRangedController : WeaponController
         //TODO: TO ACHIEVE A BETTER IMPLEMENTATION, MIGHT BE BETTER TO HANDLE SOME INITIAL LOGIC HERE
         //TODO: EVENTUALLY MOVE THAT INITIAL LOGIC TO AN HELPER
 
-        isOperating = true;
+        logicHelper.IsOperating = true;
     }
     
     public override void Release(){
         base.Release();
-        isOperating = false;
+        logicHelper.IsOperating = false;
     }
 
 
