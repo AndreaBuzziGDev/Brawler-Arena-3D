@@ -22,7 +22,7 @@ public class WeaponRangedData : WeaponData
     //TODO: THIS CAN/SHOULD BE EXPORTED TO SUPERCLASS
     [Tooltip("The weapon attack rate (attacks/second)")]
     [Range(0.1f, 30)]//TODO: THERE ARE WORKAROUNDS TO GO HIGHER THAN 30 ON 30FPS, LIKE MAKING IT SHOOT MULTIPLE PROJECTILES AT A TIME
-    [SerializeField] float attackRate = 2;//TODO
+    [SerializeField] float attackRate = 2;
     
     //PROJECTILE SPEED
     [Tooltip("The speed module of the projectile")]
@@ -45,6 +45,14 @@ public class WeaponRangedData : WeaponData
     [SerializeField] int burstCount = 3;
     [Tooltip("The minimum time between the end of a burst and the start of a new one")]
     [SerializeField] float burstCooldown = 0.5f;
+    
+    
+    //
+    //TODO: NEW MECHANIC - MULTIPLE CHARGE LEVELS
+    [Tooltip("The overall time required to charge the weapon, expressed in Attack Rate x Seconds")]
+    [SerializeField] float chargeTime = 2;
+    
+    
     
     
     
@@ -72,6 +80,7 @@ public class WeaponRangedData : WeaponData
     public int BurstCount => burstCount;
     public float BurstCooldown => burstCooldown;
     
+    public float ChargeTime => chargeTime;
     
     
     

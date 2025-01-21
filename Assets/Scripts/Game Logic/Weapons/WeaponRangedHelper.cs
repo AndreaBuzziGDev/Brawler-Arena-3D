@@ -15,6 +15,10 @@ public class WeaponRangedHelper
     float burstCooldown = 0.0f;
     
     ///CHARGE LOGIC
+    float chargeTimerMax = 1.0f;
+    float chargeTimer = 0.0f;
+    float chargeRate = 1.0f;
+    
     
     
     WeaponRangedData.EOperateMode operateMode;
@@ -25,6 +29,7 @@ public class WeaponRangedHelper
     public bool ReadyToShoot { get { return attackTimer >= threshold; } }
     public bool IsBursting { get { return burstCountMax > burstCount; } }
     public bool IsBurstReady { get { return burstCooldown > burstCooldownMax; } }
+    public bool IsCharged { get { return chargeTimer > chargeTimerMax; } }
     
     
     
@@ -42,6 +47,9 @@ public class WeaponRangedHelper
         burstCountMax = wData.BurstCount;
         burstCooldownMax = wData.BurstCooldown;
         burstCooldown = burstCooldownMax;
+
+        chargeTimerMax = wData.ChargeTime;
+        chargeRate = wData.AttackRate;
     }
     
     
@@ -52,6 +60,11 @@ public class WeaponRangedHelper
         }
         if(!IsBurstReady){
             burstCooldown += deltaTime;
+        }
+        if(IsOperating && operateMode == WeaponRangedData.EOperateMode.CHARGED){
+            chargeTimer += (deltaTime * chargeRate);
+        } else {
+            chargeTimer = 0.0f;
         }
         //DebugProperties();
     }
@@ -78,10 +91,13 @@ public class WeaponRangedHelper
                 }
                 break;
             case WeaponRangedData.EOperateMode.CHARGED:
-                //TODO: IMPLEMENT CHARGED MODE
-                
-                //CHARGED SHOULD LOAD UNTIL RELEASE HAPPENS, THEN SHOOT BASED ON HOW LONG WAS LOADED (UP TO A CAP)
-                Debug.LogWarning("Weapon Operate Mode: CHARGED NOT IMPLEMENTED");
+                //CHARGED SHOULD LOAD UNTIL A CHARGE TIMER HAS BEEN REACHED, THEN RELASE SHOT
+                if(IsCharged){
+                    result = true;
+                    IsOperating = false;
+                    chargeTimer = 0.0f;
+                    attackTimer = 0.0f;
+                }
                 break;
             case WeaponRangedData.EOperateMode.SINGLE:
                 result = true;
