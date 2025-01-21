@@ -36,7 +36,8 @@ public class ParticleManager : MonoSingleton<ParticleManager>
 
             Destroy(go.gameObject, e.Duration);
         } else {
-            Debug.LogWarning("Received from: " + sender + " a null Particle Effect.");
+            //TODO: UNCOMMENT
+            //Debug.LogWarning("Received from: " + sender + " a null Particle Effect.");
         }
     }
 
