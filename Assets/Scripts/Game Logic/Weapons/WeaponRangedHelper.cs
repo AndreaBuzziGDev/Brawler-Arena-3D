@@ -27,6 +27,7 @@ public class WeaponRangedHelper
     //DATA FUNCTIONS
     public bool IsOperating { get; set; }
     public bool ReadyToShoot { get { return attackTimer >= threshold; } }
+    public float GetExtraBulletCount { get { return Mathf.Max((int)((attackTimer / threshold)-1), 0); } }
     public bool IsBursting { get { return burstCountMax > burstCount; } }
     public bool IsBurstReady { get { return burstCooldown > burstCooldownMax; } }
     public bool IsCharged { get { return chargeTimer > chargeTimerMax; } }
@@ -71,7 +72,6 @@ public class WeaponRangedHelper
     
     
     public bool HandleShooting(){
-        
         attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
         bool result = false;
         

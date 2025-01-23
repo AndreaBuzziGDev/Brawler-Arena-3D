@@ -49,18 +49,18 @@ public class WeaponRangedController : WeaponController
     
     //TODO: IMPLEMENT UPDATE METHOD
     //TODO: SHOULD THIS LOGIC MOVE TO FIXEDUPDATE INSTEAD, USE FIXED DELTA TIME
-    void Update(){
+    void FixedUpdate(){
         
         if(!GameController.Instance.IsPlaying) return;
         
-        logicHelper.HandleWeaponTimer(Time.deltaTime);
+        logicHelper.HandleWeaponTimer(Time.fixedDeltaTime);
 
         if(!logicHelper.IsOperating) return;
         
-        //TODO: ESPORTABILE IN FUNZIONALITà DEDICATA DI SHOOTING
         if(logicHelper.ReadyToShoot && logicHelper.HandleShooting()){
-            Shoot();
-            //TODO: HANDLE RELEASE BEHAVIOUR WHEN BURST ENDS
+            for(int i = 0; i <= logicHelper.GetExtraBulletCount; i++){
+                Shoot();
+            }
         }
     }
 

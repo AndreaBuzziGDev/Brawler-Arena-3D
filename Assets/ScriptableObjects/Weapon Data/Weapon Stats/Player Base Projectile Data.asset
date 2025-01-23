@@ -15,13 +15,14 @@ MonoBehaviour:
   damageAmount: 5
   needsOwnerToOperate: 0
   hasFriendlyFire: 0
-  operateMode: 1
-  attackRate: 10
+  operateMode: 2
+  attackRate: 5
   projectileSpeed: 50
   maxLifetime: 10
   tresspass: 0
   burstCount: 3
   burstCooldown: 0.5
+  chargeTime: 2
   particleShooting: {fileID: 0}
   particleHitting: {fileID: 0}
   particleTrespassing: {fileID: 0}
