@@ -27,7 +27,7 @@ public class WeaponRangedData : WeaponData
     //ATTACK RATE
     //TODO: THIS CAN/SHOULD BE EXPORTED TO SUPERCLASS
     [Tooltip("The weapon attack rate (attacks/second)")]
-    [Range(0.1f, 30)]//TODO: THERE ARE WORKAROUNDS TO GO HIGHER THAN 30 ON 30FPS, LIKE MAKING IT SHOOT MULTIPLE PROJECTILES AT A TIME
+    [Range(0.1f, 30)]
     [SerializeField] float attackRate = 2;
     
     //PROJECTILE SPEED
