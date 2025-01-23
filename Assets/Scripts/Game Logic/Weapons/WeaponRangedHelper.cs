@@ -38,8 +38,8 @@ public class WeaponRangedHelper
     //CONSTRUCTOR
     //TODO: THIS EVENTUALLY CAN BE MODIFIED TO HANDLE GENERALIZATION OF LOGIC
     public WeaponRangedHelper(WeaponRangedData wData){
-        //TODO: IMPLEMENT DEFAULTING WHEN wData IS NOT PROVIDED
-        operateMode = wData.OperateMode;
+        
+        operateMode = wData?.OperateMode ?? WeaponRangedData.EOperateMode.SINGLE;
         
         //TODO: THRESHOLD MIGHT NEED TO BE ADJUSTED SPECIFICALLY FOR BURST GAMEPLAY IN ORDER TO MAKE BURST WEAPONS SHOOT FASTER
         threshold = 1.0f/wData.AttackRate;
@@ -121,6 +121,8 @@ public class WeaponRangedHelper
         Debug.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
         
         //TODO: ADD DEBUG FOR OTHER PROPERTIES BASED ON OPERATE MODE
+        
+        
     }
 
 }
