@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugController : MonoBehaviour
+public class DebugController : MonoSingleton<DebugController>
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    
+    [SerializeField]
+    private DebuggerConfig config = new DebuggerConfig
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        EnableDebugging = true,
+        LogLevel = LogLevel.Info
+    };
+    
+    
+    //DATA GETTER
+    public DebuggerConfig Config => config;
 }
