@@ -67,7 +67,7 @@ public class WeaponRangedHelper
         } else {
             chargeTimer = 0.0f;
         }
-        DebugProperties();
+        //DebugProperties();
     }
     
     
