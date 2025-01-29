@@ -54,9 +54,9 @@ public static class Debugger
     public static void Log(string message, LogLevel level = LogLevel.Info)
     {
         if (!Config.EnableDebugging || level < Config.LogLevel)
-        {
             return;
-        }
+        
+        //
         Debug.Log($"[{level}] {message}");
     }
 }
