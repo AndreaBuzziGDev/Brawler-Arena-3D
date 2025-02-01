@@ -67,6 +67,8 @@ public class WeaponRangedHelper
         } else {
             chargeTimer = 0.0f;
         }
+        Debugger.Log(DebugProperties);
+        
         //DebugProperties();
     }
     
@@ -125,6 +127,7 @@ public class WeaponRangedHelper
         //TODO: USE ADVANCED DEBUG FUNCTIONALITY
         //1) DEBUG WILL BE DONE VIA DELEGATES
         //THIS METHOD WILL BE ONE OF SAID DELEGATES
+        
         
         //2) Debugger WILL DO A NUMBER OF FLOW/LOGIC CONTROLS TO DETERMINE WETHER THE DELEGATE WILL BE EXECUTED
         

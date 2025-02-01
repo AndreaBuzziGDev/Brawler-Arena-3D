@@ -15,6 +15,11 @@ public static class Debugger
     };
     
     
+    //DELEGATE
+    public delegate void DelegateDebug();//TODO: THIS NEEDS TO ACCEPT PARAMETERS LIKE DESCRIBED IN THE WeaponRangedHelper TODO
+    
+    
+    
     //DATA FUNCTIONS
     public static DebuggerConfig Config
     {
@@ -51,14 +56,23 @@ public static class Debugger
 
     
     //FUNCTIONALITIES
-    public static void Log(string message, LogLevel level = LogLevel.Info)
-    {
+    public static void Log(string message, LogLevel level = LogLevel.Info){
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
         //
         Debug.Log($"[{level}] {message}");
     }
+    
+    //
+    public static void Log(DelegateDebug method){
+        //TODO: FLOW CONTROL LOGIC
+        Debug.Log("This is Delegate Log");
+        method();
+    }
+    
+    
+    
 }
 
 
