@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public static class Debugger
 {
     //DATA
     private static DebuggerConfig currentConfig;
+    private static Dictionary<LogType, Boolean> MapType = new();
+    
     
     //DEFAULT CONFIG
     private static DebuggerConfig defaultConfig = new DebuggerConfig
@@ -30,14 +33,9 @@ public static class Debugger
                 // Prova a trovare un MonoSingleton nella scena
                 DebugController instance = DebugController.Instance;
                 if (instance != null)
-                {
                     currentConfig = instance.Config;
-                }
                 else
-                {
-                    // Usa la configurazione di default
                     currentConfig = defaultConfig;
-                }
             }
             return currentConfig;
         }
@@ -50,6 +48,7 @@ public static class Debugger
                 return;
             }
             currentConfig = value;
+            MapDebugging();
             Debug.Log("Debugger configuration updated.");
         }
     }
@@ -64,14 +63,35 @@ public static class Debugger
         Debug.Log($"[{level}] {message}");
     }
     
-    //
+    //TODO: COMBINE LOG LEVEL AND TYPE FUNCTIONALITIES IN ONE SINGLE METHOD
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT){
-        //TODO: FLOW CONTROL LOGIC
         //DEVELOP FUNCTIONALITY THAT RETURNS TRUE VALUE WHEN THE CONFIG IS ENABLED TO DEBUG THAT TYPE SPECIFICALLY
-        if(true){
+        if(MapType.Count < 1)
+            MapDebugging();
+        
+        if(MapType[logType]){
             Debug.Log("This is Delegate Log");
             method();
         }
+    }
+    
+    
+    
+
+    //UTILITIES
+    public static void MapDebugging(){
+        
+        //
+        MapType.Clear();
+        
+        DebuggerConfig dConfig = Config;
+        
+        //TODO: THIS IS HARD-CODED. MAKE IT SCALABLE
+        MapType.Add(LogType.DEFAULT, dConfig.debugDefault);
+        MapType.Add(LogType.WEAPON, dConfig.debugWeapon);
+        MapType.Add(LogType.PARTICLE, dConfig.debugParticle);
+        MapType.Add(LogType.SOUND, dConfig.debugSound);
+        MapType.Add(LogType.SPAWNING, dConfig.debugSpawning);
     }
     
     
