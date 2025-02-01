@@ -84,3 +84,13 @@ public enum LogLevel
     Warning,
     Error
 }
+
+
+public enum LogType
+{
+    DEFAULT,
+    WEAPON,
+    PARTICLE,
+    SOUND,
+    SPAWNING
+}
