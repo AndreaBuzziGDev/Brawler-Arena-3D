@@ -65,7 +65,7 @@ public static class Debugger
     }
     
     //
-    public static void Log(DelegateDebug method, LogType logType){
+    public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT){
         //TODO: FLOW CONTROL LOGIC
         //DEVELOP FUNCTIONALITY THAT RETURNS TRUE VALUE WHEN THE CONFIG IS ENABLED TO DEBUG THAT TYPE SPECIFICALLY
         if(true){
