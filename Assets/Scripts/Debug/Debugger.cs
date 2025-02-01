@@ -65,10 +65,13 @@ public static class Debugger
     }
     
     //
-    public static void Log(DelegateDebug method){
+    public static void Log(DelegateDebug method, LogType logType){
         //TODO: FLOW CONTROL LOGIC
-        Debug.Log("This is Delegate Log");
-        method();
+        //DEVELOP FUNCTIONALITY THAT RETURNS TRUE VALUE WHEN THE CONFIG IS ENABLED TO DEBUG THAT TYPE SPECIFICALLY
+        if(true){
+            Debug.Log("This is Delegate Log");
+            method();
+        }
     }
     
     
