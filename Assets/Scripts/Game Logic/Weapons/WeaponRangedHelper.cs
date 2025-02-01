@@ -67,7 +67,7 @@ public class WeaponRangedHelper
         } else {
             chargeTimer = 0.0f;
         }
-        Debugger.Log(DebugProperties);
+        Debugger.Log(DebugProperties, LogType.WEAPON);
         
         //DebugProperties();
     }
