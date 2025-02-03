@@ -115,5 +115,7 @@ public enum LogType
     WEAPON,
     PARTICLE,
     SOUND,
-    SPAWNING
+    SPAWNING,
+    PHYSICS,
+    AI
 }
