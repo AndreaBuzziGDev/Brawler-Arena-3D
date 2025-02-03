@@ -70,10 +70,8 @@ public static class Debugger
         if(MapType.Count < 1)
             MapDebugging();
         
-        if(MapType[logType]){
-            Debug.Log("This is Delegate Log");
+        if(MapType[logType])
             method();
-        }
     }
     
     
