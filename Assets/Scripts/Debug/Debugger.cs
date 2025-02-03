@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Reflection;
 
 public static class Debugger
 {
@@ -83,15 +84,16 @@ public static class Debugger
         
         //
         MapType.Clear();
-        
         DebuggerConfig dConfig = Config;
+        FieldInfo[] fields = dConfig.GetType().GetFields();
         
-        //TODO: THIS IS HARD-CODED. MAKE IT SCALABLE
-        MapType.Add(LogType.DEFAULT, dConfig.debugDefault);
-        MapType.Add(LogType.WEAPON, dConfig.debugWeapon);
-        MapType.Add(LogType.PARTICLE, dConfig.debugParticle);
-        MapType.Add(LogType.SOUND, dConfig.debugSound);
-        MapType.Add(LogType.SPAWNING, dConfig.debugSpawning);
+        foreach (FieldInfo field in fields)
+        {
+            LogTypeFieldAttribute attribute = field.GetCustomAttribute<LogTypeFieldAttribute>();
+            
+            if (attribute != null && field.FieldType == typeof(bool))
+                MapType[attribute.LogType] = (bool)field.GetValue(dConfig);
+        }
     }
     
     
