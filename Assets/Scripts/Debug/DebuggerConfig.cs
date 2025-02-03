@@ -30,5 +30,4 @@ public class DebuggerConfig
     [LogTypeField(LogType.AI)]
     public bool debugAI = false;
     
-    
 }
