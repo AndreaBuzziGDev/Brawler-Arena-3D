@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+//TODO: MAKE THIS A SCRIPTABLEOBJECT OR USE A SCRIPTABLEOBJECT TO CARRY THIS
+[Serializable]
 public class DebuggerConfig
 {
     //DATA
