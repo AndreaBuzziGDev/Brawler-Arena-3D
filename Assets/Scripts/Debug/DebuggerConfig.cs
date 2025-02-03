@@ -5,7 +5,7 @@ using UnityEngine;
 public class DebuggerConfig
 {
     //DATA
-    public bool EnableDebugging;
+    public bool EnableDebugging = true;
     public LogLevel LogLevel;
     
     //DEBUG FLAG
