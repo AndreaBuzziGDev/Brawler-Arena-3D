@@ -20,7 +20,7 @@ public static class Debugger
     
     
     //DELEGATE
-    public delegate void DelegateDebug();//TODO: THIS NEEDS TO ACCEPT PARAMETERS LIKE DESCRIBED IN THE WeaponRangedHelper TODO
+    public delegate void DelegateDebug();
     
     
     
