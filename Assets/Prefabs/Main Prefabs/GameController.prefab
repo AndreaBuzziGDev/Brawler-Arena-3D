@@ -44,6 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252ea71145e08f94792aaea650a26de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config:
+    EnableDebugging: 1
+    LogLevel: 0
+    debugDefault: 1
+    debugWeapon: 1
+    debugParticle: 0
+    debugSound: 0
+    debugSpawning: 0
+    debugPhysics: 0
+    debugAI: 0
 --- !u!1 &1741418667731484523
 GameObject:
   m_ObjectHideFlags: 0
