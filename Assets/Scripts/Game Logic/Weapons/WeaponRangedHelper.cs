@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 public class WeaponRangedHelper
 {
     //DATA
+    ///GENERAL INFO
+    String masterName = "WeaponRangedHelper";
+    WeaponRangedData.EOperateMode operateMode;
+    
+    ///BASIC ATTACK LOGIC
     float attackTimer = 0.0f;
     float threshold = 1;
     
@@ -20,8 +26,6 @@ public class WeaponRangedHelper
     float chargeRate = 1.0f;
     
     
-    
-    WeaponRangedData.EOperateMode operateMode;
 
     
     //DATA FUNCTIONS
@@ -37,7 +41,7 @@ public class WeaponRangedHelper
     
     //CONSTRUCTOR
     //TODO: THIS EVENTUALLY CAN BE MODIFIED TO HANDLE GENERALIZATION OF LOGIC
-    public WeaponRangedHelper(WeaponRangedData wData){
+    public WeaponRangedHelper(WeaponRangedData wData, WeaponController master){
         
         operateMode = wData?.OperateMode ?? WeaponRangedData.EOperateMode.SINGLE;
         
@@ -51,6 +55,8 @@ public class WeaponRangedHelper
 
         chargeTimerMax = wData.ChargeTime;
         chargeRate = wData.AttackRate;
+        
+        masterName = master.gameObject.name;
     }
     
     
@@ -119,10 +125,31 @@ public class WeaponRangedHelper
     //DEBUG
     public void DebugProperties(){
         
-        //TODO: IMPROVE DEBUGGING
-        Debug.Log("WeaponRangedHelper - attackTimer: " + attackTimer);
-        Debug.Log("WeaponRangedHelper - threshold: " + threshold);
-        Debug.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
+        Debug.Log("==== RANGED WEAPON " + this.masterName + " START INFO ====");
+        
+        //DEBUG ALWAYS
+        Debug.Log("Ranged Weapon " + this.masterName + " - attackTimer: " + attackTimer);
+        Debug.Log("Ranged Weapon " + this.masterName + " - threshold: " + threshold);
+        Debug.Log("Ranged Weapon " + this.masterName + " - IsOperating: " + IsOperating);
+        Debug.Log("Ranged Weapon " + this.masterName + " - ExtraBulletCount: " + GetExtraBulletCount);
+        
+        if(operateMode == WeaponRangedData.EOperateMode.BURST){
+            Debug.Log("Ranged Weapon " + this.masterName + " - burstCountMax: " + burstCountMax);
+            Debug.Log("Ranged Weapon " + this.masterName + " - burstCount: " + burstCount);
+            Debug.Log("Ranged Weapon " + this.masterName + " - burstCooldownMax: " + burstCooldownMax);
+            Debug.Log("Ranged Weapon " + this.masterName + " - burstCooldown: " + burstCooldown);
+            Debug.Log("Ranged Weapon " + this.masterName + " - IsBursting: " + IsBursting);
+            Debug.Log("Ranged Weapon " + this.masterName + " - IsBurstReady: " + IsBurstReady);
+        }
+        
+        if(operateMode == WeaponRangedData.EOperateMode.CHARGED){
+            Debug.Log("Ranged Weapon " + this.masterName + " - chargeTimerMax: " + chargeTimerMax);
+            Debug.Log("Ranged Weapon " + this.masterName + " - chargeTimer: " + chargeTimer);
+            Debug.Log("Ranged Weapon " + this.masterName + " - chargeRate: " + chargeRate);
+            Debug.Log("Ranged Weapon " + this.masterName + " - IsCharged: " + IsCharged);
+        }
+        
+        Debug.Log("==== RANGED WEAPON " + this.masterName + " END INFO ====");
         
     }
 

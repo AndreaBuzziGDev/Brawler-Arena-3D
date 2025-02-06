@@ -42,7 +42,7 @@ public class WeaponRangedController : WeaponController
     //LIFECYCLE FUNCTIONS
     
     void Start(){
-        logicHelper = new WeaponRangedHelper(wData);
+        logicHelper = new WeaponRangedHelper(wData, this);
         threshold = 1.0f/wData.AttackRate;
     }
     
