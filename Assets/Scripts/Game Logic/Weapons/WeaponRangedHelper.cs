@@ -118,11 +118,11 @@ public class WeaponRangedHelper
     
     //DEBUG
     public void DebugProperties(){
-        Debugger.Log("WeaponRangedHelper - attackTimer: " + attackTimer);
-        Debugger.Log("WeaponRangedHelper - threshold: " + threshold);
-        Debugger.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
         
-        //TODO: ADD DEBUG FOR OTHER PROPERTIES BASED ON OPERATE MODE
+        //TODO: IMPROVE DEBUGGING
+        Debug.Log("WeaponRangedHelper - attackTimer: " + attackTimer);
+        Debug.Log("WeaponRangedHelper - threshold: " + threshold);
+        Debug.Log("WeaponRangedHelper - readyToShoot: " + ReadyToShoot);
         
     }
 

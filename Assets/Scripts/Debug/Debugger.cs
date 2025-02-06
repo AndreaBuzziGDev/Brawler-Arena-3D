@@ -56,16 +56,11 @@ public static class Debugger
 
     
     //FUNCTIONALITIES
-    public static void Log(string message, LogLevel level = LogLevel.Info){
+    public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
+        
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
-        //
-        Debug.Log($"[{level}] {message}");
-    }
-    
-    //TODO: COMBINE LOG LEVEL AND TYPE FUNCTIONALITIES IN ONE SINGLE METHOD
-    public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT){
         //DEVELOP FUNCTIONALITY THAT RETURNS TRUE VALUE WHEN THE CONFIG IS ENABLED TO DEBUG THAT TYPE SPECIFICALLY
         if(MapType.Count < 1)
             MapDebugging();
