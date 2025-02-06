@@ -109,7 +109,6 @@ public enum LogLevel
 }
 
 
-//TODO: COMPARTIMENTALIZE THESE
 public enum LogType
 {
     DEFAULT,
@@ -122,24 +121,16 @@ public enum LogType
     INPUT,
     UI,
     INVENTORY,
-
-    //
     SAVE_LOAD,
     DIALOGUE,
     PROGRESSION,
-
-    //
     NETWORKING,
     ANIMATION,
     RENDERING,
     MEMORY,
     THREADING,
-
-    //
     COLLISION,
     NAVIGATION,
-    
-    //
     WEATHER,
     LIGHTING,
     DESTRUCTION
