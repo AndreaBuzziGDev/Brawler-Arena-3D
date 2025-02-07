@@ -89,7 +89,6 @@ public class WeaponRangedController : WeaponController
     }
     
     public override void Release(){
-        //TODO: LOGIC FOR THIS CAN BE MOVED IN THE HELPER
         if(wData.OperateMode != WeaponRangedData.EOperateMode.BURST){
             base.Release();
             logicHelper.IsOperating = false;
