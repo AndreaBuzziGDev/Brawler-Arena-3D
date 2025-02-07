@@ -32,11 +32,6 @@ public class WeaponRangedController : WeaponController
     protected override void OnValidate()
     {
         base.OnValidate();
-        if (wData == null)
-            Debug.LogWarning("No Ranged Weapon Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if(!aimingEntity)
-            Debug.LogWarning("No Aiming Entity on weapon: " + gameObject.name);
-        
         //TODO: CHECK FOR THIS SHOULD BE MOVED TO WEAPON RANGED DATA
         if(!projectile)
             Debug.LogWarning("No Projectile on weapon: " + gameObject.name);
