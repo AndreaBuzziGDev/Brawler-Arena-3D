@@ -47,8 +47,7 @@ public class WeaponRangedController : WeaponController
     }
     
     
-    //TODO: IMPLEMENT UPDATE METHOD
-    //TODO: SHOULD THIS LOGIC MOVE TO FIXEDUPDATE INSTEAD, USE FIXED DELTA TIME
+    
     void FixedUpdate(){
         
         if(!GameController.Instance.IsPlaying) return;
