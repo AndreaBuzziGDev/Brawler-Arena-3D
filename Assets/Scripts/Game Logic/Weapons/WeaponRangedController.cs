@@ -20,20 +20,7 @@ public class WeaponRangedController : WeaponController
     float threshold = 1;
     
     WeaponRangedHelper logicHelper;
-    
-    
 
-
-    //REFERENCE VALIDATION
-#if UNITY_EDITOR
-    protected override void OnValidate()
-    {
-        base.OnValidate();
-        //TODO: SHOULD THE SCRIPTABLE OBJECT HAVE ONVALIDATE INSTEAD?
-        if(!wData.Projectile)
-            Debug.LogWarning("No Projectile on Weapon Data: " + gameObject.name);
-    }
-#endif
 
 
 

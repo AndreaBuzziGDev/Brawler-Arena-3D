@@ -65,7 +65,6 @@ public class WeaponRangedData : WeaponData
     
     
     
-    
     //PARTICLES
     //TODO: THIS MIGHT BE HANDLED IN A DEDICATED CLASS, LIKE FOR weaponAudioData
     [Tooltip("Particle effects associated with this projectile")]
@@ -104,5 +103,16 @@ public class WeaponRangedData : WeaponData
     
     //ABSTRACT DATA GETTER CONCRETIZATION
     public override WeaponAudioData WAudioData { get {return weaponAudioData; } } //{ get { return weaponAudioData; } }
+    
+    
+    
+    //REFERENCE VALIDATION
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        if(!projectile)
+            Debug.LogWarning("No Projectile on Weapon Data: " + this.name);
+    }
+#endif
 
 }
