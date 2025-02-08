@@ -10,9 +10,6 @@ public class WeaponRangedController : WeaponController
     [Tooltip("Reference to WeaponRangedData Scriptable Object.")]
     [SerializeField] protected WeaponRangedData wData;
 
-    [Tooltip("Reference to the projectile Prefab.")]
-    [SerializeField] WeaponProjectile projectile;
-
 
     //DATA GETTER
     override protected WeaponData WData { get { return wData; } }
