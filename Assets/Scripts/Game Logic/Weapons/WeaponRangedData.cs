@@ -114,7 +114,7 @@ public class WeaponRangedData : WeaponData
     void OnValidate()
     {
         if(!projectile)
-            Debug.LogWarning("No Projectile on Weapon Data: " + AssetDatabase.GetAssetPath(this));
+            Debug.LogWarning("No Projectile on Weapon Data: \n" + AssetDatabase.GetAssetPath(this));
     }
 #endif
 
