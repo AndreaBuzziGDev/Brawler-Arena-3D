@@ -28,7 +28,6 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    //TODO: IMPLEMENT COOLDOWN HANDLING AND OTHER THINGS?
 
 
 
