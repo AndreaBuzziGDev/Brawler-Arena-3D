@@ -18,6 +18,11 @@ public class WeaponRangedData : WeaponData
     //1) CHARGING SOUND
     //2) (?) EARLY INTERRUPTED CHARGE SOUND
     //3) LASER/SOME GUIDANCE FOR SHOT DIRECTION
+
+
+    //PROJECTILE
+    [Tooltip("Reference to the projectile Prefab.")]
+    [SerializeField] WeaponProjectile projectile;
     
 
     //OPERATE MODE
@@ -79,6 +84,7 @@ public class WeaponRangedData : WeaponData
 
     //DATA GETTER
     public EOperateMode OperateMode => operateMode;
+    public WeaponProjectile Projectile => projectile;
     public float AttackRate => attackRate;
     public float ProjectileSpeed => projectileSpeed;
     public float MaxLifetime => maxLifetime;

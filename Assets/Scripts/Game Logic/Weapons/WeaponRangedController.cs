@@ -11,7 +11,7 @@ public class WeaponRangedController : WeaponController
     [SerializeField] protected WeaponRangedData wData;
 
     [Tooltip("Reference to the projectile Prefab.")]
-    [SerializeField] WeaponProjectile projectile;//TODO: COULD/SHOULD THIS BE ON THE WEAPON DATA INSTEAD? -> PROBABLY YES
+    [SerializeField] WeaponProjectile projectile;
 
 
     //DATA GETTER
@@ -32,9 +32,9 @@ public class WeaponRangedController : WeaponController
     protected override void OnValidate()
     {
         base.OnValidate();
-        //TODO: CHECK FOR THIS SHOULD BE MOVED TO WEAPON RANGED DATA
-        if(!projectile)
-            Debug.LogWarning("No Projectile on weapon: " + gameObject.name);
+        //TODO: SHOULD THE SCRIPTABLE OBJECT HAVE ONVALIDATE INSTEAD?
+        if(!wData.Projectile)
+            Debug.LogWarning("No Projectile on Weapon Data: " + gameObject.name);
     }
 #endif
 
@@ -92,9 +92,9 @@ public class WeaponRangedController : WeaponController
         //SPAWN PREFAB
         Vector3 pDirection = aimingEntity.AimingDirection3D();
         WeaponProjectile pInstance = Instantiate(
-            projectile, 
+            wData.Projectile, 
             transform.position,
-            projectile.transform.rotation
+            wData.Projectile.transform.rotation
         );
         
         pInstance.ProjectileData = new WeaponProjectileData((WeaponRangedData) WData, pDirection);
