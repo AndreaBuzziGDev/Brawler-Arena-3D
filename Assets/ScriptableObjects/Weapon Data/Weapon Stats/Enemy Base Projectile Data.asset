@@ -15,16 +15,16 @@ MonoBehaviour:
   damageAmount: 1
   needsOwnerToOperate: 0
   hasFriendlyFire: 0
+  projectile: {fileID: 5925349241888718837, guid: 1f12d55c42cca484c848741e344f4c65, type: 3}
+  operateMode: 0
+  attackRate: 2
   projectileSpeed: 50
   maxLifetime: 10
   tresspass: 0
-  particleShooting:
-    particle: {fileID: 0}
-    duration: 5
-  particleHitting:
-    particle: {fileID: 0}
-    duration: 5
-  particleTrespassing:
-    particle: {fileID: 0}
-    duration: 5
+  burstCount: 3
+  burstCooldown: 0.5
+  chargeTime: 2
+  particleShooting: {fileID: 0}
+  particleHitting: {fileID: 0}
+  particleTrespassing: {fileID: 0}
   weaponAudioData: {fileID: 11400000, guid: ac58cc8350717f948983fb60589e874d, type: 2}

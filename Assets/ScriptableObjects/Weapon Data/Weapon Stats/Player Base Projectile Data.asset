@@ -15,6 +15,7 @@ MonoBehaviour:
   damageAmount: 5
   needsOwnerToOperate: 0
   hasFriendlyFire: 0
+  projectile: {fileID: 995540219590673333, guid: 60a246e4391982f41b69330843e0ae83, type: 3}
   operateMode: 2
   attackRate: 5
   projectileSpeed: 50
