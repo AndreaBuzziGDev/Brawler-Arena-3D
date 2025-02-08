@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu(fileName = "New Weapon Data", menuName = "Gameplay Data/Weapon Data/Ranged")]
 public class WeaponRangedData : WeaponData
@@ -111,7 +114,7 @@ public class WeaponRangedData : WeaponData
     void OnValidate()
     {
         if(!projectile)
-            Debug.LogWarning("No Projectile on Weapon Data: " + this.name);
+            Debug.LogWarning("No Projectile on Weapon Data: " + AssetDatabase.GetAssetPath(this));
     }
 #endif
 
