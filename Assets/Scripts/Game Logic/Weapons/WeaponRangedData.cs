@@ -19,11 +19,9 @@ public class WeaponRangedData : WeaponData
     //2) (?) EARLY INTERRUPTED CHARGE SOUND
     //3) LASER/SOME GUIDANCE FOR SHOT DIRECTION
 
-
     //PROJECTILE
     [Tooltip("Reference to the projectile Prefab.")]
     [SerializeField] WeaponProjectile projectile;
-    
 
     //OPERATE MODE
     [Tooltip("How does the weapon operate?")]
