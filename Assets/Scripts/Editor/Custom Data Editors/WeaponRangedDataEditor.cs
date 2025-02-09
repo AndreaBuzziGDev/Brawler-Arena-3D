@@ -41,12 +41,15 @@ public class WeaponRangedDataEditor : Editor
         Debug.Log("Testing: " + serializedObject.FindProperty("operateMode"));
         Debug.Log("Testing: " + weapon.OperateMode);
 
+        //TODO: MISSING FIELDS, COMPLETE THE EDITOR
+        //TODO: EDITOR HEADINGS AND PROPERTIES IF POSSIBLE
+
         //GET MATCHING VISIBLE FIELDS
         
         List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
 
         //HANDLE VISIBILITY
-        ShowFields(weapon, visibleFields);
+        ShowFields(visibleFields);
         
 
         //SAVE CHANGES
@@ -73,43 +76,16 @@ public class WeaponRangedDataEditor : Editor
 
 
     //SHOW MATCHING FIELDS
-    private void ShowFields(WeaponRangedData weapon, List<string> visibleFields)
+    private void ShowFields(List<string> visibleFields)
     {
         FieldInfo[] fields = typeof(WeaponRangedData).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
         Debug.Log("fields number: " + fields.Count());
-
-        foreach (FieldInfo field in fields)
-        {
-            Debug.Log("field: " + field);
-            if (visibleFields.Contains(field.Name))
+        
+        foreach (string field in visibleFields){
+            SerializedProperty property = serializedObject.FindProperty(field);
+            if (property != null)
             {
-                object value = field.GetValue(weapon);
-
-                //INT
-                if (value is int intValue)
-                {
-                    field.SetValue(weapon, EditorGUILayout.IntField(ObjectNames.NicifyVariableName(field.Name), intValue));
-                }
-                //FLOAT
-                else if (value is float floatValue)
-                {
-                    field.SetValue(weapon, EditorGUILayout.FloatField(ObjectNames.NicifyVariableName(field.Name), floatValue));
-                }
-                //BOOL
-                else if (value is bool boolValue)
-                {
-                    field.SetValue(weapon, EditorGUILayout.Toggle(ObjectNames.NicifyVariableName(field.Name), boolValue));
-                }
-                //PARTICLE DATA
-                else if (value is ParticleData particleData)
-                {
-                    field.SetValue(weapon, (ParticleData)EditorGUILayout.ObjectField(ObjectNames.NicifyVariableName(field.Name), particleData, typeof(ParticleData), false));
-                }
-                //WEAPON AUDIO DATA
-                else if (value is WeaponAudioData weaponAudioData)
-                {
-                    field.SetValue(weapon, (WeaponAudioData)EditorGUILayout.ObjectField(ObjectNames.NicifyVariableName(field.Name), weaponAudioData, typeof(WeaponAudioData), false));
-                }
+                EditorGUILayout.PropertyField(property, true);
             }
         }
     }
