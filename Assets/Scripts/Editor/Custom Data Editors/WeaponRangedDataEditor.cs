@@ -7,25 +7,37 @@ using System.Linq;
 [CustomEditor(typeof(WeaponRangedData))]
 public class WeaponRangedDataEditor : Editor
 {
+    //DATA
+    private bool useCustomEditor;
+    private const string EditorPrefsKey = "WeaponRangedData_UseCustomEditor";
+
     //VISIBLE FIELDS LIST
-    //TODO: ALWAYS VISIBLE FIELDS
-    
-    //TODO: ADJUST FIELDS
     private List<string> burstFields = new List<string> { "burstCount", "burstCooldown" };
     private List<string> chargeFields = new List<string> { "chargeTime" };
 
 
-    //TODO: DISABLED BECAUSE SOME THINGS ARE BROKEN
+    private void OnEnable(){
+        useCustomEditor = EditorPrefs.GetBool(EditorPrefsKey, true);
+    }
     
-    public override void OnInspectorGUI()
-    {
+    public override void OnInspectorGUI(){
         
+        //EDITOR CONTROL
+        useCustomEditor = EditorGUILayout.Toggle("Use Custom Editor", useCustomEditor);
+        EditorPrefs.SetBool(EditorPrefsKey, useCustomEditor);
+        
+        //DEFAULT EDITOR
+        if (!useCustomEditor){
+            DrawDefaultInspector();
+            return;
+        }
+        
+        
+        //CUSTOM EDITOR
         serializedObject.Update();
-        
-        WeaponRangedData weapon = (WeaponRangedData)target;
+        WeaponRangedData weapon = (WeaponRangedData) target;
 
         //BASE FIELDS
-        //TODO: SOLUTION WITH DATA GETTERS MIGHT WORK JUST AS FINE
         // GENERAL SECTION
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("damageAmount"));
