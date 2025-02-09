@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 [CustomEditor(typeof(WeaponRangedData))]
 public class WeaponRangedDataEditor : Editor
@@ -15,7 +16,7 @@ public class WeaponRangedDataEditor : Editor
 
 
     //TODO: DISABLED BECAUSE SOME THINGS ARE BROKEN
-    /*
+    
     public override void OnInspectorGUI()
     {
         
@@ -49,11 +50,10 @@ public class WeaponRangedDataEditor : Editor
         
 
         //SAVE CHANGES
-        if (GUI.changed)
-            EditorUtility.SetDirty(weapon);
+        serializedObject.ApplyModifiedProperties();
         
     }
-    */
+    
 
 
     //GET CORRECT LIST
@@ -76,9 +76,11 @@ public class WeaponRangedDataEditor : Editor
     private void ShowFields(WeaponRangedData weapon, List<string> visibleFields)
     {
         FieldInfo[] fields = typeof(WeaponRangedData).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+        Debug.Log("fields number: " + fields.Count());
 
         foreach (FieldInfo field in fields)
         {
+            Debug.Log("field: " + field);
             if (visibleFields.Contains(field.Name))
             {
                 object value = field.GetValue(weapon);
