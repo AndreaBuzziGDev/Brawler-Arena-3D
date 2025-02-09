@@ -42,10 +42,12 @@ public class WeaponRangedDataEditor : Editor
         EditorGUILayout.Space(5);
 
         // MODE SPECIFIC BEHAVIOURS
-        //TODO: SHOW ONLY IF THERE ARE, OR SHOW "NONE" AS A PLACEHOLDER TEXT
         EditorGUILayout.LabelField("Mode Specific Behaviours", EditorStyles.boldLabel);
         List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
-        ShowFields(visibleFields);
+        if(visibleFields.Count > 0)
+            ShowFields(visibleFields);
+        else
+            EditorGUILayout.LabelField("None", EditorStyles.miniLabel);
         EditorGUILayout.Space(5);
         
         // REFERENCES
@@ -54,6 +56,7 @@ public class WeaponRangedDataEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
         EditorGUILayout.Space(5);
         
+        //TODO: HANDLE DEBUGGING VIA CENTRALIZED LOGGING
         Debug.Log("Testing: " + serializedObject.FindProperty("operateMode"));
         Debug.Log("Testing: " + weapon.OperateMode);
 
