@@ -26,30 +26,38 @@ public class WeaponRangedDataEditor : Editor
 
         //BASE FIELDS
         //TODO: SOLUTION WITH DATA GETTERS MIGHT WORK JUST AS FINE
+        // GENERAL SECTION
+        EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("damageAmount"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("needsOwnerToOperate"));
+        EditorGUILayout.Space(5);
         
+        // COMBAT SETTINGS
+        EditorGUILayout.LabelField("Combat Settings", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("operateMode"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("attackRate"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("projectileSpeed"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("maxLifetime"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("tresspass"));
+        EditorGUILayout.Space(5);
+
+        // MODE SPECIFIC BEHAVIOURS
+        //TODO: SHOW ONLY IF THERE ARE, OR SHOW "NONE" AS A PLACEHOLDER TEXT
+        EditorGUILayout.LabelField("Mode Specific Behaviours", EditorStyles.boldLabel);
+        List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
+        ShowFields(visibleFields);
+        EditorGUILayout.Space(5);
         
+        // REFERENCES
+        EditorGUILayout.LabelField("References", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("projectile"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
+        EditorGUILayout.Space(5);
         
         Debug.Log("Testing: " + serializedObject.FindProperty("operateMode"));
         Debug.Log("Testing: " + weapon.OperateMode);
 
         //TODO: MISSING FIELDS, COMPLETE THE EDITOR
-        //TODO: EDITOR HEADINGS AND PROPERTIES IF POSSIBLE
-
-        //GET MATCHING VISIBLE FIELDS
-        
-        List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
-
-        //HANDLE VISIBILITY
-        ShowFields(visibleFields);
         
 
         //SAVE CHANGES
