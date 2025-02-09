@@ -61,11 +61,10 @@ public static class Debugger
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
-        //DEVELOP FUNCTIONALITY THAT RETURNS TRUE VALUE WHEN THE CONFIG IS ENABLED TO DEBUG THAT TYPE SPECIFICALLY
         if(MapType.Count < 1)
             MapDebugging();
         
-        if(MapType[logType])
+        if(MapType.GetValueOrDefault(logType, true))
             method();
     }
     
@@ -80,8 +79,7 @@ public static class Debugger
         DebuggerConfig dConfig = Config;
         FieldInfo[] fields = dConfig.GetType().GetFields();
         
-        foreach (FieldInfo field in fields)
-        {
+        foreach (FieldInfo field in fields){
             LogTypeFieldAttribute attribute = field.GetCustomAttribute<LogTypeFieldAttribute>();
             
             if (attribute != null && field.FieldType == typeof(bool))
@@ -112,6 +110,7 @@ public enum LogType
     SOUND,
     SPAWNING,
     PHYSICS,
+    EDITOR,
     AI,
     INPUT,
     UI,
