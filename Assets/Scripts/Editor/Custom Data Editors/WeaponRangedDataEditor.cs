@@ -68,7 +68,7 @@ public class WeaponRangedDataEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
         EditorGUILayout.Space(5);
         
-        Debugger.Log(DebugEditor, LogType.EDITOR);
+        //Debugger.Log(DebugEditor, LogType.EDITOR);
         //TODO: MISSING FIELDS, COMPLETE THE EDITOR
         
 
