@@ -10,46 +10,62 @@ public class WeaponRangedDataEditor : Editor
     //TODO: ALWAYS VISIBLE FIELDS
     
     //TODO: ADJUST FIELDS
-    private List<string> bowFields = new List<string> { "damage", "range" };
-    private List<string> crossbowFields = new List<string> { "damage", "range", "reloadTime" };
-    private List<string> firearmFields = new List<string> { "damage", "reloadTime" };
+    private List<string> burstFields = new List<string> { "burstCount", "burstCooldown" };
+    private List<string> chargeFields = new List<string> { "chargeTime" };
 
 
+    //TODO: DISABLED BECAUSE SOME THINGS ARE BROKEN
+    /*
     public override void OnInspectorGUI()
     {
+        
+        serializedObject.Update();
+        
         WeaponRangedData weapon = (WeaponRangedData)target;
 
         //BASE FIELDS
-        //TODO: FIX CLASS
-        weapon.weaponName = EditorGUILayout.TextField("Weapon Name", weapon.weaponName);
-        weapon.weaponType = (WeaponType)EditorGUILayout.EnumPopup("Weapon Type", weapon.weaponType);
+        //TODO: SOLUTION WITH DATA GETTERS MIGHT WORK JUST AS FINE
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("damageAmount"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("needsOwnerToOperate"));
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("operateMode"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("attackRate"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("projectileSpeed"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("maxLifetime"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("tresspass"));
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("projectile"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
+        
+        Debug.Log("Testing: " + serializedObject.FindProperty("operateMode"));
+        Debug.Log("Testing: " + weapon.OperateMode);
 
         //GET MATCHING VISIBLE FIELDS
-        List<string> visibleFields = GetVisibleFields(weapon.weaponType);
+        
+        List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
 
         //HANDLE VISIBILITY
         ShowFields(weapon, visibleFields);
+        
 
         //SAVE CHANGES
         if (GUI.changed)
-        {
             EditorUtility.SetDirty(weapon);
-        }
+        
     }
+    */
 
 
     //GET CORRECT LIST
     //TODO: SHOULD THIS BE IMPLEMENTED AS A DICTIONARY?
-    private List<string> GetVisibleFields(WeaponType weaponType)
+    private List<string> GetVisibleFields(WeaponRangedData.EOperateMode weaponType)
     {
         switch (weaponType)
         {
-            case WeaponType.Bow:
-                return bowFields;
-            case WeaponType.Crossbow:
-                return crossbowFields;
-            case WeaponType.Firearm:
-                return firearmFields;
+            case WeaponRangedData.EOperateMode.BURST:
+                return burstFields;
+            case WeaponRangedData.EOperateMode.CHARGED:
+                return chargeFields;
             default:
                 return new List<string>();
         }
