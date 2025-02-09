@@ -68,10 +68,7 @@ public class WeaponRangedDataEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
         EditorGUILayout.Space(5);
         
-        //TODO: HANDLE DEBUGGING VIA CENTRALIZED LOGGING
-        Debug.Log("Testing: " + serializedObject.FindProperty("operateMode"));
-        Debug.Log("Testing: " + weapon.OperateMode);
-
+        Debugger.Log(DebugEditor, LogType.EDITOR);
         //TODO: MISSING FIELDS, COMPLETE THE EDITOR
         
 
@@ -111,5 +108,13 @@ public class WeaponRangedDataEditor : Editor
                 EditorGUILayout.PropertyField(property, true);
             }
         }
+    }
+    
+    
+    
+    //DEBUG
+    public void DebugEditor(){
+        //...
+        Debug.Log("Test Debug in Weapon Ranged Data Editor");
     }
 }
