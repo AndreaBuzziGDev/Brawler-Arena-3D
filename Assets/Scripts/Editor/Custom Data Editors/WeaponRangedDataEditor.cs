@@ -42,6 +42,7 @@ public class WeaponRangedDataEditor : Editor
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("damageAmount"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("needsOwnerToOperate"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("hasFriendlyFire"));
         EditorGUILayout.Space(5);
         
         // COMBAT SETTINGS
@@ -65,11 +66,15 @@ public class WeaponRangedDataEditor : Editor
         // REFERENCES
         EditorGUILayout.LabelField("References", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("projectile"));
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("particleShooting"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("particleHitting"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("particleTrespassing"));
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponAudioData"));
         EditorGUILayout.Space(5);
         
         //Debugger.Log(DebugEditor, LogType.EDITOR);
-        //TODO: MISSING FIELDS, COMPLETE THE EDITOR
         
 
         //SAVE CHANGES
