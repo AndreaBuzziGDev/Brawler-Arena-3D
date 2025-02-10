@@ -69,7 +69,7 @@ public class WeaponRangedData : WeaponData
     
     
     //PARTICLES
-    //TODO: THIS MIGHT BE HANDLED IN A DEDICATED CLASS, LIKE FOR weaponAudioData
+    //TODO: THIS MIGHT BE HANDLED IN A DEDICATED CLASS, LIKE I ALREADY MARKED FOR weaponAudioData
     [Tooltip("Particle effects associated with this projectile")]
     [SerializeField] protected ParticleData particleShooting;
     [SerializeField] protected ParticleData particleHitting;
