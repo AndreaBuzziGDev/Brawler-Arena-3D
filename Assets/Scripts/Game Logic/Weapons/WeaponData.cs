@@ -5,6 +5,13 @@ using UnityEngine;
 
 public abstract class WeaponData : ScriptableObject
 {
+    //NAME
+    //TODO: DEVELOP WEAPON NAME FUNCTIONALITY
+    /*
+    [Tooltip("The damage dealt by operating this weapon")]
+    [SerializeField] string name = "Unnamed Weapon";
+    */
+    
     //DAMAGE
     [Tooltip("The damage dealt by operating this weapon")]
     [Range(0, 100)]
