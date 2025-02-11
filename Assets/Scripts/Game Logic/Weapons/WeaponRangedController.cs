@@ -6,7 +6,6 @@ public class WeaponRangedController : WeaponController
 {
     //INSPECTOR REFERENCES
     [Header("Inspector References")]
-
     [Tooltip("Reference to WeaponRangedData Scriptable Object.")]
     [SerializeField] protected WeaponRangedData wData;
 
@@ -35,6 +34,8 @@ public class WeaponRangedController : WeaponController
     
     void FixedUpdate(){
         
+        Debug.Log("Weapon Name: " + wData.name);
+
         if(!GameController.Instance.IsPlaying) return;
         
         logicHelper.HandleWeaponTimer(Time.fixedDeltaTime);
