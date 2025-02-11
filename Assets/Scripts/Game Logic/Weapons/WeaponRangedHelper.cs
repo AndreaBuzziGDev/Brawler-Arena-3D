@@ -7,7 +7,7 @@ public class WeaponRangedHelper
 {
     //DATA
     ///GENERAL INFO
-    String masterName = "WeaponRangedHelper";
+    string masterName = "WeaponRangedHelper";
     WeaponRangedData.EOperateMode operateMode;
     
     ///BASIC ATTACK LOGIC
