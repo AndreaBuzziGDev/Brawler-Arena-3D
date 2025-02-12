@@ -27,6 +27,7 @@ public abstract class WeaponData : ScriptableObject
 
 
     //DATA GETTER
+    public string WeaponName => weaponName;
     public float DamageAmount => damageAmount;
     public bool NeedsOwnerToOperate { get { return needsOwnerToOperate; } }
     public bool HasFriendlyFire { get { return hasFriendlyFire; } }
