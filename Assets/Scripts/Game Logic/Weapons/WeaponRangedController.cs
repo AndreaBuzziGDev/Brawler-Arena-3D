@@ -34,7 +34,7 @@ public class WeaponRangedController : WeaponController
     
     void FixedUpdate(){
         
-        Debug.Log("Weapon Name: " + wData.name);
+        Debug.Log("Weapon Name: " + wData.WeaponName);
 
         if(!GameController.Instance.IsPlaying) return;
         
