@@ -8,6 +8,7 @@ public class WeaponRangedHelper
     //DATA
     ///GENERAL INFO
     string masterName = "WeaponRangedHelper";
+    string weaponName = "Unnamed Weapon";
     WeaponRangedData.EOperateMode operateMode;
     
     ///BASIC ATTACK LOGIC
@@ -43,6 +44,7 @@ public class WeaponRangedHelper
     //TODO: THIS EVENTUALLY CAN BE MODIFIED TO HANDLE GENERALIZATION OF LOGIC
     public WeaponRangedHelper(WeaponRangedData wData, WeaponController master){
         
+        weaponName = wData.WeaponName;
         operateMode = wData?.OperateMode ?? WeaponRangedData.EOperateMode.SINGLE;
         
         //TODO: THRESHOLD MIGHT NEED TO BE ADJUSTED SPECIFICALLY FOR BURST GAMEPLAY IN ORDER TO MAKE BURST WEAPONS SHOOT FASTER
@@ -125,7 +127,7 @@ public class WeaponRangedHelper
     //DEBUG
     public void DebugProperties(){
         
-        Debug.Log("==== RANGED WEAPON " + this.masterName + " START INFO ====");
+        Debug.Log("==== RANGED WEAPON " + this.masterName + " - " + this.weaponName + " START INFO ====");
         
         //DEBUG ALWAYS
         Debug.Log("Ranged Weapon " + this.masterName + " - attackTimer: " + attackTimer);
@@ -149,7 +151,7 @@ public class WeaponRangedHelper
             Debug.Log("Ranged Weapon " + this.masterName + " - IsCharged: " + IsCharged);
         }
         
-        Debug.Log("==== RANGED WEAPON " + this.masterName + " END INFO ====");
+        Debug.Log("==== RANGED WEAPON " + this.masterName + " - " + this.weaponName + " END INFO ====");
         
     }
 
