@@ -34,8 +34,6 @@ public class WeaponRangedController : WeaponController
     
     void FixedUpdate(){
         
-        Debug.Log("Weapon Name: " + wData.WeaponName);
-
         if(!GameController.Instance.IsPlaying) return;
         
         logicHelper.HandleWeaponTimer(Time.fixedDeltaTime);
