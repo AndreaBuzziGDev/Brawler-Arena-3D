@@ -79,16 +79,15 @@ public class WeaponProjectile : MonoBehaviour
         //HIT PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
         
-        
-        //Debug.Log("Projectile Collision");
-        //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE
+        //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE (EG: Different sound)
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
-        if(hittable != null)
-        {
+        bool trespasses = false;
+        if(hittable != null){
             hittable.HandleHit(projectileData.DamageInstance);
+            trespasses = projectileData.WData.Tresspass;
         }
-
-        //TODO: TRESPASS MECHANICS
-        Destroy(gameObject);
+        
+        if(!trespasses)
+            Destroy(gameObject);
     }
 }
