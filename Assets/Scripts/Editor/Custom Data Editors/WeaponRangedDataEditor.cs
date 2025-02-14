@@ -40,6 +40,7 @@ public class WeaponRangedDataEditor : Editor
         //BASE FIELDS
         // GENERAL SECTION
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("weaponName"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("damageAmount"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("needsOwnerToOperate"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("hasFriendlyFire"));
