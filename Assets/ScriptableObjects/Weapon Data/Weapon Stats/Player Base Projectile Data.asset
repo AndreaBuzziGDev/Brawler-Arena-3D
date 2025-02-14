@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7529fb8358c380b40b06fa318f7b6b8d, type: 3}
   m_Name: Player Base Projectile Data
   m_EditorClassIdentifier: 
+  weaponName: Unnamed Weapon
   damageAmount: 5
   needsOwnerToOperate: 0
   hasFriendlyFire: 0
@@ -21,7 +22,7 @@ MonoBehaviour:
   projectileSpeed: 50
   maxLifetime: 10
   tresspass: 0
-  burstCount: 3
+  burstCount: 5
   burstCooldown: 0.5
   chargeTime: 2
   particleShooting: {fileID: 0}
