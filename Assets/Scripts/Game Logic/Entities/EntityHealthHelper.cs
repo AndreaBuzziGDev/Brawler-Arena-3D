@@ -10,8 +10,8 @@ public class EntityHealthHelper
     EntityData.EEntityType entityType;
 
     //DATA GETTERS
-    public float CurrentHealth { get { return currentHealth; } }
-    public float MaxHealth { get { return maxHealth; } }
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
 
 
 
@@ -56,6 +56,9 @@ public class EntityHealthHelper
     //DEBUG
     public void PrintDebug()
     {
+        //TODO: IMPROVE DEBUG BY USING DEBUGGER
+        //TODO: IMPROVE DEBUGGING BY USING STRATEGIES USED SOMEWHERE ELSE
+        //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
         //DATA DEBUG
         Debug.Log("currentHealth: " + currentHealth);
         Debug.Log("maxHealth: " + maxHealth);

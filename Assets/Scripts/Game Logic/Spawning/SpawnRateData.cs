@@ -21,9 +21,9 @@ public class SpawnRateData : ScriptableObject
 
 
     //DATA GETTERS
-    public EntityWithHealth TargetEntityPrefab { get { return targetEntityPrefab; } }
-    public int Quantity { get { return quantity; } }
-    public int Variance { get { return variance; } }
-    public SpawnController.SpawnType SpawnType { get { return spawnType; } }
+    public EntityWithHealth TargetEntityPrefab => targetEntityPrefab;
+    public int Quantity => quantity;
+    public int Variance => variance;
+    public SpawnController.SpawnType SpawnType => spawnType;
 
 }

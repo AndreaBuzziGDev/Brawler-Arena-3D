@@ -14,7 +14,7 @@ public class SpawnRateDataTable : ScriptableObject
 
 
     //DATA GETTERS
-    public List<SpawnWaveData> OrderedWaves { get { return orderedWaves; } }
-    public float LastWaveExtraCooldown { get { return lastWaveExtraCooldown; } }
+    public List<SpawnWaveData> OrderedWaves => orderedWaves;
+    public float LastWaveExtraCooldown => lastWaveExtraCooldown;
 
 }

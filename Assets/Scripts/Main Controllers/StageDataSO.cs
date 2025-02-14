@@ -20,7 +20,7 @@ public class StageDataSO : ScriptableObject
 
 
     //DATA GETTERS
-    public string AssociatedSceneName { get { return associatedSceneName; } }
-    public SceneNavigationController.eSceneName StageID { get { return stageID; } }
+    public string AssociatedSceneName => associatedSceneName;
+    public SceneNavigationController.eSceneName StageID => stageID;
 
 }

@@ -20,10 +20,10 @@ public class EntityAudioData : ScriptableObject
     [SerializeField] AudioClip deathClip;
 
     //DATA GETTERS
-    public SoundFXEventArgs.EType Type { get { return type; } }
-    public AudioClip SpawnClip { get {return spawnClip;} }
-    public AudioClip DamageShieldClip { get {return damageShieldClip;} }
-    public AudioClip DamageHealthClip { get {return damageHealthClip;} }
-    public AudioClip DeathClip { get {return deathClip;} }
+    public SoundFXEventArgs.EType Type => type;
+    public AudioClip SpawnClip => spawnClip;
+    public AudioClip DamageShieldClip => damageShieldClip;
+    public AudioClip DamageHealthClip => damageHealthClip;
+    public AudioClip DeathClip => deathClip;
 
 }

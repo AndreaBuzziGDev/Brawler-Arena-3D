@@ -19,7 +19,7 @@ public class SpawnWaveData : ScriptableObject
 
 
     //DATA GETTERS
-    public string WaveName { get { return waveName; } }
-    public List<SpawnRateData> Spawns { get { return spawns; } }
-    public float NextWaveCooldown { get { return nextWaveCooldown; } }
+    public string WaveName => waveName;
+    public List<SpawnRateData> Spawns => spawns;
+    public float NextWaveCooldown => nextWaveCooldown;
 }

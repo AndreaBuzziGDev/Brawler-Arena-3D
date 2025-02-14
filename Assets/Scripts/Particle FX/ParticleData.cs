@@ -12,7 +12,7 @@ public class ParticleData : ScriptableObject
     [SerializeField] ParticleDataStruct structParticleFX;
 
     //DATA GETTERS
-    public ParticleDataStruct ParticleFX { get { return structParticleFX; } }
+    public ParticleDataStruct ParticleFX => structParticleFX;
     
     
     //METHODS

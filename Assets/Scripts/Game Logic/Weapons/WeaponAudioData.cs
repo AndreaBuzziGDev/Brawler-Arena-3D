@@ -24,10 +24,10 @@ public class WeaponAudioData : ScriptableObject
 
 
     //DATA GETTERS
-    public SoundFXEventArgs.EType AudioType { get {return audioType;} }
-    public AudioClip OperateClip { get {return operateClip;} }
+    public SoundFXEventArgs.EType AudioType => audioType;
+    public AudioClip OperateClip => operateClip;
     //TODO: USE THIS
-    public AudioClip OperateCooldownClip { get {return operateCooldownClip;} }
+    public AudioClip OperateCooldownClip => operateCooldownClip;
     //TODO: USE THIS
-    public AudioClip HitClip { get {return hitClip;} }
+    public AudioClip HitClip => hitClip;
 }
