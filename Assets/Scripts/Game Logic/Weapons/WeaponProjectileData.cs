@@ -16,7 +16,7 @@ public class WeaponProjectileData
 
 
     //DATA GETTERS
-    //TODO: USE THIS AS A REFERENCE TO IMPROVE GETTERS IN OTHER CLASSES
+    //USE THIS AS A REFERENCE TO IMPROVE DATA GETTERS IN OTHER CLASSES
     public WeaponRangedData WData => wData;
     public DamageInstance DamageInstance => dInstance;
 
