@@ -127,5 +127,6 @@ public enum LogType
     NAVIGATION,
     WEATHER,
     LIGHTING,
-    DESTRUCTION
+    DESTRUCTION,
+    ENTITY_PARAMS
 }
