@@ -35,6 +35,7 @@ public class EntityHealthHelper
     public void ChangeHealth(float changeAmount){
         currentHealth = Mathf.Clamp(currentHealth + changeAmount, 0, maxHealth);
         NotifyValueChange();
+        Debugger.Log(DebugProperties, LogType.ENTITY_PARAMS);
     }
     
     
@@ -54,16 +55,22 @@ public class EntityHealthHelper
 
 
     //DEBUG
-    public void PrintDebug()
+    public void DebugProperties()
     {
         //TODO: IMPROVE DEBUG BY USING DEBUGGER
         //TODO: IMPROVE DEBUGGING BY USING STRATEGIES USED SOMEWHERE ELSE
         //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
+        
+        Debug.Log("==== HEALTH HELPER START INFO ====");//TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
+
         //DATA DEBUG
-        Debug.Log("currentHealth: " + currentHealth);
-        Debug.Log("maxHealth: " + maxHealth);
+        Debug.Log("Entity Health Helper - entityType: " + entityType);
+        Debug.Log("Entity Health Helper - currentHealth: " + currentHealth);
+        Debug.Log("Entity Health Helper - maxHealth: " + maxHealth);
 
         //FUNCTIONS DEBUG
         Debug.Log("IsAlive: " + IsAlive);
+        
+        Debug.Log("==== HEALTH HELPER END INFO ====");
     }
 }
