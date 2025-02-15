@@ -54,7 +54,7 @@ public class EntityShieldHelper
     public void ChangeShield(float changeAmount){
         currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
         NotifyValueChange();
-        Debugger.Log(PrintDebug, LogType.ENTITY_PARAMS);
+        Debugger.Log(DebugProperties, LogType.ENTITY_PARAMS);
     }
 
     public float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
