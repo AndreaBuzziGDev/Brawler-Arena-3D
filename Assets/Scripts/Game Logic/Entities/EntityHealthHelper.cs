@@ -1,3 +1,4 @@
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,18 +58,20 @@ public class EntityHealthHelper
     //DEBUG
     public void DebugProperties()
     {
-        //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
-        
-        Debug.Log("==== HEALTH HELPER START INFO ====");//TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
+        StringBuilder sb = new StringBuilder();
 
-        //DATA DEBUG
-        Debug.Log("Entity Health Helper - entityType: " + entityType);
-        Debug.Log("Entity Health Helper - currentHealth: " + currentHealth);
-        Debug.Log("Entity Health Helper - maxHealth: " + maxHealth);
+        sb.AppendLine("==== HEALTH HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
-        //FUNCTIONS DEBUG
-        Debug.Log("IsAlive: " + IsAlive);
-        
-        Debug.Log("==== HEALTH HELPER END INFO ====");
+        // DATA DEBUG
+        sb.AppendLine("Entity Health Helper - entityType: " + entityType);
+        sb.AppendLine("Entity Health Helper - currentHealth: " + currentHealth);
+        sb.AppendLine("Entity Health Helper - maxHealth: " + maxHealth);
+
+        // FUNCTIONS DEBUG
+        sb.AppendLine("IsAlive: " + IsAlive);
+
+        sb.AppendLine("==== HEALTH HELPER END INFO ====");
+
+        Debug.Log(sb.ToString());
     }
 }

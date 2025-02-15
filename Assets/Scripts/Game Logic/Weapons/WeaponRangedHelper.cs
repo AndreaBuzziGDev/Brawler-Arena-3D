@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -126,33 +127,38 @@ public class WeaponRangedHelper
     
     //DEBUG
     public void DebugProperties(){
-        
-        Debug.Log("==== RANGED WEAPON " + this.masterName + " - " + this.weaponName + " START INFO ====");
-        
-        //DEBUG ALWAYS
-        Debug.Log("Ranged Weapon " + this.masterName + " - attackTimer: " + attackTimer);
-        Debug.Log("Ranged Weapon " + this.masterName + " - threshold: " + threshold);
-        Debug.Log("Ranged Weapon " + this.masterName + " - IsOperating: " + IsOperating);
-        Debug.Log("Ranged Weapon " + this.masterName + " - ExtraBulletCount: " + GetExtraBulletCount);
-        
-        if(operateMode == WeaponRangedData.EOperateMode.BURST){
-            Debug.Log("Ranged Weapon " + this.masterName + " - burstCountMax: " + burstCountMax);
-            Debug.Log("Ranged Weapon " + this.masterName + " - burstCount: " + burstCount);
-            Debug.Log("Ranged Weapon " + this.masterName + " - burstCooldownMax: " + burstCooldownMax);
-            Debug.Log("Ranged Weapon " + this.masterName + " - burstCooldown: " + burstCooldown);
-            Debug.Log("Ranged Weapon " + this.masterName + " - IsBursting: " + IsBursting);
-            Debug.Log("Ranged Weapon " + this.masterName + " - IsBurstReady: " + IsBurstReady);
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine($"==== RANGED WEAPON {masterName} - {weaponName} START INFO ====");
+
+        // DEBUG ALWAYS
+        sb.AppendLine($"Ranged Weapon {masterName} - attackTimer: {attackTimer}");
+        sb.AppendLine($"Ranged Weapon {masterName} - threshold: {threshold}");
+        sb.AppendLine($"Ranged Weapon {masterName} - IsOperating: {IsOperating}");
+        sb.AppendLine($"Ranged Weapon {masterName} - ExtraBulletCount: {GetExtraBulletCount}");
+
+        if (operateMode == WeaponRangedData.EOperateMode.BURST)
+        {
+            sb.AppendLine($"Ranged Weapon {masterName} - burstCountMax: {burstCountMax}");
+            sb.AppendLine($"Ranged Weapon {masterName} - burstCount: {burstCount}");
+            sb.AppendLine($"Ranged Weapon {masterName} - burstCooldownMax: {burstCooldownMax}");
+            sb.AppendLine($"Ranged Weapon {masterName} - burstCooldown: {burstCooldown}");
+            sb.AppendLine($"Ranged Weapon {masterName} - IsBursting: {IsBursting}");
+            sb.AppendLine($"Ranged Weapon {masterName} - IsBurstReady: {IsBurstReady}");
         }
-        
-        if(operateMode == WeaponRangedData.EOperateMode.CHARGED){
-            Debug.Log("Ranged Weapon " + this.masterName + " - chargeTimerMax: " + chargeTimerMax);
-            Debug.Log("Ranged Weapon " + this.masterName + " - chargeTimer: " + chargeTimer);
-            Debug.Log("Ranged Weapon " + this.masterName + " - chargeRate: " + chargeRate);
-            Debug.Log("Ranged Weapon " + this.masterName + " - IsCharged: " + IsCharged);
+
+        if (operateMode == WeaponRangedData.EOperateMode.CHARGED)
+        {
+            sb.AppendLine($"Ranged Weapon {masterName} - chargeTimerMax: {chargeTimerMax}");
+            sb.AppendLine($"Ranged Weapon {masterName} - chargeTimer: {chargeTimer}");
+            sb.AppendLine($"Ranged Weapon {masterName} - chargeRate: {chargeRate}");
+            sb.AppendLine($"Ranged Weapon {masterName} - IsCharged: {IsCharged}");
         }
-        
-        Debug.Log("==== RANGED WEAPON " + this.masterName + " - " + this.weaponName + " END INFO ====");
-        
+
+        sb.AppendLine($"==== RANGED WEAPON {masterName} - {weaponName} END INFO ====");
+
+        Debug.Log(sb.ToString());
     }
 
 }
