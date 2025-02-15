@@ -53,6 +53,7 @@ public class EntityShieldHelper
     public void ChangeShield(float changeAmount){
         currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
         NotifyValueChange();
+        Debugger.Log(PrintDebug, LogType.ENTITY_PARAMS);
     }
 
     public float GetShieldRecharge() => Time.deltaTime * shieldRechargeRate;
@@ -90,16 +91,22 @@ public class EntityShieldHelper
     //DEBUG
     public void PrintDebug()
     {
-        //DATA DEBUG
-        Debug.Log("currentShield: " + currentShield);
-        Debug.Log("maxShield: " + maxShield);
-        Debug.Log("shieldCooldownTimer: " + shieldCooldownTimer);
-        Debug.Log("maxShieldCooldownTimer: " + maxShieldCooldownTimer);
-        Debug.Log("shieldRechargeRate: " + shieldRechargeRate);
+        //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
+        
+        Debug.Log("==== SHIELD HELPER START INFO ====");//TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
+        //DATA DEBUG
+        Debug.Log("Entity Health Helper - currentShield: " + currentShield);
+        Debug.Log("Entity Health Helper - maxShield: " + maxShield);
+        Debug.Log("Entity Health Helper - shieldCooldownTimer: " + shieldCooldownTimer);
+        Debug.Log("Entity Health Helper - maxShieldCooldownTimer: " + maxShieldCooldownTimer);
+        Debug.Log("Entity Health Helper - shieldRechargeRate: " + shieldRechargeRate);
+        
         //FUNCTIONS DEBUG
-        Debug.Log("IsShielded: " + IsShielded);
-        Debug.Log("IsWaitingRecharge: " + IsWaitingRecharge);
-        Debug.Log("IsRecharging: " + IsRecharging);
+        Debug.Log("Entity Health Helper - IsShielded: " + IsShielded);
+        Debug.Log("Entity Health Helper - IsWaitingRecharge: " + IsWaitingRecharge);
+        Debug.Log("Entity Health Helper - IsRecharging: " + IsRecharging);
+        
+        Debug.Log("==== SHIELD HELPER END INFO ====");
     }
 }
