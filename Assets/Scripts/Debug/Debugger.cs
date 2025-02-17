@@ -57,6 +57,15 @@ public static class Debugger
     
     //FUNCTIONALITIES
     
+    /*
+    
+    TODO: IMPLEMENT LOG DIVERSIFICATION (Log, LogWarning, LogError)
+    UNDERSTAND THE DIFFERENCE OF USAGE BETWEEN Info AND Debug
+    
+    IF NECESSARY, USE ANOTHER ENUM TO ADDRESS FUNCTIONALITY NEEDS
+    
+    */
+    
     ///DELEGATED LOG
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
         
