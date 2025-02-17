@@ -6,7 +6,7 @@ using System;
 public class ParticleEffectEventArgs : EventArgs
 {
     //DATA
-    //TODO: ADOPT THIS SIMPLIFIED SINTAX IN OTHER EVENTS
+    //USE THIS SIMPLIFIED SINTAX IN OTHER EVENTS
     public GameObject ToSpawn { get; }
     public Vector3 Position { get; }
     public string Name { get; }
