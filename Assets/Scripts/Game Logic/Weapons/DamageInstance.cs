@@ -7,6 +7,7 @@ public class DamageInstance
 {
     //DATA
     float damageAmount = 0;
+    //TODO: EXPAND UPON MECHANICS - DAMAGE TYPE AND OTHER THINGS
 
 
     //DATA GETTERS

@@ -32,7 +32,7 @@ public class WeaponProjectileData
     public WeaponProjectileData(WeaponRangedData wData, Vector3 pDirection)
     {
         this.wData = wData;
-        this.dInstance = new DamageInstance(wData);//TODO: THIS MIGHT BECOME UNNECESSARY BASED ON SEVERAL ASPECTS
+        this.dInstance = new DamageInstance(wData);
         this.maxLifetime = wData.MaxLifetime;
         this.projectileSpeed = wData.ProjectileSpeed;
         this.direction = pDirection;
