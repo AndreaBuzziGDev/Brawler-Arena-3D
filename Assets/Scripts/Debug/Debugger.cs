@@ -125,6 +125,13 @@ public enum LogLevel
     Error
 }
 
+public enum LogMode
+{
+    Debug,
+    Warning,
+    Error
+}
+
 
 public enum LogType
 {
