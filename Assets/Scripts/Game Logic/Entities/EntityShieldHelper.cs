@@ -90,25 +90,24 @@ public class EntityShieldHelper
 
 
     //DEBUG
-    public void DebugProperties()
-    {
-        //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
+    public void DebugProperties(){
+
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("");
         sb.AppendLine("==== SHIELD HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
         // DATA DEBUG
-        sb.AppendLine("Entity Health Helper - currentShield: " + currentShield);
-        sb.AppendLine("Entity Health Helper - maxShield: " + maxShield);
-        sb.AppendLine("Entity Health Helper - shieldCooldownTimer: " + shieldCooldownTimer);
-        sb.AppendLine("Entity Health Helper - maxShieldCooldownTimer: " + maxShieldCooldownTimer);
-        sb.AppendLine("Entity Health Helper - shieldRechargeRate: " + shieldRechargeRate);
+        sb.AppendLine($"Entity Health Helper - currentShield: {currentShield}");
+        sb.AppendLine($"Entity Health Helper - maxShield: {maxShield}");
+        sb.AppendLine($"Entity Health Helper - shieldCooldownTimer: {shieldCooldownTimer}");
+        sb.AppendLine($"Entity Health Helper - maxShieldCooldownTimer: {maxShieldCooldownTimer}");
+        sb.AppendLine($"Entity Health Helper - shieldRechargeRate: {shieldRechargeRate}");
 
         // FUNCTIONS DEBUG
-        sb.AppendLine("Entity Health Helper - IsShielded: " + IsShielded);
-        sb.AppendLine("Entity Health Helper - IsWaitingRecharge: " + IsWaitingRecharge);
-        sb.AppendLine("Entity Health Helper - IsRecharging: " + IsRecharging);
+        sb.AppendLine($"Entity Health Helper - IsShielded: {IsShielded}");
+        sb.AppendLine($"Entity Health Helper - IsWaitingRecharge: {IsWaitingRecharge}");
+        sb.AppendLine($"Entity Health Helper - IsRecharging: {IsRecharging}");
 
         sb.AppendLine("==== SHIELD HELPER END INFO ====");
 

@@ -56,23 +56,24 @@ public class EntityHealthHelper
 
 
     //DEBUG
-    public void DebugProperties()
-    {
+    public void DebugProperties(){
+
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("");
         sb.AppendLine("==== HEALTH HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
         // DATA DEBUG
-        sb.AppendLine("Entity Health Helper - entityType: " + entityType);
-        sb.AppendLine("Entity Health Helper - currentHealth: " + currentHealth);
-        sb.AppendLine("Entity Health Helper - maxHealth: " + maxHealth);
+        sb.AppendLine($"Entity Health Helper - entityType: {entityType}");
+        sb.AppendLine($"Entity Health Helper - currentHealth: {currentHealth}");
+        sb.AppendLine($"Entity Health Helper - maxHealth: {maxHealth}");
 
         // FUNCTIONS DEBUG
-        sb.AppendLine("IsAlive: " + IsAlive);
+        sb.AppendLine($"IsAlive: {IsAlive}");
 
         sb.AppendLine("==== HEALTH HELPER END INFO ====");
 
         Debug.Log(sb.ToString());
     }
+
 }
