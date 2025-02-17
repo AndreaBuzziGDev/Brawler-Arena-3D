@@ -38,7 +38,7 @@ public class UI_GameHUD : MonoBehaviour
     //EVENT-HANDLING DELEGATE
     public void HandleMenuEvent(object sender, GameMenuEventArgs e)
     {
-        Debug.Log("This Object is: " + this.gameObject.name);
+        Debugger.Log("This Object is: " + this.gameObject.name, LogType.UI);
         switch(e.EventType)
         {
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_CLOSE:
