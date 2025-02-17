@@ -47,7 +47,7 @@ public class AudioSourceManager : MonoBehaviour
             if(audioType == e.EventType)
                 PlayClip(e.CarriedAudioClip);
         } else {
-            Debugger.Log("Received from: " + sender + " a null audio clip.", LogType.SOUND);
+            Debugger.Log("Received from: " + sender + " a null audio clip.", LogType.SOUND, LogLevel.Debug, LogMode.Warning);
         }
     }
 }

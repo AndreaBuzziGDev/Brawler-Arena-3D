@@ -57,15 +57,6 @@ public static class Debugger
     
     //FUNCTIONALITIES
     
-    /*
-    
-    TODO: IMPLEMENT LOG DIVERSIFICATION (Log, LogWarning, LogError)
-    UNDERSTAND THE DIFFERENCE OF USAGE BETWEEN Info AND Debug
-    
-    IF NECESSARY, USE ANOTHER ENUM TO ADDRESS FUNCTIONALITY NEEDS
-    
-    */
-    
     ///DELEGATED LOG
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
         
@@ -80,7 +71,7 @@ public static class Debugger
     }
     
     ///REGULAR LOG
-    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
+    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info, LogMode mode = LogMode.Debug){
         
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
@@ -89,7 +80,22 @@ public static class Debugger
             MapDebugging();
         
         if(MapType.GetValueOrDefault(logType, true))
-            Debug.Log(loggedString);
+            Log(loggedString, mode);
+    }
+    
+    ///LOG BEHAVIOUR BASED ON MODE
+    private static void Log(String loggedString, LogMode mode = LogMode.Debug){
+        switch(mode){
+            case LogMode.Warning:
+                Debug.LogWarning(loggedString);
+                break;
+            case LogMode.Error:
+                Debug.LogError(loggedString);
+                break;
+            case LogMode.Debug:
+                Debug.Log(loggedString);
+                break;
+        }
     }
     
     
