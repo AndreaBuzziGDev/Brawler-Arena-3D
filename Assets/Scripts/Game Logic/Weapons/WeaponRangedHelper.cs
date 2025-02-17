@@ -77,8 +77,6 @@ public class WeaponRangedHelper
             chargeTimer = 0.0f;
         }
         Debugger.Log(DebugProperties, LogType.WEAPON);
-        
-        //DebugProperties();
     }
     
     
@@ -130,6 +128,7 @@ public class WeaponRangedHelper
 
         StringBuilder sb = new StringBuilder();
 
+        sb.AppendLine("");
         sb.AppendLine($"==== RANGED WEAPON {masterName} - {weaponName} START INFO ====");
 
         // DEBUG ALWAYS

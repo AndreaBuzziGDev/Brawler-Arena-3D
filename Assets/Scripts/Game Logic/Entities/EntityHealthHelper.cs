@@ -59,7 +59,8 @@ public class EntityHealthHelper
     public void DebugProperties()
     {
         StringBuilder sb = new StringBuilder();
-        //TODO: APPEND EMPTY LINE
+
+        sb.AppendLine("");
         sb.AppendLine("==== HEALTH HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
         // DATA DEBUG

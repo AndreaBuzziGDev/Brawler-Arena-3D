@@ -95,6 +95,7 @@ public class EntityShieldHelper
         //TODO: FURTHER IMPROVE THIS (AND OTHER DEBUGS) WITH STRINGBUILDER
         StringBuilder sb = new StringBuilder();
 
+        sb.AppendLine("");
         sb.AppendLine("==== SHIELD HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
 
         // DATA DEBUG
