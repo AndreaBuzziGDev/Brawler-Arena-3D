@@ -56,6 +56,8 @@ public static class Debugger
 
     
     //FUNCTIONALITIES
+    
+    ///DELEGATED LOG
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
         
         if (!Config.EnableDebugging || level < Config.LogLevel)
@@ -66,6 +68,19 @@ public static class Debugger
         
         if(MapType.GetValueOrDefault(logType, true))
             method();
+    }
+    
+    ///REGULAR LOG
+    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
+        
+        if (!Config.EnableDebugging || level < Config.LogLevel)
+            return;
+        
+        if(MapType.Count < 1)
+            MapDebugging();
+        
+        if(MapType.GetValueOrDefault(logType, true))
+            Debug.Log(loggedString);
     }
     
     
