@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//TODO: MAKE THIS A SCRIPTABLEOBJECT OR USE A SCRIPTABLEOBJECT TO CARRY THIS
+[CreateAssetMenu(fileName = "NewDebuggerConfig", menuName = "Debug/DebuggerConfig")]
 [Serializable]
-public class DebuggerConfig
+public class DebuggerConfig : ScriptableObject
 {
     //DATA
     public bool EnableDebugging = true;
