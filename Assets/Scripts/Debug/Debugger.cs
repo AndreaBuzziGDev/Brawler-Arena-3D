@@ -12,11 +12,7 @@ public static class Debugger
     
     
     //DEFAULT CONFIG
-    private static DebuggerConfig defaultConfig = new DebuggerConfig
-    {
-        EnableDebugging = true,
-        LogLevel = LogLevel.Info
-    };
+    private static DebuggerConfig defaultConfig;
     
     
     //DELEGATE
@@ -31,12 +27,11 @@ public static class Debugger
         {
             if (currentConfig == null)
             {
-                // Prova a trovare un MonoSingleton nella scena
                 DebugController instance = DebugController.Instance;
-                if (instance != null)
+                if (instance && instance.Config)
                     currentConfig = instance.Config;
                 else
-                    currentConfig = defaultConfig;
+                    currentConfig = BuildDefaultConfig();
             }
             return currentConfig;
         }
@@ -50,8 +45,27 @@ public static class Debugger
             }
             currentConfig = value;
             MapDebugging();
-            Debug.Log("Debugger configuration updated.");
+            Debug.LogWarning("Debugger configuration updated.");
         }
+    }
+    
+    
+    //STATIC CONSTRUCTOR
+    private static DebuggerConfig BuildDefaultConfig(){
+        //
+        defaultConfig = ScriptableObject.CreateInstance<DebuggerConfig>();
+        defaultConfig.EnableDebugging = true;//TODO: MIGHT NOT BE NECESSARY
+        defaultConfig.LogLevel = LogLevel.Info;//TODO: MIGHT NOT BE NECESSARY
+        
+        //TODO: MIGHT NOT BE NECESSARY
+        foreach (FieldInfo field in typeof(DebuggerConfig).GetFields())
+        {
+            if (field.FieldType == typeof(bool))
+                field.SetValue(defaultConfig, false);
+        }
+        defaultConfig.debugDefault = true;
+        
+        return defaultConfig;
     }
 
     
@@ -60,6 +74,7 @@ public static class Debugger
     ///DELEGATED LOG
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
         
+        Debug.Log("Test 0" + Config);
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
