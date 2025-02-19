@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "NewDebuggerConfig", menuName = "Debug/DebuggerConfig")]
+[CreateAssetMenu(fileName = "New Debugger Config", menuName = "Debug/DebuggerConfig")]
 [Serializable]
 public class DebuggerConfig : ScriptableObject
 {
