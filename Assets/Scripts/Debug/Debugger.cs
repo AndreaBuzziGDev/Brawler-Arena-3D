@@ -49,21 +49,18 @@ public static class Debugger
         }
     }
     
-    
-    //STATIC CONSTRUCTOR
-    private static DebuggerConfig BuildDefaultConfig(){
+    private static DebuggerConfig BuildDefaultConfig()
+    {
         //
         defaultConfig = ScriptableObject.CreateInstance<DebuggerConfig>();
         defaultConfig.EnableDebugging = true;//TODO: MIGHT NOT BE NECESSARY
         defaultConfig.LogLevel = LogLevel.Info;//TODO: MIGHT NOT BE NECESSARY
         
         //TODO: MIGHT NOT BE NECESSARY
-        foreach (FieldInfo field in typeof(DebuggerConfig).GetFields())
-        {
-            if (field.FieldType == typeof(bool))
-                field.SetValue(defaultConfig, false);
+        foreach (var entry in defaultConfig.GetDebugEntries()){
+            entry.enabled = false;
         }
-        defaultConfig.debugDefault = true;
+        defaultConfig.SetDebugFlag(LogType.DEFAULT, true);
         
         return defaultConfig;
     }
@@ -72,9 +69,14 @@ public static class Debugger
     //FUNCTIONALITIES
     
     ///DELEGATED LOG
-    public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info){
+    public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Debug){
         
-        Debug.Log("Test 0" + Config);
+        /*
+        Debug.Log("Test 0 " + method);
+        Debug.Log("Test 0 " + logType);
+        Debug.Log("Test 0 " + level);
+        */
+        
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
@@ -84,17 +86,17 @@ public static class Debugger
         if(MapType.GetValueOrDefault(logType, true))
             method();
     }
-    
+
     ///REGULAR LOG
-    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info, LogMode mode = LogMode.Debug){
-        
+    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info, LogMode mode = LogMode.Debug)
+    {
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
-        if(MapType.Count < 1)
+        if (MapType.Count < 1)
             MapDebugging();
         
-        if(MapType.GetValueOrDefault(logType, true))
+        if (MapType.GetValueOrDefault(logType, true))
             Log(loggedString, mode);
     }
     
@@ -117,18 +119,11 @@ public static class Debugger
     
 
     //UTILITIES
-    public static void MapDebugging(){
-        
-        //
+    public static void MapDebugging()
+    {
         MapType.Clear();
-        DebuggerConfig dConfig = Config;
-        FieldInfo[] fields = dConfig.GetType().GetFields();
-        
-        foreach (FieldInfo field in fields){
-            LogTypeFieldAttribute attribute = field.GetCustomAttribute<LogTypeFieldAttribute>();
-            
-            if (attribute != null && field.FieldType == typeof(bool))
-                MapType[attribute.LogType] = (bool)field.GetValue(dConfig);
+        foreach (var entry in Config.GetDebugEntries()){
+            MapType[entry.logType] = entry.enabled;
         }
     }
     
