@@ -15,6 +15,9 @@ public class DebuggerConfigEditor : Editor
         logLevel = serializedObject.FindProperty("LogLevel");
         debugEntries = serializedObject.FindProperty("debugEntries");
     }
+    
+    //TODO: HEADING INITIAL SECTION
+    //TODO: BUTTON/FLAG TO DEBUG EVERYTHING
 
     public override void OnInspectorGUI()
     {
