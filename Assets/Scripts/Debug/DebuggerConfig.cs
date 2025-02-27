@@ -47,9 +47,7 @@ public class DebuggerConfig : ScriptableObject
     {
         var entry = debugEntries.Find(e => e.logType == type);
         if (entry != null)
-        {
             entry.enabled = value;
-        }
     }
 
     [Serializable]
