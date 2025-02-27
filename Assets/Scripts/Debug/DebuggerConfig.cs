@@ -7,18 +7,23 @@ using System.Linq;
 [Serializable]
 public class DebuggerConfig : ScriptableObject
 {
-    // DATA
+    //DATA
     public bool EnableDebugging = true;
     public LogLevel LogLevel = LogLevel.Debug;
 
+    //LOG TYPE ENTRIES
     [SerializeField]
     private List<LogTypeEntry> debugEntries = new List<LogTypeEntry>();
 
+
+
+    //FUNCTIONALITIES
     private void OnValidate(){
         EnsureAllLogTypesPresent();
     }
 
     private void OnEnable(){
+        //NB: THIS ENSURES THAT WHEN THE CONFIG IS CREATED OR INSTANTIATED, ALL POSSIBLE DEBUG FLAGS EXIST
         EnsureAllLogTypesPresent();
     }
 
@@ -43,6 +48,14 @@ public class DebuggerConfig : ScriptableObject
             entry.enabled = value;
     }
 
+    
+    
+    //UTILITIES
+    public List<LogTypeEntry> GetDebugEntries() => debugEntries;
+    
+    
+    
+    //NESTED CLASSES
     [Serializable]
     public class LogTypeEntry{
         public LogType logType;
@@ -53,6 +66,4 @@ public class DebuggerConfig : ScriptableObject
             enabled = isEnabled;
         }
     }
-
-    public List<LogTypeEntry> GetDebugEntries() => debugEntries;
 }
