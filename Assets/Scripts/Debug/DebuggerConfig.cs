@@ -14,18 +14,15 @@ public class DebuggerConfig : ScriptableObject
     [SerializeField]
     private List<LogTypeEntry> debugEntries = new List<LogTypeEntry>();
 
-    private void OnValidate()
-    {
+    private void OnValidate(){
         EnsureAllLogTypesPresent();
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable(){
         EnsureAllLogTypesPresent();
     }
 
-    private void EnsureAllLogTypesPresent()
-    {
+    private void EnsureAllLogTypesPresent(){
         var logTypes = Enum.GetValues(typeof(LogType)).Cast<LogType>();
 
         foreach (var logType in logTypes)
@@ -37,22 +34,19 @@ public class DebuggerConfig : ScriptableObject
         }
     }
 
-    public bool GetDebugFlag(LogType type)
-    {
+    public bool GetDebugFlag(LogType type){
         var entry = debugEntries.Find(e => e.logType == type);
         return entry != null && entry.enabled;
     }
 
-    public void SetDebugFlag(LogType type, bool value)
-    {
+    public void SetDebugFlag(LogType type, bool value){
         var entry = debugEntries.Find(e => e.logType == type);
         if (entry != null)
             entry.enabled = value;
     }
 
     [Serializable]
-    public class LogTypeEntry
-    {
+    public class LogTypeEntry{
         public LogType logType;
         public bool enabled;
 
