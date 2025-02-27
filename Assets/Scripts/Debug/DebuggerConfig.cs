@@ -25,10 +25,8 @@ public class DebuggerConfig : ScriptableObject
     private void EnsureAllLogTypesPresent(){
         var logTypes = Enum.GetValues(typeof(LogType)).Cast<LogType>();
 
-        foreach (var logType in logTypes)
-        {
-            if (!debugEntries.Exists(entry => entry.logType == logType))
-            {
+        foreach (var logType in logTypes){
+            if (!debugEntries.Exists(entry => entry.logType == logType)){
                 debugEntries.Add(new LogTypeEntry(logType, false));
             }
         }
@@ -50,8 +48,7 @@ public class DebuggerConfig : ScriptableObject
         public LogType logType;
         public bool enabled;
 
-        public LogTypeEntry(LogType type, bool isEnabled)
-        {
+        public LogTypeEntry(LogType type, bool isEnabled){
             logType = type;
             enabled = isEnabled;
         }
