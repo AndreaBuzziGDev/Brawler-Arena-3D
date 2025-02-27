@@ -71,12 +71,6 @@ public static class Debugger
     ///DELEGATED LOG
     public static void Log(DelegateDebug method, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Debug){
         
-        /*
-        Debug.Log("Test 0 " + method);
-        Debug.Log("Test 0 " + logType);
-        Debug.Log("Test 0 " + level);
-        */
-        
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
         
