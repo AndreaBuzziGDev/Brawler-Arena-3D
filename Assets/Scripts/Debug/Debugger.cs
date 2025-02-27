@@ -1,13 +1,14 @@
 using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Reflection;
 
 public static class Debugger
 {
     //DATA
     private static DebuggerConfig currentConfig;
+    //TODO: IT IS POSSIBLE THAT FOR CODE IMPROVEMENTS THIS IS MOVED SOMEWHERE ELSE, LIKE IN THE SCRIPTABLEOBJECT ITSELF.
     private static Dictionary<LogType, Boolean> MapType = new();
     
     
@@ -23,44 +24,37 @@ public static class Debugger
     //DATA FUNCTIONS
     public static DebuggerConfig Config
     {
-        get
-        {
-            if (currentConfig == null)
-            {
+        get{
+            if (currentConfig == null){
                 DebugController instance = DebugController.Instance;
                 if (instance && instance.Config)
                     currentConfig = instance.Config;
                 else
-                    currentConfig = BuildDefaultConfig();
+                    Config = BuildDefaultConfig();
             }
+            
             return currentConfig;
         }
         
-        set
-        {
-            if (value == null)
-            {
+        set{
+            if (value == null){
                 Debug.LogWarning("Attempted to set Debugger.Config to null. Ignored.");
                 return;
             }
             currentConfig = value;
-            MapDebugging();
             Debug.LogWarning("Debugger configuration updated.");
+            MapDebugging();
+            RunDiagnostic();
         }
     }
     
-    private static DebuggerConfig BuildDefaultConfig()
-    {
-        //
-        defaultConfig = ScriptableObject.CreateInstance<DebuggerConfig>();
-        defaultConfig.EnableDebugging = true;//TODO: MIGHT NOT BE NECESSARY
-        defaultConfig.LogLevel = LogLevel.Info;//TODO: MIGHT NOT BE NECESSARY
+    private static DebuggerConfig BuildDefaultConfig(){
         
-        //TODO: MIGHT NOT BE NECESSARY
-        foreach (var entry in defaultConfig.GetDebugEntries()){
-            entry.enabled = false;
-        }
+        defaultConfig = ScriptableObject.CreateInstance<DebuggerConfig>();
+        
+        //DESIRED FALLBACK DEBUG TYPES
         defaultConfig.SetDebugFlag(LogType.DEFAULT, true);
+        defaultConfig.SetDebugFlag(LogType.WEAPON, true);
         
         return defaultConfig;
     }
@@ -82,7 +76,7 @@ public static class Debugger
     }
 
     ///REGULAR LOG
-    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Info, LogMode mode = LogMode.Debug)
+    public static void Log(String loggedString, LogType logType = LogType.DEFAULT, LogLevel level = LogLevel.Debug, LogMode mode = LogMode.Debug)
     {
         if (!Config.EnableDebugging || level < Config.LogLevel)
             return;
@@ -119,6 +113,26 @@ public static class Debugger
         foreach (var entry in Config.GetDebugEntries()){
             MapType[entry.logType] = entry.enabled;
         }
+    }
+    
+    //SELF DIAGNOSIS
+    public static void RunDiagnostic(){
+        SelfDebug();
+    }
+    
+    private static void SelfDebug(){
+        StringBuilder sb = new();
+        sb.AppendLine("");
+        sb.AppendLine("DEBUGGER IS REPORTING ALL ENABLED DEBUG FLAGS");
+        sb.AppendLine("");
+
+        foreach (LogType lt in MapType.Keys){
+            if (MapType[lt]){
+                sb.AppendLine($"+ {lt}");
+            }
+        }
+
+        Debug.Log(sb.ToString());
     }
     
     
