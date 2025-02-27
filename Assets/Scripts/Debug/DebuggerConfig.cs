@@ -9,7 +9,7 @@ public class DebuggerConfig : ScriptableObject
 {
     // DATA
     public bool EnableDebugging = true;
-    public LogLevel LogLevel;
+    public LogLevel LogLevel = LogLevel.Debug;
 
     [SerializeField]
     private List<LogTypeEntry> debugEntries = new List<LogTypeEntry>();
