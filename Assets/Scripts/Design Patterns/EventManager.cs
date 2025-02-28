@@ -14,7 +14,7 @@ public class EventManager<T> where T : EventArgs
 
 
     //SINGLETON INSTANCE
-    private static EventManager<T> instance;//TODO: CHECK ISSUE ABOUT READONLY
+    private static EventManager<T> instance;
     public static EventManager<T> Instance
     {
         get
