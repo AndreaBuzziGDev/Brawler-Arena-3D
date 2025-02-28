@@ -8,7 +8,6 @@ public static class Debugger
 {
     //DATA
     private static DebuggerConfig currentConfig;
-    //TODO: IT IS POSSIBLE THAT FOR CODE IMPROVEMENTS THIS IS MOVED SOMEWHERE ELSE, LIKE IN THE SCRIPTABLEOBJECT ITSELF.
     private static Dictionary<LogType, Boolean> MapType = new();
     
     
