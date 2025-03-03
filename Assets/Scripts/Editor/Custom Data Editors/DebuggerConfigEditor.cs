@@ -18,7 +18,7 @@ public class DebuggerConfigEditor : Editor
     public override void OnInspectorGUI(){
         serializedObject.Update();
 
-        // GENERAL SECTION
+        //GENERAL SECTION
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(enableDebugging);
         EditorGUILayout.PropertyField(logLevel);
@@ -38,7 +38,7 @@ public class DebuggerConfigEditor : Editor
                 if (enabled.boolValue) allEnabled = false;
             }
 
-            if (GUILayout.Button(allEnabled ? "Disable All" : "Enable All")){
+            if (GUILayout.Button(allEnabled ? "Disable All" : "Enable All", GUILayout.Width(120))){
                 for (int i = 0; i < debugEntries.arraySize; i++){
                     SerializedProperty entry = debugEntries.GetArrayElementAtIndex(i);
                     SerializedProperty enabled = entry.FindPropertyRelative("enabled");
