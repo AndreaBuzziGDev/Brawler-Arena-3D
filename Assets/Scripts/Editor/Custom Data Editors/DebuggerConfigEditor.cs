@@ -9,33 +9,31 @@ public class DebuggerConfigEditor : Editor
     private SerializedProperty logLevel;
     private SerializedProperty debugEntries;
 
-    private void OnEnable()
-    {
+    private void OnEnable(){
         enableDebugging = serializedObject.FindProperty("EnableDebugging");
         logLevel = serializedObject.FindProperty("LogLevel");
         debugEntries = serializedObject.FindProperty("debugEntries");
     }
-    
-    //TODO: HEADING INITIAL SECTION
-    //TODO: BUTTON/FLAG TO DEBUG EVERYTHING
 
-    public override void OnInspectorGUI()
-    {
+
+
+    //TODO: BUTTON/FLAG TO DEBUG EVERYTHING
+    
+    public override void OnInspectorGUI(){
         serializedObject.Update();
 
-        // Enable Debugging Toggle
+        // GENERAL SECTION
+        EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
+        
         EditorGUILayout.PropertyField(enableDebugging);
-
-        // Log Level Dropdown
         EditorGUILayout.PropertyField(logLevel);
-
-        // Log Type Flags
+        
+        
+        //LOG TYPE FLAGS
         EditorGUILayout.LabelField("Log Type Flags", EditorStyles.boldLabel);
-
-        if (debugEntries.isArray)
-        {
-            for (int i = 0; i < debugEntries.arraySize; i++)
-            {
+        
+        if (debugEntries.isArray){
+            for (int i = 0; i < debugEntries.arraySize; i++){
                 SerializedProperty entry = debugEntries.GetArrayElementAtIndex(i);
                 SerializedProperty logType = entry.FindPropertyRelative("logType");
                 SerializedProperty enabled = entry.FindPropertyRelative("enabled");
