@@ -12,8 +12,12 @@ public class WeaponRangedDataEditor : Editor
     private const string EditorPrefsKey = "WeaponRangedData_UseCustomEditor";
 
     //VISIBLE FIELDS LIST
-    private List<string> burstFields = new List<string> { "burstCount", "burstCooldown" };
-    private List<string> chargeFields = new List<string> { "chargeTime" };
+    private Dictionary<WeaponRangedData.EOperateMode, List<string>> fieldMappings = new Dictionary<WeaponRangedData.EOperateMode, List<string>>
+    {
+        { WeaponRangedData.EOperateMode.BURST, new List<string> { "burstCount", "burstCooldown" } },
+        { WeaponRangedData.EOperateMode.CHARGED, new List<string> { "chargeTime" } }
+    };
+
 
 
     private void OnEnable(){
@@ -57,7 +61,7 @@ public class WeaponRangedDataEditor : Editor
 
         // MODE SPECIFIC BEHAVIOURS
         EditorGUILayout.LabelField("Mode Specific Behaviours", EditorStyles.boldLabel);
-        List<string> visibleFields = GetVisibleFields(weapon.OperateMode);
+        List<string> visibleFields = fieldMappings.TryGetValue(weapon.OperateMode, out var fields) ? fields : new List<string>();
         if(visibleFields.Count > 0)
             ShowFields(visibleFields);
         else
@@ -84,21 +88,6 @@ public class WeaponRangedDataEditor : Editor
     }
     
 
-
-    //GET CORRECT LIST
-    //TODO: SHOULD THIS BE IMPLEMENTED AS A DICTIONARY?
-    private List<string> GetVisibleFields(WeaponRangedData.EOperateMode weaponType)
-    {
-        switch (weaponType)
-        {
-            case WeaponRangedData.EOperateMode.BURST:
-                return burstFields;
-            case WeaponRangedData.EOperateMode.CHARGED:
-                return chargeFields;
-            default:
-                return new List<string>();
-        }
-    }
 
 
     //SHOW MATCHING FIELDS
