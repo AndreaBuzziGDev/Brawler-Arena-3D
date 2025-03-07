@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb6f4d0ea7b3ce48998c03ef495b5e9, type: 3}
   m_Name: Generic Mob Params V1.0
   m_EditorClassIdentifier: 
+  entityName: Generic Mob
+  entityType: 1
   maxHealth: 5
   maxShield: 0
   shieldRechargeRate: 0
   shieldCooldownTimer: 10
-  movementSpeed: 5
