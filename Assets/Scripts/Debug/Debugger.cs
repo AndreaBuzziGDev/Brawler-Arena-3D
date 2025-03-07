@@ -19,6 +19,19 @@ public static class Debugger
     public delegate void DelegateDebug();
     
     
+    //TODO: EXTENDED DEBUG CONTROLS
+    /*
+    I need an extended debug control to avoid spam of multiple entities in the log, flooding it with useless informations.
+
+    To begin with, it might be useful to add debug flags to some parts of the code, in order to puntually control debug behaviour.
+    However, this alone might not be enough to reach a satisfying implementation of the requirement.
+
+    Another thing to do might be adding flags to override behaviours on debugs, like a flag that debugs only the player entity in a given context
+    OR that allows to debug the player EVEN IF the flag is normally disabled.
+    
+    However, this again might not be the ideal path to go through, so i might need to look up for new debugging solutions online.
+    */
+    
     
     //DATA FUNCTIONS
     public static DebuggerConfig Config
