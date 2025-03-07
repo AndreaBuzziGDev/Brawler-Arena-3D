@@ -7,6 +7,9 @@ public class EntityShieldHelper
 {
     //DATA
     EntityData.EEntityType entityType;
+    
+    //IDENTITY
+    string masterName = "Unnamed Entity";
 
     //SHIELD
     float currentShield = 1;
@@ -38,6 +41,7 @@ public class EntityShieldHelper
     //CONSTRUCTOR
     public EntityShieldHelper(EntityData data)
     {
+        this.masterName = data.EntityName;
         this.entityType = data.EntityType;
         
         this.currentShield = data.MaxShield;
@@ -95,7 +99,7 @@ public class EntityShieldHelper
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("");
-        sb.AppendLine("==== SHIELD HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
+        sb.AppendLine($"==== SHIELD HELPER {this.masterName} - {this.masterName} START INFO ====");
 
         // DATA DEBUG
         sb.AppendLine($"Entity Health Helper - currentShield: {currentShield}");

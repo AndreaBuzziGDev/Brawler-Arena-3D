@@ -15,6 +15,9 @@ public class EntityData : ScriptableObject
     
     [Header("Entity Identity")]
     [Tooltip("The Type of entity this is supposed to be.")]
+    [SerializeField] string entityName = "Entity Name";
+    public string EntityName => entityName;
+    
     [SerializeField] EEntityType entityType = EEntityType.NPC;
     public EEntityType EntityType => entityType;
 

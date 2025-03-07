@@ -6,9 +6,15 @@ using UnityEngine;
 public class EntityHealthHelper
 {
     //DATA
+    EntityData.EEntityType entityType;
+    
+    //IDENTITY
+    string masterName = "Unnamed Entity";
+    
+    //HEALTH
     float currentHealth = 1;
     float maxHealth = 1;
-    EntityData.EEntityType entityType;
+    
 
     //DATA GETTERS
     public float CurrentHealth => currentHealth;
@@ -61,7 +67,7 @@ public class EntityHealthHelper
         StringBuilder sb = new StringBuilder();
 
         sb.AppendLine("");
-        sb.AppendLine("==== HEALTH HELPER START INFO ===="); //TODO: MASTER ENTITY NAME (ADD IN ENTITY DATA)
+        sb.AppendLine($"==== HEALTH HELPER {this.masterName} - {this.masterName} START INFO ====");
 
         // DATA DEBUG
         sb.AppendLine($"Entity Health Helper - entityType: {entityType}");
