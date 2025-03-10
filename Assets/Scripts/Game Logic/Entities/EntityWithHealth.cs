@@ -5,6 +5,11 @@ using UnityEngine;
 
 public abstract class EntityWithHealth : MonoBehaviour, IHittable
 {
+    //DATA
+    [Header("Instance Data")]
+    [SerializeField] bool debugs = false;
+    
+    
     //SCRIPTABLE OBJECTS
     [Header("Scriptable Object References")]
     [SerializeField] protected EntityData data;
@@ -14,8 +19,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected virtual void OnValidate()
-    {
+    protected virtual void OnValidate(){
         if (data == null)
             Debug.LogWarning("No Entity EntityData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(audioData == null)
@@ -46,13 +50,11 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //LIFECYCLE FUNCTIONS
-    protected virtual void Start()
-    {
+    protected virtual void Start(){
         DataInitialization();
     }
 
-    protected virtual void Update()
-    {
+    protected virtual void Update(){
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
@@ -67,8 +69,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
 
     //INITIALIZATION
-    void DataInitialization()
-    {
+    void DataInitialization(){
         health = new EntityHealthHelper(data);
         shield = new EntityShieldHelper(data);
     }
@@ -83,14 +84,13 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //      THE SOLUTION MIGHT BE DEVELOPING A DELEGATE METHOD THAT IS THEN SENT TO SOMETHING ELSE FOR EXECUTION.
     //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
 
-    public void HandleHit(DamageInstance dInstance)
-    {
+    public void HandleHit(DamageInstance dInstance){
+        //TODO: USE DebugController
         Debug.Log(gameObject.name + " has been Hit for " + dInstance.DamageAmount + " Damage.");
         ReceiveDamage(dInstance.DamageAmount);
     }
 
-    public virtual void HandleDeath()
-    {
+    public virtual void HandleDeath(){
         //DEATH SOUND
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.Type, audioData.DeathClip));
         //DEATH PARTICLES
@@ -104,8 +104,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 
     //HEALTH AND SHIELD FUNCTIONALITIES
     //TODO: MAKE PROTECTED
-    public void ReceiveDamage(float damageAmount)
-    {
+    public void ReceiveDamage(float damageAmount){
         if(shield.IsShielded)
             shield.ChangeShield(-damageAmount);
         else
@@ -115,8 +114,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         shield.ResetShieldTimer();
     }
     
-    public void Heal(float healAmount)
-    {
+    public void Heal(float healAmount){
         health.ChangeHealth(healAmount);
     }
 
