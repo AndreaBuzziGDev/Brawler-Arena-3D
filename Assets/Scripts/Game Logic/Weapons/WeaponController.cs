@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class WeaponController : MonoBehaviour
 {
     //DATA
+    [Header("Instance Data")]
+    [SerializeField] bool debugs = false;
+    
+
+    //INSPECTOR REFERENCES
     [Header("Inspector References")]
     [Tooltip("Reference to an enemy or player script. Necessary for complex logic to work.")]
     [SerializeField] protected EntityWithAiming aimingEntity;
@@ -16,8 +21,7 @@ public abstract class WeaponController : MonoBehaviour
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected virtual void OnValidate()
-    {
+    protected virtual void OnValidate(){
         if (WData == null)
             Debug.LogWarning("No Weapon Data Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         else if((aimingEntity == null) && WData.NeedsOwnerToOperate)
@@ -32,10 +36,8 @@ public abstract class WeaponController : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    public virtual void Operate()
-    {
-        if(WData.WAudioData)
-        {
+    public virtual void Operate(){
+        if(WData.WAudioData){
             //UNBOUND AUDIO EMISSION
             //WData
             //TODO: THIS MIGHT NEED TO DELVE INTO WData AND PICK UP WETHER THE USER IS UNBOUND, PLAYER OR ELSE
