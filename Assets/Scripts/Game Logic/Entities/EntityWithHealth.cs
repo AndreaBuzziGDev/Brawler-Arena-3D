@@ -9,7 +9,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [Header("Scriptable Object References")]
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
-    [SerializeField] protected ParticleData particleData;
+    [SerializeField] protected ParticleData particleData;//TODO: THIS DATA MIGHT NEED TO BE MOVED INTO EntityData LIKE I DID SOMEWHERE ELSE
 
 
     //REFERENCE VALIDATION
