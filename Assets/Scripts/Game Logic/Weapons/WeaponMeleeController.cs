@@ -7,7 +7,6 @@ public class WeaponMeleeController : WeaponController
 {
     //DATA
     [Header("Inspector References")]
-
     [Tooltip("Reference to WeaponMeleeData Scriptable Object.")]
     [SerializeField] protected WeaponMeleeData wData;
 
@@ -20,6 +19,7 @@ public class WeaponMeleeController : WeaponController
     public override void Operate(){
         base.Operate();
         //TODO: IMPLEMENT
+        //TODO: USE UNIFIED DEBUG?
         Debug.Log("Melee Weapon " + gameObject.name + " Yet to be implemented");
     }
 }
