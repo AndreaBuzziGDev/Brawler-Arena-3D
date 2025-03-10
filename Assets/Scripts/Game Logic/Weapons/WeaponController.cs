@@ -6,7 +6,7 @@ public abstract class WeaponController : MonoBehaviour
 {
     //DATA
     [Header("Instance Data")]
-    [SerializeField] bool debugs = false;
+    //NONE...
     
 
     //INSPECTOR REFERENCES

@@ -7,7 +7,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
 {
     //DATA
     [Header("Instance Data")]
-    [SerializeField] bool debugs = false;
+    //NONE...
     
     
     //SCRIPTABLE OBJECTS
