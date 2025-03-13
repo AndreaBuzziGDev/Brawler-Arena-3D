@@ -11,9 +11,10 @@ public class EntityAudioData : ScriptableObject
 
     //DATA - AUDIO CLIPS
     [Header("Audio Clips")]
-    //TODO: USE THIS
     //TODO: TO AVOID SPAMMING AUDIO FEED, MAKE ENEMIES SPAWN IN GROUPS
     //TODO: TO FURTHER AVOID SPAMMING AUDIO FEED FROM MULTIPLE SPAWN POINTS, IMPLEMENT A COOLDOWN ON SOUND SYSTEM
+
+    //TODO: USE THIS CLIP
     [SerializeField] AudioClip spawnClip;
     [SerializeField] AudioClip damageShieldClip;
     [SerializeField] AudioClip damageHealthClip;
