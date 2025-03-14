@@ -14,24 +14,25 @@ public class AudioSourceManager : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start(){
         sources = gameObject.GetComponents<AudioSource>().ToList();
         EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy(){
         EventManager<SoundFXEventArgs>.Instance.StopListening(HandleAudioEvent);
     }
 
     //PLAY SOUNDS
-    private void PlayClip(AudioClip aClip)
-    {
-        foreach(AudioSource aSource in sources)
-        {
-            if(!aSource.isPlaying)
-            {
+    private void PlayClip(AudioClip aClip){
+        
+        //TODO: TO AVOID SPAMMING THE SAME SOUND, INTRODUCE A LOGIC THAT CONTROLS AUDIO CLIP FLOWS
+        //      FOR EXAMPLE, SOME CLIPS MIGHT BE TAGGED SO THAT THEY CAN ONLY BE PLAYED ONCE AT A TIME
+        //      OTHER CLIPS MIGHT RE-SET THAT SOUND INSTEAD (WITH A COOLDOWN?)
+        //
+        
+        foreach(AudioSource aSource in sources){
+            if(!aSource.isPlaying){
                 aSource.clip = aClip;
                 aSource.Play();
                 break;
@@ -40,10 +41,8 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     //EVENT HANDLING
-    private void HandleAudioEvent(object sender, SoundFXEventArgs e)
-    {
-        if(e.CarriedAudioClip != null)
-        {
+    private void HandleAudioEvent(object sender, SoundFXEventArgs e){
+        if(e.CarriedAudioClip != null){
             if(audioType == e.EventType)
                 PlayClip(e.CarriedAudioClip);
         } else {
