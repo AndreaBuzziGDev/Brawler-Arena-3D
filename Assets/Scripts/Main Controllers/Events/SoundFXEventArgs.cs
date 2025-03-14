@@ -8,7 +8,7 @@ public class SoundFXEventArgs : EventArgs
     //ENUMS
     public enum EType
     {
-        UNBOUND,//UNBOUND VALUE - SHOULD NOT USE
+        UNBOUND,//UNBOUND VALUE - SHOULD USE AS LITTLE AS POSSIBLE
         A_FX_PLAYER,
         A_FX_MOB
     }
