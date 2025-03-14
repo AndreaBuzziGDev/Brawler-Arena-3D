@@ -29,7 +29,7 @@ public class AudioSourceManager : MonoBehaviour
         //TODO: TO AVOID SPAMMING THE SAME SOUND, INTRODUCE A LOGIC THAT CONTROLS AUDIO CLIP FLOWS
         //      FOR EXAMPLE, SOME CLIPS MIGHT BE TAGGED SO THAT THEY CAN ONLY BE PLAYED ONCE AT A TIME
         //      OTHER CLIPS MIGHT RE-SET THAT SOUND INSTEAD (WITH A COOLDOWN?)
-        //
+        //      SOME MAY NEED TO LOOP INSTEAD
         
         foreach(AudioSource aSource in sources){
             if(!aSource.isPlaying){
