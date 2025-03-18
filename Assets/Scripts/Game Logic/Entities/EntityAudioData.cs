@@ -16,9 +16,17 @@ public class EntityAudioData : ScriptableObject
 
     //TODO: THESE SHOULD EVOLVE INTO STRUCTS THAT CONTAIN DATA ON EACH CLIP: PLAYBACK MODE, RATE LIMIT, AUDIOCLIP REFERENCE
     [SerializeField] AudioClip spawnClip;//TODO: USE THIS CLIP
+    [SerializeField] AudioClipData spawnClipData;
+    
     [SerializeField] AudioClip damageShieldClip;
+    [SerializeField] AudioClipData damageShieldClipData;
+    
     [SerializeField] AudioClip damageHealthClip;
+    [SerializeField] AudioClipData damageHealthClipData;
+    
     [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClipData deathClipData;
+    
 
     //DATA GETTERS
     public SoundFXEventArgs.EType Type => type;
@@ -26,5 +34,11 @@ public class EntityAudioData : ScriptableObject
     public AudioClip DamageShieldClip => damageShieldClip;
     public AudioClip DamageHealthClip => damageHealthClip;
     public AudioClip DeathClip => deathClip;
+    
+    //TODO: REPLACE THOSE ABOVE WITH THESE:
+    public AudioClipData SpawnClipData => spawnClipData;
+    public AudioClipData DamageShieldClipData => damageShieldClipData;
+    public AudioClipData DamageHealthClipData => damageHealthClipData;
+    public AudioClipData DeathClipData => deathClipData;
 
 }
