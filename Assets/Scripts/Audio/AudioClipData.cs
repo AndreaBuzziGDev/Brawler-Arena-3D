@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSound", menuName = "Audio/Sound Data")]
+[CreateAssetMenu(fileName = "New Audio Clip Data", menuName = "Audio/Clip Data")]
 public class AudioClipData : ScriptableObject
 {
     public AudioClip clip;
