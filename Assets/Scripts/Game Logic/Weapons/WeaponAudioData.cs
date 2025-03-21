@@ -8,26 +8,30 @@ public class WeaponAudioData : ScriptableObject
     //DATA - AUDIO CLIPS
     [Header("Audioclips")]
     [Tooltip("The type of this audio data.")]
-    [SerializeField] SoundFXEventArgs.EType audioType = SoundFXEventArgs.EType.A_FX_MOB;
+    [SerializeField] SoundSourceType audioType = SoundSourceType.AUDIO_FX_MOB;//TODO: USE THIS PARAM IN AUDIO CLIP DATA INSTEAD
     
+    //TODO: USE AUDIO CLIP DATA
     [Tooltip("Plays when weapon is successfully used.")]
-    [SerializeField] AudioClip operateClip;
+    [SerializeField] AudioClip operateClip;//TODO: DISMISS AFTER MANAGING SCRIPTABLE OBJECTS
+    [SerializeField] AudioClipData operateClipData;
 
     [Tooltip("Plays when weapon is used but it's still in cooldown.")]
-    [SerializeField] AudioClip operateCooldownClip;
+    [SerializeField] AudioClip operateCooldownClip;//TODO: DISMISS AFTER MANAGING SCRIPTABLE OBJECTS
+    [SerializeField] AudioClipData operateCooldownClipData;
     
     [Tooltip("Plays when the weapon deals a hit.")]
-    [SerializeField] AudioClip hitClip;
+    [SerializeField] AudioClip hitClip;//TODO: DISMISS AFTER MANAGING SCRIPTABLE OBJECTS
+    [SerializeField] AudioClipData hitClipData;
     //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE
     
     
 
 
     //DATA GETTERS
-    public SoundFXEventArgs.EType AudioType => audioType;
-    public AudioClip OperateClip => operateClip;
+    public SoundSourceType AudioType => audioType;
+    public AudioClipData OperateClipData => operateClipData;
     //TODO: USE THIS
-    public AudioClip OperateCooldownClip => operateCooldownClip;
+    public AudioClipData OperateCooldownClipData => operateCooldownClipData;
     //TODO: USE THIS
-    public AudioClip HitClip => hitClip;
+    public AudioClipData HitClipData => hitClipData;
 }

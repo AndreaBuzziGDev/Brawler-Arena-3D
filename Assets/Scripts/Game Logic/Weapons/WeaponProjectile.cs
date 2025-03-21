@@ -75,7 +75,8 @@ public class WeaponProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //HIT SOUND
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.AudioType, projectileData.WData.WAudioData.HitClip));
+        //TODO: AUDIO CLIP DATA
+        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.HitClipData));
         //HIT PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
         

@@ -8,7 +8,7 @@ using System;
 public class AudioSourceManager : MonoBehaviour
 {
     //DATA
-    [SerializeField] SoundFXEventArgs.EType audioType = SoundFXEventArgs.EType.UNBOUND;
+    [SerializeField] SoundSourceType audioType = SoundSourceType.UNBOUND;
 
     List<AudioSource> sources = new();
 
@@ -32,6 +32,7 @@ public class AudioSourceManager : MonoBehaviour
         //      SOME MAY NEED TO LOOP INSTEAD
         
         foreach(AudioSource aSource in sources){
+                
             if(!aSource.isPlaying){
                 aSource.clip = aClip;
                 aSource.Play();

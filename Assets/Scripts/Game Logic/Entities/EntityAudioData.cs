@@ -7,7 +7,7 @@ public class EntityAudioData : ScriptableObject
 {
     //DATA - TYPE
     [Header("Type")]
-    [SerializeField] SoundFXEventArgs.EType type;
+    [SerializeField] SoundSourceType type;
 
     //DATA - AUDIO CLIPS
     [Header("Audio Clips")]
@@ -15,7 +15,7 @@ public class EntityAudioData : ScriptableObject
     //TODO: TO FURTHER AVOID SPAMMING AUDIO FEED FROM MULTIPLE SPAWN POINTS, IMPLEMENT A COOLDOWN ON SOUND SYSTEM
 
     //TODO: THESE SHOULD EVOLVE INTO STRUCTS THAT CONTAIN DATA ON EACH CLIP: PLAYBACK MODE, RATE LIMIT, AUDIOCLIP REFERENCE
-    [SerializeField] AudioClip spawnClip;//TODO: USE THIS CLIP
+    [SerializeField] AudioClip spawnClip;//TODO: ACTUALLY USE THIS CLIP
     [SerializeField] AudioClipData spawnClipData;
     
     [SerializeField] AudioClip damageShieldClip;
@@ -29,7 +29,7 @@ public class EntityAudioData : ScriptableObject
     
 
     //DATA GETTERS
-    public SoundFXEventArgs.EType Type => type;
+    public SoundSourceType Type => type;
     public AudioClip SpawnClip => spawnClip;
     public AudioClip DamageShieldClip => damageShieldClip;
     public AudioClip DamageHealthClip => damageHealthClip;
