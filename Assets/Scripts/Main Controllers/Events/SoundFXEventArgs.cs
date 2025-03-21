@@ -8,12 +8,11 @@ public class SoundFXEventArgs : EventArgs
     //DATA
     public SoundSourceType EventType { get; }
     public AudioClip CarriedAudioClip { get; }
+    public AudioClipData ClipData { get; }
 
 
     //CONSTRUCTOR
-    public SoundFXEventArgs (SoundSourceType eventType = SoundSourceType.UNBOUND, AudioClip aClip = null)
-    {
-        this.EventType = eventType;
-        this.CarriedAudioClip = aClip;
+    public SoundFXEventArgs (AudioClipData clipData){
+        ClipData = clipData;
     }
 }
