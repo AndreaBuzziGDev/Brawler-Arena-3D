@@ -1,0 +1,8 @@
+
+public enum SoundSourceType
+{
+    UNBOUND,//UNBOUND VALUE - SHOULD USE AS LITTLE AS POSSIBLE
+    AUDIO_FX_UI,
+    AUDIO_FX_PLAYER,
+    AUDIO_FX_MOB
+}
