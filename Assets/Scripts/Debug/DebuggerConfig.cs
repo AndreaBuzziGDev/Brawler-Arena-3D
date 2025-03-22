@@ -8,6 +8,7 @@ using System.Linq;
 public class DebuggerConfig : ScriptableObject
 {
     //DATA
+    //TODO: SERIALIZE FIELDS
     public bool EnableDebugging = true;
     public LogLevel LogLevel = LogLevel.Debug;
 
