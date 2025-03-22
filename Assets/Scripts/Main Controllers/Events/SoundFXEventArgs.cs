@@ -7,7 +7,6 @@ public class SoundFXEventArgs : EventArgs
 {
     //DATA
     public SoundSourceType EventType { get; }
-    public AudioClip CarriedAudioClip { get; }
     public AudioClipData ClipData { get; }
 
 
