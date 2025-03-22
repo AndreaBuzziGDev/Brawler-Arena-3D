@@ -6,11 +6,17 @@ using UnityEngine;
 public class AudioClipData : ScriptableObject
 {
     //DATA
-    //TODO: ADD HEADERS AND DESCRIPTORS
     [SerializeField] AudioClip clip;
     [SerializeField] SoundPlaybackMode playbackMode = SoundPlaybackMode.Normal;
+
+    [Tooltip("Minimum delay between iterations, expressed in seconds")]
+    [Range(0.1f, 5.0f)]
     [SerializeField] float rateLimitTime = 0.1f; //Minimum delay between iterations
-    [SerializeField] int amountLimit = 1;//TODO: MAKE THIS AVAILABLE AS RANGE IN EDITOR
+
+    [Tooltip("How many instances of this sound can play at the same time")]
+    [Range(1, 30)]
+    [SerializeField] int amountLimit = 1;
+    
     
     //DATA GETTERS
     public AudioClip Clip => clip;
