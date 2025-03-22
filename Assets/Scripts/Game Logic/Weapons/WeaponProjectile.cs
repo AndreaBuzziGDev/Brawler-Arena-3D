@@ -66,9 +66,10 @@ public class WeaponProjectile : MonoBehaviour
 
     //COLLISION DETECTION
     private void OnTriggerEnter(Collider other){
+        
         //HIT SOUND
-        //TODO: AUDIO CLIP DATA
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.HitClipData));
+        
         //HIT PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
         
