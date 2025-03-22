@@ -16,10 +16,11 @@ public class WeaponAudioData : ScriptableObject
     [Tooltip("Plays when weapon is used but it's still in cooldown.")]
     [SerializeField] AudioClipData operateCooldownClipData;
     
-    [Tooltip("Plays when the weapon deals a hit.")]
+    [Tooltip("Plays when the weapon deals a successful hit.")]
     [SerializeField] AudioClipData hitClipData;
-    //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE
     
+    [Tooltip("Plays when the weapon misses or hits unsuccessfully")]
+    [SerializeField] AudioClipData missClipData;
     
 
 
@@ -27,5 +28,7 @@ public class WeaponAudioData : ScriptableObject
     public SoundSourceType AudioType => audioType;
     public AudioClipData OperateClipData => operateClipData;
     public AudioClipData OperateCooldownClipData => operateCooldownClipData;//TODO: USE THIS
-    public AudioClipData HitClipData => hitClipData;//TODO: USE THIS
+    public AudioClipData HitClipData => hitClipData;
+    public AudioClipData MissClipData => missClipData;
+    
 }
