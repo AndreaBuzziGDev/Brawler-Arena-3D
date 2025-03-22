@@ -50,8 +50,7 @@ public class WeaponRangedController : WeaponController
 
 
     //PARENT CLASS OVERRIDE
-    public override void Operate()
-    {
+    public override void Operate(){
         if(wData.OperateMode != WeaponRangedData.EOperateMode.BURST || logicHelper.IsBurstReady){
             logicHelper.IsOperating = true;
         }
@@ -67,8 +66,7 @@ public class WeaponRangedController : WeaponController
 
 
     //FUNCTIONALITIES
-    private void Shoot()
-    {
+    private void Shoot(){
         //
         base.Operate();
 
