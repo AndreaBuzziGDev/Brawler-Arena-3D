@@ -67,19 +67,29 @@ public class WeaponProjectile : MonoBehaviour
     //COLLISION DETECTION
     private void OnTriggerEnter(Collider other){
         
-        //HIT SOUND
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.HitClipData));
-        
-        //HIT PARTICLES
-        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position));
-        
-        //TODO: DIFFER HITTING HITTABLE WITH HITTING A RANDOM OBSTACLE THAT DESTROYS THE PROJECTILE (EG: Different sound)
+        //CHECK IF IT HIT A VALID TARGET
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         bool trespasses = false;
+        AudioClipData clipData = projectileData.WData.WAudioData.MissClipData;
+        
         if(hittable != null){
             hittable.HandleHit(projectileData.DamageInstance);
             trespasses = projectileData.WData.Tresspass;
+            clipData = projectileData.WData.WAudioData.HitClipData;
         }
+        
+        //PLAY PARTICLES
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(
+            this, 
+            new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position)
+        );
+        
+        //PLAY SOUND
+        EventManager<SoundFXEventArgs>.Instance.Notify(
+            this, 
+            new SoundFXEventArgs(clipData)
+        );
+        
         
         if(!trespasses)
             Destroy(gameObject);
