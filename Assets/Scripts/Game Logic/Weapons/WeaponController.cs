@@ -50,6 +50,11 @@ public abstract class WeaponController : MonoBehaviour
                 new SoundFXEventArgs(WData.WAudioData.OperateClipData)
             );
         }
+        
+        //TODO: USE OperateCooldownClipData
+        
+        //TODO: USE HitClipData
+        
     }
     
     public virtual void Release(){
