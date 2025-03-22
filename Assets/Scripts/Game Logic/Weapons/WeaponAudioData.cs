@@ -10,7 +10,6 @@ public class WeaponAudioData : ScriptableObject
     [Tooltip("The type of this audio data.")]
     [SerializeField] SoundSourceType audioType = SoundSourceType.AUDIO_FX_MOB;
     
-    //TODO: USE AUDIO CLIP DATA
     [Tooltip("Plays when weapon is successfully used.")]
     [SerializeField] AudioClipData operateClipData;
 
