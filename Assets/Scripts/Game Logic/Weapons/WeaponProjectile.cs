@@ -9,13 +9,10 @@ public class WeaponProjectile : MonoBehaviour
     private WeaponProjectileData projectileData;
     
     //DATA SETTER
-    public WeaponProjectileData ProjectileData 
-    { 
+    public WeaponProjectileData ProjectileData { 
         get => projectileData; 
-        set
-        {
-            if(!isDataInitialized)
-            {
+        set{
+            if(!isDataInitialized){
                 isDataInitialized = true;
                 projectileData = value;
             }
@@ -30,15 +27,13 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Awake()
-    {
+    void Awake(){
         //ASSIGN REFERENCES
         //TODO: HANDLE/STREAMLINE/IMPROVE THIS WITH HARD REQUIREMENT?
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         //CONDITION
         if(!GameController.Instance.IsPlaying)
             return;
@@ -51,15 +46,13 @@ public class WeaponProjectile : MonoBehaviour
     }
 
 
-    void OnEnable()
-    {
+    void OnEnable(){
 
     }
 
     //TODO: IF AN OBJECT POOLER WILL BE USED FOR PROJECTILES, CHANGE THIS TO OnDisable
     //      ALSO, ON DISABLE MIGHT NECESSITATE projectileData DE-INITIALIZATION
-    void OnDestroy()
-    {
+    void OnDestroy(){
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER ON TOP OF THE PARTICLE SPAWNER
         
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
@@ -72,8 +65,7 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //COLLISION DETECTION
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other){
         //HIT SOUND
         //TODO: AUDIO CLIP DATA
         EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(projectileData.WData.WAudioData.HitClipData));
