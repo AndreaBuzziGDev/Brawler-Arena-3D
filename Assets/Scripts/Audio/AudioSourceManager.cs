@@ -43,7 +43,8 @@ public class AudioSourceManager : MonoBehaviour
 
     //EVENT HANDLING
     private void HandleAudioEvent(object sender, SoundFXEventArgs e){
-        if(e.CarriedAudioClip != null){
+        
+        if(e.ClipData.Clip != null){
             if(audioType == e.EventType)
                 PlayClip(e.CarriedAudioClip);
         } else {
