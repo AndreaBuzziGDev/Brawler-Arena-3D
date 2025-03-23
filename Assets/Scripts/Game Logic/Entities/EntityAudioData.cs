@@ -12,32 +12,18 @@ public class EntityAudioData : ScriptableObject
     //DATA - AUDIO CLIPS
     [Header("Audio Clips")]
     
-    //TODO: TO FURTHER AVOID SPAMMING AUDIO FEED FROM MULTIPLE SPAWN POINTS, IMPLEMENT A COOLDOWN ON SOUND SYSTEM
-
-    //TODO: THESE SHOULD EVOLVE INTO STRUCTS THAT CONTAIN DATA ON EACH CLIP: PLAYBACK MODE, RATE LIMIT, AUDIOCLIP REFERENCE
-    
-    //TODO: ACTUALLY USE THESE CLIPS
-    [SerializeField] AudioClip spawnClip;
+    //TODO: TO FURTHER AVOID SPAMMING AUDIO FEED FROM MULTIPLE SPAWN POINTS, IMPLEMENT A COOLDOWN ON SOUND SYSTEM (WIP)
     [SerializeField] AudioClipData spawnClipData;
     
-    [SerializeField] AudioClip damageShieldClip;
     [SerializeField] AudioClipData damageShieldClipData;
     
-    [SerializeField] AudioClip damageHealthClip;
     [SerializeField] AudioClipData damageHealthClipData;
     
-    [SerializeField] AudioClip deathClip;
     [SerializeField] AudioClipData deathClipData;
     
 
     //DATA GETTERS
     public SoundSourceType Type => type;
-    public AudioClip SpawnClip => spawnClip;
-    public AudioClip DamageShieldClip => damageShieldClip;
-    public AudioClip DamageHealthClip => damageHealthClip;
-    public AudioClip DeathClip => deathClip;
-    
-    //TODO: REPLACE THOSE ABOVE WITH THESE:
     public AudioClipData SpawnClipData => spawnClipData;
     public AudioClipData DamageShieldClipData => damageShieldClipData;
     public AudioClipData DamageHealthClipData => damageHealthClipData;
