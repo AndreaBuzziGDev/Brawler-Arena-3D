@@ -14,11 +14,8 @@ public class EntityAudioData : ScriptableObject
     
     //TODO: TO FURTHER AVOID SPAMMING AUDIO FEED FROM MULTIPLE SPAWN POINTS, IMPLEMENT A COOLDOWN ON SOUND SYSTEM (WIP)
     [SerializeField] AudioClipData spawnClipData;
-    
     [SerializeField] AudioClipData damageShieldClipData;
-    
     [SerializeField] AudioClipData damageHealthClipData;
-    
     [SerializeField] AudioClipData deathClipData;
     
 
