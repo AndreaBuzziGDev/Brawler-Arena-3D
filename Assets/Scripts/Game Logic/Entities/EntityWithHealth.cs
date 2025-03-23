@@ -65,6 +65,13 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
             HandleDeath();
     }
 
+    void OnEnable(){
+        EventManager<SoundFXEventArgs>.Instance.Notify(
+            this, 
+            new SoundFXEventArgs(audioData.SpawnClipData)
+        );
+    }
+
 
 
 
@@ -91,10 +98,17 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     }
 
     public virtual void HandleDeath(){
+        //TODO: THIS SYNTAX IS REPETITIVE. USE A HELPER WITH STATIC CODE TO SIMPLIFY THIS
         //DEATH SOUND
-        EventManager<SoundFXEventArgs>.Instance.Notify(this, new SoundFXEventArgs(audioData.DeathClipData));
+        EventManager<SoundFXEventArgs>.Instance.Notify(
+            this, 
+            new SoundFXEventArgs(audioData.DeathClipData)
+        );
         //DEATH PARTICLES
-        EventManager<ParticleEffectEventArgs>.Instance.Notify(this, new ParticleEffectEventArgs(particleData, transform.position));
+        EventManager<ParticleEffectEventArgs>.Instance.Notify(
+            this, 
+            new ParticleEffectEventArgs(particleData, transform.position)
+        );
         //DESTROY
         Destroy(this.gameObject);
     }
@@ -105,10 +119,20 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //HEALTH AND SHIELD FUNCTIONALITIES
     //TODO: MAKE PROTECTED
     public void ReceiveDamage(float damageAmount){
-        if(shield.IsShielded)
+        if(shield.IsShielded){
             shield.ChangeShield(-damageAmount);
-        else
+            EventManager<SoundFXEventArgs>.Instance.Notify(
+                this, 
+                new SoundFXEventArgs(audioData.DamageShieldClipData)
+            );
+        }
+        else{
             health.ChangeHealth(-damageAmount);
+            EventManager<SoundFXEventArgs>.Instance.Notify(
+                this, 
+                new SoundFXEventArgs(audioData.DamageHealthClipData)
+            );
+        }
         
         //SHIELD RECHARGE STUFF
         shield.ResetShieldTimer();
