@@ -31,6 +31,8 @@ public class AudioSourceManager : MonoBehaviour
         //      OTHER CLIPS MIGHT RE-SET THAT SOUND INSTEAD (WITH A COOLDOWN?)
         //      SOME MAY NEED TO LOOP INSTEAD
         
+        //TODO: IMPLEMENT LOGIC BASED ON PLAYBACK MODE
+        
         foreach(AudioSource aSource in sources){
                 
             if(!aSource.isPlaying){
