@@ -24,7 +24,7 @@ public class AudioSourceManager : MonoBehaviour
     }
 
     //PLAY SOUNDS
-    private void PlayClip(AudioClip aClip){
+    private void PlayClip(AudioClipData clipData){
         
         //TODO: TO AVOID SPAMMING THE SAME SOUND, INTRODUCE A LOGIC THAT CONTROLS AUDIO CLIP FLOWS
         //      FOR EXAMPLE, SOME CLIPS MIGHT BE TAGGED SO THAT THEY CAN ONLY BE PLAYED ONCE AT A TIME
@@ -34,7 +34,7 @@ public class AudioSourceManager : MonoBehaviour
         foreach(AudioSource aSource in sources){
                 
             if(!aSource.isPlaying){
-                aSource.clip = aClip;
+                aSource.clip = clipData.Clip;
                 aSource.Play();
                 break;
             }
@@ -44,9 +44,10 @@ public class AudioSourceManager : MonoBehaviour
     //EVENT HANDLING
     private void HandleAudioEvent(object sender, SoundFXEventArgs e){
         
+        
         if(e.ClipData.Clip != null){
             if(audioType == e.EventType)
-                PlayClip(e.ClipData.Clip);
+                PlayClip(e.ClipData);
         } else {
             Debugger.Log("Received from: " + sender + " a null audio clip.", LogType.SOUND, LogLevel.Debug, LogMode.Warning);
         }
