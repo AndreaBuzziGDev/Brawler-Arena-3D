@@ -32,9 +32,27 @@ public class AudioSourceManager : MonoBehaviour
         //      SOME MAY NEED TO LOOP INSTEAD
         
         //TODO: IMPLEMENT LOGIC BASED ON PLAYBACK MODE
-        
+        switch(clipData.PlaybackMode){
+            case SoundPlaybackMode.RateLimited:
+                PlayRateLimited(clipData);
+                break;
+            case SoundPlaybackMode.AmountLimited:
+                PlayAmountLimited(clipData);
+                break;
+            case SoundPlaybackMode.UniqueInstance:
+                PlayUniqueInstance(clipData);
+                break;
+            case SoundPlaybackMode.Normal:
+            default:
+                PlayNormal(clipData);
+                break;
+        }
+    }
+    
+    
+    
+    private void PlayNormal(AudioClipData clipData){
         foreach(AudioSource aSource in sources){
-                
             if(!aSource.isPlaying){
                 aSource.clip = clipData.Clip;
                 aSource.Play();
@@ -42,7 +60,25 @@ public class AudioSourceManager : MonoBehaviour
             }
         }
     }
-
+    
+    private void PlayRateLimited(AudioClipData clipData){
+        //TODO: IMPLEMENT
+        
+    }
+    
+    private void PlayAmountLimited(AudioClipData clipData){
+        //TODO: IMPLEMENT
+        
+    }
+    
+    private void PlayUniqueInstance(AudioClipData clipData){
+        //TODO: IMPLEMENT
+        
+    }
+    
+    
+    
+    
     //EVENT HANDLING
     private void HandleAudioEvent(object sender, SoundFXEventArgs e){
         
