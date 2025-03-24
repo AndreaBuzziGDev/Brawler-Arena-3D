@@ -6,12 +6,12 @@ using UnityEngine;
 public static class PlayerPickupHelper
 {
     //DATA
-    private static Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> subscribers = new();
+    private static Dictionary<PickupTypes, List<Action<object, EntityPickupEventArgs>>> subscribers = new();
     private static Boolean initialized = false;
 
 
     //DATA GETTERS
-    public static Dictionary<PickupController.EPickupTypes, List<Action<object, EntityPickupEventArgs>>> Subscribers 
+    public static Dictionary<PickupTypes, List<Action<object, EntityPickupEventArgs>>> Subscribers 
     {
         get 
         {
@@ -20,7 +20,7 @@ public static class PlayerPickupHelper
             else
             {
                 initialized = true;
-                foreach(PickupController.EPickupTypes pickupType in Enum.GetValues(typeof(PickupController.EPickupTypes)))
+                foreach(PickupTypes pickupType in Enum.GetValues(typeof(PickupTypes)))
                     subscribers.Add(pickupType, new());
                 
                 return subscribers;
@@ -31,7 +31,7 @@ public static class PlayerPickupHelper
 
 
     //FUNCTIONALITIES
-    public static void Subscribe(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
+    public static void Subscribe(PickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
         if (listener == null) 
             return;
@@ -39,7 +39,7 @@ public static class PlayerPickupHelper
         Subscribers[type].Add(listener);
     }
 
-    public static void Unsubscribe(PickupController.EPickupTypes type, Action<object, EntityPickupEventArgs> listener)
+    public static void Unsubscribe(PickupTypes type, Action<object, EntityPickupEventArgs> listener)
     {
         if(listener == null || !Subscribers.ContainsKey(type)) 
             return;

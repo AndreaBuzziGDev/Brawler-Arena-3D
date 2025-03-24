@@ -27,11 +27,11 @@ public class PlayerHittable : EntityWithHealth
     //EntityWithHealth Override
     protected override void Start(){
         base.Start();
-        PlayerPickupHelper.Subscribe(PickupController.EPickupTypes.Health, HandlePickupEvent);
+        PlayerPickupHelper.Subscribe(PickupTypes.Health, HandlePickupEvent);
     }
 
     void OnDestroy(){
-        PlayerPickupHelper.Unsubscribe(PickupController.EPickupTypes.Health, HandlePickupEvent);
+        PlayerPickupHelper.Unsubscribe(PickupTypes.Health, HandlePickupEvent);
     }
 
 
@@ -54,8 +54,9 @@ public class PlayerHittable : EntityWithHealth
         
         //SWITCH ON PickupEventArgs
         switch(e.OriginalInfo.EventType){
-            case PickupController.EPickupTypes.Health:
+            case PickupTypes.Health:
                 //TODO: WHO DETERMINES HOW MUCH HEALTH IS RESTORED AND HOW DOES IT DO IT?
+                //      VIA A PICKUP OBJECT SCRIPTABLE OBJECT
                 health.ChangeHealth(1);
                 break;
             default:

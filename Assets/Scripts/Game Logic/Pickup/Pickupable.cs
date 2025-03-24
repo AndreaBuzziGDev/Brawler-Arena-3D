@@ -7,7 +7,7 @@ public class Pickupable : MonoBehaviour
 {
     [Header("Pickup Properties")]
     [Tooltip("Specify which type of pickup is this")]
-    [SerializeField] PickupController.EPickupTypes pickupType;
+    [SerializeField] PickupTypes pickupType;
 
     [Tooltip("Can the enemy pick this up? (UNIMPLEMENTED)")]
     [SerializeField] bool enemyPickup = false;

@@ -6,7 +6,7 @@ using System;
 public class PickupEventArgs : EventArgs
 {
     //DATA
-    public PickupController.EPickupTypes EventType { get;}
+    public PickupTypes EventType { get;}
     public int PickerId { get; }
     
     //TODO: TO ADDRESS PROPERTIES RELATED TO PICKUP ITEMS DO THE FOLLOWING:
@@ -20,7 +20,7 @@ public class PickupEventArgs : EventArgs
 
 
     //CONSTRUCTOR
-    public PickupEventArgs(PickupController.EPickupTypes eventType, int pickerId)
+    public PickupEventArgs(PickupTypes eventType, int pickerId)
     {
         this.EventType = eventType;
         this.PickerId = pickerId;
