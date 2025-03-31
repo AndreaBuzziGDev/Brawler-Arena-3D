@@ -5,8 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class AudioSourceManager : MonoBehaviour
-{
+public class AudioSourceManager : MonoBehaviour {
     //DATA
     [SerializeField] SoundSourceType audioType = SoundSourceType.UNBOUND;
 
@@ -71,23 +70,28 @@ public class AudioSourceManager : MonoBehaviour
             }
         }
         
-        if(playingSource != null){
-            if(playingSource.time > clipData.RateLimitTime){
-                playingSource.clip = clipData.Clip;
-                playingSource.Play();
-            }
-        } else {
+        if(playingSource != null && (playingSource.time > clipData.RateLimitTime))
+            playingSource.Play();
+        else 
             PlayNormal(clipData);
-        }
     }
     
     private void PlayAmountLimited(AudioClipData clipData){
-        //TODO: IMPLEMENT
         
+        int playingSources = 0;
+        foreach(AudioSource aSource in sources){
+            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+                playingSources++;
+            }
+        }
+
+        if(playingSources < clipData.AmountLimit)
+            PlayNormal(clipData);
     }
     
     private void PlayUniqueInstance(AudioClipData clipData){
         //TODO: IMPLEMENT
+
         
     }
     
@@ -96,7 +100,6 @@ public class AudioSourceManager : MonoBehaviour
     
     //EVENT HANDLING
     private void HandleAudioEvent(object sender, SoundFXEventArgs e){
-        
         
         if(e.ClipData.Clip != null){
             if(audioType == e.EventType)
