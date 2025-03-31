@@ -24,13 +24,6 @@ public class AudioSourceManager : MonoBehaviour {
 
     //PLAY SOUNDS
     private void PlayClip(AudioClipData clipData){
-        
-        //TODO: TO AVOID SPAMMING THE SAME SOUND, INTRODUCE A LOGIC THAT CONTROLS AUDIO CLIP FLOWS
-        //      FOR EXAMPLE, SOME CLIPS MIGHT BE TAGGED SO THAT THEY CAN ONLY BE PLAYED ONCE AT A TIME
-        //      OTHER CLIPS MIGHT RE-SET THAT SOUND INSTEAD (WITH A COOLDOWN?)
-        //      SOME MAY NEED TO LOOP INSTEAD
-        
-        //TODO: IMPLEMENT LOGIC BASED ON PLAYBACK MODE
         switch(clipData.PlaybackMode){
             case SoundPlaybackMode.RateLimited:
                 PlayRateLimited(clipData);
