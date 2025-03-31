@@ -90,9 +90,17 @@ public class AudioSourceManager : MonoBehaviour {
     }
     
     private void PlayUniqueInstance(AudioClipData clipData){
-        //TODO: IMPLEMENT
-
         
+        int playingSources = 0;
+        foreach(AudioSource aSource in sources){
+            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+                playingSources++;
+                break;
+            }
+        }
+
+        if(playingSources < 1)
+            PlayNormal(clipData);
     }
     
     
