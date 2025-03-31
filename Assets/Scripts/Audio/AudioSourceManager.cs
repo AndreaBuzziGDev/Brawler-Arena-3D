@@ -62,8 +62,23 @@ public class AudioSourceManager : MonoBehaviour
     }
     
     private void PlayRateLimited(AudioClipData clipData){
-        //TODO: IMPLEMENT
         
+        AudioSource playingSource = null;
+        foreach(AudioSource aSource in sources){
+            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+                playingSource = aSource;
+                break;
+            }
+        }
+        
+        if(playingSource != null){
+            if(playingSource.time > clipData.RateLimitTime){
+                playingSource.clip = clipData.Clip;
+                playingSource.Play();
+            }
+        } else {
+            PlayNormal(clipData);
+        }
     }
     
     private void PlayAmountLimited(AudioClipData clipData){
