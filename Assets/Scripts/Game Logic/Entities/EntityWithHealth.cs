@@ -14,7 +14,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [Header("Scriptable Object References")]
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
-    [SerializeField] protected ParticleData particleData;//TODO: THIS DATA MIGHT NEED TO BE MOVED INTO EntityData LIKE I DID SOMEWHERE ELSE
+    [SerializeField] protected ParticleData deathParticleData;//TODO: THIS DATA MIGHT NEED TO BE MOVED INTO EntityData LIKE I DID SOMEWHERE ELSE
 
 
     //REFERENCE VALIDATION
@@ -24,7 +24,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
             Debug.LogWarning("No Entity EntityData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(audioData == null)
             Debug.LogWarning("No Entity EntityAudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if(particleData == null)
+        if(deathParticleData == null)
             Debug.LogWarning("No Entity ParticleData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
@@ -107,7 +107,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         //DEATH PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(
             this, 
-            new ParticleEffectEventArgs(particleData, transform.position)
+            new ParticleEffectEventArgs(deathParticleData, transform.position)
         );
         //DESTROY
         Destroy(this.gameObject);
