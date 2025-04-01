@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 
 //TODO: RENAME. THIS IS NOT USED FOR ENTITIES ONLY ANYMORE.
-[CreateAssetMenu(fileName = "New Entity Particle Data", menuName = "Entity Data/Entity Particles/Mob Particles")]
+[CreateAssetMenu(fileName = "New Entity Particle Data", menuName = "Particle Data")]
 public class ParticleData : ScriptableObject
 {
     [Header("Particle Effect Data")]
