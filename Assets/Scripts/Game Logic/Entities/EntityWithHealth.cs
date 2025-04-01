@@ -15,6 +15,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
     [SerializeField] protected ParticleData deathParticleData;//TODO: THIS DATA MIGHT NEED TO BE MOVED INTO EntityData LIKE I DID SOMEWHERE ELSE
+    [SerializeField] protected EntityParticleData entityParticles;//TODO: USE
 
 
     //REFERENCE VALIDATION
