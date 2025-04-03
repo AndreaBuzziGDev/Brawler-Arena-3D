@@ -195,5 +195,6 @@ public enum LogType
     WEATHER,
     LIGHTING,
     DESTRUCTION,
-    ENTITY_PARAMS
+    ENTITY_PARAMS,
+    DAMAGE
 }
