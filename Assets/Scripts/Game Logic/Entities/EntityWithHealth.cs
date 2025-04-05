@@ -103,7 +103,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     }
 
     public virtual void HandleDeath(){
-        //TODO: THIS SYNTAX IS REPETITIVE. USE A HELPER WITH STATIC CODE TO SIMPLIFY THIS
+        
         //DEATH SOUND
         EventManager<SoundFXEventArgs>.Instance.Notify(
             this, 
