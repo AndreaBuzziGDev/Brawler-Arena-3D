@@ -19,7 +19,6 @@ public class PlayerActionController : EntityWithAiming
     [Header("Physics Parameters")]
     [SerializeField] float gravityScale = 0.65f;
     [SerializeField] float movementSpeed = 1.0f;
-    //TODO: MOMENTUM?
 
 
 
