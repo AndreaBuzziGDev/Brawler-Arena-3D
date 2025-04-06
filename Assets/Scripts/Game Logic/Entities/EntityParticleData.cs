@@ -13,10 +13,10 @@ public class EntityParticleData : ScriptableObject{
     
     
     //DATA GETTERS
-    public ParticleData SpawnParticleData => spawnParticleData;
-    public ParticleData DeathParticleData => deathParticleData;
-    public ParticleData ShieldParticleData => shieldParticleData;
-    public ParticleData HealthParticleData => healthParticleData;
+    public ParticleData SpawnPD => spawnParticleData;
+    public ParticleData DeathPD => deathParticleData;
+    public ParticleData ShieldPD => shieldParticleData;
+    public ParticleData HealthPD => healthParticleData;
     
     
 }
