@@ -22,11 +22,11 @@ public class EnemyAiming : EntityWithAiming
 
     //ON COLLISION
     //TODO: KEEP THIS ONLY FOR ENEMIES THAT ARE SUICIDE BOMBERS
+    //      REGULAR UNITS SHOULD "REACT" BY PUSHING THE PLAYER BACK
     private void OnCollisionEnter(Collision other)
     {
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
-        if(hittable is PlayerHittable)
-        {
+        if(hittable is PlayerHittable){
             //OPERATE WEAPON
             enemyWeapon.Operate();
         }
