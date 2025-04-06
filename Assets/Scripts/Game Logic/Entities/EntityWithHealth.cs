@@ -14,8 +14,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     [Header("Scriptable Object References")]
     [SerializeField] protected EntityData data;
     [SerializeField] protected EntityAudioData audioData;
-    [SerializeField] protected ParticleData deathParticleData;//TODO: THIS DATA MIGHT NEED TO BE MOVED INTO EntityData LIKE I DID SOMEWHERE ELSE
-    [SerializeField] protected EntityParticleData entityParticles;//TODO: USE
+    [SerializeField] protected EntityParticleData entityParticles;
 
 
     //REFERENCE VALIDATION
@@ -111,7 +110,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         //DEATH PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(
             this, 
-            new ParticleEffectEventArgs(entityParticles.DeathParticleData, transform.position)
+            new ParticleEffectEventArgs(entityParticles.DeathPD, transform.position)
         );
         //DESTROY
         Destroy(this.gameObject);
