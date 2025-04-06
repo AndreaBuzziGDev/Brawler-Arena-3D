@@ -25,8 +25,8 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
             Debug.LogWarning("No Entity EntityData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if(audioData == null)
             Debug.LogWarning("No Entity EntityAudioData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if(deathParticleData == null)
-            Debug.LogWarning("No Entity ParticleData Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
+        if(entityParticles == null)
+            Debug.LogWarning("No Entity entityParticles Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
 
@@ -111,7 +111,7 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
         //DEATH PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(
             this, 
-            new ParticleEffectEventArgs(deathParticleData, transform.position)
+            new ParticleEffectEventArgs(entityParticles.DeathParticleData, transform.position)
         );
         //DESTROY
         Destroy(this.gameObject);
