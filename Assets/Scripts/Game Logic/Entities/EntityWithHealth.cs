@@ -93,7 +93,6 @@ public abstract class EntityWithHealth : MonoBehaviour, IHittable
     //      DATA PROVIDED IN THE METHOD SIGNATURE COULD HELP PROVIDE THE NECESSARY 
 
     public void HandleHit(DamageInstance dInstance){
-        //TODO: IMPROVE DEBUGGER USAGE
         //TODO: SHOULD THIS USE A MORE COMPLEX SYSTEM THAT RELIES ON ANOTHER TYPE OF CONTROLLER THAT HANDLES GENERIC DAMAGE LOGIC AND DETAILS?
         Debugger.Log(
             gameObject.name + " has been Hit for " + dInstance.DamageAmount + " Damage.", 
