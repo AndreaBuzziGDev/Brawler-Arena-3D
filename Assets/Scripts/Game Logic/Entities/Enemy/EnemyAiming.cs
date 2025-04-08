@@ -8,6 +8,10 @@ public class EnemyAiming : EntityWithAiming{
     [Header("Inspector References")]
     [SerializeField] WeaponController enemyWeapon;
     
+    //TODO: ENUM AIMING BEHAVIOUR
+    //      FOR THE TIME BEING SHOULD SATISFY THE 3 POTENTIAL AIMING SYSTEMS (MELEE, RANGED, SELF-DESTRUCT)
+    
+    
     
     //TODO: DEVELOP BEHAVIOUR FOR GAINING AIMING
     //      UNITS SHOULD BE ABLE TO AIM
@@ -24,13 +28,18 @@ public class EnemyAiming : EntityWithAiming{
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
-    {
+    protected void OnValidate(){
         if (enemyWeapon == null)
             Debug.LogWarning("No Enemy Weapon Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
 
+    
+    //TODO: IMPLEMENT METHODOLOGY TO DO AIMING
+    //      AIMING COOLDOWN AND SUCH
+    //      SHOULD PROBABLY WORK IN SOME WAY TO GRANT KNOWLEDGE ABOUT THE PLAYER'S POSITION
+    
+    
 
 
     //ON COLLISION
