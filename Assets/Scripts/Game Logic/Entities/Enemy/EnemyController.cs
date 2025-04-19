@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : EntityWithHealth
-{
+public class EnemyController : EntityWithHealth {
     //DATA
 
 
     //FUNCTIONALITIES
     //...
-    
+
     //...
-    
+
 }

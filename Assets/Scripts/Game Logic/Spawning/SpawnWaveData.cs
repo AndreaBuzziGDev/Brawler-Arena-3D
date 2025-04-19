@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Spawn Wave Data", menuName = "Spawn Wave")]
-public class SpawnWaveData : ScriptableObject
-{
+public class SpawnWaveData : ScriptableObject {
     //DATA
     [Header("Spawn Wave Parameters")]
     [SerializeField] string waveName = "Wave #_";

@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 
 public class AudioSourceManager : MonoBehaviour {
-    
+
     //DATA
     [SerializeField] SoundSourceType audioType = SoundSourceType.UNBOUND;
 
@@ -14,18 +14,18 @@ public class AudioSourceManager : MonoBehaviour {
 
 
     //LIFECYCLE FUNCTIONS
-    void Start(){
+    void Start() {
         sources = gameObject.GetComponents<AudioSource>().ToList();
         EventManager<SoundFXEventArgs>.Instance.StartListening(HandleAudioEvent);
     }
 
-    void OnDestroy(){
+    void OnDestroy() {
         EventManager<SoundFXEventArgs>.Instance.StopListening(HandleAudioEvent);
     }
 
     //PLAY SOUNDS
-    private void PlayClip(AudioClipData clipData){
-        switch(clipData.PlaybackMode){
+    private void PlayClip(AudioClipData clipData) {
+        switch (clipData.PlaybackMode) {
             case SoundPlaybackMode.RateLimited:
                 PlayRateLimited(clipData);
                 break;
@@ -41,72 +41,73 @@ public class AudioSourceManager : MonoBehaviour {
                 break;
         }
     }
-    
-    
+
+
     //TODO: TEST THESE
-    private void PlayNormal(AudioClipData clipData){
-        foreach(AudioSource aSource in sources){
-            if(!aSource.isPlaying){
+    private void PlayNormal(AudioClipData clipData) {
+        foreach (AudioSource aSource in sources) {
+            if (!aSource.isPlaying) {
                 aSource.clip = clipData.Clip;
                 aSource.Play();
                 break;
             }
         }
     }
-    
-    private void PlayRateLimited(AudioClipData clipData){
-        
+
+    private void PlayRateLimited(AudioClipData clipData) {
+
         AudioSource playingSource = null;
-        foreach(AudioSource aSource in sources){
-            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+        foreach (AudioSource aSource in sources) {
+            if (aSource.isPlaying && aSource.clip == clipData.Clip) {
                 playingSource = aSource;
                 break;
             }
         }
-        
-        if(playingSource != null && (playingSource.time > clipData.RateLimitTime))
+
+        if (playingSource != null && (playingSource.time > clipData.RateLimitTime))
             playingSource.Play();
-        else 
+        else
             PlayNormal(clipData);
     }
-    
-    private void PlayAmountLimited(AudioClipData clipData){
-        
+
+    private void PlayAmountLimited(AudioClipData clipData) {
+
         int playingSources = 0;
-        foreach(AudioSource aSource in sources){
-            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+        foreach (AudioSource aSource in sources) {
+            if (aSource.isPlaying && aSource.clip == clipData.Clip) {
                 playingSources++;
             }
         }
 
-        if(playingSources < clipData.AmountLimit)
+        if (playingSources < clipData.AmountLimit)
             PlayNormal(clipData);
     }
-    
-    private void PlayUniqueInstance(AudioClipData clipData){
-        
+
+    private void PlayUniqueInstance(AudioClipData clipData) {
+
         int playingSources = 0;
-        foreach(AudioSource aSource in sources){
-            if(aSource.isPlaying && aSource.clip == clipData.Clip){
+        foreach (AudioSource aSource in sources) {
+            if (aSource.isPlaying && aSource.clip == clipData.Clip) {
                 playingSources++;
                 break;
             }
         }
 
-        if(playingSources < 1)
+        if (playingSources < 1)
             PlayNormal(clipData);
     }
-    
-    
-    
-    
+
+
+
+
     //EVENT HANDLING
-    private void HandleAudioEvent(object sender, SoundFXEventArgs e){
-        
-        if(e.ClipData.Clip != null){
-            if(audioType == e.EventType)
+    private void HandleAudioEvent(object sender, SoundFXEventArgs e) {
+
+        if (e.ClipData.Clip != null) {
+            if (audioType == e.EventType)
                 PlayClip(e.ClipData);
-        } else {
+        }
+        else {
             Debugger.Log("Received from: " + sender + " a null audio clip.", LogType.SOUND, LogLevel.Debug, LogMode.Warning);
         }
     }

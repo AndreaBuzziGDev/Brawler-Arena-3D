@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EventManager<T> where T : EventArgs
-{
+public class EventManager<T> where T : EventArgs {
     //DATA
     private List<Action<object, T>> subscribers = new List<Action<object, T>>();
 
@@ -15,10 +14,8 @@ public class EventManager<T> where T : EventArgs
 
     //SINGLETON INSTANCE
     private static EventManager<T> instance;
-    public static EventManager<T> Instance
-    {
-        get
-        {
+    public static EventManager<T> Instance {
+        get {
             instance ??= new EventManager<T>();
             return instance;
         }
@@ -26,15 +23,13 @@ public class EventManager<T> where T : EventArgs
 
 
     //CONSTRUCTOR
-    private EventManager()
-    {
+    private EventManager() {
         //REGISTER EVENT
         MyHandler += TriggerEvent;
     }
 
     //DESTRUCTOR
-    ~EventManager()
-    {
+    ~EventManager() {
         //UN-REGISTER EVENT
         MyHandler -= TriggerEvent;
 
@@ -44,8 +39,7 @@ public class EventManager<T> where T : EventArgs
 
 
     //FUNCTIONALITIES
-    public void StartListening(Action<object, T> listener)
-    {
+    public void StartListening(Action<object, T> listener) {
         //SHORTCUT
         if (listener == null) return;
 
@@ -53,28 +47,24 @@ public class EventManager<T> where T : EventArgs
         subscribers.Add(listener);
     }
 
-    public void StopListening(Action<object, T> listener)
-    {
+    public void StopListening(Action<object, T> listener) {
         //SHORTCUT
-        if(instance == null) return;
+        if (instance == null) return;
 
         //
-        if(subscribers.Contains(listener))
-        {
+        if (subscribers.Contains(listener)) {
             subscribers.Remove(listener);
         }
     }
 
-    
+
     //NOTIFICATION
     public void Notify(object sender, T eArgs) => MyHandler?.Invoke(sender, eArgs);
 
     //NB: EVENT SOURCE MUST BE HANDLED IN THE EVENT ARG ITSELF.
-    private void TriggerEvent(object sender, T eArgs)
-    {
+    private void TriggerEvent(object sender, T eArgs) {
         //CALL ACTIONS OF INVOLVED ITEMS
-        foreach(Action<object, T> act in subscribers)
-        {
+        foreach (Action<object, T> act in subscribers) {
             act?.Invoke(sender, eArgs);
         }
     }

@@ -3,19 +3,18 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CustomEditor(typeof(DebuggerConfig))]
-public class DebuggerConfigEditor : Editor
-{
+public class DebuggerConfigEditor : Editor {
     private SerializedProperty enableDebugging;
     private SerializedProperty logLevel;
     private SerializedProperty debugEntries;
 
-    private void OnEnable(){
+    private void OnEnable() {
         enableDebugging = serializedObject.FindProperty("EnableDebugging");
         logLevel = serializedObject.FindProperty("LogLevel");
         debugEntries = serializedObject.FindProperty("debugEntries");
     }
 
-    public override void OnInspectorGUI(){
+    public override void OnInspectorGUI() {
         serializedObject.Update();
 
         //GENERAL SECTION
@@ -25,32 +24,32 @@ public class DebuggerConfigEditor : Editor
 
         //LOG TYPE FLAGS
         EditorGUILayout.LabelField("Log Type Flags", EditorStyles.boldLabel);
-        
+
         bool allEnabled = true;
         bool atLeastOneDisabled = false;
 
-        if (debugEntries.isArray){
-            for (int i = 0; i < debugEntries.arraySize; i++){
+        if (debugEntries.isArray) {
+            for (int i = 0; i < debugEntries.arraySize; i++) {
                 SerializedProperty entry = debugEntries.GetArrayElementAtIndex(i);
                 SerializedProperty enabled = entry.FindPropertyRelative("enabled");
-                
+
                 if (!enabled.boolValue) atLeastOneDisabled = true;
                 if (enabled.boolValue) allEnabled = false;
             }
 
-            if (GUILayout.Button(allEnabled ? "Disable All" : "Enable All", GUILayout.Width(120))){
-                for (int i = 0; i < debugEntries.arraySize; i++){
+            if (GUILayout.Button(allEnabled ? "Disable All" : "Enable All", GUILayout.Width(120))) {
+                for (int i = 0; i < debugEntries.arraySize; i++) {
                     SerializedProperty entry = debugEntries.GetArrayElementAtIndex(i);
                     SerializedProperty enabled = entry.FindPropertyRelative("enabled");
                     enabled.boolValue = atLeastOneDisabled;
                 }
             }
 
-            for (int i = 0; i < debugEntries.arraySize; i++){
+            for (int i = 0; i < debugEntries.arraySize; i++) {
                 SerializedProperty entry = debugEntries.GetArrayElementAtIndex(i);
                 SerializedProperty logType = entry.FindPropertyRelative("logType");
                 SerializedProperty enabled = entry.FindPropertyRelative("enabled");
-                
+
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField(logType.enumNames[logType.enumValueIndex], GUILayout.Width(150));
                 enabled.boolValue = EditorGUILayout.Toggle(enabled.boolValue);

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponMeleeController : WeaponController
-{
+public class WeaponMeleeController : WeaponController {
     //DATA
     [Header("Inspector References")]
     [Tooltip("Reference to WeaponMeleeData Scriptable Object.")]
@@ -16,7 +15,7 @@ public class WeaponMeleeController : WeaponController
 
 
     //FUNCTIONALITIES
-    public override void Operate(){
+    public override void Operate() {
         base.Operate();
         //TODO: IMPLEMENT
         //TODO: USE UNIFIED DEBUG?

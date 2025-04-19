@@ -2,23 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponProjectile : MonoBehaviour
-{
+public class WeaponProjectile : MonoBehaviour {
     //DATA
     private bool isDataInitialized = false;
     private WeaponProjectileData projectileData;
-    
+
     //DATA SETTER
-    public WeaponProjectileData ProjectileData { 
-        get => projectileData; 
-        set{
-            if(!isDataInitialized){
+    public WeaponProjectileData ProjectileData {
+        get => projectileData;
+        set {
+            if (!isDataInitialized) {
                 isDataInitialized = true;
                 projectileData = value;
             }
             else
                 Debug.LogWarning("Projectile Data have already been initialized.");
-        } 
+        }
     }
 
 
@@ -27,36 +26,36 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Awake(){
+    void Awake() {
         //ASSIGN REFERENCES
         //TODO: HANDLE/STREAMLINE/IMPROVE THIS WITH HARD REQUIREMENT?
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate(){
+    void FixedUpdate() {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         projectileData.HandleLifetime(Time.fixedDeltaTime);
-        if(projectileData.HasExpired)
+        if (projectileData.HasExpired)
             Destroy(this.gameObject);
         else
             rb.velocity = projectileData.Speed * projectileData.Direction;
     }
 
 
-    void OnEnable(){
+    void OnEnable() {
 
     }
 
     //TODO: IF AN OBJECT POOLER WILL BE USED FOR PROJECTILES, CHANGE THIS TO OnDisable
     //      ALSO, ON DISABLE MIGHT NECESSITATE projectileData DE-INITIALIZATION
-    void OnDestroy(){
+    void OnDestroy() {
         //TODO: COULD BE NICE TO HAVE AN OBJECT POOLER ON TOP OF THE PARTICLE SPAWNER
-        
+
         //TODO: USE PARTICLE MANAGER TO SPAWN PARTICLES
-        
+
         //Debug.Log("Projectile " + gameObject.name + " Destroyed");
     }
 
@@ -65,33 +64,33 @@ public class WeaponProjectile : MonoBehaviour
 
 
     //COLLISION DETECTION
-    private void OnTriggerEnter(Collider other){
-        
+    private void OnTriggerEnter(Collider other) {
+
         //CHECK IF IT HIT A VALID TARGET
         IHittable hittable = other.gameObject?.GetComponent<IHittable>();
         bool trespasses = false;
         AudioClipData clipData = projectileData.WData.WAudioData.MissClipData;
-        
-        if(hittable != null){
+
+        if (hittable != null) {
             hittable.HandleHit(projectileData.DamageInstance);
             trespasses = projectileData.WData.Tresspass;
             clipData = projectileData.WData.WAudioData.HitClipData;
         }
-        
+
         //PLAY PARTICLES
         EventManager<ParticleEffectEventArgs>.Instance.Notify(
-            this, 
+            this,
             new ParticleEffectEventArgs(projectileData.WData.ParticleHitting, transform.position)
         );
-        
+
         //PLAY SOUND
         EventManager<SoundFXEventArgs>.Instance.Notify(
-            this, 
+            this,
             new SoundFXEventArgs(clipData)
         );
-        
-        
-        if(!trespasses)
+
+
+        if (!trespasses)
             Destroy(gameObject);
     }
 }

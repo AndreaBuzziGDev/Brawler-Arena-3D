@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ParticleManager : MonoSingleton<ParticleManager>
-{
+public class ParticleManager : MonoSingleton<ParticleManager> {
     //DATA
 
 
     //LIFECYCLE FUNCTIONS
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         //REGISTER EVENTS
         EventManager<ParticleEffectEventArgs>.Instance.StartListening(SpawnParticlesAutoDestroy);
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         //UN-REGISTER EVENTS
         EventManager<ParticleEffectEventArgs>.Instance.StopListening(SpawnParticlesAutoDestroy);
     }
@@ -25,17 +22,16 @@ public class ParticleManager : MonoSingleton<ParticleManager>
 
 
     //FUNCTIONALITIES
-    private void SpawnParticlesAutoDestroy(object sender, ParticleEffectEventArgs e)
-    {
+    private void SpawnParticlesAutoDestroy(object sender, ParticleEffectEventArgs e) {
         //TODO: THIS CAN BE SIGNIFICANTLY IMPROVED BY USING AN OBJECT POOLER
-        if(e.ToSpawn != null)
-        {
+        if (e.ToSpawn != null) {
             GameObject go = Instantiate(e.ToSpawn);
             go.transform.position = e.Position;
             go.name = e.Name;
 
             Destroy(go.gameObject, e.Duration);
-        } else {
+        }
+        else {
             Debugger.Log("Received from: " + sender + " a null Particle Effect.", LogType.PARTICLE, LogLevel.Debug, LogMode.Warning);
         }
     }

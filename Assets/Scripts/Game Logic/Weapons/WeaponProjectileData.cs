@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponProjectileData
-{
+public class WeaponProjectileData {
     //DATA
     private WeaponRangedData wData;
     private DamageInstance dInstance;
@@ -29,8 +28,7 @@ public class WeaponProjectileData
 
 
     //CONSTRUCTOR
-    public WeaponProjectileData(WeaponRangedData wData, Vector3 pDirection)
-    {
+    public WeaponProjectileData(WeaponRangedData wData, Vector3 pDirection) {
         this.wData = wData;
         this.dInstance = new DamageInstance(wData);
         this.maxLifetime = wData.MaxLifetime;

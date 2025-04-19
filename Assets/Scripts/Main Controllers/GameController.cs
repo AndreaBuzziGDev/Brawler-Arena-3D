@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoSingleton<GameController>
-{
+public class GameController : MonoSingleton<GameController> {
     //ENUMS
-    public enum EGameState
-    {
+    public enum EGameState {
         Start,
         Playing,
         Paused,
@@ -15,7 +13,7 @@ public class GameController : MonoSingleton<GameController>
         Quitting,
         Exiting
     }
-    
+
 
     //DATA
     ///SIMPLE DATA
@@ -39,8 +37,7 @@ public class GameController : MonoSingleton<GameController>
 
 
     //LIFECYCLE FUNCTIONS
-    protected override void Awake()
-    {
+    protected override void Awake() {
         //BASE
         base.Awake();
 
@@ -53,11 +50,9 @@ public class GameController : MonoSingleton<GameController>
 
 
     //FUNCTIONALITIES
-    public void SetState(EGameState targetState)
-    {
+    public void SetState(EGameState targetState) {
         state = targetState;
-        switch (state)
-        {
+        switch (state) {
             case EGameState.Start:
                 //RESERVED FOR INITIALIZATION
                 SetState(EGameState.Playing);
@@ -103,6 +98,6 @@ public class GameController : MonoSingleton<GameController>
 
 
     //OTHER...
-    
+
 
 }

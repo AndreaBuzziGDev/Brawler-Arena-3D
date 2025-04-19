@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneNavigationController : MonoSingleton<SceneNavigationController>
-{
+public class SceneNavigationController : MonoSingleton<SceneNavigationController> {
     //ENUMS
     #region ENUMS
-    public enum eSceneName
-    {
+    public enum eSceneName {
         TitleScreen,
         MainMenu,
         Credits,
         GameScene
     }
     #endregion
-    
+
     //DATA
     #region DATA
     [Header("Scriptable Objects")]
     [Tooltip("Serialized List of all stages")]
     [SerializeField] private List<StageDataSO> StageData = new();
-    
-    
+
+
     ///DICTIONARY FOR RUNTIME ACCESS
     private Dictionary<eSceneName, StageDataSO> StageSceneDictionary = new();
-    
-    
+
+
     /// HAS LOADED
     private bool hasLoaded = false;
     public bool HasLoaded { get { return hasLoaded; } }
@@ -40,18 +38,16 @@ public class SceneNavigationController : MonoSingleton<SceneNavigationController
 
     //LIFECYCLE FUNCTIONS
     #region LIFECYCLE FUNCTIONS
-    
+
     // Start is called before the first frame update
-    void Start()
-    {
-        foreach (StageDataSO s in StageData)
-        {
+    void Start() {
+        foreach (StageDataSO s in StageData) {
             StageSceneDictionary.Add(s.StageID, s);
 
         }
         hasLoaded = true;
     }
-    
+
     #endregion
 
 
@@ -60,16 +56,15 @@ public class SceneNavigationController : MonoSingleton<SceneNavigationController
 
 
     #region FUNCTIONALITIES
-    public void LoadScene(eSceneName targetScene)
-    {
+    public void LoadScene(eSceneName targetScene) {
         string intendedScene = StageSceneDictionary[targetScene].AssociatedSceneName;
-        
-        if (!string.IsNullOrEmpty(intendedScene)) 
+
+        if (!string.IsNullOrEmpty(intendedScene))
             SceneManager.LoadScene(intendedScene);
-        else 
+        else
             Debug.Log("Invalid Target Scene: " + targetScene);
     }
-    
+
     #endregion
 
 }

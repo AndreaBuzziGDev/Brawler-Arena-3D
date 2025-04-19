@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDirection : MonoBehaviour
-{
+public class PlayerDirection : MonoBehaviour {
     [Header("Inspector References")]
     [SerializeField] PlayerActionController playerAction;
     [SerializeField] SpriteRenderer sprite;
@@ -15,11 +14,10 @@ public class PlayerDirection : MonoBehaviour
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
-    {
+    protected void OnValidate() {
         if (playerAction == null)
             Debug.LogWarning("No PlayerController Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
-        if(sprite == null)
+        if (sprite == null)
             Debug.LogWarning("No SpriteRenderer Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
 #endif
@@ -29,14 +27,12 @@ public class PlayerDirection : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //IMMEDIATELY ROTATE WHERE NEEDED
         UpdateDirection();
     }
 
-    void Update()
-    {
+    void Update() {
         //IMMEDIATELY ROTATE WHERE NEEDED
         UpdateDirection();
     }

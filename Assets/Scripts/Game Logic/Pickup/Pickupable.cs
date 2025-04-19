@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickupable : MonoBehaviour
-{
+public class Pickupable : MonoBehaviour {
     [Header("Pickup Properties")]
     [Tooltip("Specify which type of pickup is this")]
     [SerializeField] PickupTypes pickupType;
@@ -19,22 +18,19 @@ public class Pickupable : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void OnEnable()
-    {
+    void OnEnable() {
         isInert = false;
         targetLayer = LayerMask.NameToLayer("Enemy Collider");//NB: Needed to avoid errors due to lifecycle functions binding
     }
 
 
     //TRIGGER
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         Debug.Log("This is Pickupable Script colliding with: " + other.gameObject.name + " with Id: " + other.gameObject.GetInstanceID());
-        
-        if(!isInert)
-        {
+
+        if (!isInert) {
             bool isEnemy = other.gameObject.layer == targetLayer;
-            if(!isEnemy || (isEnemy && enemyPickup)){
+            if (!isEnemy || (isEnemy && enemyPickup)) {
                 isInert = true;
                 EventManager<PickupEventArgs>.Instance.Notify(
                     this,

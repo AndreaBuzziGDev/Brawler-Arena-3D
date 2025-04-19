@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class GameMenuEventArgs : EventArgs
-{
+public class GameMenuEventArgs : EventArgs {
     //ENUMS
-    public enum EType
-    {
+    public enum EType {
         GAME_MENU_PAUSE_OPEN,
         GAME_MENU_PAUSE_CLOSE,
         GAME_OVER
@@ -18,8 +16,7 @@ public class GameMenuEventArgs : EventArgs
 
 
     //CONSTRUCTOR
-    public GameMenuEventArgs (EType eventType = EType.GAME_MENU_PAUSE_OPEN)
-    {
+    public GameMenuEventArgs(EType eventType = EType.GAME_MENU_PAUSE_OPEN) {
         this.EventType = eventType;
     }
 }

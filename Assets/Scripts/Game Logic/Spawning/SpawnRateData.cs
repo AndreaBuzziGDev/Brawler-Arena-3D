@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Spawn Rate", menuName = "Spawn Rate")]
-public class SpawnRateData : ScriptableObject
-{
+public class SpawnRateData : ScriptableObject {
     //DATA
     [Header("Spawn Rate Parameters")]
     [Tooltip("Which mob to spawn")]

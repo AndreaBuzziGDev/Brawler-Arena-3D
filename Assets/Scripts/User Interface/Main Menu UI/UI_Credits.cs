@@ -4,8 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UI_Credits : MonoBehaviour
-{
+public class UI_Credits : MonoBehaviour {
     //DATA
     ///INPUT - EVENT-DRIVEN IMPLEMENTATION
     private GameInputAction inputPlayer;
@@ -17,8 +16,7 @@ public class UI_Credits : MonoBehaviour
     //LIFECYCLE FUNCTIONS
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         //ENABLE INPUT WHEN OBJECT ENABLED
         inputPlayer = new GameInputAction();
         inputPlayer.Enable();
@@ -28,8 +26,7 @@ public class UI_Credits : MonoBehaviour
         inputPlayer.BaseActionMap.Escape.performed += OnEscapePerformed;
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         inputPlayer.BaseActionMap.Escape.performed -= OnEscapePerformed;
     }
 
@@ -44,8 +41,7 @@ public class UI_Credits : MonoBehaviour
 
     //INPUT EVENTS
     //EVENT-BASED INPUT IMPLEMENTATION
-    private void OnEscapePerformed(InputAction.CallbackContext value)
-    {
+    private void OnEscapePerformed(InputAction.CallbackContext value) {
         SceneNavigationController.Instance.LoadScene(SceneNavigationController.eSceneName.MainMenu);
     }
 

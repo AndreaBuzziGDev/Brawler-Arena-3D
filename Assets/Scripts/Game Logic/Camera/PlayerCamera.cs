@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-public class PlayerCamera : MonoBehaviour
-{
+public class PlayerCamera : MonoBehaviour {
     //DATA
     [Header("Inspector References")]
     [Tooltip("Who is the camera following")]
@@ -28,23 +27,20 @@ public class PlayerCamera : MonoBehaviour
 
     //LIFECYCLE FUNCTIONS
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         cameraComp = gameObject.GetComponent<Camera>();
         baseFOV = cameraComp.fieldOfView;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        if(cameraTarget)
+    void FixedUpdate() {
+        if (cameraTarget)
             FollowTarget();
     }
 
 
     //FUNCTIONALITIES
-    private void FollowTarget()
-    {
+    private void FollowTarget() {
         transform.position = Vector3.Lerp(transform.position, cameraTarget.position + cameraOffset, Time.deltaTime * damping);
         transform.LookAt(cameraTarget.position - new Vector3(0, verticalOffset, 0), Vector3.up);
     }

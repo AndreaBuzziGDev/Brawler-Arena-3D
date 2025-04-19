@@ -4,29 +4,25 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 
-public class UI_GameHUD : MonoBehaviour
-{
+public class UI_GameHUD : MonoBehaviour {
     //DATA
     //TODO: THIS SHOULD BE THE EQUIVALENT OF UI_RaindropsGame
 
     //INSPECTOR REFERENCES
     [SerializeField] CanvasRenderer thisCanvas;
-    
+
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleMenuEvent);
     }
 
-    void Update()
-    {
+    void Update() {
         //TODO: WHY WAS THIS PUT IN HERE? IS IT A CODE EDIT LEFTOVER?
         //EventManager<GameMenuEventArgs>.Instance.Notify(this, new GameMenuEventArgs(GameMenuEventArgs.EType.GAME_OVER));
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         EventManager<GameMenuEventArgs>.Instance.StopListening(HandleMenuEvent);
     }
 
@@ -36,11 +32,9 @@ public class UI_GameHUD : MonoBehaviour
 
 
     //EVENT-HANDLING DELEGATE
-    public void HandleMenuEvent(object sender, GameMenuEventArgs e)
-    {
+    public void HandleMenuEvent(object sender, GameMenuEventArgs e) {
         Debugger.Log("This Object is: " + this.gameObject.name, LogType.UI);
-        switch(e.EventType)
-        {
+        switch (e.EventType) {
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_CLOSE:
                 thisCanvas.gameObject.SetActive(true);
                 break;

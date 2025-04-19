@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Entity Parameters", menuName = "Entity Data/Entity Params")]
-public class EntityData : ScriptableObject
-{
+public class EntityData : ScriptableObject {
     //ENUMS
-    public enum EEntityType{
+    public enum EEntityType {
         PLAYER,
         NPC
     }
 
     //ENTITY TYPE
-    
+
     [Header("Entity Identity")]
     [Tooltip("The Type of entity this is supposed to be.")]
     [SerializeField] string entityName = "Entity Name";
     public string EntityName => entityName;
-    
+
     [SerializeField] EEntityType entityType = EEntityType.NPC;
     public EEntityType EntityType => entityType;
 

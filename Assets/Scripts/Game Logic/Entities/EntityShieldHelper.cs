@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityShieldHelper
-{
+public class EntityShieldHelper {
     //DATA
     EntityData.EEntityType entityType;
-    
+
     //IDENTITY
     string masterName = "Unnamed Entity";
 
@@ -39,14 +38,13 @@ public class EntityShieldHelper
 
 
     //CONSTRUCTOR
-    public EntityShieldHelper(EntityData data)
-    {
+    public EntityShieldHelper(EntityData data) {
         this.masterName = data.EntityName;
         this.entityType = data.EntityType;
-        
+
         this.currentShield = data.MaxShield;
         this.maxShield = data.MaxShield;
-        
+
         this.shieldCooldownTimer = 0;
         this.maxShieldCooldownTimer = data.ShieldCooldownTimer;
         this.shieldRechargeRate = data.ShieldRechargeRate;
@@ -55,7 +53,7 @@ public class EntityShieldHelper
 
 
     //FUNCTIONALITIES
-    public void ChangeShield(float changeAmount){
+    public void ChangeShield(float changeAmount) {
         currentShield = Mathf.Clamp(currentShield + changeAmount, 0, maxShield);
         NotifyValueChange();
         Debugger.Log(DebugProperties, LogType.ENTITY_PARAMS);
@@ -68,19 +66,18 @@ public class EntityShieldHelper
 
 
     //COMPOSITE FUNCTIONALITIES
-    public void HandleLogic()
-    {
+    public void HandleLogic() {
         //
-        if(IsWaitingRecharge)
+        if (IsWaitingRecharge)
             DepleteShieldTimer();
-        else if(IsRecharging)
+        else if (IsRecharging)
             ChangeShield(GetShieldRecharge());
     }
-    
-    
+
+
     //NOTIFICATION
-    private void NotifyValueChange(){
-        switch(entityType){
+    private void NotifyValueChange() {
+        switch (entityType) {
             case EntityData.EEntityType.PLAYER:
                 EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.SHIELD, maxShield, currentShield));
                 break;
@@ -88,13 +85,13 @@ public class EntityShieldHelper
             default:
                 //EventManager<EntityDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.SHIELD, maxHealth, currentHealth));
                 break;
-            
+
         }
     }
 
 
     //DEBUG
-    public void DebugProperties(){
+    public void DebugProperties() {
 
         StringBuilder sb = new StringBuilder();
 

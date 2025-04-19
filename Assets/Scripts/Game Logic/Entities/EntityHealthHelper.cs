@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityHealthHelper
-{
+public class EntityHealthHelper {
     //DATA
     EntityData.EEntityType entityType;
-    
+
     //IDENTITY
     string masterName = "Unnamed Entity";
-    
+
     //HEALTH
     float currentHealth = 1;
     float maxHealth = 1;
-    
+
 
     //DATA GETTERS
     public float CurrentHealth => currentHealth;
@@ -29,8 +28,7 @@ public class EntityHealthHelper
 
 
     //CONSTRUCTOR
-    public EntityHealthHelper(EntityData data)
-    {
+    public EntityHealthHelper(EntityData data) {
         this.entityType = data.EntityType;
         this.currentHealth = data.MaxHealth;
         this.maxHealth = data.MaxHealth;
@@ -39,16 +37,16 @@ public class EntityHealthHelper
 
 
     //FUNCTIONALITIES
-    public void ChangeHealth(float changeAmount){
+    public void ChangeHealth(float changeAmount) {
         currentHealth = Mathf.Clamp(currentHealth + changeAmount, 0, maxHealth);
         NotifyValueChange();
         Debugger.Log(DebugProperties, LogType.ENTITY_PARAMS);
     }
-    
-    
+
+
     //NOTIFICATION
-    private void NotifyValueChange(){
-        switch(entityType){
+    private void NotifyValueChange() {
+        switch (entityType) {
             case EntityData.EEntityType.PLAYER:
                 EventManager<PlayerDamageEventArgs>.Instance.Notify(this, new PlayerDamageEventArgs(EntityDamageEventArgs.EDamageType.HEALTH, maxHealth, currentHealth));
                 break;
@@ -56,13 +54,13 @@ public class EntityHealthHelper
             default:
                 //EventManager<EntityDamageEventArgs>.Instance.Notify(this, new(EntityDamageEventArgs.EDamageType.HEALTH, maxHealth, currentHealth));
                 break;
-            
+
         }
     }
 
 
     //DEBUG
-    public void DebugProperties(){
+    public void DebugProperties() {
 
         StringBuilder sb = new StringBuilder();
 

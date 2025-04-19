@@ -4,87 +4,87 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponRangedHelper
-{
+public class WeaponRangedHelper {
     //DATA
     ///GENERAL INFO
     string masterName = "WeaponRangedHelper";
     string weaponName = "Unnamed Weapon";
     WeaponRangedData.EOperateMode operateMode;
-    
+
     ///BASIC ATTACK LOGIC
     float attackTimer = 0.0f;
     float threshold = 1;
-    
+
     ///BURST LOGIC
     int burstCountMax = 0;
     int burstCount = 0;
     float burstCooldownMax = 0.5f;
     float burstCooldown = 0.0f;
-    
+
     ///CHARGE LOGIC
     float chargeTimerMax = 1.0f;
     float chargeTimer = 0.0f;
     float chargeRate = 1.0f;
-    
-    
 
-    
+
+
+
     //DATA FUNCTIONS
     public bool IsOperating { get; set; }
     public bool ReadyToShoot { get { return attackTimer >= threshold; } }
-    public float GetExtraBulletCount { get { return Mathf.Max((int)((attackTimer / threshold)-1), 0); } }
+    public float GetExtraBulletCount { get { return Mathf.Max((int)((attackTimer / threshold) - 1), 0); } }
     public bool IsBursting { get { return burstCountMax > burstCount; } }
     public bool IsBurstReady { get { return burstCooldown > burstCooldownMax; } }
     public bool IsCharged { get { return chargeTimer > chargeTimerMax; } }
-    
-    
-    
-    
+
+
+
+
     //CONSTRUCTOR
     //TODO: THIS EVENTUALLY CAN BE MODIFIED TO HANDLE GENERALIZATION OF LOGIC
-    public WeaponRangedHelper(WeaponRangedData wData, WeaponController master){
-        
+    public WeaponRangedHelper(WeaponRangedData wData, WeaponController master) {
+
         weaponName = wData.WeaponName;
         operateMode = wData?.OperateMode ?? WeaponRangedData.EOperateMode.SINGLE;
-        
+
         //TODO: THRESHOLD MIGHT NEED TO BE ADJUSTED SPECIFICALLY FOR BURST GAMEPLAY IN ORDER TO MAKE BURST WEAPONS SHOOT FASTER
-        threshold = 1.0f/wData.AttackRate;
+        threshold = 1.0f / wData.AttackRate;
         attackTimer = threshold;
-        
+
         burstCountMax = wData.BurstCount;
         burstCooldownMax = wData.BurstCooldown;
         burstCooldown = burstCooldownMax;
 
         chargeTimerMax = wData.ChargeTime;
         chargeRate = wData.AttackRate;
-        
+
         masterName = master.gameObject.name;
     }
-    
-    
+
+
     //FUNCTIONALITIES
-    public void HandleWeaponTimer(float deltaTime){
-        if(!ReadyToShoot){
+    public void HandleWeaponTimer(float deltaTime) {
+        if (!ReadyToShoot) {
             attackTimer += deltaTime;
         }
-        if(!IsBurstReady){
+        if (!IsBurstReady) {
             burstCooldown += deltaTime;
         }
-        if(IsOperating && operateMode == WeaponRangedData.EOperateMode.CHARGED){
+        if (IsOperating && operateMode == WeaponRangedData.EOperateMode.CHARGED) {
             chargeTimer += (deltaTime * chargeRate);
-        } else {
+        }
+        else {
             chargeTimer = 0.0f;
         }
         Debugger.Log(DebugProperties, LogType.WEAPON);
     }
-    
-    
-    public bool HandleShooting(){
+
+
+    public bool HandleShooting() {
         attackTimer = Mathf.Max(0 + (attackTimer - threshold), 0);
         bool result = false;
-        
-        switch(operateMode){
+
+        switch (operateMode) {
             case WeaponRangedData.EOperateMode.AUTO:
                 //AUTO SHOULD SHOOT WHILE IT'S "OPERATING"
                 result = true;
@@ -93,7 +93,7 @@ public class WeaponRangedHelper
                 //BURST SHOULD ACT LIKE AUTO UP TO (N) TIMES
                 result = true;
                 burstCount++;
-                if(!IsBursting){
+                if (!IsBursting) {
                     IsOperating = false;
                     burstCount = 0;
                     burstCooldown = 0.0f;
@@ -101,7 +101,7 @@ public class WeaponRangedHelper
                 break;
             case WeaponRangedData.EOperateMode.CHARGED:
                 //CHARGED SHOULD LOAD UNTIL A CHARGE TIMER HAS BEEN REACHED, THEN RELASE SHOT
-                if(IsCharged){
+                if (IsCharged) {
                     result = true;
                     IsOperating = false;
                     chargeTimer = 0.0f;
@@ -116,15 +116,15 @@ public class WeaponRangedHelper
                 Debug.LogWarning("Invalid Ranged Weapon Operate Mode: " + operateMode);
                 break;
         }
-        
+
         return result;
     }
-    
-    
-    
-    
+
+
+
+
     //DEBUG
-    public void DebugProperties(){
+    public void DebugProperties() {
 
         StringBuilder sb = new StringBuilder();
 
@@ -137,8 +137,7 @@ public class WeaponRangedHelper
         sb.AppendLine($"Ranged Weapon {masterName} - IsOperating: {IsOperating}");
         sb.AppendLine($"Ranged Weapon {masterName} - ExtraBulletCount: {GetExtraBulletCount}");
 
-        if (operateMode == WeaponRangedData.EOperateMode.BURST)
-        {
+        if (operateMode == WeaponRangedData.EOperateMode.BURST) {
             sb.AppendLine($"Ranged Weapon {masterName} - burstCountMax: {burstCountMax}");
             sb.AppendLine($"Ranged Weapon {masterName} - burstCount: {burstCount}");
             sb.AppendLine($"Ranged Weapon {masterName} - burstCooldownMax: {burstCooldownMax}");
@@ -147,8 +146,7 @@ public class WeaponRangedHelper
             sb.AppendLine($"Ranged Weapon {masterName} - IsBurstReady: {IsBurstReady}");
         }
 
-        if (operateMode == WeaponRangedData.EOperateMode.CHARGED)
-        {
+        if (operateMode == WeaponRangedData.EOperateMode.CHARGED) {
             sb.AppendLine($"Ranged Weapon {masterName} - chargeTimerMax: {chargeTimerMax}");
             sb.AppendLine($"Ranged Weapon {masterName} - chargeTimer: {chargeTimer}");
             sb.AppendLine($"Ranged Weapon {masterName} - chargeRate: {chargeRate}");

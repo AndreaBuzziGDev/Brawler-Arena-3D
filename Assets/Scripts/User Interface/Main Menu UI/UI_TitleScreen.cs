@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UI_TitleScreen : MonoSingleton<UI_TitleScreen>
-{
+public class UI_TitleScreen : MonoSingleton<UI_TitleScreen> {
     //DATA
     ///INPUT - EVENT-DRIVEN IMPLEMENTATION
     private GameInputAction inputPlayer;
@@ -14,8 +13,7 @@ public class UI_TitleScreen : MonoSingleton<UI_TitleScreen>
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //ENABLE INPUT WHEN OBJECT ENABLED
         inputPlayer = new GameInputAction();
         inputPlayer.Enable();
@@ -28,13 +26,12 @@ public class UI_TitleScreen : MonoSingleton<UI_TitleScreen>
         StartCoroutine(WaitAndChangeScene());
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         inputPlayer.BaseActionMap.Escape.performed -= OnEscapePerformed;
     }
 
 
-    
+
     //FUNCTIONALITIES
     //TODO: JUICYNESS TO UI
 
@@ -43,15 +40,13 @@ public class UI_TitleScreen : MonoSingleton<UI_TitleScreen>
 
     //INPUT EVENTS
     //EVENT-BASED INPUT IMPLEMENTATION
-    private void OnEscapePerformed(InputAction.CallbackContext value)
-    {
+    private void OnEscapePerformed(InputAction.CallbackContext value) {
         SceneNavigationController.Instance.LoadScene(SceneNavigationController.eSceneName.MainMenu);
     }
 
 
     //COROUTINES
-    IEnumerator WaitAndChangeScene()
-    {
+    IEnumerator WaitAndChangeScene() {
         // suspend execution for 5 seconds
         yield return new WaitForSeconds(5);
         SceneNavigationController.Instance.LoadScene(SceneNavigationController.eSceneName.MainMenu);

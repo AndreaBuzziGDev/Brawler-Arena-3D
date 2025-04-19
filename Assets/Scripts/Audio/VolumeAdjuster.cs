@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class VolumeAdjuster : MonoBehaviour
-{
+public class VolumeAdjuster : MonoBehaviour {
     //ENUM
-    public enum EVolumeType
-    {
+    public enum EVolumeType {
         MUSIC,
         SOUND_FX,
         VOICE,
@@ -34,8 +32,7 @@ public class VolumeAdjuster : MonoBehaviour
 
     //AUTOMATICAL ASSIGNMENT OF AUDIOSOURCES
 #if UNITY_EDITOR
-    private void OnValidate()
-    {
+    private void OnValidate() {
         // Clear the list to avoid duplications
         sources.Clear();
         // Get all AudioSource components on this GameObject
@@ -47,16 +44,14 @@ public class VolumeAdjuster : MonoBehaviour
 
     //LIFECYCLE FUNCTIONS
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         EventManager<VolumeChangeEventArgs>.Instance.StartListening(HandleVolumeChangeEvent);
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleGamePauseEvent);
-        
+
         SetVolume();
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         EventManager<VolumeChangeEventArgs>.Instance.StopListening(HandleVolumeChangeEvent);
         EventManager<GameMenuEventArgs>.Instance.StopListening(HandleGamePauseEvent);
     }
@@ -65,34 +60,30 @@ public class VolumeAdjuster : MonoBehaviour
     //FUNCTIONALITIES
     private float GetMatchingPref(EVolumeType targetType) => UtilsPrefs.Options.GetVolume(targetType);
 
-    private void SetVolume()
-    {
+    private void SetVolume() {
         float value = GetMatchingPref(volumeType);
-        foreach(AudioSource aSource in sources)
-        {
-            aSource.volume = value-1;
+        foreach (AudioSource aSource in sources) {
+            aSource.volume = value - 1;
         }
     }
 
 
 
     //PAUSE AUDIO HANDLING
-    private void PauseAudio()
-    {
-        if(!pauseAudioOnGamePause)
+    private void PauseAudio() {
+        if (!pauseAudioOnGamePause)
             return;
-        
-        foreach(AudioSource aSource in sources)
-            if(aSource.isPlaying)
+
+        foreach (AudioSource aSource in sources)
+            if (aSource.isPlaying)
                 aSource.Pause();
     }
-    private void UnPauseAudio()
-    {
-        if(!pauseAudioOnGamePause)
+    private void UnPauseAudio() {
+        if (!pauseAudioOnGamePause)
             return;
-        
-        foreach(AudioSource aSource in sources)
-            if(!aSource.isPlaying)
+
+        foreach (AudioSource aSource in sources)
+            if (!aSource.isPlaying)
                 aSource.UnPause();
     }
 
@@ -102,10 +93,8 @@ public class VolumeAdjuster : MonoBehaviour
     private void HandleVolumeChangeEvent(object sender, VolumeChangeEventArgs e) => SetVolume();
 
 
-    private void HandleGamePauseEvent(object sender, GameMenuEventArgs e)
-    {
-        switch(e.EventType)
-        {
+    private void HandleGamePauseEvent(object sender, GameMenuEventArgs e) {
+        switch (e.EventType) {
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
                 PauseAudio();
                 break;

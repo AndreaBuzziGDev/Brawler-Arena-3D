@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerActionController : EntityWithAiming
-{
+public class PlayerActionController : EntityWithAiming {
     [Header("Inspector References")]
     [SerializeField] Rigidbody playerRigidBody;
     [SerializeField] PlayerController masterController;
@@ -33,8 +32,7 @@ public class PlayerActionController : EntityWithAiming
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
-    {
+    protected void OnValidate() {
         if (playerRigidBody == null)
             Debug.LogWarning("No Rigid Body Reference Assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
         if (masterController == null)
@@ -51,42 +49,37 @@ public class PlayerActionController : EntityWithAiming
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //LISTEN TO INPUTS
         InputInitialization();
     }
 
-    void FixedUpdate()
-    {
-        if(!GameController.Instance.IsPlaying)
+    void FixedUpdate() {
+        if (!GameController.Instance.IsPlaying)
             playerRigidBody.velocity = new Vector3(0, 0, 0);
-        else
-        {
+        else {
             playerRigidBody.velocity = movementSpeed * new Vector3(movementDirection.x, 0, movementDirection.y);
             playerRigidBody.velocity += gravityScale * Physics.gravity;
         }
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         InputTermination();
     }
 
 
 
     //FUNCTIONALITIES
-    
+
     //INPUT FUNCTIONS
-    void InputInitialization()
-    {
+    void InputInitialization() {
         inputPlayer = new GameInputAction();
         inputPlayer.Enable();
 
         //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed += UseMovement;
         inputPlayer.BaseActionMap.DirectionalMovement.canceled += ReleaseMovement;
-        
+
         //ROTATION INPUT
         inputPlayer.BaseActionMap.ControllerRotation.performed += UseControllerRotation;
         inputPlayer.BaseActionMap.MouseRotation.performed += UseMouseRotation;
@@ -101,10 +94,9 @@ public class PlayerActionController : EntityWithAiming
         inputPlayer.BaseActionMap.Escape.performed += UseEscape;
     }
 
-    void InputTermination()
-    {
+    void InputTermination() {
         inputPlayer.Disable();
-        
+
         //MOVEMENT INPUT
         inputPlayer.BaseActionMap.DirectionalMovement.performed -= UseMovement;
         inputPlayer.BaseActionMap.DirectionalMovement.canceled -= ReleaseMovement;
@@ -112,7 +104,7 @@ public class PlayerActionController : EntityWithAiming
         //ROTATION INPUT
         inputPlayer.BaseActionMap.ControllerRotation.performed -= UseControllerRotation;
         inputPlayer.BaseActionMap.MouseRotation.performed -= UseMouseRotation;
-        
+
         //EQUIPMENT INPUT
         inputPlayer.BaseActionMap.WeaponMelee.performed -= UseAttackMelee;
         inputPlayer.BaseActionMap.WeaponRanged.performed -= UseAttackRanged;
@@ -124,78 +116,70 @@ public class PlayerActionController : EntityWithAiming
 
 
     //INPUT HANDLING
-    void UseMovement(InputAction.CallbackContext value)
-    {
+    void UseMovement(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         movementDirection = value.ReadValue<Vector2>().normalized;
     }
-    
-    void ReleaseMovement(InputAction.CallbackContext value)
-    {
+
+    void ReleaseMovement(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
 
         movementDirection = Vector2.zero;
     }
 
 
-    void UseControllerRotation(InputAction.CallbackContext value)
-    {
+    void UseControllerRotation(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         aimingDirection = value.ReadValue<Vector2>().normalized;
     }
-    
-    void UseMouseRotation(InputAction.CallbackContext value)
-    {
+
+    void UseMouseRotation(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         Vector3 mousePos = Input.mousePosition;
         Vector2 mousePos2D = new(mousePos.x, mousePos.y);
-        aimingDirection = mousePos2D - new Vector2(Screen.width/2, Screen.height/2);
+        aimingDirection = mousePos2D - new Vector2(Screen.width / 2, Screen.height / 2);
     }
 
 
-    void UseAttackMelee(InputAction.CallbackContext value)
-    {
+    void UseAttackMelee(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
 
         //TODO: DEVELOP
         Debug.Log("No Melee Weapon");
     }
 
-    void UseAttackRanged(InputAction.CallbackContext value)
-    {
+    void UseAttackRanged(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         weaponRanged.Operate();
     }
-    
-    void ReleaseAttackRanged(InputAction.CallbackContext value)
-    {
+
+    void ReleaseAttackRanged(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
-        
+
         weaponRanged.Release();
     }
 
-    void UseAbility(InputAction.CallbackContext value)
-    {
+    void UseAbility(InputAction.CallbackContext value) {
         //CONDITION
-        if(!GameController.Instance.IsPlaying)
+        if (!GameController.Instance.IsPlaying)
             return;
 
         //TODO: DEVELOP
@@ -203,11 +187,9 @@ public class PlayerActionController : EntityWithAiming
     }
 
 
-    void UseEscape(InputAction.CallbackContext value)
-    {
-        if(!GameController.Instance.IsGameOver)
-        {
-            if(GameController.Instance.IsPaused)
+    void UseEscape(InputAction.CallbackContext value) {
+        if (!GameController.Instance.IsGameOver) {
+            if (GameController.Instance.IsPaused)
                 GameController.Instance.SetState(GameController.EGameState.Playing);
             else
                 GameController.Instance.SetState(GameController.EGameState.Paused);
@@ -217,13 +199,12 @@ public class PlayerActionController : EntityWithAiming
 
 
     //GIZMOS
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Vector3.zero, new Vector3(aimingDirection.x, 0, aimingDirection.y) * 5);
     }
-    
+
 
     //UTILITIES
     //...

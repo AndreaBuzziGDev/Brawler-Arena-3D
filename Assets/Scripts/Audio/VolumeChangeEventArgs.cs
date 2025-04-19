@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class VolumeChangeEventArgs : EventArgs
-{
+public class VolumeChangeEventArgs : EventArgs {
     //CONSTRUCTOR
-    public VolumeChangeEventArgs(){}
+    public VolumeChangeEventArgs() { }
 }

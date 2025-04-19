@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityWithAiming : MonoBehaviour, IAimingCapable
-{
+public abstract class EntityWithAiming : MonoBehaviour, IAimingCapable {
     //DATA
     protected Vector2 aimingDirection;
 

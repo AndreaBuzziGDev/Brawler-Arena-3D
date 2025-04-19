@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_FilledBar : MonoBehaviour
-{
+public class UI_FilledBar : MonoBehaviour {
     //DATA
-    
+
 
     [Header("Inspector References")]
     [SerializeField] Image filledImage;
@@ -14,8 +13,7 @@ public class UI_FilledBar : MonoBehaviour
 
     //REFERENCE VALIDATION
 #if UNITY_EDITOR
-    protected void OnValidate()
-    {
+    protected void OnValidate() {
         if (filledImage == null)
             Debug.LogWarning("No Filled Image assigned on GameObject " + gameObject.name + " of type " + this.GetType(), this);
     }
@@ -24,10 +22,8 @@ public class UI_FilledBar : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    public void UpdateFill(float fillAmount)
-    {
-        if (filledImage != null)
-        {
+    public void UpdateFill(float fillAmount) {
+        if (filledImage != null) {
             filledImage.fillAmount = Mathf.Clamp01(fillAmount);
         }
     }

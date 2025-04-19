@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DamageInstance
-{
+public class DamageInstance {
     //DATA
     float damageAmount = 0;
     //TODO: EXPAND UPON MECHANICS - DAMAGE TYPE AND OTHER THINGS
@@ -15,8 +14,7 @@ public class DamageInstance
 
 
     //CONSTRUCTOR
-    public DamageInstance(WeaponData weaponData)
-    {
+    public DamageInstance(WeaponData weaponData) {
         this.damageAmount = weaponData.DamageAmount;
     }
 }

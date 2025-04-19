@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SpawnController : MonoBehaviour
-{
+public class SpawnController : MonoBehaviour {
     //ENUMS
-    public enum SpawnType
-    {
+    public enum SpawnType {
         FLAT,//QUANTITY
         EQUALIZED,//= QUANTITY/SPAWNS
         RANDOMIZED//FROM 1 UP TO QUANTITY
@@ -41,15 +39,14 @@ public class SpawnController : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //ERROR CHECK
-        if(sDataTable == null || sDataTable.OrderedWaves.Count == 0)
+        if (sDataTable == null || sDataTable.OrderedWaves.Count == 0)
             Debug.LogError("SpawnController - No Waves have been set. Please configure and assign SpawnRateDataTable");
 
         //SPAWN POINT INITIALIZATION
         spawnPoints = FindObjectsOfType<SpawnPoint>().ToList();
-        foreach(SpawnPoint sp in spawnPoints)
+        foreach (SpawnPoint sp in spawnPoints)
             spDictionary.Add(sp.gameObject.GetInstanceID(), sp);
 
         //GAMEPLAY LOOP INITIALIZATION
@@ -58,10 +55,9 @@ public class SpawnController : MonoBehaviour
         Debug.Log("SpawnController - waveIndex: " + waveIndex);
     }
 
-    void Update()
-    {
+    void Update() {
         //...
-        if(GameController.Instance.IsPlaying && !disabledSpawn)
+        if (GameController.Instance.IsPlaying && !disabledSpawn)
             HandleTimer();
 
     }
@@ -69,28 +65,25 @@ public class SpawnController : MonoBehaviour
 
 
     //FUNCTIONALITIES
-    private void HandleTimer()
-    {
-        if(waveCooldownTimer > 0)
+    private void HandleTimer() {
+        if (waveCooldownTimer > 0)
             waveCooldownTimer -= Time.deltaTime;
         else
             HandleWave();
     }
 
-    private void HandleWave()
-    {
+    private void HandleWave() {
         //SPAWN ENTITIES
-        foreach(int sId in spDictionary.Keys)
+        foreach (int sId in spDictionary.Keys)
             NotifySpawner(sId);
 
         //SET COOLDOWN TIMER
         waveCooldownTimer = sDataTable.OrderedWaves[waveIndex].NextWaveCooldown;
 
         //MANAGE WAVE INDEX
-        if(waveIndex < sDataTable.OrderedWaves.Count)
+        if (waveIndex < sDataTable.OrderedWaves.Count)
             waveIndex++;
-        else
-        {
+        else {
             //EXTRA COOLDOWN AT THE END
             waveCooldownTimer += sDataTable.LastWaveExtraCooldown;
             waveIndex = 0;
@@ -99,18 +92,16 @@ public class SpawnController : MonoBehaviour
     }
 
 
-    private void NotifySpawner(int spawnerToNotifyId)
-    {
+    private void NotifySpawner(int spawnerToNotifyId) {
         //int spawnPointInstanceID, List<SpawnRateData> rateData
         List<SpawnRateData> spawns = sDataTable.OrderedWaves[waveIndex].Spawns;
-        foreach(SpawnRateData sRateData in spawns)
-        {
+        foreach (SpawnRateData sRateData in spawns) {
             EventManager<SpawnEntityEventArgs>.Instance.Notify(
-                this, 
+                this,
                 new(
-                    spawnerToNotifyId, 
+                    spawnerToNotifyId,
                     new SpawnData(
-                        sRateData.TargetEntityPrefab, 
+                        sRateData.TargetEntityPrefab,
                         CalculateSpawnedQuantity(sRateData)
                     )
                 )
@@ -120,13 +111,11 @@ public class SpawnController : MonoBehaviour
 
 
     //UTILITIES
-    private int CalculateSpawnedQuantity(SpawnRateData sRateData)
-    {
-        int variance = UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance); 
-        switch(sRateData.SpawnType)
-        {
+    private int CalculateSpawnedQuantity(SpawnRateData sRateData) {
+        int variance = UnityEngine.Random.Range(-sRateData.Variance, sRateData.Variance);
+        switch (sRateData.SpawnType) {
             case SpawnType.EQUALIZED:
-                return (int) ((sRateData.Quantity + variance) / spawnPoints.Count);
+                return (int)((sRateData.Quantity + variance) / spawnPoints.Count);
             case SpawnType.RANDOMIZED:
                 int calculatedRate = sRateData.Quantity + variance;
                 return Mathf.Clamp(calculatedRate, 0, sRateData.Quantity + sRateData.Variance);

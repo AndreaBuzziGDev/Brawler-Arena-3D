@@ -4,8 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 
-public class UI_MainMenu : MonoBehaviour
-{
+public class UI_MainMenu : MonoBehaviour {
     //DATA
 
 
@@ -13,25 +12,23 @@ public class UI_MainMenu : MonoBehaviour
     //GAMEOBJECT REFERENCES
     [SerializeField] Canvas mainMenuPanel;//TODO: CanvasRenderer INSTEAD OF Canvas?
     [SerializeField] TMP_Text textHighScore;
-    
+
 
 
     //LIFECYCLE FUNCTIONS
-    void Awake()
-    {
+    void Awake() {
         //LISTEN EVENTS
         EventManager<MainMenuEventArgs>.Instance.StartListening(HandleMainMenuEvent);
-        
+
         //INITIALIZE GAME SCORE
-        SaveGameStats sgs = (SaveGameStats) UtilsSave.LoadSave(SaveController.defaultGameStatsName);
-        textHighScore.text = (sgs==null ? 0 : sgs.HighScore).ToString();
+        SaveGameStats sgs = (SaveGameStats)UtilsSave.LoadSave(SaveController.defaultGameStatsName);
+        textHighScore.text = (sgs == null ? 0 : sgs.HighScore).ToString();
     }
-    void OnDestroy()
-    {
+    void OnDestroy() {
         //UN-LISTEN EVENTS
         EventManager<MainMenuEventArgs>.Instance.StopListening(HandleMainMenuEvent);
     }
-    
+
 
     //FUNCTIONALITIES
     ///GUI BUTTONS
@@ -45,10 +42,8 @@ public class UI_MainMenu : MonoBehaviour
 
 
     //EVENT HANDLING
-    public void HandleMainMenuEvent(object sender, MainMenuEventArgs e)
-    {
-        switch(e.EventType)
-        {
+    public void HandleMainMenuEvent(object sender, MainMenuEventArgs e) {
+        switch (e.EventType) {
             case MainMenuEventArgs.EType.MAIN_MENU:
                 mainMenuPanel.gameObject.SetActive(true);
                 break;

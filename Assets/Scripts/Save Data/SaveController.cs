@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SaveController
-{
+public static class SaveController {
     //DATA
     //PATHS
     public readonly static string defaultGameStatsName = "GameStats";

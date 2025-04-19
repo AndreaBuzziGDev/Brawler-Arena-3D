@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
-{
+public class SpawnPoint : MonoBehaviour {
     //ENUMS
-    public enum SpawnPointType
-    {
+    public enum SpawnPointType {
         GROUND,
         COPTER
     }
@@ -29,57 +27,50 @@ public class SpawnPoint : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         spawnerId = gameObject.GetInstanceID();
         EventManager<SpawnEntityEventArgs>.Instance.StartListening(HandleSpawnEntityEvent);
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         EventManager<SpawnEntityEventArgs>.Instance.StopListening(HandleSpawnEntityEvent);
     }
 
 
     //FUNCTIONALITIES
-    public void SpawnWave(SpawnData spawnData)
-    {
-        for(int i=0; i < spawnData.Quantity; i++)
+    public void SpawnWave(SpawnData spawnData) {
+        for (int i = 0; i < spawnData.Quantity; i++)
             SpawnEntity(spawnData.TargetPrefab);
     }
 
-    public void SpawnEntity(EntityWithHealth toSpawn)
-    {
+    public void SpawnEntity(EntityWithHealth toSpawn) {
         Instantiate(
-            toSpawn, 
-            transform.position + GetRandomSpawnVector(), 
+            toSpawn,
+            transform.position + GetRandomSpawnVector(),
             Quaternion.identity
         );
     }
 
 
     //
-    public Vector3 GetRandomSpawnVector()
-    {
+    public Vector3 GetRandomSpawnVector() {
         Vector3 spawnVector = UtilsRadius.RandomPositionOnCircleRadius(spawnRadius);
-        if(spawnStrictlyOnRadius)
+        if (spawnStrictlyOnRadius)
             return spawnVector;
-        else 
+        else
             return Vector3.Lerp(Vector3.zero, spawnVector, UnityEngine.Random.Range(0.0f, 1.0f));
     }
 
 
     //EVENT HANDLING
-    private void HandleSpawnEntityEvent(object sender, SpawnEntityEventArgs e)
-    {
-        if(spawnerId.Equals(e.SpawnPointInstanceID))
+    private void HandleSpawnEntityEvent(object sender, SpawnEntityEventArgs e) {
+        if (spawnerId.Equals(e.SpawnPointInstanceID))
             SpawnWave(e.Data);
     }
 
 
     //GIZMOS
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         //Draw a colored sphere at the transform's position
         Gizmos.color = gizmoColor;
         Gizmos.DrawWireSphere(transform.position, spawnRadius);

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Spawn Rate Data Table", menuName = "Spawn Rate Data Table")]
-public class SpawnRateDataTable : ScriptableObject
-{
+public class SpawnRateDataTable : ScriptableObject {
     //DATA
     [Tooltip("A List of waves defined via scriptable objects")]
     [SerializeField] List<SpawnWaveData> orderedWaves = new();

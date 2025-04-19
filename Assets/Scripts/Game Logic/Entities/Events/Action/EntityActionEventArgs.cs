@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class EntityActionEventArgs : EventArgs
-{
+public abstract class EntityActionEventArgs : EventArgs {
     //DATA
 
     //CONSTRUCTOR

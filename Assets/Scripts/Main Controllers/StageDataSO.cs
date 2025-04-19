@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Stage Data", menuName = "Stage Data")]
-public class StageDataSO : ScriptableObject
-{
+public class StageDataSO : ScriptableObject {
     //DATA
 
     //ASSOCIATED SCENE

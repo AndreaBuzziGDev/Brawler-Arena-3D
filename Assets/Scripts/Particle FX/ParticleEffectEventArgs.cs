@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ParticleEffectEventArgs : EventArgs
-{
+public class ParticleEffectEventArgs : EventArgs {
     //DATA
     //USE THIS SIMPLIFIED SINTAX IN OTHER EVENTS
     public GameObject ToSpawn { get; }
@@ -14,8 +13,7 @@ public class ParticleEffectEventArgs : EventArgs
 
 
     //CONSTRUCTOR
-    public ParticleEffectEventArgs(ParticleData particleData, Vector3 position)
-    {
+    public ParticleEffectEventArgs(ParticleData particleData, Vector3 position) {
         this.ToSpawn = particleData?.ParticleFX?.particle;
         this.Position = position;
         this.Name = particleData?.ParticleFX?.particle?.name ?? "Null Particle FX";

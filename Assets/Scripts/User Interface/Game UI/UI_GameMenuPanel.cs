@@ -5,8 +5,7 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 
 //TODO: RENAME THIS SCRIPT "UI_GameMenuPause"?
-public class UI_GameMenuPanel : MonoBehaviour
-{
+public class UI_GameMenuPanel : MonoBehaviour {
     //DATA
 
 
@@ -15,8 +14,7 @@ public class UI_GameMenuPanel : MonoBehaviour
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //DISABLE BUTTON PANEL
         //TODO: IS THIS NECESSARY? CAN IT BE REFACTORED?
         thisPanel.gameObject.SetActive(false);
@@ -25,8 +23,7 @@ public class UI_GameMenuPanel : MonoBehaviour
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleMenuEvent);
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         //UN-LISTEN EVENTS
         EventManager<GameMenuEventArgs>.Instance.StopListening(HandleMenuEvent);
     }
@@ -44,11 +41,9 @@ public class UI_GameMenuPanel : MonoBehaviour
 
 
     //EVENT HANDLING
-    public void HandleMenuEvent(object sender, GameMenuEventArgs e)
-    {
+    public void HandleMenuEvent(object sender, GameMenuEventArgs e) {
         //TODO: UPDATE LOGIC WHEN THE IDEA IS UNDERSTOOD BETTER
-        switch(e.EventType)
-        {
+        switch (e.EventType) {
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
                 thisPanel.gameObject.SetActive(true);
                 break;

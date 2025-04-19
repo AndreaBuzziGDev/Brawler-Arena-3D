@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //TODO: SWITCH TO AN ANIMATOR, DITCH THIS CONTROLLER
-public class ArenaSpinner : MonoBehaviour
-{
+public class ArenaSpinner : MonoBehaviour {
     //DATA
     [Tooltip("Insert Spinning speed measured in eulers/second")]
     [Range(0, 360)]
     [SerializeField] float spinningSpeed = 10;//IN EULERS
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         //SPINS AT A GIVEN SPEED
-        if(GameController.Instance.IsPlaying)
-            transform.Rotate(new Vector3(0,spinningSpeed * Time.fixedDeltaTime,0));
+        if (GameController.Instance.IsPlaying)
+            transform.Rotate(new Vector3(0, spinningSpeed * Time.fixedDeltaTime, 0));
     }
 }

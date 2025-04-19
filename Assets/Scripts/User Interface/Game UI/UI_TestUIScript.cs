@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //TODO: THIS IS A VALID SCRIPT, MIGHT JUST NEED RENAMING AND THAT'S ALL.
-public class UI_TestUIScript : MonoBehaviour
-{
+public class UI_TestUIScript : MonoBehaviour {
     //A QUICK UI SCRIPT FOR THE SAKE OF HAVING A WORKING GAMEOVER SCREEN
     //DATA
     [SerializeField] CanvasRenderer thisCanvas;
 
 
     //LIFECYCLE FUNCTIONS
-    void Start()
-    {
+    void Start() {
         //START LISTENING TO GAME OVER EVENTS
         thisCanvas.gameObject.SetActive(false);
         EventManager<GameMenuEventArgs>.Instance.StartListening(HandleMenuEvent);
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         //STOP LISTENING TO GAME OVER EVENTS
         EventManager<GameMenuEventArgs>.Instance.StopListening(HandleMenuEvent);
 
@@ -35,10 +32,8 @@ public class UI_TestUIScript : MonoBehaviour
 
 
     //MENU EVENT LISTENING
-    private void HandleMenuEvent(object sender, GameMenuEventArgs e)
-    {
-        switch(e.EventType)
-        {
+    private void HandleMenuEvent(object sender, GameMenuEventArgs e) {
+        switch (e.EventType) {
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_OPEN:
             case GameMenuEventArgs.EType.GAME_MENU_PAUSE_CLOSE:
                 thisCanvas.gameObject.SetActive(false);

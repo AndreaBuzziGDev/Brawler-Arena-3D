@@ -15,11 +15,9 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @GameInputAction: IInputActionCollection2, IDisposable
-{
+public partial class @GameInputAction : IInputActionCollection2, IDisposable {
     public InputActionAsset asset { get; }
-    public @GameInputAction()
-    {
+    public @GameInputAction() {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""GameInputAction"",
     ""maps"": [
@@ -416,59 +414,49 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         m_BaseActionMap_WeaponUtility = m_BaseActionMap.FindAction("Weapon Utility", throwIfNotFound: true);
     }
 
-    public void Dispose()
-    {
+    public void Dispose() {
         UnityEngine.Object.Destroy(asset);
     }
 
-    public InputBinding? bindingMask
-    {
+    public InputBinding? bindingMask {
         get => asset.bindingMask;
         set => asset.bindingMask = value;
     }
 
-    public ReadOnlyArray<InputDevice>? devices
-    {
+    public ReadOnlyArray<InputDevice>? devices {
         get => asset.devices;
         set => asset.devices = value;
     }
 
     public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-    public bool Contains(InputAction action)
-    {
+    public bool Contains(InputAction action) {
         return asset.Contains(action);
     }
 
-    public IEnumerator<InputAction> GetEnumerator()
-    {
+    public IEnumerator<InputAction> GetEnumerator() {
         return asset.GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
+    IEnumerator IEnumerable.GetEnumerator() {
         return GetEnumerator();
     }
 
-    public void Enable()
-    {
+    public void Enable() {
         asset.Enable();
     }
 
-    public void Disable()
-    {
+    public void Disable() {
         asset.Disable();
     }
 
     public IEnumerable<InputBinding> bindings => asset.bindings;
 
-    public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
-    {
+    public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false) {
         return asset.FindAction(actionNameOrId, throwIfNotFound);
     }
 
-    public int FindBinding(InputBinding bindingMask, out InputAction action)
-    {
+    public int FindBinding(InputBinding bindingMask, out InputAction action) {
         return asset.FindBinding(bindingMask, out action);
     }
 
@@ -482,8 +470,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_BaseActionMap_WeaponRanged;
     private readonly InputAction m_BaseActionMap_WeaponMelee;
     private readonly InputAction m_BaseActionMap_WeaponUtility;
-    public struct BaseActionMapActions
-    {
+    public struct BaseActionMapActions {
         private @GameInputAction m_Wrapper;
         public BaseActionMapActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_BaseActionMap_Escape;
@@ -498,8 +485,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(BaseActionMapActions set) { return set.Get(); }
-        public void AddCallbacks(IBaseActionMapActions instance)
-        {
+        public void AddCallbacks(IBaseActionMapActions instance) {
             if (instance == null || m_Wrapper.m_BaseActionMapActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BaseActionMapActionsCallbackInterfaces.Add(instance);
             @Escape.started += instance.OnEscape;
@@ -525,8 +511,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @WeaponUtility.canceled += instance.OnWeaponUtility;
         }
 
-        private void UnregisterCallbacks(IBaseActionMapActions instance)
-        {
+        private void UnregisterCallbacks(IBaseActionMapActions instance) {
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
@@ -550,14 +535,12 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
             @WeaponUtility.canceled -= instance.OnWeaponUtility;
         }
 
-        public void RemoveCallbacks(IBaseActionMapActions instance)
-        {
+        public void RemoveCallbacks(IBaseActionMapActions instance) {
             if (m_Wrapper.m_BaseActionMapActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IBaseActionMapActions instance)
-        {
+        public void SetCallbacks(IBaseActionMapActions instance) {
             foreach (var item in m_Wrapper.m_BaseActionMapActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
             m_Wrapper.m_BaseActionMapActionsCallbackInterfaces.Clear();
@@ -565,8 +548,7 @@ public partial class @GameInputAction: IInputActionCollection2, IDisposable
         }
     }
     public BaseActionMapActions @BaseActionMap => new BaseActionMapActions(this);
-    public interface IBaseActionMapActions
-    {
+    public interface IBaseActionMapActions {
         void OnEscape(InputAction.CallbackContext context);
         void OnDirectionalMovement(InputAction.CallbackContext context);
         void OnControllerRotation(InputAction.CallbackContext context);
