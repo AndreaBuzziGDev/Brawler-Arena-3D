@@ -10,7 +10,7 @@ public class AudioClipData : ScriptableObject {
 
     [Tooltip("Minimum delay between iterations, expressed in seconds")]
     [Range(0.1f, 5.0f)]
-    [SerializeField] float rateLimitTime = 0.1f; //Minimum delay between iterations
+    [SerializeField] float rateLimitTime = 0.1f;
 
     [Tooltip("How many instances of this sound can play at the same time")]
     [Range(1, 30)]
