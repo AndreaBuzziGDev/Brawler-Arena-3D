@@ -9,6 +9,7 @@ public class CustomUITextureImporter : AssetPostprocessor {
             TextureImporter importer = assetImporter as TextureImporter;
             importer.textureType = TextureImporterType.Sprite;
 
+            //TODO: USE DEBUGGER
             Debug.Log("Processed: " + assetPath + " as UI Sprite");
         }
     }
